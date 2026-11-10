@@ -1,0 +1,75 @@
+.item {
+  border-bottom: 1.5px dashed rgba(30, 27, 24, 0.3);
+  padding: var(--s3) 0;
+}
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s3);
+}
+.main {
+  flex: 1 1 16rem;
+  min-width: 0;
+}
+.subject {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.meta {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+.toggle {
+  min-height: 44px;
+  padding: 0 0.8rem;
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  font-weight: 700;
+  cursor: pointer;
+}
+.thread {
+  margin-top: var(--s4);
+}
+.letters {
+  list-style: none;
+  margin: 0 0 var(--s4);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+.letter {
+  max-width: 40rem;
+  padding: var(--s3) var(--s4);
+  background: var(--paper);
+  border: 1.5px solid var(--ink);
+  /* ruled letter paper */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0 1.7rem,
+    rgba(37, 64, 122, 0.1) 1.7rem calc(1.7rem + 1px)
+  );
+}
+.letter[data-mine='true'] {
+  margin-left: auto;
+  border-left: 6px solid var(--indigo);
+}
+.letter p {
+  margin: 0;
+}
+.from {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  font-weight: 700;
+  margin-bottom: 0.3rem !important;
+}
+.reply {
+  max-width: 40rem;
+}
+.statusRow {
+  margin-top: var(--s3);
+}

@@ -1,0 +1,110 @@
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s6);
+  margin-top: var(--s4);
+}
+@media (min-width: 900px) {
+  .split {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+.h3 {
+  font-size: 1.25rem;
+}
+.roadmap {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: step;
+}
+.roadmap li {
+  position: relative;
+  padding-left: 2.6rem;
+  counter-increment: step;
+  border-left: 3px dashed var(--ink-soft);
+  margin-left: 1rem;
+  padding-bottom: var(--s3);
+}
+.roadmap li::before {
+  content: counter(step);
+  position: absolute;
+  left: -1.05rem;
+  top: 0.35rem;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  font-weight: 800;
+}
+.roadmap li[data-done='true']::before {
+  background: var(--leaf-deep);
+  color: #f3ead8;
+}
+.step {
+  display: flex;
+  gap: var(--s3);
+  align-items: flex-start;
+  min-height: 44px;
+  cursor: pointer;
+}
+.step input {
+  width: 24px;
+  height: 24px;
+  margin-top: 0.35rem;
+  accent-color: var(--leaf-deep);
+  flex-shrink: 0;
+}
+.stepHint {
+  display: block;
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+.log {
+  list-style: none;
+  margin: 0 0 var(--s4);
+  padding: 0;
+}
+.log li {
+  padding: var(--s3) 0;
+  border-bottom: 1.5px dashed rgba(30, 27, 24, 0.3);
+}
+.log p {
+  margin: 0;
+}
+.logDate {
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  color: var(--madder-deep);
+}
+:global([data-theme='lamp']) .logDate {
+  color: var(--turmeric);
+}
+.logForm {
+  margin-top: var(--s4);
+}
+.badge {
+  display: flex;
+  align-items: center;
+  gap: var(--s4);
+  padding: var(--s4);
+  margin: var(--s3) 0;
+  background: var(--turmeric);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  transform: rotate(-0.8deg);
+  max-width: 32rem;
+}
+.badge a {
+  color: var(--ink);
+  font-weight: 700;
+}
+.badgeTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.3rem;
+}
