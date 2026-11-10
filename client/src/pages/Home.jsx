@@ -12,7 +12,11 @@ import StampButton from '../components/ui/StampButton.jsx';
 import Divider, { HandUnderline } from '../components/ui/Divider.jsx';
 import { AsyncView, EmptyScene } from '../components/ui/Scenes.jsx';
 import { ArtisanTicket, StoryTicket } from '../components/Tickets.jsx';
+import { CRAFT_KEYS } from '../../../shared/constants.js';
 import s from './Home.module.css';
+
+// Same layout as the real strip, so nothing shifts when the API answers.
+const PLACEHOLDER_CRAFTS = CRAFT_KEYS.map((key) => ({ key, name: { en: '' }, region: '' }));
 
 export default function Home() {
   const { t } = useTranslation();
@@ -45,7 +49,7 @@ export default function Home() {
           <p className={`hand ${s.margin}`}>{t('home.marginNote')}</p>
         </div>
         <div className={s.heroArt}>
-          <HeroArt />
+          <HeroArt paused={intro} />
         </div>
       </section>
 
@@ -57,7 +61,13 @@ export default function Home() {
             </h2>
             <p className={s.fadingNote}>{t('home.fadingNote')}</p>
           </div>
-          <AsyncView state={types}>{(list) => <FadingCrafts craftTypes={list} />}</AsyncView>
+          {types.data ? (
+            <FadingCrafts craftTypes={types.data} />
+          ) : types.error ? (
+            <AsyncView state={types}>{() => null}</AsyncView>
+          ) : (
+            <FadingCrafts craftTypes={PLACEHOLDER_CRAFTS} placeholder />
+          )}
         </div>
       </section>
 

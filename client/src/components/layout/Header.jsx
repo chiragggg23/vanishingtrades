@@ -29,7 +29,7 @@ export default function Header() {
   return (
     <header className={s.header}>
       <div className={`page ${s.bar}`}>
-        <NavLink to="/" className={s.brand} aria-label={t('nav.homeLabel')}>
+        <NavLink to="/" className={s.brand}>
           <span className={s.mark} aria-hidden="true">
             VT
           </span>

@@ -156,3 +156,11 @@
   margin-left: 2%;
   transform: rotate(-0.6deg);
 }
+
+/* Below-the-fold sections: skip style, layout and paint until they come near the viewport. */
+.story,
+.people,
+.latest {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 1200px;
+}

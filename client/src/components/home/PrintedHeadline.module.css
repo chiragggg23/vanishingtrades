@@ -39,7 +39,6 @@
   color: var(--turmeric);
 }
 .play .key {
-  opacity: 0;
   animation: key 0.5s calc(var(--i) * 150ms + 100ms) var(--ease-press) forwards;
 }
 .play .plate {
@@ -48,15 +47,12 @@
 }
 @keyframes key {
   0% {
-    opacity: 0;
-    transform: translateY(-0.12em) scale(1.05) rotate(-1.2deg);
+    transform: translateY(-0.14em) scale(1.06) rotate(-1.2deg);
   }
   60% {
-    opacity: 1;
     transform: translateY(0.015em) scale(0.995);
   }
   100% {
-    opacity: 1;
     transform: none;
   }
 }
@@ -81,5 +77,25 @@
   .play .plate {
     opacity: 0.38;
     animation: none;
+  }
+}
+
+/* behind the loom intro the words wait, lifted, until it is their turn */
+.waiting .key {
+  display: inline-block;
+  transform: translateY(-0.14em) scale(1.06) rotate(-1.2deg);
+}
+.waiting .plate {
+  opacity: 0;
+}
+.key {
+  display: inline-block;
+}
+@media (prefers-reduced-motion: reduce) {
+  .waiting .key {
+    transform: none;
+  }
+  .waiting .plate {
+    opacity: 0.38;
   }
 }

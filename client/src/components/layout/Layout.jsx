@@ -18,6 +18,8 @@ export default function Layout() {
   const location = useLocation();
   const mainRef = useRef(null);
   const first = useRef(true);
+  // The first page paints immediately (good for LCP); later navigations get the paper slide.
+  const firstPath = useRef(location.pathname);
   const reduced = usePrefersReducedMotion();
   const { notice } = useAuth();
 
@@ -27,6 +29,7 @@ export default function Layout() {
       first.current = false;
       return;
     }
+    firstPath.current = null;
     mainRef.current?.focus({ preventScroll: true });
     window.scrollTo(0, 0);
   }, [location.pathname]);
@@ -47,7 +50,9 @@ export default function Layout() {
       <main id="main" ref={mainRef} tabIndex={-1} className={s.main}>
         <m.div
           key={location.pathname}
-          initial={reduced ? false : { opacity: 0, y: 14 }}
+          initial={
+            reduced || location.pathname === firstPath.current ? false : { opacity: 0, y: 14 }
+          }
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
         >

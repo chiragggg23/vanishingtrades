@@ -9,7 +9,8 @@ import s from './HeroArt.module.css';
  * A torn indigo sheet with layered workshop illustrations. Layers drift at different speeds on
  * scroll and pointer (transform only, rAF-throttled); idle motion lives in the illustrations.
  */
-export default function HeroArt() {
+/** paused: hold the idle motion (used while the loom intro covers the hero). */
+export default function HeroArt({ paused = false }) {
   const { t } = useTranslation();
   const ref = useRef(null);
   const reduced = usePrefersReducedMotion();
@@ -50,13 +51,13 @@ export default function HeroArt() {
     <div className={s.sheet} ref={ref} aria-hidden="true">
       <div className={s.paperBack} />
       <div className={`${s.layer} ${s.l1}`}>
-        <SpinningWheel still={reduced} />
+        <SpinningWheel still={reduced || paused} />
       </div>
       <div className={`${s.layer} ${s.l2}`}>
-        <Loom still={reduced} />
+        <Loom still={reduced || paused} />
       </div>
       <div className={`${s.layer} ${s.l3}`}>
-        <PottersWheel still={reduced} />
+        <PottersWheel still={reduced || paused} />
       </div>
       <div className={`${s.layer} ${s.l4}`}>
         <CraftArt craftType="channapatna" seed="hero-top" />

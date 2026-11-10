@@ -1,10 +1,10 @@
 import { lazy } from 'react';
+import Home from './pages/Home.jsx';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './components/layout/Layout.jsx';
 import ProtectedRoute from './components/layout/ProtectedRoute.jsx';
 
 // Route-level code splitting: every page is its own chunk.
-const Home = lazy(() => import('./pages/Home.jsx'));
 const Gallery = lazy(() => import('./pages/Gallery.jsx'));
 const ArtisanProfile = lazy(() => import('./pages/ArtisanProfile.jsx'));
 const Archive = lazy(() => import('./pages/Archive.jsx'));

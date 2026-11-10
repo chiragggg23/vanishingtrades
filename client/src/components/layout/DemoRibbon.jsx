@@ -40,8 +40,8 @@ export default function DemoRibbon() {
     }
   };
   return (
-    <div className={s.ribbon}>
-      <div className={`page ${s.inner}`}>
+    <div className={s.ribbon} role="region" aria-label={t('demo.tag')}>
+      <div className={s.inner}>
         <p className={s.text}>
           <strong className={s.tag}>{t('demo.tag')}</strong>{' '}
           <span className={s.long}>{t('demo.text')}</span>
