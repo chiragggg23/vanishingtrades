@@ -1,0 +1,92 @@
+/* Design tokens. Every text/background pair used in the app is checked by scripts/contrast.mjs. */
+:root {
+  /* paper & ink */
+  --paper: #f3ead8;
+  --paper-dark: #e4d6ba;
+  --paper-light: #faf5ea;
+  --ink: #1e1b18;
+  --ink-soft: #4a4239;
+  --ink-faint: #8a7f70; /* decoration only (pencil lines), never text */
+
+  /* dyes */
+  --indigo: #25407a;
+  --indigo-deep: #1a2e59;
+  --madder: #b8402e;
+  --madder-deep: #9c3424; /* madder text on dark paper */
+  --turmeric: #e0a526; /* fills & thread only: 1.83:1 on paper */
+  --leaf: #4f6b3a;
+  --leaf-deep: #3f5730; /* leaf text on dark paper */
+
+  /* SDG colours (official), used as stamp fills */
+  --sdg4: #c5192d;
+  --sdg8: #a21942;
+  --sdg11: #fd9d24;
+
+  /* semantic */
+  --bg: var(--paper);
+  --text: var(--ink);
+  --text-muted: var(--ink-soft);
+  --link: var(--indigo);
+  --danger: var(--madder-deep);
+  --success: var(--leaf-deep);
+  --focus: var(--indigo);
+
+  /* type */
+  --font-display:
+    'Fraunces', 'Noto Sans Kannada', 'Mukta', 'Tunga', 'Nirmala UI', 'Mangal', Georgia,
+    'Times New Roman', serif;
+  --font-body:
+    'Mukta', 'Noto Sans Kannada', 'Tunga', 'Nirmala UI', 'Mangal', 'Kohinoor Devanagari',
+    system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-hand: 'Caveat', 'Mukta', 'Noto Sans Kannada', 'Nirmala UI', 'Comic Sans MS', cursive;
+
+  --fs-xs: 0.8125rem; /* 13 */
+  --fs-sm: 0.9375rem; /* 15 */
+  --fs-base: 1.09375rem; /* 17.5 */
+  --fs-md: 1.4375rem; /* 23 */
+  --fs-lg: 1.9375rem; /* 31 */
+  --fs-xl: clamp(2rem, 1.4rem + 2.4vw, 2.5625rem); /* 41 */
+  --fs-2xl: clamp(2.3rem, 1.5rem + 3.6vw, 3.4375rem); /* 55 */
+  --fs-hero: clamp(2.6rem, 1.2rem + 6.5vw, 6rem);
+
+  --lh-body: 1.6;
+  --lh-head: 1.04;
+
+  /* space */
+  --s1: 0.25rem;
+  --s2: 0.5rem;
+  --s3: 0.75rem;
+  --s4: 1rem;
+  --s5: 1.5rem;
+  --s6: 2rem;
+  --s7: 3rem;
+  --s8: 4.5rem;
+  --s9: 7rem;
+  --gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
+  --measure: 66ch;
+  --page: 1240px;
+
+  /* ink shadows: hard offsets only */
+  --shadow-sm: 3px 3px 0 var(--ink);
+  --shadow: 5px 5px 0 var(--ink);
+  --shadow-lg: 8px 8px 0 var(--ink);
+  --radius: 3px;
+
+  --ease-press: cubic-bezier(0.3, 0.7, 0.4, 1.4);
+  --ease-ink: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Lamp-lit workshop: dark mode with indigo paper */
+:root[data-theme='lamp'] {
+  --bg: #17243f;
+  --paper: #17243f;
+  --paper-dark: #10192d;
+  --paper-light: #1f2f52;
+  --text: #f3ead8;
+  --text-muted: #d9cdb4;
+  --ink: #0b1120;
+  --link: #f2c25b;
+  --focus: #e0a526;
+  --danger: #f08a73;
+  --success: #a9c98c;
+}

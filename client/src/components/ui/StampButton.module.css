@@ -1,0 +1,106 @@
+.stamp {
+  --face: var(--indigo);
+  --fg: #f3ead8;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s2);
+  min-height: 46px;
+  min-width: 44px;
+  padding: 0.5rem 1.15rem 0.45rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.02rem;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  color: var(--fg);
+  background: var(--face);
+  border: 2.5px solid var(--ink);
+  border-radius: 2px 5px 3px 6px / 6px 3px 5px 2px;
+  box-shadow: 4px 4px 0 var(--ink);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.12s var(--ease-press),
+    box-shadow 0.12s var(--ease-press);
+  -webkit-tap-highlight-color: transparent;
+}
+/* speckles where the ink did not take */
+.stamp::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(243, 234, 216, 0.2) 0.8px, transparent 1.3px);
+  background-size: 5px 6px;
+}
+.stamp:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 var(--ink);
+  text-decoration: none;
+}
+/* Pressing moves the stamp INTO its shadow with a tiny twist */
+.stamp:active {
+  transform: translate(4px, 4px) rotate(-0.8deg);
+  box-shadow: 0 0 0 var(--ink);
+}
+.stamp:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+  transform: none;
+}
+.primary {
+  --face: var(--indigo);
+}
+.madder,
+.danger {
+  --face: var(--madder-deep);
+}
+.leaf {
+  --face: var(--leaf-deep);
+}
+.ghost {
+  --face: var(--paper-light);
+  --fg: var(--ink);
+}
+.ghost::after {
+  background-image: radial-gradient(rgba(30, 27, 24, 0.06) 0.8px, transparent 1.3px);
+}
+.sm {
+  min-height: 44px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.95rem;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+.lg {
+  min-height: 54px;
+  padding: 0.7rem 1.6rem;
+  font-size: 1.15rem;
+}
+.label {
+  position: relative;
+}
+/* busy: a thread winding on a bobbin */
+.thread {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 3px dashed currentColor;
+  animation: wind 1s linear infinite;
+}
+@keyframes wind {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stamp:hover,
+  .stamp:active {
+    transform: none;
+  }
+  .thread {
+    animation: none;
+    border-style: dotted;
+  }
+}

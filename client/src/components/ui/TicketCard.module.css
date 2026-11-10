@@ -1,0 +1,59 @@
+.wrap {
+  --rot: 0deg;
+  --rx: 0deg;
+  --ry: 0deg;
+  position: relative;
+  display: block;
+  transform: perspective(900px) rotate(var(--rot)) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 0.35s var(--ease-ink);
+  /* hard shadow (0 blur) that follows the notches */
+  filter: drop-shadow(5px 5px 0 var(--ink));
+}
+.ticket {
+  position: relative;
+  height: 100%;
+  background: var(--paper-light);
+  color: var(--ink);
+  padding: var(--s5) var(--s5) var(--s4);
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  /* perforated notches on both sides, two thirds of the way down */
+  -webkit-mask:
+    radial-gradient(circle at 0 68%, transparent 10px, #000 10.5px) left / 51% 100% no-repeat,
+    radial-gradient(circle at 100% 68%, transparent 10px, #000 10.5px) right / 51% 100% no-repeat;
+  mask:
+    radial-gradient(circle at 0 68%, transparent 10px, #000 10.5px) left / 51% 100% no-repeat,
+    radial-gradient(circle at 100% 68%, transparent 10px, #000 10.5px) right / 51% 100% no-repeat;
+}
+.ticket::before {
+  content: '';
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  top: 68%;
+  border-top: 2px dashed rgba(30, 27, 24, 0.2);
+  pointer-events: none;
+}
+.paper {
+  background: var(--paper-light);
+}
+.kraft {
+  background: #ecdfc4;
+}
+.tape {
+  position: absolute;
+  z-index: 2;
+  top: -11px;
+  left: 50%;
+  width: 84px;
+  height: 24px;
+  transform: translateX(-50%) rotate(var(--tape-rot, -3deg));
+  background: rgba(224, 165, 38, 0.6);
+  border-left: 2px dashed rgba(30, 27, 24, 0.15);
+  border-right: 2px dashed rgba(30, 27, 24, 0.15);
+}
+@media (prefers-reduced-motion: reduce) {
+  .wrap {
+    transition: none;
+  }
+}

@@ -1,0 +1,55 @@
+.wrap {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  width: var(--size);
+  transform: rotate(var(--rot));
+  flex-shrink: 0;
+}
+.disc {
+  width: var(--size);
+  height: var(--size);
+  overflow: visible;
+}
+.ring {
+  transform-origin: 60px 60px;
+}
+.animated .ring {
+  animation: ring 30s linear infinite;
+}
+.animated .disc {
+  animation: thump 0.7s var(--ease-press) both;
+}
+.caption {
+  margin-top: 0.4rem;
+  font-variant-caps: all-small-caps;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-size: 0.98rem;
+  line-height: 1.15;
+  text-align: center;
+  width: calc(var(--size) + 2.5rem);
+  color: var(--text);
+}
+@keyframes ring {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes thump {
+  from {
+    transform: rotate(-10deg) scale(1.22);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .animated .disc,
+  .animated .ring {
+    animation: none;
+  }
+}
