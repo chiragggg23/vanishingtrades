@@ -43,7 +43,7 @@ and in a second terminal:
 ```bash
 cd client
 npm install
-npx cross-env VITE_USE_MOCK=false VITE_API_URL=http://localhost:4000/api npm run dev
+npm run dev:real   # the client against the API on localhost:4000
 ```
 
 With your own MongoDB or Atlas: copy `server/.env.example` to `server/.env`, set `MONGODB_URI`, then

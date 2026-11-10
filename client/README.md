@@ -21,6 +21,7 @@ VITE_API_URL=http://localhost:4000/api
 | Script                                  | What it does                                                          |
 | --------------------------------------- | --------------------------------------------------------------------- |
 | `npm run dev`                           | Dev server                                                            |
+| `npm run dev:real`                      | Dev server against the API on localhost:4000                          |
 | `npm run build` / `npm run build:real`  | Production build (mock unless `VITE_USE_MOCK=false`) / real-API build |
 | `npm run preview`                       | Serve `dist/` (always rebuild first)                                  |
 | `npm test`                              | Vitest + Testing Library + jest-axe                                   |

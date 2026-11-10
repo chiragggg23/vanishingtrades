@@ -9,10 +9,16 @@
 @media (min-width: 960px) {
   .hero {
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    gap: 0;
+    gap: var(--s5);
     padding-top: var(--s7);
   }
-  /* the art sheet overlaps the text column's edge */
+}
+/* Only once the text column is wide enough does the art sheet overlap its edge; between 960 and
+   1200 px the pull covered the end of the lede. */
+@media (min-width: 1200px) {
+  .hero {
+    gap: 0;
+  }
   .heroArt {
     margin-left: -4rem;
   }
