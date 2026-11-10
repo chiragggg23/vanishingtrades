@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { auth as authApi, ApiError } from '../api/index.js';
+import { auth as authApi, ApiError, tokenStore } from '../api/index.js';
 
 const AuthContext = createContext(null);
 
@@ -38,7 +38,7 @@ export function AuthProvider({ children }) {
     const onOut = (e) => {
       setUser(null);
       if (e.detail?.paused) setNotice('paused');
-      import('../api/index.js').then(({ tokenStore }) => tokenStore.clear());
+      tokenStore.clear();
     };
     window.addEventListener('vt:signed-out', onOut);
     return () => window.removeEventListener('vt:signed-out', onOut);
