@@ -1,0 +1,125 @@
+.head {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s5);
+  padding: var(--s6) 0 var(--s7);
+}
+@media (min-width: 860px) {
+  .head {
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: var(--s7);
+    align-items: center;
+  }
+}
+.portrait {
+  width: min(260px, 70vw);
+  background: var(--paper-dark);
+  border: 3px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--ink);
+  padding: var(--s4);
+  transform: rotate(-2deg);
+}
+.portrait img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+.name {
+  font-size: var(--fs-2xl);
+  margin: 0;
+}
+.place {
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  color: var(--madder-deep);
+  margin: 0 0 var(--s4);
+}
+:global([data-theme='lamp']) .place {
+  color: var(--turmeric);
+}
+.bio {
+  font-size: 1.15rem;
+  max-width: 40rem;
+}
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3) var(--s6);
+  margin: var(--s4) 0 0;
+}
+.facts dt {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+.facts dd {
+  margin: 0;
+  font-weight: 700;
+}
+.stamp {
+  position: absolute;
+  right: 0;
+  top: var(--s4);
+}
+@media (max-width: 859px) {
+  .stamp {
+    top: var(--s6);
+    right: 0;
+    transform: scale(0.8);
+    transform-origin: top right;
+  }
+}
+.columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s7);
+  align-items: start;
+}
+@media (min-width: 1100px) {
+  .columns {
+    grid-template-columns: minmax(0, 1fr) 380px;
+  }
+}
+.enquiry {
+  background: var(--indigo);
+  color: #f3ead8;
+  padding: var(--s5);
+  border: 3px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--ink);
+  transform: rotate(0.6deg);
+  --text: #f3ead8;
+  --text-muted: #d9cdb4;
+  --danger: #ffc2b4;
+  --link: #f2c25b;
+  --focus: #e0a526;
+}
+.enquiry :global(.field-input) {
+  color: var(--ink);
+}
+.enquiry h2 {
+  font-size: var(--fs-lg);
+}
+@media (min-width: 1100px) {
+  .enquiry {
+    position: sticky;
+    top: var(--s4);
+  }
+}
+.sent {
+  background: var(--paper-light);
+  color: var(--ink);
+  padding: var(--s4);
+  border: 2px dashed var(--ink);
+  transform: rotate(-1deg);
+}
+.sentTitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+.teach {
+  margin-top: var(--s8);
+}

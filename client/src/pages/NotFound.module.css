@@ -1,0 +1,27 @@
+.wrap {
+  text-align: center;
+  padding-top: var(--s6);
+}
+.art {
+  width: min(360px, 80%);
+  margin: 0 auto var(--s5);
+}
+.title {
+  margin-inline: auto;
+  max-width: 16ch;
+}
+.body {
+  margin-inline: auto;
+  font-size: 1.15rem;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--s4);
+  margin: var(--s5) 0;
+}
+.note {
+  margin-inline: auto;
+  transform: rotate(-2deg);
+}

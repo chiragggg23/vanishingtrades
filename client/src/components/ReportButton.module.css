@@ -1,0 +1,20 @@
+.wrap {
+  margin-top: var(--s5);
+}
+.toggle {
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+  font-size: var(--fs-sm);
+}
+.form {
+  margin-top: var(--s3);
+  max-width: 32rem;
+  padding: var(--s4);
+  border: 2px dashed var(--ink-soft);
+}

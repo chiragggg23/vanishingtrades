@@ -1,0 +1,139 @@
+.card {
+  height: 100%;
+}
+/* the whole ticket is clickable through the title link */
+.stretch {
+  color: inherit;
+  text-decoration: none;
+}
+.stretch::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.stretch:hover {
+  text-decoration: underline;
+}
+.art {
+  width: 72%;
+  margin: 0 auto var(--s3);
+}
+.photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 2px solid var(--ink);
+  filter: sepia(0.15) contrast(1.05);
+}
+.title {
+  font-size: 1.32rem;
+  line-height: 1.2;
+  margin: 0.1rem 0 0.3rem;
+}
+.meta {
+  margin: 0 0 var(--s2);
+  color: var(--ink-soft);
+  font-size: var(--fs-sm);
+}
+.price {
+  margin: var(--s4) 0 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+.artisanTop {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  gap: var(--s3);
+  align-items: center;
+}
+.avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: 4px;
+}
+.bio {
+  margin: var(--s4) 0 var(--s5);
+  font-size: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.foot {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+.summary {
+  margin: var(--s2) 0;
+  font-size: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+/* cassette label */
+.cassette {
+  position: relative;
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr);
+  background: #2a2622;
+  border: 2px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--ink);
+  padding: var(--s3);
+  gap: var(--s3);
+  color: var(--ink);
+}
+.reels {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+}
+.reels span {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 6px dotted #d9cdb4;
+  background: #3a342e;
+}
+.label {
+  position: relative;
+  background: var(--paper-light);
+  padding: var(--s3) var(--s4);
+  border-top: 6px solid var(--madder);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0 27px,
+    rgba(37, 64, 122, 0.12) 27px 28px
+  );
+}
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s5);
+  margin: var(--s4) 0 0;
+}
+.facts dt {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+.facts dd {
+  margin: 0;
+  font-weight: 700;
+}

@@ -1,0 +1,117 @@
+.wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s7);
+  padding-top: var(--s6);
+  align-items: start;
+}
+@media (min-width: 960px) {
+  .wrap {
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  }
+}
+.card {
+  max-width: 34rem;
+  background: var(--paper-light);
+  border: 3px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--ink);
+  padding: var(--s6) var(--s5);
+}
+:global([data-theme='lamp']) .card {
+  background: var(--paper-light);
+}
+.switch {
+  margin-top: var(--s5);
+}
+.side {
+  padding-top: var(--s5);
+}
+.art {
+  max-width: 340px;
+  transform: rotate(3deg);
+}
+.demo {
+  background: var(--turmeric);
+  color: var(--ink);
+  border: 3px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
+  padding: var(--s5);
+  transform: rotate(1.2deg);
+  max-width: 30rem;
+}
+.demo :focus-visible {
+  outline-color: var(--ink);
+}
+.demoTitle {
+  font-size: var(--fs-lg);
+}
+.demoList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--s4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+.demoList li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s2) var(--s3);
+}
+.demoEmail {
+  font-size: var(--fs-sm);
+  overflow-wrap: anywhere;
+}
+.demoPw {
+  margin: 0;
+  font-weight: 700;
+}
+.roles {
+  border: 0;
+  padding: 0;
+  margin: 0 0 var(--s5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+}
+.legend {
+  font-weight: 700;
+  margin-bottom: var(--s2);
+}
+.role {
+  display: flex;
+  gap: var(--s3);
+  align-items: flex-start;
+  padding: var(--s3);
+  border: 2px solid var(--ink);
+  background: var(--paper);
+  cursor: pointer;
+  min-height: 44px;
+}
+.role[data-checked='true'] {
+  background: var(--indigo);
+  color: #f3ead8;
+  box-shadow: 4px 4px 0 var(--ink);
+  transform: rotate(-0.5deg);
+}
+.role input {
+  width: 22px;
+  height: 22px;
+  margin-top: 0.2rem;
+  accent-color: var(--madder-deep);
+  flex-shrink: 0;
+}
+.role[data-checked='true'] input:focus-visible {
+  outline-color: var(--turmeric);
+}
+.roleHint {
+  display: block;
+  font-size: var(--fs-sm);
+  opacity: 0.9;
+}
+.err {
+  color: var(--danger);
+  font-weight: 700;
+  margin: 0;
+}

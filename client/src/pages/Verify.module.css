@@ -1,0 +1,122 @@
+.form {
+  max-width: 28rem;
+  margin-bottom: var(--s7);
+}
+.valid {
+  font-weight: 700;
+  color: var(--success);
+  margin-bottom: var(--s4);
+}
+/* vintage certificate */
+.cert {
+  max-width: 54rem;
+  margin: 0 auto;
+  background: #f7efdc;
+  color: #1e1b18;
+  padding: var(--s4);
+  border: 2px solid #1e1b18;
+  box-shadow: 10px 10px 0 #1e1b18;
+}
+.border {
+  position: relative;
+  border: 3px double #9c3424;
+  outline: 1.5px solid #9c3424;
+  outline-offset: -12px;
+  padding: var(--s7) var(--s5) var(--s6);
+  text-align: center;
+  background-image: radial-gradient(rgba(156, 52, 36, 0.06) 1.1px, transparent 1.5px);
+  background-size: 9px 9px;
+}
+.small {
+  margin: 0 auto var(--s2);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  color: #4a4239;
+}
+.certTitle {
+  font-size: var(--fs-2xl);
+  margin: 0 0 var(--s5);
+  font-variation-settings:
+    'SOFT' 100,
+    'WONK' 1;
+}
+.learner {
+  font-family: var(--font-hand);
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  color: #25407a;
+  margin: 0 auto var(--s3);
+  line-height: 1.1;
+}
+.body {
+  margin: 0 auto var(--s6);
+  max-width: 36rem;
+  font-size: 1.15rem;
+}
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 110px minmax(0, 1fr);
+  gap: var(--s4);
+  align-items: end;
+  margin-bottom: var(--s5);
+}
+.sign {
+  font-family: var(--font-hand);
+  font-size: 1.7rem;
+  margin: 0;
+  border-bottom: 1.5px solid #1e1b18;
+}
+.art {
+  width: 110px;
+}
+.code {
+  margin: 0 auto;
+  font-variant-numeric: tabular-nums;
+}
+.seal {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+}
+@media (max-width: 560px) {
+  .seal {
+    position: static;
+    margin-top: var(--s4);
+  }
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .art {
+    margin: 0 auto;
+  }
+}
+.actions {
+  margin-top: var(--s6);
+  display: flex;
+  justify-content: center;
+}
+
+@media print {
+  :global(body::before),
+  :global(header),
+  :global(footer),
+  :global(.skip-link),
+  .noPrint,
+  .actions,
+  .valid {
+    display: none !important;
+  }
+  :global(body) {
+    background: #fff;
+  }
+  .cert {
+    box-shadow: none;
+    border: 0;
+    max-width: none;
+    padding: 0;
+  }
+  .border {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

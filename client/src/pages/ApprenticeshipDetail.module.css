@@ -1,0 +1,107 @@
+.back {
+  margin: var(--s4) 0 var(--s4);
+}
+.back a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 700;
+}
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s7);
+  align-items: start;
+}
+@media (min-width: 1000px) {
+  .layout {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  }
+}
+/* a letterpress show card pinned to the wall */
+.notice {
+  position: relative;
+  background: var(--paper-light);
+  border: 3px double var(--ink);
+  outline: 2px solid var(--ink);
+  outline-offset: 6px;
+  padding: var(--s6) var(--s5);
+  margin: 8px;
+}
+:global([data-theme='lamp']) .notice {
+  background: var(--paper-light);
+}
+.stamp {
+  position: absolute;
+  right: -10px;
+  top: -24px;
+}
+.title {
+  font-size: var(--fs-xl);
+  margin: var(--s2) 0;
+  max-width: 18ch;
+}
+.with {
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+}
+.desc {
+  font-size: 1.15rem;
+  margin-top: var(--s4);
+}
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s3) var(--s5);
+  margin: var(--s5) 0;
+  padding: var(--s4) 0;
+  border-top: 2px dashed var(--ink-soft);
+  border-bottom: 2px dashed var(--ink-soft);
+}
+.facts dt {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+.facts dd {
+  margin: 0;
+  font-weight: 700;
+}
+.h2 {
+  font-size: var(--fs-md);
+}
+.roadmap {
+  margin: 0;
+  padding-left: 1.4rem;
+}
+.roadmap li {
+  margin-bottom: 0.3rem;
+}
+.apply {
+  background: var(--paper-dark);
+  border: 2.5px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
+  padding: var(--s5);
+  transform: rotate(-0.6deg);
+}
+.apply h2 {
+  font-size: var(--fs-lg);
+}
+.art {
+  width: 140px;
+  margin: var(--s5) 0 0 auto;
+}
+.closed {
+  font-weight: 700;
+}
+.done {
+  border: 2px dashed var(--ink);
+  padding: var(--s4);
+  background: var(--paper-light);
+}
+.doneTitle {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+}

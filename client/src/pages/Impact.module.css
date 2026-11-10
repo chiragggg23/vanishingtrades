@@ -1,0 +1,76 @@
+.sampleNote {
+  margin: 0 0 var(--s6);
+  font-weight: 600;
+}
+.groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s7);
+}
+.group {
+  border: 3px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--ink);
+  padding: var(--s5);
+  background: var(--paper-light);
+}
+.g0 {
+  transform: rotate(-0.5deg);
+  width: min(100%, 60rem);
+}
+.g1 {
+  background: var(--paper-dark);
+  transform: rotate(0.4deg);
+  width: min(100%, 60rem);
+  margin-left: auto;
+}
+.g2 {
+  background-image: radial-gradient(rgba(30, 27, 24, 0.1) 1.1px, transparent 1.4px);
+  background-size: 7px 7px;
+  width: min(100%, 60rem);
+  margin-left: clamp(0px, 5vw, 4rem);
+}
+.groupHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s4) var(--s5);
+  margin-bottom: var(--s5);
+}
+.groupTitle {
+  font-size: var(--fs-lg);
+  margin: 0 0 var(--s2);
+}
+.why {
+  margin: 0;
+  color: var(--text-muted);
+}
+.numbers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s4);
+  margin: 0;
+}
+@media (min-width: 760px) {
+  .numbers {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.num {
+  display: flex;
+  flex-direction: column-reverse;
+  border-top: 2px dashed var(--ink-soft);
+  padding-top: var(--s2);
+}
+.num dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 800;
+  line-height: 1.05;
+  font-variant-numeric: tabular-nums;
+}
+.num dt {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  font-weight: 600;
+}

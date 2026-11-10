@@ -1,0 +1,35 @@
+.cassette {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+}
+.labelText {
+  font-family: var(--font-hand);
+  font-size: 15px;
+  font-weight: 700;
+  fill: #f3ead8;
+}
+.reel {
+  transform-origin: 0 0;
+  animation: reel 1.6s linear infinite;
+  animation-play-state: paused;
+}
+.spinning .reel {
+  animation-play-state: running;
+}
+.level {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transition: transform 0.08s linear;
+}
+@keyframes reel {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reel {
+    animation: none;
+  }
+}

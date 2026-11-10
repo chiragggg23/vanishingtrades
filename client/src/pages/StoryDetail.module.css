@@ -1,0 +1,59 @@
+.back {
+  margin: var(--s4) 0 0;
+}
+.back a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 700;
+}
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--s4) var(--s6);
+  padding: var(--s4) 0 var(--s6);
+}
+.title {
+  font-size: var(--fs-2xl);
+  margin: var(--s2) 0;
+  max-width: 20ch;
+}
+.by {
+  font-family: var(--font-hand);
+  font-size: 1.6rem;
+  margin: 0 0 var(--s2);
+}
+.summary {
+  max-width: 46rem;
+  margin: 0 0 var(--s7) clamp(0px, 6vw, 5rem);
+  padding: var(--s4) var(--s5);
+  border-left: 6px solid var(--turmeric);
+  background: var(--paper-light);
+  transform: rotate(-0.4deg);
+  font-size: 1.12rem;
+}
+.summary p {
+  margin: 0;
+}
+.summaryLabel {
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  margin-bottom: var(--s2) !important;
+}
+.tags {
+  list-style: none;
+  padding: 0;
+  margin: var(--s6) 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+}
+.tags li {
+  padding: 0.1rem 0.6rem;
+  border: 1.5px dashed var(--ink-soft);
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+}
