@@ -6,6 +6,8 @@
 }
 .labelText {
   font-family: var(--font-hand);
+  font-style: var(--hand-style, normal);
+  font-weight: var(--hand-weight, 600);
   font-size: 15px;
   font-weight: 700;
   fill: #f3ead8;

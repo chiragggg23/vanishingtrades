@@ -8,9 +8,29 @@ const DYES = ['#B8402E', '#25407A', '#E0A526', '#4F6B3A'];
 
 // Each drawer returns { fill: [...], line: [...] } of SVG elements in a 200×200 box.
 // "fill" is the colour plate, "line" is the key block (ink or pencil).
+/**
+ * Seeded choice that a keyword in the piece's name can override. The seeded draw always happens,
+ * so the rest of the drawing (colours, sizes) stays the same with or without a hint.
+ */
+function choose(r, hint, options, rules) {
+  const seeded = pick(r, options);
+  const text = String(hint || '').toLowerCase();
+  const hit = rules.find(([re]) => re.test(text));
+  return hit ? hit[1] : seeded;
+}
+
 const drawers = {
-  channapatna(r) {
-    const kind = pick(r, ['horse', 'top', 'stack']);
+  channapatna(r, hint) {
+    const kind = choose(
+      r,
+      hint,
+      ['horse', 'top', 'stack'],
+      [
+        [/horse/, 'horse'],
+        [/\btops?\b|spinning/, 'top'],
+        [/doll|bride|stack/, 'stack'],
+      ],
+    );
     const c = [...DYES].sort(() => r() - 0.5);
     if (kind === 'top') {
       const w = between(r, 46, 58);
@@ -72,11 +92,20 @@ const drawers = {
     };
   },
 
-  bidriware(r) {
+  bidriware(r, hint) {
     const neck = between(r, 14, 22);
     const belly = between(r, 46, 56);
     const body = `M${100 - neck / 2} 34 L${100 - neck / 2} 70 Q${100 - belly} 92 ${100 - belly} 124 Q${100 - belly} 162 100 164 Q${100 + belly} 162 ${100 + belly} 124 Q${100 + belly} 92 ${100 + neck / 2} 70 L${100 + neck / 2} 34Z`;
-    const motif = pick(r, ['poppy', 'vine', 'scale']);
+    const motif = choose(
+      r,
+      hint,
+      ['poppy', 'vine', 'scale'],
+      [
+        [/poppy/, 'poppy'],
+        [/vine/, 'vine'],
+        [/scale|hookah/, 'scale'],
+      ],
+    );
     const silver = [];
     if (motif === 'poppy') {
       for (let i = 0; i < 5; i++) {
@@ -227,9 +256,19 @@ const drawers = {
     };
   },
 
-  pottery(r) {
+  pottery(r, hint) {
     // Four pot families, three slip colours and four stamped band motifs, all from the seed.
-    const kind = pick(r, ['matka', 'lidded', 'curd', 'lamp']);
+    const kind = choose(
+      r,
+      hint,
+      ['matka', 'lidded', 'curd', 'lamp'],
+      [
+        [/lamp/, 'lamp'],
+        [/curd|bowl|planter/, 'curd'],
+        [/\blid\b/, 'lidded'],
+        [/matka|water pot|\bpot\b/, 'matka'],
+      ],
+    );
     const body = pick(r, ['#B8402E', '#A9552E', '#2A2622']);
     const bandFill = body === '#2A2622' ? '#B8402E' : '#E0A526';
     const motif = pick(r, ['zigzag', 'dots', 'waves', 'lines']);
@@ -316,6 +355,7 @@ const drawers = {
 /**
  * Seeded block-print illustration for a craft type.
  * variant: "color" | "outline" | "fade"; active (fade only): show the colour plate.
+ * hint: the piece's name, so "lamp stand" draws a lamp stand and "curd pots" a curd pot.
  */
 export default function CraftArt({
   craftType = 'pottery',
@@ -323,12 +363,13 @@ export default function CraftArt({
   variant = 'color',
   active = false,
   title,
+  hint = '',
   className = '',
 }) {
   const uid = useId().replace(/:/g, '');
   const rand = prng(`${craftType}:${seed}`);
   const draw = drawers[craftType] || drawers.pottery;
-  const { fill, line } = draw(rand);
+  const { fill, line } = draw(rand, hint);
   const misX = between(rand, 1.5, 3.2);
   const misY = between(rand, -1.5, 2);
   const shadowW = between(rand, 58, 74);

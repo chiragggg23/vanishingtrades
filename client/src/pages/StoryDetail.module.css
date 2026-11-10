@@ -22,6 +22,8 @@
 }
 .by {
   font-family: var(--font-hand);
+  font-style: var(--hand-style, normal);
+  font-weight: var(--hand-weight, 600);
   font-size: 1.6rem;
   margin: 0 0 var(--s2);
 }
@@ -55,5 +57,7 @@
   padding: 0.1rem 0.6rem;
   border: 1.5px dashed var(--ink-soft);
   font-family: var(--font-hand);
+  font-style: var(--hand-style, normal);
+  font-weight: var(--hand-weight, 600);
   font-size: 1.25rem;
 }

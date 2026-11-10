@@ -78,6 +78,8 @@
 .count {
   display: block;
   font-family: var(--font-hand);
+  font-style: var(--hand-style, normal);
+  font-weight: var(--hand-weight, 600);
   font-size: 1.45rem;
   line-height: 1.1;
   color: var(--madder-deep);

@@ -25,7 +25,7 @@ export function CraftTicket({ craft }) {
           {craft.imageUrl ? (
             <img src={mediaUrl(craft.imageUrl)} alt={title} loading="lazy" className={s.photo} />
           ) : (
-            <CraftArt craftType={craft.craftType} seed={craft.seed} />
+            <CraftArt craftType={craft.craftType} seed={craft.seed} hint={craft.title.en} />
           )}
         </div>
         <div>

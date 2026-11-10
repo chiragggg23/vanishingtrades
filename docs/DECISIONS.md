@@ -58,3 +58,5 @@ One line each: the decision, then the reason.
 ## Tooling
 
 - Browser scripts (e2e, screenshots, Lighthouse) drive the installed Chrome/Edge through `playwright-core` installed outside the project; `@sparticuz/chromium` was not used because it ships a Linux-only binary.
+- Kannada and Hindi margin notes use a synthesized 10° oblique of the script's fallback font instead of a fourth font family, to stay within the brief's three families.
+- `CraftArt` takes the piece's name as a hint for its shape; the seeded draw still happens first so colours and proportions stay stable.

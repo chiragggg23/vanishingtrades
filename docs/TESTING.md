@@ -5,7 +5,7 @@ All numbers below were produced on the build machine (Windows 11, Node 24, insta
 
 ## Unit, component and accessibility tests (client)
 
-`cd client && npm test`: **50 tests in 8 files, all passing.**
+`cd client && npm test`: **52 tests in 9 files, all passing.**
 
 | File                      | Covers                                                                                                                                                                                                                                                                    |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

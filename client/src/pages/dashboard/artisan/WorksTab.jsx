@@ -196,7 +196,7 @@ export default function WorksTab({ craftType }) {
             {list.map((c) => (
               <li key={c.id} className={s.row}>
                 <div style={{ width: 64 }} aria-hidden="true">
-                  <CraftArt craftType={c.craftType} seed={c.seed} />
+                  <CraftArt craftType={c.craftType} seed={c.seed} hint={c.title.en} />
                 </div>
                 <div className={s.rowMain}>
                   <p className={s.rowTitle}>{localize(c.title, i18n.language)}</p>

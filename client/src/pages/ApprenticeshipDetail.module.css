@@ -43,6 +43,8 @@
 }
 .with {
   font-family: var(--font-hand);
+  font-style: var(--hand-style, normal);
+  font-weight: var(--hand-weight, 600);
   font-size: 1.5rem;
 }
 .desc {

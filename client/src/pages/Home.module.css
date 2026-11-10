@@ -23,6 +23,8 @@
 }
 .kicker {
   font-family: var(--font-hand);
+  font-style: var(--hand-style, normal);
+  font-weight: var(--hand-weight, 600);
   font-size: 1.6rem;
   color: var(--madder-deep);
   margin: 0 0 var(--s2);
@@ -74,6 +76,8 @@
 }
 .fadingNote {
   font-family: var(--font-hand);
+  font-style: var(--hand-style, normal);
+  font-weight: var(--hand-weight, 600);
   font-size: 1.4rem;
   color: var(--madder-deep);
   transform: rotate(1.5deg);

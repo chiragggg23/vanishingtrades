@@ -55,7 +55,7 @@ Demo accounts (mock and seeded database): `demo-<role>@vanishingtrades.test` / `
 ## Tests
 
 ```bash
-cd client && npm test       # 50 tests: components, URL filters, player keys, API switch, jest-axe
+cd client && npm test       # 52 tests: components, URL filters, player keys, API switch, jest-axe
 cd server && npm test       # 26 tests: contract parity (mock vs server), security, uploads, AI, seed
 ```
 

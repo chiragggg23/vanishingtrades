@@ -150,7 +150,8 @@
 }
 .role {
   font-family: var(--font-hand);
-  font-weight: 600;
+  font-style: var(--hand-style, normal);
+  font-weight: var(--hand-weight, 600);
   color: var(--madder-deep);
   font-size: 1.15rem;
 }

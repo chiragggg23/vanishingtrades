@@ -49,9 +49,12 @@ headline is already printed with its plate in register, illustrations stand stil
 full colour with captions shown, no ink wipe between pages, no tilt on tickets. The page keeps its
 texture, colour and layout, so it is calm rather than bare.
 
-## Still open
+## Resolved after the first report
 
-- A seeded pot shape does not know the piece's name, so "Festival lamp stand" can be drawn as a curd
-  bowl. Fix: let a piece choose its shape family from keywords in its title.
-- Kannada and Hindi fall back to Noto Sans Kannada / Mukta for the hand-lettered notes, because
-  Caveat has no Indic glyphs. Readable, but the "handwritten" feeling is lost in those languages.
+- A piece's drawing now follows its name: the English title is passed to `CraftArt` as a hint, so
+  "Festival lamp stand" draws a lamp stand, "Curd pots" and "Tulasi planter" a wide bowl, "Water
+  pot with lid" a lidded pot; Channapatna horses, tops and dolls and the Bidri poppy, vine and
+  fish-scale patterns follow the name the same way. Unknown names keep the seeded choice.
+- Caveat has no Kannada or Devanagari glyphs and the brief allows three font families, so in those
+  languages every hand-lettered note uses the script's fallback slanted 10° and one weight lighter,
+  with more line height. It now reads as a marginal note rather than as body text.

@@ -164,7 +164,8 @@ table {
 }
 .hand {
   font-family: var(--font-hand);
-  font-weight: 600;
+  font-style: var(--hand-style, normal);
+  font-weight: var(--hand-weight, 600);
   font-size: 1.45rem;
   line-height: 1.15;
   color: var(--madder-deep);
@@ -271,7 +272,14 @@ input[type='file']::file-selector-button {
   cursor: pointer;
 }
 
-/* Caveat has no Kannada or Devanagari; the fallback needs more room between lines. */
+/* Caveat has no Kannada or Devanagari glyphs, and the brief allows three font families. In those
+   scripts the hand-lettered notes fall back to Noto Sans Kannada / Mukta, slanted and a little
+   lighter so they still read as marginal notes, with more room between lines. */
+:lang(kn),
+:lang(hi) {
+  --hand-style: oblique 10deg;
+  --hand-weight: 500;
+}
 :lang(kn) .hand,
 :lang(hi) .hand {
   line-height: 1.55;

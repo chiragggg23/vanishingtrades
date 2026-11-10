@@ -105,6 +105,8 @@
   color: var(--ink);
   border: 2px solid var(--ink);
   font-family: var(--font-hand);
+  font-style: var(--hand-style, normal);
+  font-weight: var(--hand-weight, 600);
   font-size: 1.35rem;
   font-weight: 700;
   transform: rotate(-7deg);
