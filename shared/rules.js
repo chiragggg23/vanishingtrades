@@ -27,14 +27,19 @@ export const normaliseSegments = (segs = []) =>
     text: s.text,
   }));
 
-/** A new id that looks like a Mongo ObjectId (time-ordered). */
+// Same layout as a Mongo ObjectId: 4-byte time, 5-byte process random, 3-byte counter, so ids
+// made later always sort after earlier ones (the tie-break rule depends on it).
+const PROCESS_RANDOM = Array.from({ length: 10 }, () =>
+  Math.floor(Math.random() * 16).toString(16),
+).join('');
+let counter = Math.floor(Math.random() * 0xffff);
+/** A new id that looks like a Mongo ObjectId and increases monotonically. */
 export function newId() {
   const ts = Math.floor(Date.now() / 1000)
     .toString(16)
     .padStart(8, '0');
-  let rest = '';
-  for (let i = 0; i < 16; i++) rest += Math.floor(Math.random() * 16).toString(16);
-  return ts + rest;
+  counter = (counter + 1) % 0xffffff;
+  return ts + PROCESS_RANDOM + counter.toString(16).padStart(6, '0');
 }
 
 export const isId = (v) => typeof v === 'string' && /^[0-9a-f]{24}$/.test(v);

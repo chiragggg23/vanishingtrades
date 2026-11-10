@@ -97,19 +97,22 @@ const targetLabel = (db, f) => {
 const flagOut = (db, f) =>
   V.flagView(f, { reporter: byId(db.users, f.reporterId), targetLabel: targetLabel(db, f) });
 
-/** Sort with comparators [(a,b)=>n ...] and id ascending as the final tie-breaker. */
-const sortWith = (list, ...cmps) =>
-  [...list].sort((a, b) => {
+/** Sort with comparators; ties break by id in the direction of the first comparator. */
+const sortWith = (list, ...cmps) => {
+  const dir = cmps[0]?.dir === -1 ? -1 : 1;
+  return [...list].sort((a, b) => {
     for (const c of cmps) {
       const r = c(a, b);
       if (r) return r;
     }
-    return cmp(a.id, b.id);
+    return dir * cmp(a.id, b.id);
   });
-const asc = (f) => (a, b) => cmp(f(a), f(b));
-const desc = (f) => (a, b) => cmp(f(b), f(a));
-const numAsc = (f) => (a, b) => f(a) - f(b);
-const numDesc = (f) => (a, b) => f(b) - f(a);
+};
+const tag = (fn, dir) => Object.assign(fn, { dir });
+const asc = (f) => tag((a, b) => cmp(f(a), f(b)), 1);
+const desc = (f) => tag((a, b) => cmp(f(b), f(a)), -1);
+const numAsc = (f) => tag((a, b) => f(a) - f(b), 1);
+const numDesc = (f) => tag((a, b) => f(b) - f(a), -1);
 const pageOf = (list, query, map) => {
   const { page, limit, skip } = pageParams(query);
   return {

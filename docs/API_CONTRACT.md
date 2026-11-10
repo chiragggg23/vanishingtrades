@@ -20,7 +20,9 @@ both and asserts identical status codes and response shapes. Field limits live i
   least 1.
 - Text search `q`: split on whitespace; a record matches when **every** word appears (case-insensitive
   substring) in **at least one** of the listed fields. Empty `q` matches everything.
-- Every sort has `id` ascending as the final tie-breaker so mock and server order identically.
+- Every sort ends with `id` as the tie-breaker, in the same direction as the first sort key
+  (newest-first lists put the newest id first). Ids grow monotonically (ObjectId layout), so mock
+  and server order ties identically.
 - Status codes:
 
 | Code | When                                                                                                      |
