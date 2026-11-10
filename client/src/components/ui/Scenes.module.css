@@ -1,0 +1,47 @@
+.scene {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--s4);
+  align-items: center;
+  padding: var(--s6) 0;
+  max-width: 44rem;
+}
+@media (min-width: 640px) {
+  .scene {
+    grid-template-columns: 200px minmax(0, 1fr);
+    gap: var(--s6);
+  }
+}
+.art {
+  width: min(220px, 70%);
+  transform: rotate(-2deg);
+}
+@media (min-width: 640px) {
+  .art {
+    width: 100%;
+  }
+}
+.artSmall {
+  width: 110px;
+}
+.loading {
+  grid-template-columns: 110px minmax(0, 1fr);
+  padding: var(--s5) 0;
+}
+.title {
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 var(--s2);
+}
+.body {
+  color: var(--text-muted);
+  margin-bottom: var(--s4);
+}
+.hand {
+  font-family: var(--font-hand);
+  font-size: 1.6rem;
+  color: var(--text-muted);
+  margin: 0;
+}

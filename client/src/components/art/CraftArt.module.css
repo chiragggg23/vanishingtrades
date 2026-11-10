@@ -1,0 +1,45 @@
+.art {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.shadow {
+  opacity: 0.9;
+}
+/* The colour plate prints a hair off the key block. */
+.colour {
+  transform: translate(var(--mx), var(--my));
+}
+.pencil {
+  stroke-dasharray: 5 2.5;
+  opacity: 0.85;
+}
+
+/* "fade": pencil outline first, colour plate arrives off-register and settles. */
+.art[data-variant='fade'] .colour {
+  opacity: 0;
+  transform: translate(calc(var(--mx) * 4), calc(var(--my) * 4 - 6px)) scale(0.985);
+  transform-origin: 100px 110px;
+  transition:
+    opacity 0.7s var(--ease-ink),
+    transform 0.9s var(--ease-ink);
+}
+.art[data-variant='fade'][data-active='true'] .colour {
+  opacity: 1;
+  transform: translate(var(--mx), var(--my));
+}
+.art[data-variant='fade'] .pencil {
+  transition: opacity 0.6s ease;
+}
+.art[data-variant='fade'][data-active='true'] .pencil {
+  opacity: 1;
+  stroke: var(--ink, #1e1b18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .art[data-variant='fade'] .colour {
+    transition: opacity 0.3s linear;
+    transform: translate(var(--mx), var(--my));
+  }
+}

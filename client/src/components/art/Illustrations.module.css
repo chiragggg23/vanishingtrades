@@ -1,0 +1,121 @@
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.halftoneShadow {
+  fill: rgba(30, 27, 24, 0.16);
+}
+.spin,
+.spinSlow {
+  transform-origin: 0 0;
+  animation: spin 3.2s linear infinite;
+}
+.spinSlow {
+  animation-duration: 7s;
+}
+.bob {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: bob 3.2s ease-in-out infinite;
+}
+.shuttle {
+  animation: shuttle 3.6s cubic-bezier(0.6, 0, 0.4, 1) infinite alternate;
+}
+.sway {
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+  animation: sway 4.5s ease-in-out infinite alternate;
+}
+.carve {
+  transform-box: fill-box;
+  transform-origin: 100% 0%;
+  animation: carve 2.8s ease-in-out infinite;
+}
+.curl {
+  transform-box: fill-box;
+  transform-origin: 80% 80%;
+  animation: curl 2.8s ease-in-out infinite;
+}
+.svg[data-still='true'] * {
+  animation: none !important;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes bob {
+  50% {
+    transform: scaleY(1.03) scaleX(0.985);
+  }
+}
+@keyframes shuttle {
+  from {
+    transform: translateX(-18px);
+  }
+  to {
+    transform: translateX(80px);
+  }
+}
+@keyframes sway {
+  from {
+    transform: rotate(-1.6deg);
+  }
+  to {
+    transform: rotate(1.6deg);
+  }
+}
+@keyframes carve {
+  50% {
+    transform: translate(-8px, 6px) rotate(-2deg);
+  }
+}
+@keyframes curl {
+  0%,
+  20% {
+    transform: scale(0.4) rotate(-40deg);
+    opacity: 0;
+  }
+  60%,
+  100% {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+
+/* Footer press: platen comes down on hover/focus of the colophon */
+.platen {
+  transition: transform 0.25s var(--ease-press);
+}
+.print {
+  opacity: 0;
+  transition: opacity 0.2s 0.15s;
+}
+:global(.press-host:hover) .platen,
+:global(.press-host:focus-within) .platen,
+:global(.press-host:focus) .platen {
+  transform: translateY(26px);
+}
+:global(.press-host:hover) .print,
+:global(.press-host:focus-within) .print,
+:global(.press-host:focus) .print {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spin,
+  .spinSlow,
+  .bob,
+  .shuttle,
+  .sway,
+  .carve,
+  .curl {
+    animation: none;
+  }
+  .curl {
+    opacity: 1;
+  }
+}
