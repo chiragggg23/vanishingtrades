@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import { tiltFor } from '../../lib/prng.js';
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion.js';
 import s from './TicketCard.module.css';
@@ -16,10 +16,26 @@ export default function TicketCard({
   tape = true,
   tone = 'paper',
   className = '',
+  stub,
   children,
   ...rest
 }) {
   const ref = useRef(null);
+  const stubRef = useRef(null);
+  // The notches sit exactly on the line above the stub, wherever the content puts it.
+  useLayoutEffect(() => {
+    const el = stubRef.current;
+    const host = ref.current;
+    if (!el || !host) return undefined;
+    const set = () => {
+      const pad = parseFloat(getComputedStyle(el.parentElement).paddingBottom) || 0;
+      host.style.setProperty('--stub', `${el.offsetHeight + pad}px`);
+    };
+    set();
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(set) : null;
+    ro?.observe(el);
+    return () => ro?.disconnect();
+  }, []);
   const reduced = usePrefersReducedMotion();
   const rot = tiltFor(seed, 1.6);
   const tilt = !reduced && finePointer();
@@ -52,7 +68,14 @@ export default function TicketCard({
           style={{ '--tape-rot': `${(-rot * 2 - 3).toFixed(1)}deg` }}
         />
       )}
-      <div className={`${s.ticket} ${s[tone] || ''}`}>{children}</div>
+      <div className={`${s.ticket} ${s[tone] || ''}`}>
+        {children}
+        {stub && (
+          <div ref={stubRef} className={s.stub}>
+            {stub}
+          </div>
+        )}
+      </div>
     </Tag>
   );
 }

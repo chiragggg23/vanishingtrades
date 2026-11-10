@@ -19,18 +19,22 @@
   border-bottom: 2px solid var(--ink);
   /* perforated notches on both sides, two thirds of the way down */
   -webkit-mask:
-    radial-gradient(circle at 0 68%, transparent 10px, #000 10.5px) left / 51% 100% no-repeat,
-    radial-gradient(circle at 100% 68%, transparent 10px, #000 10.5px) right / 51% 100% no-repeat;
+    radial-gradient(circle at 0 calc(100% - var(--stub, 32%)), transparent 10px, #000 10.5px) left /
+      51% 100% no-repeat,
+    radial-gradient(circle at 100% calc(100% - var(--stub, 32%)), transparent 10px, #000 10.5px)
+      right / 51% 100% no-repeat;
   mask:
-    radial-gradient(circle at 0 68%, transparent 10px, #000 10.5px) left / 51% 100% no-repeat,
-    radial-gradient(circle at 100% 68%, transparent 10px, #000 10.5px) right / 51% 100% no-repeat;
+    radial-gradient(circle at 0 calc(100% - var(--stub, 32%)), transparent 10px, #000 10.5px) left /
+      51% 100% no-repeat,
+    radial-gradient(circle at 100% calc(100% - var(--stub, 32%)), transparent 10px, #000 10.5px)
+      right / 51% 100% no-repeat;
 }
 .ticket::before {
   content: '';
   position: absolute;
   left: 16px;
   right: 16px;
-  top: 68%;
+  bottom: var(--stub, 32%);
   border-top: 2px dashed rgba(30, 27, 24, 0.2);
   pointer-events: none;
 }
@@ -56,4 +60,13 @@
   .wrap {
     transition: none;
   }
+}
+
+.ticket {
+  display: flex;
+  flex-direction: column;
+}
+.stub {
+  margin-top: auto;
+  padding-top: var(--s4);
 }

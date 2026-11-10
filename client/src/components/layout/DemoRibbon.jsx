@@ -43,7 +43,8 @@ export default function DemoRibbon() {
     <div className={s.ribbon}>
       <div className={`page ${s.inner}`}>
         <p className={s.text}>
-          <strong className={s.tag}>{t('demo.tag')}</strong> {t('demo.text')}
+          <strong className={s.tag}>{t('demo.tag')}</strong>{' '}
+          <span className={s.long}>{t('demo.text')}</span>
         </p>
         {confirming ? (
           <span className={s.actions}>

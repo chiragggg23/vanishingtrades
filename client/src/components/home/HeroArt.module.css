@@ -12,7 +12,7 @@
 .sheet::before {
   content: '';
   position: absolute;
-  inset: 4% 2% 6% 6%;
+  inset: 10% 0 0 12%;
   background-color: var(--indigo);
   background-image: radial-gradient(rgba(243, 234, 216, 0.14) 1.2px, transparent 1.6px);
   background-size: 8px 8px;
@@ -48,7 +48,7 @@
 }
 .paperBack {
   position: absolute;
-  inset: 0 10% 12% 0;
+  inset: 0 50% 52% 0;
   background: var(--paper-dark);
   transform: rotate(-3deg);
   border: 2px solid var(--ink);
@@ -58,15 +58,15 @@
   will-change: transform;
 }
 .l1 {
-  width: 46%;
-  left: 2%;
-  top: 6%;
+  width: 42%;
+  left: 3%;
+  top: 4%;
   transform: translate3d(calc(var(--px) * -10px), calc(var(--sy) * -0.06 + var(--py) * -8px), 0);
 }
 .l2 {
-  width: 58%;
-  right: 0;
-  top: 2%;
+  width: 50%;
+  right: 2%;
+  top: 0;
   transform: translate3d(calc(var(--px) * 14px), calc(var(--sy) * -0.12 + var(--py) * 10px), 0)
     rotate(2deg);
   background: var(--paper);
@@ -75,9 +75,9 @@
   box-shadow: 6px 6px 0 var(--ink);
 }
 .l3 {
-  width: 62%;
-  left: 6%;
-  bottom: 4%;
+  width: 54%;
+  left: 2%;
+  bottom: 2%;
   transform: translate3d(calc(var(--px) * -20px), calc(var(--sy) * -0.2 + var(--py) * -14px), 0);
   background: var(--paper-light);
   padding: 3% 4% 1%;
@@ -86,15 +86,20 @@
   rotate: -2deg;
 }
 .l4 {
-  width: 32%;
-  right: 4%;
-  bottom: 10%;
+  width: 30%;
+  right: 6%;
+  bottom: 12%;
+  padding: 2%;
+  border-radius: 50%;
+  background: var(--paper-light);
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
   transform: translate3d(calc(var(--px) * 26px), calc(var(--sy) * -0.28 + var(--py) * 16px), 0);
 }
 .sticker {
   position: absolute;
-  left: -2%;
-  top: 46%;
+  left: 30%;
+  top: 44%;
   padding: 0.35rem 0.7rem;
   background: var(--turmeric);
   color: var(--ink);

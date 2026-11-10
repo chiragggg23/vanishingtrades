@@ -103,3 +103,12 @@
     box-shadow: 6px 6px 0 var(--ink);
   }
 }
+
+.searchRow :global(.field-input) {
+  flex: 1 1 auto;
+  min-width: 0;
+  width: auto;
+}
+.go {
+  flex-shrink: 0;
+}

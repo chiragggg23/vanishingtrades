@@ -252,3 +252,21 @@ textarea.field-input {
     scroll-behavior: auto !important;
   }
 }
+
+/* file inputs look like ghost stamp buttons */
+input[type='file'] {
+  max-width: 100%;
+  font-size: var(--fs-sm);
+}
+input[type='file']::file-selector-button {
+  min-height: 44px;
+  margin-right: var(--s3);
+  padding: 0 0.9rem;
+  border: 2px solid var(--ink);
+  background: var(--paper-light);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  box-shadow: 3px 3px 0 var(--ink);
+  cursor: pointer;
+}

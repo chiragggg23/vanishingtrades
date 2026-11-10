@@ -177,7 +177,7 @@ const drawers = {
 
   kinhal(r) {
     const tail = between(r, 24, 40);
-    const body = '#4F6B3A';
+    const body = pick(r, ['#4F6B3A', '#25407A', '#B8402E']);
     return {
       fill: [
         <path
@@ -228,42 +228,88 @@ const drawers = {
   },
 
   pottery(r) {
-    const w = between(r, 48, 60);
-    const neck = between(r, 18, 26);
-    const pot = `M${100 - neck} 52 Q${100 - neck - 4} 66 ${100 - w} 96 Q${100 - w - 8} 140 100 162 Q${100 + w + 8} 140 ${100 + w} 96 Q${100 + neck + 4} 66 ${100 + neck} 52Z`;
-    const band = [];
+    // Four pot families, three slip colours and four stamped band motifs, all from the seed.
+    const kind = pick(r, ['matka', 'lidded', 'curd', 'lamp']);
+    const body = pick(r, ['#B8402E', '#A9552E', '#2A2622']);
+    const bandFill = body === '#2A2622' ? '#B8402E' : '#E0A526';
+    const motif = pick(r, ['zigzag', 'dots', 'waves', 'lines']);
+    const w = kind === 'curd' ? between(r, 58, 66) : between(r, 44, 58);
+    const neck = between(r, 16, 24);
+    const top = kind === 'curd' ? 86 : 52;
+    const bottom = kind === 'lamp' ? 128 : 162;
+    const pot =
+      kind === 'curd'
+        ? `M${100 - w} ${top} Q${100 - w - 4} 150 100 158 Q${100 + w + 4} 150 ${100 + w} ${top}Z`
+        : `M${100 - neck} ${top} Q${100 - neck - 4} 66 ${100 - w} 96 Q${100 - w - 8} ${bottom - 22} 100 ${bottom} Q${100 + w + 8} ${bottom - 22} ${100 + w} 96 Q${100 + neck + 4} 66 ${100 + neck} ${top}Z`;
+    const bandY = kind === 'curd' ? 100 : 100;
+    const x0 = 100 - w + 8;
+    const span = 2 * w - 16;
+    const marks = [];
     const n = 7;
-    for (let i = 0; i < n; i++)
-      band.push(
-        <path
-          key={i}
-          d={`M${100 - w + 10 + (i * (2 * w - 20)) / n} 104 l${(2 * w - 20) / n / 2} 10 l${(2 * w - 20) / n / 2} -10`}
-        />,
-      );
-    return {
-      fill: [
-        <path key="p" d={pot} fill="#B8402E" />,
+    for (let i = 0; i < n; i++) {
+      const x = x0 + (i * span) / n;
+      const step = span / n;
+      if (motif === 'zigzag')
+        marks.push(<path key={i} d={`M${x} ${bandY + 4} l${step / 2} 10 l${step / 2} -10`} />);
+      else if (motif === 'dots')
+        marks.push(<circle key={i} cx={x + step / 2} cy={bandY + 9} r="2.6" fill={INK} />);
+      else if (motif === 'waves')
+        marks.push(
+          <path key={i} d={`M${x} ${bandY + 9} q${step / 4} -7 ${step / 2} 0 t${step / 2} 0`} />,
+        );
+      else marks.push(<path key={i} d={`M${x + step / 2} ${bandY + 2} v14`} />);
+    }
+    const fill = [
+      <path key="p" d={pot} fill={body} />,
+      <path
+        key="band"
+        d={`M${100 - w + 2} ${bandY} H${100 + w - 2} V${bandY + 18} H${100 - w + 2}Z`}
+        fill={bandFill}
+      />,
+    ];
+    const line = [<path key="p" d={pot} />, ...marks];
+    if (kind !== 'curd')
+      fill.push(
         <rect
           key="lip"
           x={100 - neck - 6}
-          y="46"
+          y={top - 6}
           width={2 * neck + 12}
           height="8"
           rx="3"
           fill="#8E3324"
         />,
+      );
+    if (kind === 'lidded') {
+      fill.push(
         <path
-          key="band"
-          d={`M${100 - w + 2} 100 H${100 + w - 2} V118 H${100 - w + 2}Z`}
-          fill="#E0A526"
+          key="lid"
+          d={`M${100 - neck - 8} ${top - 6} Q100 ${top - 26} ${100 + neck + 8} ${top - 6}Z`}
+          fill={bandFill}
         />,
-      ],
-      line: [
-        <path key="p" d={pot} />,
-        ...band,
-        <path key="shine" d={`M${100 - w + 14} 128 q4 18 18 24`} strokeWidth="1.5" />,
-      ],
-    };
+      );
+      line.push(
+        <path
+          key="lid"
+          d={`M${100 - neck - 8} ${top - 6} Q100 ${top - 26} ${100 + neck + 8} ${top - 6}Z`}
+        />,
+        <circle key="knob" cx="100" cy={top - 20} r="4" fill={INK} />,
+      );
+    }
+    if (kind === 'lamp') {
+      fill.push(
+        <path key="stand" d="M86 128 L80 160 H120 L114 128Z" fill={body} />,
+        <path key="flame" d="M100 30 q8 10 0 18 q-8 -8 0 -18z" fill="#E0A526" />,
+      );
+      line.push(
+        <path key="stand" d="M86 128 L80 160 H120 L114 128" />,
+        <path key="foot" d="M74 162 H126" />,
+      );
+    }
+    line.push(
+      <path key="shine" d={`M${100 - w + 14} ${bandY + 28} q4 14 16 20`} strokeWidth="1.5" />,
+    );
+    return { fill, line };
   },
 };
 

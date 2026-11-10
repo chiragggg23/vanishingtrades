@@ -1,5 +1,7 @@
 .main {
   display: block;
+  /* rotated stamps and tickets may poke past the edge; clip without creating a scroller */
+  overflow-x: clip;
   min-height: 60vh;
   outline: none;
   padding-top: var(--s3);

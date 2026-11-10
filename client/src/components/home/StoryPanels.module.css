@@ -62,7 +62,6 @@
 }
 .panel {
   position: relative;
-  min-height: 62vh;
   padding: var(--s6) var(--s5);
   border: 2.5px solid var(--ink);
   background: var(--paper-light);

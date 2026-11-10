@@ -177,7 +177,7 @@
   box-shadow: 3px 3px 0 var(--ink);
 }
 
-@media (min-width: 1080px) {
+@media (min-width: 1200px) {
   .menuBtn {
     display: none;
   }
@@ -220,5 +220,35 @@
   }
   .tools {
     flex-wrap: nowrap;
+  }
+}
+
+/* critique fix: keep labels on one line, keep the name out of the way until there is room */
+.links a,
+.signout,
+.signin,
+.join {
+  white-space: nowrap;
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .name {
+    display: none;
+  }
+}
+@media (max-width: 420px) {
+  .bar {
+    gap: var(--s2);
+    min-height: 64px;
+  }
+  .word {
+    font-size: 1.18rem;
+  }
+  .mark {
+    width: 34px;
+    height: 34px;
+    font-size: 0.85rem;
+  }
+  .menuBtn {
+    padding: 0 0.7rem;
   }
 }

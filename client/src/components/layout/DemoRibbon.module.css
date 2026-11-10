@@ -41,3 +41,12 @@
 .btn:focus-visible {
   outline-color: var(--turmeric);
 }
+
+@media (max-width: 640px) {
+  .long {
+    display: none;
+  }
+  .inner {
+    flex-wrap: nowrap;
+  }
+}

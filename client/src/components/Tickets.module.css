@@ -16,8 +16,24 @@
   text-decoration: underline;
 }
 .art {
-  width: 72%;
+  width: 62%;
   margin: 0 auto var(--s3);
+}
+/* phones: art beside the text, so a screen shows three or four pieces, not one */
+@media (max-width: 619px) {
+  .craftBody {
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: var(--s3);
+    align-items: center;
+  }
+  .craftBody .art {
+    width: 100%;
+    margin: 0;
+  }
+  .price {
+    margin-top: var(--s3);
+  }
 }
 .photo {
   display: block;
@@ -38,7 +54,7 @@
   font-size: var(--fs-sm);
 }
 .price {
-  margin: var(--s4) 0 0;
+  margin: 0;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.15rem;
@@ -61,7 +77,7 @@
   padding: 4px;
 }
 .bio {
-  margin: var(--s4) 0 var(--s5);
+  margin: var(--s4) 0 0;
   font-size: 1rem;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -125,7 +141,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--s2) var(--s5);
-  margin: var(--s4) 0 0;
+  margin: 0;
 }
 .facts dt {
   font-variant-caps: all-small-caps;
@@ -136,4 +152,30 @@
 .facts dd {
   margin: 0;
   font-weight: 700;
+}
+
+.labelHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s2) var(--s3);
+  margin: 0 0 0.2rem;
+}
+.langTag {
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--madder-deep);
+  line-height: 1;
+}
+.duration {
+  margin-left: var(--s3);
+  padding: 0 0.35rem;
+  border: 1.5px solid currentColor;
+  font-variant-numeric: tabular-nums;
+}
+.footRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1) var(--s4);
 }

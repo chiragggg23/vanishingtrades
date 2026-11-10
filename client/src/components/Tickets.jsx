@@ -13,25 +13,34 @@ export function CraftTicket({ craft }) {
   const { t, i18n } = useTranslation();
   const title = localize(craft.title, i18n.language);
   return (
-    <TicketCard seed={craft.id} className={s.card}>
-      <div className={s.art}>
-        {craft.imageUrl ? (
-          <img src={mediaUrl(craft.imageUrl)} alt={title} loading="lazy" className={s.photo} />
-        ) : (
-          <CraftArt craftType={craft.craftType} seed={craft.seed} />
-        )}
+    <TicketCard
+      seed={craft.id}
+      className={s.card}
+      stub={
+        <p className={s.price}>{formatPrice(craft.priceMin, craft.priceMax, i18n.language, t)}</p>
+      }
+    >
+      <div className={s.craftBody}>
+        <div className={s.art}>
+          {craft.imageUrl ? (
+            <img src={mediaUrl(craft.imageUrl)} alt={title} loading="lazy" className={s.photo} />
+          ) : (
+            <CraftArt craftType={craft.craftType} seed={craft.seed} />
+          )}
+        </div>
+        <div>
+          <p className="caption">{t(`craft.${craft.craftType}`)}</p>
+          <h3 className={s.title}>
+            <Link to={`/artisans/${craft.artisanId}?craft=${craft.id}`} className={s.stretch}>
+              {title}
+            </Link>
+          </h3>
+          <p className={s.meta}>
+            {t('gallery.by', { name: craft.artisan?.name })}
+            {craft.artisan?.district ? `, ${craft.artisan.district}` : ''}
+          </p>
+        </div>
       </div>
-      <p className="caption">{t(`craft.${craft.craftType}`)}</p>
-      <h3 className={s.title}>
-        <Link to={`/artisans/${craft.artisanId}?craft=${craft.id}`} className={s.stretch}>
-          {title}
-        </Link>
-      </h3>
-      <p className={s.meta}>
-        {t('gallery.by', { name: craft.artisan?.name })}
-        {craft.artisan?.district ? `, ${craft.artisan.district}` : ''}
-      </p>
-      <p className={s.price}>{formatPrice(craft.priceMin, craft.priceMax, i18n.language, t)}</p>
     </TicketCard>
   );
 }
@@ -39,7 +48,17 @@ export function CraftTicket({ craft }) {
 export function ArtisanTicket({ artisan }) {
   const { t, i18n } = useTranslation();
   return (
-    <TicketCard seed={artisan.id} tone="kraft" className={s.card}>
+    <TicketCard
+      seed={artisan.id}
+      tone="kraft"
+      className={s.card}
+      stub={
+        <p className={`${s.foot} ${s.footRow}`}>
+          <span>{t('artisan.years', { count: artisan.yearsOfPractice })}</span>
+          <span>{t('artisan.works', { count: artisan.worksCount })}</span>
+        </p>
+      }
+    >
       <div className={s.artisanTop}>
         <div className={s.avatar}>
           {artisan.avatarUrl ? (
@@ -61,11 +80,6 @@ export function ArtisanTicket({ artisan }) {
         </div>
       </div>
       <p className={s.bio}>{localize(artisan.bio, i18n.language)}</p>
-      <p className={s.foot}>
-        {t('artisan.years', { count: artisan.yearsOfPractice })}
-        <span aria-hidden="true"> / </span>
-        {t('artisan.works', { count: artisan.worksCount })}
-      </p>
     </TicketCard>
   );
 }
@@ -80,8 +94,9 @@ export function StoryTicket({ story }) {
         <span />
       </div>
       <div className={s.label}>
-        <p className="caption">
-          {t(`craft.${story.craftType}`)} · {t(`lang.name.${story.language}`)}
+        <p className={s.labelHead}>
+          <span className="caption">{t(`craft.${story.craftType}`)}</span>
+          <span className={s.langTag}>{t(`lang.name.${story.language}`)}</span>
         </p>
         <h3 className={s.title} lang={story.language}>
           <Link to={`/archive/${story.id}`} className={s.stretch}>
@@ -90,12 +105,14 @@ export function StoryTicket({ story }) {
         </h3>
         <p className={s.meta}>
           {t('archive.toldBy', { name: story.artisan?.name })}
-          {story.durationSec ? ` · ${formatDuration(story.durationSec)}` : ''}
+          {story.durationSec ? (
+            <span className={s.duration}>{formatDuration(story.durationSec)}</span>
+          ) : null}
         </p>
         {story.summary?.en && <p className={s.summary}>{story.summary.en}</p>}
-        <p className={s.foot}>
-          {t('archive.plays', { count: story.plays })} ·{' '}
-          {formatDate(story.approvedAt, i18n.language)}
+        <p className={`${s.foot} ${s.footRow}`}>
+          <span>{t('archive.plays', { count: story.plays })}</span>
+          <time dateTime={story.approvedAt}>{formatDate(story.approvedAt, i18n.language)}</time>
         </p>
       </div>
     </article>
@@ -105,7 +122,26 @@ export function StoryTicket({ story }) {
 export function ApprenticeshipTicket({ item }) {
   const { t, i18n } = useTranslation();
   return (
-    <TicketCard seed={item.id} className={s.card}>
+    <TicketCard
+      seed={item.id}
+      className={s.card}
+      stub={
+        <dl className={s.facts}>
+          <div>
+            <dt>{t('appr.duration')}</dt>
+            <dd>{t('appr.weeks', { count: item.durationWeeks })}</dd>
+          </div>
+          <div>
+            <dt>{t('appr.seats')}</dt>
+            <dd>{item.seats}</dd>
+          </div>
+          <div>
+            <dt>{t('appr.deadline')}</dt>
+            <dd>{formatDate(item.deadline, i18n.language)}</dd>
+          </div>
+        </dl>
+      }
+    >
       <p className="caption">
         <CraftChip type={item.craftType} />
       </p>
@@ -117,20 +153,6 @@ export function ApprenticeshipTicket({ item }) {
       <p className={s.meta}>
         {t('appr.with', { name: item.artisan?.name })}, {item.location}
       </p>
-      <dl className={s.facts}>
-        <div>
-          <dt>{t('appr.duration')}</dt>
-          <dd>{t('appr.weeks', { count: item.durationWeeks })}</dd>
-        </div>
-        <div>
-          <dt>{t('appr.seats')}</dt>
-          <dd>{item.seats}</dd>
-        </div>
-        <div>
-          <dt>{t('appr.deadline')}</dt>
-          <dd>{formatDate(item.deadline, i18n.language)}</dd>
-        </div>
-      </dl>
     </TicketCard>
   );
 }

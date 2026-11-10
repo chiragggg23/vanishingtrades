@@ -30,33 +30,36 @@ const monthLabel = (m, lng) => {
 /** Visually hidden table so the numbers are available to everyone. */
 function DataTable({ caption, columns, rows }) {
   return (
-    <table className="visually-hidden">
-      <caption>{caption}</caption>
-      <thead>
-        <tr>
-          {columns.map((c) => (
-            <th key={c.key} scope="col">
-              {c.label}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody>
-        {rows.map((r, i) => (
-          <tr key={i}>
-            {columns.map((c, j) =>
-              j === 0 ? (
-                <th key={c.key} scope="row">
-                  {r[c.key]}
-                </th>
-              ) : (
-                <td key={c.key}>{r[c.key]}</td>
-              ),
-            )}
+    // Tables ignore width:1px, so the hiding happens on a wrapper.
+    <div className="visually-hidden">
+      <table>
+        <caption>{caption}</caption>
+        <thead>
+          <tr>
+            {columns.map((c) => (
+              <th key={c.key} scope="col">
+                {c.label}
+              </th>
+            ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {rows.map((r, i) => (
+            <tr key={i}>
+              {columns.map((c, j) =>
+                j === 0 ? (
+                  <th key={c.key} scope="row">
+                    {r[c.key]}
+                  </th>
+                ) : (
+                  <td key={c.key}>{r[c.key]}</td>
+                ),
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 

@@ -250,7 +250,7 @@ try {
       await page.getByRole('heading', { name: g }).waitFor();
     await page.locator('svg.recharts-surface').first().waitFor();
     const charts = await page.locator('svg.recharts-surface').count();
-    const tables = await page.locator('table.visually-hidden').count();
+    const tables = await page.locator('.visually-hidden > table').count();
     if (charts < 6 || tables < 6) throw new Error(`charts ${charts}, tables ${tables}`);
     return `${charts} charts, ${tables} hidden data tables`;
   });
