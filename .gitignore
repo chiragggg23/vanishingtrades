@@ -1,0 +1,13 @@
+node_modules/
+dist/
+dist-check/
+coverage/
+.env
+.env.local
+.env.*.local
+*.log
+.DS_Store
+server/uploads/*
+!server/uploads/.gitkeep
+.vercel
+artifacts/
