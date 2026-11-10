@@ -1,0 +1,112 @@
+.sheet {
+  --sy: 0px;
+  --px: 0;
+  --py: 0;
+  position: relative;
+  aspect-ratio: 5 / 5.4;
+  width: 100%;
+  max-width: 560px;
+  margin-inline: auto;
+}
+/* torn indigo sheet: deckled edges via clip-path */
+.sheet::before {
+  content: '';
+  position: absolute;
+  inset: 4% 2% 6% 6%;
+  background-color: var(--indigo);
+  background-image: radial-gradient(rgba(243, 234, 216, 0.14) 1.2px, transparent 1.6px);
+  background-size: 8px 8px;
+  clip-path: polygon(
+    2% 3%,
+    12% 0%,
+    25% 2%,
+    38% 0%,
+    52% 3%,
+    66% 0%,
+    80% 2%,
+    94% 0%,
+    100% 6%,
+    98% 22%,
+    100% 38%,
+    97% 55%,
+    100% 72%,
+    98% 90%,
+    100% 100%,
+    84% 97%,
+    70% 100%,
+    55% 97%,
+    40% 100%,
+    24% 97%,
+    10% 100%,
+    0% 96%,
+    3% 80%,
+    0% 62%,
+    2% 44%,
+    0% 26%
+  );
+  transform: rotate(2.5deg);
+}
+.paperBack {
+  position: absolute;
+  inset: 0 10% 12% 0;
+  background: var(--paper-dark);
+  transform: rotate(-3deg);
+  border: 2px solid var(--ink);
+}
+.layer {
+  position: absolute;
+  will-change: transform;
+}
+.l1 {
+  width: 46%;
+  left: 2%;
+  top: 6%;
+  transform: translate3d(calc(var(--px) * -10px), calc(var(--sy) * -0.06 + var(--py) * -8px), 0);
+}
+.l2 {
+  width: 58%;
+  right: 0;
+  top: 2%;
+  transform: translate3d(calc(var(--px) * 14px), calc(var(--sy) * -0.12 + var(--py) * 10px), 0)
+    rotate(2deg);
+  background: var(--paper);
+  padding: 3%;
+  border: 2px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.l3 {
+  width: 62%;
+  left: 6%;
+  bottom: 4%;
+  transform: translate3d(calc(var(--px) * -20px), calc(var(--sy) * -0.2 + var(--py) * -14px), 0);
+  background: var(--paper-light);
+  padding: 3% 4% 1%;
+  border: 2px solid var(--ink);
+  box-shadow: 7px 7px 0 var(--ink);
+  rotate: -2deg;
+}
+.l4 {
+  width: 32%;
+  right: 4%;
+  bottom: 10%;
+  transform: translate3d(calc(var(--px) * 26px), calc(var(--sy) * -0.28 + var(--py) * 16px), 0);
+}
+.sticker {
+  position: absolute;
+  left: -2%;
+  top: 46%;
+  padding: 0.35rem 0.7rem;
+  background: var(--turmeric);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  font-weight: 700;
+  transform: rotate(-7deg);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+@media (prefers-reduced-motion: reduce) {
+  .layer {
+    transform: none !important;
+  }
+}
