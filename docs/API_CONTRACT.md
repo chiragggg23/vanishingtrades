@@ -41,6 +41,9 @@ both and asserts identical status codes and response shapes. Field limits live i
 
 - Paused users: every authenticated request from a paused user returns 403 `ACCOUNT_PAUSED`, checked against
   the database on each request (not cached in the token). Login for a paused user also returns 403.
+- Check order on every endpoint, so mock and server fail the same way: 401 (no/invalid token) →
+  403 paused → 403 role → 422 validation → 404 → 403 ownership → 409 state. (Multipart uploads add
+  413 for oversize files right after the role check.)
 - Role locks below are enforced on the server. "Owner" means the signed-in artisan whose profile owns the
   record.
 

@@ -1,0 +1,39 @@
+# Render Blueprint for the VanishingTrades API (free web service).
+# The client deploys separately on Vercel (see DEPLOY.md). The database is MongoDB Atlas M0.
+services:
+  - type: web
+    name: vanishingtrades-api
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: '20'
+      - key: MONGODB_URI
+        sync: false # paste the Atlas connection string in the Render dashboard
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 24h
+      - key: CORS_ORIGINS
+        sync: false # e.g. https://vanishingtrades.vercel.app
+      - key: DEMO_MODE
+        value: 'true' # set to false for a real launch
+      - key: SEED_DEMO_ACCOUNTS
+        value: 'true' # set to false before seeding a real database
+      - key: AI_PROVIDER
+        value: mock # or groq, with GROQ_API_KEY
+      - key: GROQ_API_KEY
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false

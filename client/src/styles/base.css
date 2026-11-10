@@ -270,3 +270,10 @@ input[type='file']::file-selector-button {
   box-shadow: 3px 3px 0 var(--ink);
   cursor: pointer;
 }
+
+/* Caveat has no Kannada or Devanagari; the fallback needs more room between lines. */
+:lang(kn) .hand,
+:lang(hi) .hand {
+  line-height: 1.55;
+  font-size: 1.2rem;
+}

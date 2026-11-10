@@ -37,9 +37,9 @@ Types we use: `feat`, `fix`, `docs`, `test`, `chore`, `refactor`, `style`, `perf
 
 ## Who owns what (suggested split for four people)
 
-| Person | Area |
-| --- | --- |
-| 1 | Client shell, design system, Home and public pages |
-| 2 | Story pipeline: recorder, player, AI service, review desk |
-| 3 | Server: models, auth, validation, parity tests |
-| 4 | Dashboards, admin area, i18n, deployment |
+| Person | Area                                                      |
+| ------ | --------------------------------------------------------- |
+| 1      | Client shell, design system, Home and public pages        |
+| 2      | Story pipeline: recorder, player, AI service, review desk |
+| 3      | Server: models, auth, validation, parity tests            |
+| 4      | Dashboards, admin area, i18n, deployment                  |
