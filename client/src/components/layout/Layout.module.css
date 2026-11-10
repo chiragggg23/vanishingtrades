@@ -1,0 +1,47 @@
+.main {
+  display: block;
+  min-height: 60vh;
+  outline: none;
+  padding-top: var(--s3);
+}
+/* Ink wipe: a strip of indigo slides across once per navigation (transform only). */
+.wipe {
+  position: fixed;
+  z-index: 900;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: var(--indigo);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  animation: wipe 0.7s var(--ease-ink) forwards;
+  pointer-events: none;
+}
+@keyframes wipe {
+  0% {
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  60% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+}
+.paused {
+  margin: var(--s4) auto;
+  max-width: var(--page);
+  padding: var(--s3) var(--gutter);
+  background: var(--madder-deep);
+  color: #f3ead8;
+  font-weight: 700;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wipe {
+    display: none;
+  }
+}

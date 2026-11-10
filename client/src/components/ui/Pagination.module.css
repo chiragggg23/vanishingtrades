@@ -1,0 +1,40 @@
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s2);
+  margin: var(--s6) 0 var(--s4);
+}
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.btn {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 0.8rem;
+  border: 2px solid var(--ink);
+  background: var(--paper-light);
+  color: var(--ink);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.num[aria-current='page'] {
+  background: var(--ink);
+  color: var(--paper);
+  transform: rotate(-3deg);
+}
+.gap {
+  align-self: center;
+  padding: 0 0.3rem;
+}

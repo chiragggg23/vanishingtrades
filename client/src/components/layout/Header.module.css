@@ -1,0 +1,222 @@
+.header {
+  position: relative;
+  z-index: 50;
+  border-bottom: 3px solid var(--ink);
+  background: var(--bg);
+}
+/* a second, thinner rule like a letterpress masthead */
+.header::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -9px;
+  border-bottom: 1.5px solid var(--ink);
+  pointer-events: none;
+}
+.bar {
+  display: flex;
+  align-items: center;
+  gap: var(--s4);
+  min-height: 74px;
+  flex-wrap: wrap;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--text);
+  text-decoration: none;
+  min-height: 44px;
+}
+.mark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--madder);
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1rem;
+  transform: rotate(-8deg);
+  box-shadow: inset 0 0 0 3px var(--madder), inset 0 0 0 5px var(--paper);
+}
+.word {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-variation-settings:
+    'SOFT' 100,
+    'WONK' 1;
+}
+.trades {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--madder);
+}
+:global([data-theme='lamp']) .trades {
+  color: var(--turmeric);
+}
+.menuBtn {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0 0.9rem;
+  border: 2px solid var(--ink);
+  background: var(--paper-light);
+  color: var(--ink);
+  font-weight: 700;
+  box-shadow: 3px 3px 0 var(--ink);
+  cursor: pointer;
+}
+.burger,
+.burger::before,
+.burger::after {
+  display: block;
+  width: 18px;
+  height: 2.5px;
+  background: currentColor;
+  position: relative;
+}
+.burger::before,
+.burger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+}
+.burger::before {
+  top: -6px;
+  width: 14px;
+}
+.burger::after {
+  top: 6px;
+  width: 16px;
+}
+.nav {
+  display: none;
+  flex-basis: 100%;
+  padding-bottom: var(--s4);
+}
+.open {
+  display: block;
+}
+.links {
+  list-style: none;
+  margin: 0 0 var(--s4);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.links a {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.12rem;
+  border-bottom: 1.5px dashed rgba(30, 27, 24, 0.25);
+}
+.links a.active {
+  color: var(--madder-deep);
+}
+:global([data-theme='lamp']) .links a.active {
+  color: var(--turmeric);
+}
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s4);
+}
+.who {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  flex-wrap: wrap;
+}
+.name {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  font-weight: 700;
+}
+.role {
+  font-family: var(--font-hand);
+  font-weight: 600;
+  color: var(--madder-deep);
+  font-size: 1.15rem;
+}
+:global([data-theme='lamp']) .role {
+  color: var(--turmeric);
+}
+.signout,
+.signin,
+.join {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.8rem;
+  border: 2px solid var(--ink);
+  background: var(--paper-light);
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+.join {
+  background: var(--indigo);
+  color: #f3ead8;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+@media (min-width: 1080px) {
+  .menuBtn {
+    display: none;
+  }
+  .nav {
+    display: flex;
+    flex-basis: auto;
+    flex: 1;
+    align-items: center;
+    padding: 0;
+    gap: var(--s5);
+  }
+  .links {
+    flex-direction: row;
+    margin: 0 auto 0 var(--s5);
+    gap: var(--s1);
+  }
+  .links a {
+    border: 0;
+    padding: 0 0.6rem;
+    font-size: 1.04rem;
+    position: relative;
+  }
+  .links a.active::after {
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    right: 0.5rem;
+    bottom: 8px;
+    height: 4px;
+    background: var(--turmeric);
+    transform: rotate(-1.5deg);
+    z-index: -1;
+  }
+  .links a.active {
+    color: var(--text);
+  }
+  .dash {
+    border: 2px dashed var(--ink) !important;
+    margin-left: var(--s2);
+  }
+  .tools {
+    flex-wrap: nowrap;
+  }
+}

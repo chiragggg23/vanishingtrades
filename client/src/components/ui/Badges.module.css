@@ -1,0 +1,59 @@
+.badge {
+  display: inline-block;
+  padding: 0.05rem 0.55rem 0.1rem;
+  border: 2px solid currentColor;
+  border-radius: 2px 6px 3px 5px;
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.4;
+  transform: rotate(-2deg);
+  white-space: nowrap;
+}
+.plain {
+  color: var(--ink-soft);
+}
+.indigo {
+  color: var(--indigo);
+}
+.leaf {
+  color: var(--leaf);
+}
+.madder {
+  color: var(--madder-deep);
+}
+.turmeric {
+  color: var(--ink);
+  background: var(--turmeric);
+  border-color: var(--ink);
+}
+:global([data-theme='lamp']) .plain,
+:global([data-theme='lamp']) .indigo,
+:global([data-theme='lamp']) .leaf,
+:global([data-theme='lamp']) .madder {
+  color: var(--text);
+}
+.sample {
+  display: inline-block;
+  padding: 0 0.45rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 800;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  line-height: 1.6;
+  transform: rotate(-3deg);
+  vertical-align: middle;
+}
+:global([data-theme='lamp']) .sample {
+  background: #f3ead8;
+  color: #1e1b18;
+}
+.chip {
+  display: inline-block;
+  padding: 0 0.5rem;
+  border-bottom: 2px solid var(--madder);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+}
