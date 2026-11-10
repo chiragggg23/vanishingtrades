@@ -25,7 +25,10 @@ function NewStory() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const me = useAsync(() => artisans.mine(), []);
-  const form = useForm({ title: '', language: 'kn', craftType: '', text: '' }, { schema: schemas.storyCreate });
+  const form = useForm(
+    { title: '', language: 'kn', craftType: '', text: '' },
+    { schema: schemas.storyCreate },
+  );
   useEffect(() => {
     if (me.data && !form.values.craftType) form.set('craftType', me.data.craftType);
   }, [me.data]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -42,7 +45,14 @@ function NewStory() {
       <form onSubmit={onSubmit} noValidate>
         <FormErrors message={form.message} />
         <div className={s.formGrid}>
-          <FormField label={t('editor.title')} error={form.errors.title} count={v.title.length} max={120} required className={s.full}>
+          <FormField
+            label={t('editor.title')}
+            error={form.errors.title}
+            count={v.title.length}
+            max={120}
+            required
+            className={s.full}
+          >
             <input type="text" lang={v.language} {...form.bind('title')} />
           </FormField>
           <FormField label={t('editor.language')} error={form.errors.language} required>
@@ -63,7 +73,14 @@ function NewStory() {
               ))}
             </select>
           </FormField>
-          <FormField label={t('editor.text')} hint={t('editor.textHint')} error={form.errors.text} count={v.text.length} max={5000} className={s.full}>
+          <FormField
+            label={t('editor.text')}
+            hint={t('editor.textHint')}
+            error={form.errors.text}
+            count={v.text.length}
+            max={5000}
+            className={s.full}
+          >
             <textarea rows={6} lang={v.language} {...form.bind('text')} />
           </FormField>
         </div>
@@ -147,17 +164,17 @@ function Editor({ initial }) {
     await run('submit', () => stories.submit(story.id), t('editor.submitted'));
   };
   const onDelete = async () => {
-    const ok = await run('delete', () => stories.remove(story.id).then(() => null), t('editor.deleted'));
+    const ok = await run(
+      'delete',
+      () => stories.remove(story.id).then(() => null),
+      t('editor.deleted'),
+    );
     if (ok) navigate('/dashboard/artisan', { replace: true });
   };
 
   return (
     <>
-      <Panel
-        title={story.title}
-        id="story-head"
-        actions={<StatusBadge status={story.status} />}
-      >
+      <Panel title={story.title} id="story-head" actions={<StatusBadge status={story.status} />}>
         {story.status === 'rejected' && story.reviewNote && (
           <p className={s.note}>
             <strong>{t('myStories.reviewerSaid')}</strong> {story.reviewNote}
@@ -166,7 +183,8 @@ function Editor({ initial }) {
         {story.status === 'pending' && <p>{t('editor.pendingNote')}</p>}
         {story.status === 'approved' && (
           <p>
-            {t('editor.approvedNote')} <Link to={`/archive/${story.id}`}>{t('editor.seeInArchive')}</Link>
+            {t('editor.approvedNote')}{' '}
+            <Link to={`/archive/${story.id}`}>{t('editor.seeInArchive')}</Link>
           </p>
         )}
       </Panel>
@@ -213,7 +231,14 @@ function Editor({ initial }) {
           <p className="muted">{t('editor.reviewLede')}</p>
           <FormErrors message={form.message} />
           <div className={s.formGrid}>
-            <FormField label={t('editor.title')} error={form.errors.title} count={v.title.length} max={120} required className={s.full}>
+            <FormField
+              label={t('editor.title')}
+              error={form.errors.title}
+              count={v.title.length}
+              max={120}
+              required
+              className={s.full}
+            >
               <input type="text" lang={v.language} {...form.bind('title')} />
             </FormField>
             <FormField label={t('editor.language')} error={form.errors.language}>
@@ -225,10 +250,20 @@ function Editor({ initial }) {
                 ))}
               </select>
             </FormField>
-            <FormField label={t('editor.tags')} hint={t('editor.tagsHint')} error={form.errors.tags}>
+            <FormField
+              label={t('editor.tags')}
+              hint={t('editor.tagsHint')}
+              error={form.errors.tags}
+            >
               <input type="text" {...form.bind('tags')} />
             </FormField>
-            <FormField label={t('editor.text')} error={form.errors.text} count={v.text.length} max={5000} className={s.full}>
+            <FormField
+              label={t('editor.text')}
+              error={form.errors.text}
+              count={v.text.length}
+              max={5000}
+              className={s.full}
+            >
               <textarea rows={5} lang={v.language} {...form.bind('text')} />
             </FormField>
             <SegmentsEditor
@@ -247,7 +282,13 @@ function Editor({ initial }) {
               errors={form.errors}
               prefix="translation"
             />
-            <FormField label={t('editor.summary')} error={form.errors['summary.en']} count={v.summary.length} max={600} className={s.full}>
+            <FormField
+              label={t('editor.summary')}
+              error={form.errors['summary.en']}
+              count={v.summary.length}
+              max={600}
+              className={s.full}
+            >
               <textarea rows={3} lang="en" {...form.bind('summary')} />
             </FormField>
           </div>
@@ -293,7 +334,10 @@ export default function StoryEditor() {
     <DashShell
       title={id === 'new' ? t('editor.newTitle') : t('editor.pageTitle')}
       aside={
-        <Link to="/dashboard/artisan" style={{ fontWeight: 700, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}>
+        <Link
+          to="/dashboard/artisan"
+          style={{ fontWeight: 700, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}
+        >
           {t('editor.backToStories')}
         </Link>
       }

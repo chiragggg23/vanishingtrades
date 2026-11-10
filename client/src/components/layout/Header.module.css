@@ -41,7 +41,9 @@
   font-weight: 800;
   font-size: 1rem;
   transform: rotate(-8deg);
-  box-shadow: inset 0 0 0 3px var(--madder), inset 0 0 0 5px var(--paper);
+  box-shadow:
+    inset 0 0 0 3px var(--madder),
+    inset 0 0 0 5px var(--paper);
 }
 .word {
   font-family: var(--font-display);

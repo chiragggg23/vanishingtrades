@@ -36,8 +36,8 @@
     'Fraunces', 'Noto Sans Kannada', 'Mukta', 'Tunga', 'Nirmala UI', 'Mangal', Georgia,
     'Times New Roman', serif;
   --font-body:
-    'Mukta', 'Noto Sans Kannada', 'Tunga', 'Nirmala UI', 'Mangal', 'Kohinoor Devanagari',
-    system-ui, -apple-system, 'Segoe UI', sans-serif;
+    'Mukta', 'Noto Sans Kannada', 'Tunga', 'Nirmala UI', 'Mangal', 'Kohinoor Devanagari', system-ui,
+    -apple-system, 'Segoe UI', sans-serif;
   --font-hand: 'Caveat', 'Mukta', 'Noto Sans Kannada', 'Nirmala UI', 'Comic Sans MS', cursive;
 
   --fs-xs: 0.8125rem; /* 13 */

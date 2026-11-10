@@ -87,7 +87,13 @@ function Progress({ app }) {
               <li key={p.id}>
                 <p className={L.logDate}>{formatDate(p.createdAt, i18n.language)}</p>
                 <p>{p.note}</p>
-                {p.photoUrl && <img src={mediaUrl(p.photoUrl)} alt={t('learner.photoAlt')} className={s.preview} />}
+                {p.photoUrl && (
+                  <img
+                    src={mediaUrl(p.photoUrl)}
+                    alt={t('learner.photoAlt')}
+                    className={s.preview}
+                  />
+                )}
               </li>
             ))}
           </ol>
@@ -96,7 +102,13 @@ function Progress({ app }) {
       {app.status === 'accepted' && (
         <form onSubmit={add} noValidate className={L.logForm}>
           <FormErrors message={form.message} />
-          <FormField label={t('learner.note')} error={form.errors.note} count={form.values.note.length} max={1000} required>
+          <FormField
+            label={t('learner.note')}
+            error={form.errors.note}
+            count={form.values.note.length}
+            max={1000}
+            required
+          >
             <textarea rows={3} {...form.bind('note')} />
           </FormField>
           <ImageUpload
@@ -158,7 +170,9 @@ export default function LearnerDashboard() {
                   </div>
                 </div>
               )}
-              {['applied', 'shortlisted'].includes(app.status) && <p>{t(`learner.status.${app.status}`)}</p>}
+              {['applied', 'shortlisted'].includes(app.status) && (
+                <p>{t(`learner.status.${app.status}`)}</p>
+              )}
               {app.status === 'rejected' && <p>{t('learner.status.rejected')}</p>}
               {['accepted', 'completed'].includes(app.status) && (
                 <div className={L.split}>

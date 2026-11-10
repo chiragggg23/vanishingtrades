@@ -54,7 +54,14 @@ function OpeningForm({ craftType, onSaved, onCancel }) {
     <form onSubmit={onSubmit} noValidate>
       <FormErrors message={form.message} />
       <div className={s.formGrid}>
-        <FormField label={t('openings.titleField')} error={e.title} count={v.title.length} max={120} required className={s.full}>
+        <FormField
+          label={t('openings.titleField')}
+          error={e.title}
+          count={v.title.length}
+          max={120}
+          required
+          className={s.full}
+        >
           <input type="text" {...form.bind('title')} />
         </FormField>
         <FormField label={t('openings.craft')} error={e.craftType}>
@@ -66,10 +73,23 @@ function OpeningForm({ craftType, onSaved, onCancel }) {
             ))}
           </select>
         </FormField>
-        <FormField label={t('openings.location')} error={e.location} count={v.location.length} max={120} required>
+        <FormField
+          label={t('openings.location')}
+          error={e.location}
+          count={v.location.length}
+          max={120}
+          required
+        >
           <input type="text" {...form.bind('location')} />
         </FormField>
-        <FormField label={t('openings.description')} error={e.description} count={v.description.length} max={2000} required className={s.full}>
+        <FormField
+          label={t('openings.description')}
+          error={e.description}
+          count={v.description.length}
+          max={2000}
+          required
+          className={s.full}
+        >
           <textarea rows={4} {...form.bind('description')} />
         </FormField>
         <FormField label={t('openings.seats')} error={e.seats} required>
@@ -123,33 +143,80 @@ function Applicants({ opening }) {
             <li key={a.id} className={s.row}>
               <div className={s.rowMain}>
                 <p className={s.rowTitle}>{a.learner.name}</p>
-                <p className={s.rowMeta}>{t('openings.appliedOn', { date: formatDate(a.createdAt, i18n.language) })}</p>
+                <p className={s.rowMeta}>
+                  {t('openings.appliedOn', { date: formatDate(a.createdAt, i18n.language) })}
+                </p>
                 <p>{a.motivation}</p>
                 {a.status === 'completed' && a.certificateCode && (
                   <p>
-                    <Link to={`/verify/${a.certificateCode}`}>{t('openings.viewCert', { code: a.certificateCode })}</Link>
+                    <Link to={`/verify/${a.certificateCode}`}>
+                      {t('openings.viewCert', { code: a.certificateCode })}
+                    </Link>
                   </p>
                 )}
               </div>
               <StatusBadge status={a.status} />
               <div className={s.actions}>
                 {a.status === 'applied' && (
-                  <StampButton size="sm" variant="ghost" busy={busy === a.id} onClick={() => act(a, () => applications.setStatus(a.id, 'shortlisted'), () => t('openings.shortlisted', { name: a.learner.name }))}>
+                  <StampButton
+                    size="sm"
+                    variant="ghost"
+                    busy={busy === a.id}
+                    onClick={() =>
+                      act(
+                        a,
+                        () => applications.setStatus(a.id, 'shortlisted'),
+                        () => t('openings.shortlisted', { name: a.learner.name }),
+                      )
+                    }
+                  >
                     {t('openings.shortlist')}
                   </StampButton>
                 )}
                 {['applied', 'shortlisted'].includes(a.status) && (
                   <>
-                    <StampButton size="sm" variant="leaf" busy={busy === a.id} onClick={() => act(a, () => applications.setStatus(a.id, 'accepted'), () => t('openings.accepted', { name: a.learner.name }))}>
+                    <StampButton
+                      size="sm"
+                      variant="leaf"
+                      busy={busy === a.id}
+                      onClick={() =>
+                        act(
+                          a,
+                          () => applications.setStatus(a.id, 'accepted'),
+                          () => t('openings.accepted', { name: a.learner.name }),
+                        )
+                      }
+                    >
                       {t('openings.accept')}
                     </StampButton>
-                    <StampButton size="sm" variant="ghost" busy={busy === a.id} onClick={() => act(a, () => applications.setStatus(a.id, 'rejected'), () => t('openings.rejected', { name: a.learner.name }))}>
+                    <StampButton
+                      size="sm"
+                      variant="ghost"
+                      busy={busy === a.id}
+                      onClick={() =>
+                        act(
+                          a,
+                          () => applications.setStatus(a.id, 'rejected'),
+                          () => t('openings.rejected', { name: a.learner.name }),
+                        )
+                      }
+                    >
                       {t('openings.reject')}
                     </StampButton>
                   </>
                 )}
                 {a.status === 'accepted' && (
-                  <StampButton size="sm" busy={busy === a.id} onClick={() => act(a, () => applications.complete(a.id), (r) => t('openings.completed', { code: r.certificate.code }))}>
+                  <StampButton
+                    size="sm"
+                    busy={busy === a.id}
+                    onClick={() =>
+                      act(
+                        a,
+                        () => applications.complete(a.id),
+                        (r) => t('openings.completed', { code: r.certificate.code }),
+                      )
+                    }
+                  >
                     {t('openings.markComplete')}
                   </StampButton>
                 )}
@@ -171,7 +238,13 @@ export default function OpeningsTab({ craftType }) {
     <Panel
       title={t('openings.title')}
       id="openings-title"
-      actions={!creating && <StampButton size="sm" onClick={() => setCreating(true)}>{t('openings.new')}</StampButton>}
+      actions={
+        !creating && (
+          <StampButton size="sm" onClick={() => setCreating(true)}>
+            {t('openings.new')}
+          </StampButton>
+        )
+      }
     >
       {creating && (
         <div style={{ marginBottom: 'var(--s6)' }}>
@@ -196,7 +269,10 @@ export default function OpeningsTab({ craftType }) {
                       <Link to={`/apprenticeships/${p.id}`}>{p.title}</Link>
                     </p>
                     <p className={s.rowMeta}>
-                      {t('openings.meta', { count: p.applicationsCount, date: formatDate(p.deadline, i18n.language) })}
+                      {t('openings.meta', {
+                        count: p.applicationsCount,
+                        date: formatDate(p.deadline, i18n.language),
+                      })}
                     </p>
                   </div>
                   <StatusBadge status={p.status} />

@@ -39,7 +39,8 @@ export default function StoriesTab() {
                     <Link to={`/dashboard/artisan/stories/${st.id}`}>{st.title}</Link>
                   </p>
                   <p className={s.rowMeta}>
-                    {t(`lang.name.${st.language}`)} — {t('myStories.updated', { date: formatDate(st.updatedAt, i18n.language) })}
+                    {t(`lang.name.${st.language}`)} —{' '}
+                    {t('myStories.updated', { date: formatDate(st.updatedAt, i18n.language) })}
                   </p>
                   {st.status === 'rejected' && st.reviewNote && (
                     <p className={s.note}>

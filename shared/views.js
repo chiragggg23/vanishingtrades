@@ -19,7 +19,8 @@ export const userView = (u) => ({
   createdAt: iso(u.createdAt),
 });
 
-export const publicUser = (u) => (u ? { id: u.id, name: u.name } : { id: null, name: 'Former member' });
+export const publicUser = (u) =>
+  u ? { id: u.id, name: u.name } : { id: null, name: 'Former member' };
 
 export const artisanRef = (a) =>
   a
@@ -77,7 +78,11 @@ export const storyView = (s, artisan) => ({
   summary: { en: s.summary?.en || '' },
   tags: s.tags || [],
   ai: s.ai
-    ? { provider: s.ai.provider, isSample: Boolean(s.ai.isSample), processedAt: iso(s.ai.processedAt) }
+    ? {
+        provider: s.ai.provider,
+        isSample: Boolean(s.ai.isSample),
+        processedAt: iso(s.ai.processedAt),
+      }
     : null,
   status: s.status,
   reviewNote: s.reviewNote ?? null,
@@ -115,7 +120,12 @@ export const enquiryView = (e, { buyer, artisan, craft, usersById }) => ({
     return {
       id: r.id,
       author: publicUser(author),
-      authorRole: r.authorId === buyer?.id ? 'buyer' : r.authorId === artisan?.userId ? 'artisan' : author?.role || 'admin',
+      authorRole:
+        r.authorId === buyer?.id
+          ? 'buyer'
+          : r.authorId === artisan?.userId
+            ? 'artisan'
+            : author?.role || 'admin',
       message: r.message,
       createdAt: iso(r.createdAt),
     };

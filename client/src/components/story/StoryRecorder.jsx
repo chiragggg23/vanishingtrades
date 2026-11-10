@@ -90,7 +90,9 @@ export default function StoryRecorder({ onReady, busy = false }) {
       });
       stream.current = media;
       const mime = pickMimeType();
-      const recorder = mime ? new MediaRecorder(media, { mimeType: mime }) : new MediaRecorder(media);
+      const recorder = mime
+        ? new MediaRecorder(media, { mimeType: mime })
+        : new MediaRecorder(media);
       chunks.current = [];
       recorder.ondataavailable = (e) => e.data && e.data.size > 0 && chunks.current.push(e.data);
       recorder.onstop = () => {

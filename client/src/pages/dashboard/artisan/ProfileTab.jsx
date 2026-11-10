@@ -55,7 +55,10 @@ function ProfileForm({ profile }) {
     if (r.ok) toast.success(t('profile.saved'));
   };
   const toggleLang = (l) =>
-    form.set('languages', v.languages.includes(l) ? v.languages.filter((x) => x !== l) : [...v.languages, l]);
+    form.set(
+      'languages',
+      v.languages.includes(l) ? v.languages.filter((x) => x !== l) : [...v.languages, l],
+    );
 
   return (
     <form onSubmit={onSubmit} noValidate>
@@ -70,7 +73,13 @@ function ProfileForm({ profile }) {
           />
         </div>
         <div>
-          <FormField label={t('profile.name')} error={errs.name} count={v.name.length} max={80} required>
+          <FormField
+            label={t('profile.name')}
+            error={errs.name}
+            count={v.name.length}
+            max={80}
+            required
+          >
             <input type="text" {...form.bind('name')} />
           </FormField>
           <FormField label={t('profile.craft')} error={errs.craftType}>
@@ -83,24 +92,40 @@ function ProfileForm({ profile }) {
             </select>
           </FormField>
         </div>
-        <FormField label={t('profile.village')} error={errs.village} count={v.village.length} max={60}>
+        <FormField
+          label={t('profile.village')}
+          error={errs.village}
+          count={v.village.length}
+          max={60}
+        >
           <input type="text" {...form.bind('village')} />
         </FormField>
-        <FormField label={t('profile.district')} error={errs.district} count={v.district.length} max={60}>
+        <FormField
+          label={t('profile.district')}
+          error={errs.district}
+          count={v.district.length}
+          max={60}
+        >
           <input type="text" {...form.bind('district')} />
         </FormField>
-        <FormField
-          label={t('profile.years')}
-          error={errs.yearsOfPractice}
-          className=""
-        >
-          <input type="number" min={0} max={90} inputMode="numeric" {...form.bind('yearsOfPractice')} />
+        <FormField label={t('profile.years')} error={errs.yearsOfPractice} className="">
+          <input
+            type="number"
+            min={0}
+            max={90}
+            inputMode="numeric"
+            {...form.bind('yearsOfPractice')}
+          />
         </FormField>
         <fieldset className={s.checks}>
           <legend>{t('profile.languages')}</legend>
           {LANGS.map((l) => (
             <label key={l} className={s.check} lang={l}>
-              <input type="checkbox" checked={v.languages.includes(l)} onChange={() => toggleLang(l)} />
+              <input
+                type="checkbox"
+                checked={v.languages.includes(l)}
+                onChange={() => toggleLang(l)}
+              />
               {t(`lang.name.${l}`)}
             </label>
           ))}
@@ -138,4 +163,3 @@ export default function ProfileTab() {
     </Panel>
   );
 }
-

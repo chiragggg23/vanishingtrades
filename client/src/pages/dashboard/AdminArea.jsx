@@ -24,7 +24,11 @@ export default function AdminArea() {
           {t('dash.reviewQueue')}
         </StampButton>
       }
-      tabs={TABS.map((k) => ({ to: k === 'impact' ? '/admin' : `/admin/${k}`, end: true, label: t(`admin.tab.${k}`) }))}
+      tabs={TABS.map((k) => ({
+        to: k === 'impact' ? '/admin' : `/admin/${k}`,
+        end: true,
+        label: t(`admin.tab.${k}`),
+      }))}
     >
       {tab === 'impact' && <ImpactTab />}
       {tab === 'users' && <UsersTab />}

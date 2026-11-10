@@ -23,10 +23,7 @@ export default function ReviewerDashboard() {
       aside={<SdgStamp goal={11} size={78} rotate={5} caption={false} />}
     >
       <Panel title={t('reviewer.queue')} id="queue-title">
-        <AsyncView
-          state={state}
-          empty={<EmptyScene art="loom" title={t('reviewer.empty')} />}
-        >
+        <AsyncView state={state} empty={<EmptyScene art="loom" title={t('reviewer.empty')} />}>
           {(data) => (
             <>
               <ul className={s.list}>
@@ -45,7 +42,11 @@ export default function ReviewerDashboard() {
                         {st.durationSec ? ` — ${formatDuration(st.durationSec)}` : ''}
                       </p>
                     </div>
-                    <Link to={`/dashboard/reviewer/${st.id}`} className={s.linkBtn} style={{ display: 'inline-flex', alignItems: 'center' }}>
+                    <Link
+                      to={`/dashboard/reviewer/${st.id}`}
+                      className={s.linkBtn}
+                      style={{ display: 'inline-flex', alignItems: 'center' }}
+                    >
                       {t('reviewer.open')}
                       <span className="visually-hidden"> {st.title}</span>
                     </Link>

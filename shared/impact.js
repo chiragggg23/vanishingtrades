@@ -52,7 +52,8 @@ export function lastSixMonths(now = new Date()) {
   }
   return out;
 }
-const monthOf = (iso) => (iso ? String(iso instanceof Date ? iso.toISOString() : iso).slice(0, 7) : null);
+const monthOf = (iso) =>
+  iso ? String(iso instanceof Date ? iso.toISOString() : iso).slice(0, 7) : null;
 const perMonth = (months, items, field) =>
   months.map((m) => items.filter((i) => monthOf(i[field]) === m).length);
 

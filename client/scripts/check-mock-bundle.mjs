@@ -8,7 +8,14 @@ import { fileURLToPath } from 'node:url';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const out = join(root, 'dist-check');
 // Strings that only exist in the mock layer and the seed world.
-const MARKERS = ['Kempamma', 'Shivalingaiah', 'VT-7K3M-9QX2', 'sample:hum:', 'vt-mock-db-v1', 'ಅಜ್ಜನ ಮೊದಲ ಗೊಂಬೆ'];
+const MARKERS = [
+  'Kempamma',
+  'Shivalingaiah',
+  'VT-7K3M-9QX2',
+  'sample:hum:',
+  'vt-mock-db-v1',
+  'ಅಜ್ಜನ ಮೊದಲ ಗೊಂಬೆ',
+];
 
 async function bundle(mode, useMock) {
   const dir = join(out, mode);
@@ -37,8 +44,12 @@ const real = await bundle('real', false);
 const inMock = MARKERS.filter((m) => mock.text.includes(m));
 const inReal = MARKERS.filter((m) => real.text.includes(m));
 
-console.log(`mock build: ${mock.files.length} file(s), ${mock.text.length} bytes, markers found: ${inMock.length}/${MARKERS.length}`);
-console.log(`real build: ${real.files.length} file(s), ${real.text.length} bytes, markers found: ${inReal.length}/${MARKERS.length}`);
+console.log(
+  `mock build: ${mock.files.length} file(s), ${mock.text.length} bytes, markers found: ${inMock.length}/${MARKERS.length}`,
+);
+console.log(
+  `real build: ${real.files.length} file(s), ${real.text.length} bytes, markers found: ${inReal.length}/${MARKERS.length}`,
+);
 rmSync(out, { recursive: true, force: true });
 
 if (inMock.length === 0) {

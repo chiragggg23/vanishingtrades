@@ -19,7 +19,11 @@ export default function DashShell({ title, lede, tabs, children, aside }) {
           <ul>
             {tabs.map((tab) => (
               <li key={tab.to}>
-                <NavLink to={tab.to} end={tab.end} className={({ isActive }) => (isActive ? s.on : undefined)}>
+                <NavLink
+                  to={tab.to}
+                  end={tab.end}
+                  className={({ isActive }) => (isActive ? s.on : undefined)}
+                >
                   {tab.label}
                 </NavLink>
               </li>

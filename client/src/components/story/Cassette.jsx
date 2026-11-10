@@ -12,7 +12,16 @@ export default function Cassette({ spinning = false, progress = 0, label = '', l
       aria-hidden="true"
       focusable="false"
     >
-      <rect x="6" y="6" width="308" height="188" rx="14" fill="#2A2622" stroke="#1E1B18" strokeWidth="4" />
+      <rect
+        x="6"
+        y="6"
+        width="308"
+        height="188"
+        rx="14"
+        fill="#2A2622"
+        stroke="#1E1B18"
+        strokeWidth="4"
+      />
       <rect x="22" y="20" width="276" height="112" rx="6" fill="#F3EAD8" />
       <rect x="22" y="20" width="276" height="26" fill="#B8402E" />
       <text x="34" y="38" className={s.labelText}>
@@ -29,7 +38,15 @@ export default function Cassette({ spinning = false, progress = 0, label = '', l
         <g className={s.reel}>
           <circle r="12" fill="#F3EAD8" stroke="#1E1B18" strokeWidth="2" />
           {[0, 60, 120, 180, 240, 300].map((a) => (
-            <rect key={a} x="-1.6" y="-11" width="3.2" height="6" fill="#1E1B18" transform={`rotate(${a})`} />
+            <rect
+              key={a}
+              x="-1.6"
+              y="-11"
+              width="3.2"
+              height="6"
+              fill="#1E1B18"
+              transform={`rotate(${a})`}
+            />
           ))}
         </g>
       </g>
@@ -37,7 +54,15 @@ export default function Cassette({ spinning = false, progress = 0, label = '', l
         <g className={s.reel}>
           <circle r="12" fill="#F3EAD8" stroke="#1E1B18" strokeWidth="2" />
           {[0, 60, 120, 180, 240, 300].map((a) => (
-            <rect key={a} x="-1.6" y="-11" width="3.2" height="6" fill="#1E1B18" transform={`rotate(${a})`} />
+            <rect
+              key={a}
+              x="-1.6"
+              y="-11"
+              width="3.2"
+              height="6"
+              fill="#1E1B18"
+              transform={`rotate(${a})`}
+            />
           ))}
         </g>
       </g>

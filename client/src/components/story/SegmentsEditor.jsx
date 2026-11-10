@@ -22,7 +22,10 @@ export default function SegmentsEditor({ legend, segments, onChange, lang, error
               <label htmlFor={`${id}-${i}`} className={s.label}>
                 {t('editor.segment', { n: i + 1 })}
                 {typeof seg.start === 'number' && (
-                  <span className={s.time}> {formatDuration(seg.start)}–{formatDuration(seg.end)}</span>
+                  <span className={s.time}>
+                    {' '}
+                    {formatDuration(seg.start)}–{formatDuration(seg.end)}
+                  </span>
                 )}
               </label>
               <textarea

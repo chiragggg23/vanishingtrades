@@ -24,7 +24,10 @@ export default function SdgStamp({
       className={`${s.wrap} ${animated ? s.animated : ''} ${className}`}
       style={{ '--size': `${size}px`, '--rot': `${rotate}deg` }}
       role="img"
-      aria-label={t('sdg.stampLabel', { goal: goal === 11 ? '11.4' : goal, name: t(`sdg.g${goal}.name`) })}
+      aria-label={t('sdg.stampLabel', {
+        goal: goal === 11 ? '11.4' : goal,
+        name: t(`sdg.g${goal}.name`),
+      })}
     >
       <svg viewBox="0 0 120 120" aria-hidden="true" focusable="false" className={s.disc}>
         <defs>

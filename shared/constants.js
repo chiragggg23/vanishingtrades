@@ -3,7 +3,14 @@ export const ROLES = ['artisan', 'learner', 'buyer', 'reviewer', 'admin'];
 export const PUBLIC_ROLES = ['artisan', 'learner', 'buyer'];
 export const LANGS = ['en', 'kn', 'hi'];
 export const STORY_LANGS = ['kn', 'hi', 'en'];
-export const CRAFT_KEYS = ['channapatna', 'bidriware', 'ilkal', 'kinhal', 'rosewood-inlay', 'pottery'];
+export const CRAFT_KEYS = [
+  'channapatna',
+  'bidriware',
+  'ilkal',
+  'kinhal',
+  'rosewood-inlay',
+  'pottery',
+];
 export const STORY_STATUSES = ['draft', 'pending', 'approved', 'rejected'];
 export const APPLICATION_STATUSES = ['applied', 'shortlisted', 'accepted', 'rejected', 'completed'];
 export const ENQUIRY_STATUSES = ['open', 'answered', 'closed'];

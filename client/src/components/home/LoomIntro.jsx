@@ -37,7 +37,12 @@ export default function LoomIntro({ onDone }) {
   }, [onDone]);
   return (
     <div className={`${s.intro} ${leaving ? s.leaving : ''}`}>
-      <svg className={s.threads} viewBox="0 0 400 240" preserveAspectRatio="none" aria-hidden="true">
+      <svg
+        className={s.threads}
+        viewBox="0 0 400 240"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
         {Array.from({ length: 14 }, (_, i) => (
           <rect
             key={`w${i}`}

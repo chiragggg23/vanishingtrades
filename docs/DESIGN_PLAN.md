@@ -7,15 +7,15 @@ reach that person.
 
 ## Tokens
 
-| Name | Hex | Role |
-| --- | --- | --- |
-| paper | `#F3EAD8` | page ground (unbleached cotton) |
-| paper-dark | `#E4D6BA` | recessed panels, filter drawer |
-| ink | `#1E1B18` | text, rules, hard shadows |
-| indigo | `#25407A` | primary actions, links, focus ring, the one "dyed" section per page |
-| madder | `#B8402E` (`#9C3424` on dark paper) | stamps, rejection, emphasis marks |
-| turmeric | `#E0A526` | fills and thread only, never text on paper |
-| leaf | `#4F6B3A` (`#3F5730` on dark paper) | success, "approved" |
+| Name       | Hex                                 | Role                                                                |
+| ---------- | ----------------------------------- | ------------------------------------------------------------------- |
+| paper      | `#F3EAD8`                           | page ground (unbleached cotton)                                     |
+| paper-dark | `#E4D6BA`                           | recessed panels, filter drawer                                      |
+| ink        | `#1E1B18`                           | text, rules, hard shadows                                           |
+| indigo     | `#25407A`                           | primary actions, links, focus ring, the one "dyed" section per page |
+| madder     | `#B8402E` (`#9C3424` on dark paper) | stamps, rejection, emphasis marks                                   |
+| turmeric   | `#E0A526`                           | fills and thread only, never text on paper                          |
+| leaf       | `#4F6B3A` (`#3F5730` on dark paper) | success, "approved"                                                 |
 
 Type: Fraunces (display, SOFT 100 / WONK 1 for headlines, SOFT 30 for subheads), Mukta (body 17.5 px, UI),
 Caveat (marginal notes only, never for anything you must read to use the app). Scale on a 1.333 ratio from

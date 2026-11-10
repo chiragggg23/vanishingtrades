@@ -12,7 +12,11 @@ import s from './Impact.module.css';
 const GROUPS = [
   { goal: 8, key: 'sdg8', fields: ['artisans', 'works', 'enquiries', 'enquiriesAnswered'] },
   { goal: 11, key: 'sdg11', fields: ['storiesArchived', 'languages', 'minutesRecorded', 'plays'] },
-  { goal: 4, key: 'sdg4', fields: ['openings', 'applications', 'learnersInTraining', 'certificates'] },
+  {
+    goal: 4,
+    key: 'sdg4',
+    fields: ['openings', 'applications', 'learnersInTraining', 'certificates'],
+  },
 ];
 
 export default function Impact() {

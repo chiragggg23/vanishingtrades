@@ -23,14 +23,12 @@ function Review({ story }) {
   const navigate = useNavigate();
   const [mode, setMode] = useState('read'); // read | edit
   const [busy, setBusy] = useState(null);
-  const edits = useForm(
-    {
-      title: story.title,
-      transcript: story.transcript,
-      translation: story.translation,
-      summary: story.summary.en,
-    },
-  );
+  const edits = useForm({
+    title: story.title,
+    transcript: story.transcript,
+    translation: story.translation,
+    summary: story.summary.en,
+  });
   const reject = useForm({ note: '' }, { schema: schemas.reject });
   const [approveNote, setApproveNote] = useState('');
   const pending = story.status === 'pending';
@@ -67,11 +65,7 @@ function Review({ story }) {
 
   return (
     <>
-      <Panel
-        title={story.title}
-        id="review-story"
-        actions={<StatusBadge status={story.status} />}
-      >
+      <Panel title={story.title} id="review-story" actions={<StatusBadge status={story.status} />}>
         <p className="muted" lang="en">
           {t('reviewer.by', { name: story.artisan?.name, lang: t(`lang.name.${story.language}`) })}
         </p>
@@ -103,13 +97,17 @@ function Review({ story }) {
         {mode === 'read' ? (
           <div className={R.sideBySide}>
             <section aria-labelledby="orig-h">
-              <h3 id="orig-h">{t('reviewer.original', { lang: t(`lang.name.${story.language}`) })}</h3>
+              <h3 id="orig-h">
+                {t('reviewer.original', { lang: t(`lang.name.${story.language}`) })}
+              </h3>
               <ol className={R.text} lang={story.language}>
                 {story.transcript.map((x) => (
                   <li key={x.id}>{x.text}</li>
                 ))}
               </ol>
-              {story.text && story.transcript.length === 0 && <p lang={story.language}>{story.text}</p>}
+              {story.text && story.transcript.length === 0 && (
+                <p lang={story.language}>{story.text}</p>
+              )}
             </section>
             <section aria-labelledby="tr-h">
               <h3 id="tr-h">{t('reviewer.translation')}</h3>
@@ -124,7 +122,12 @@ function Review({ story }) {
           </div>
         ) : (
           <>
-            <FormField label={t('editor.title')} error={editErrors.title} count={edits.values.title.length} max={120}>
+            <FormField
+              label={t('editor.title')}
+              error={editErrors.title}
+              count={edits.values.title.length}
+              max={120}
+            >
               <input type="text" lang={story.language} {...edits.bind('title')} />
             </FormField>
             <div className={R.sideBySide}>
@@ -145,7 +148,12 @@ function Review({ story }) {
                 prefix="translation"
               />
             </div>
-            <FormField label={t('reviewer.summary')} error={editErrors['summary.en']} count={edits.values.summary.length} max={600}>
+            <FormField
+              label={t('reviewer.summary')}
+              error={editErrors['summary.en']}
+              count={edits.values.summary.length}
+              max={600}
+            >
               <textarea rows={3} lang="en" {...edits.bind('summary')} />
             </FormField>
           </>
@@ -155,8 +163,17 @@ function Review({ story }) {
       {pending ? (
         <div className={R.decide}>
           <Panel title={t('reviewer.approveTitle')} id="approve-title">
-            <FormField label={t('reviewer.approveNote')} hint={t('reviewer.approveNoteHint')} count={approveNote.length} max={500}>
-              <textarea rows={2} value={approveNote} onChange={(e) => setApproveNote(e.target.value)} />
+            <FormField
+              label={t('reviewer.approveNote')}
+              hint={t('reviewer.approveNoteHint')}
+              count={approveNote.length}
+              max={500}
+            >
+              <textarea
+                rows={2}
+                value={approveNote}
+                onChange={(e) => setApproveNote(e.target.value)}
+              />
             </FormField>
             <div className={s.actions}>
               {mode === 'edit' ? (
@@ -164,7 +181,11 @@ function Review({ story }) {
                   {t('reviewer.editApprove')}
                 </StampButton>
               ) : (
-                <StampButton variant="leaf" busy={busy === 'approve'} onClick={() => approve(false)}>
+                <StampButton
+                  variant="leaf"
+                  busy={busy === 'approve'}
+                  onClick={() => approve(false)}
+                >
                   {t('reviewer.approve')}
                 </StampButton>
               )}
@@ -205,7 +226,10 @@ export default function ReviewScreen() {
     <DashShell
       title={t('reviewer.screenTitle')}
       aside={
-        <Link to="/dashboard/reviewer" style={{ fontWeight: 700, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}>
+        <Link
+          to="/dashboard/reviewer"
+          style={{ fontWeight: 700, minHeight: 44, display: 'inline-flex', alignItems: 'center' }}
+        >
           {t('reviewer.back')}
         </Link>
       }

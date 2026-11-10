@@ -71,10 +71,21 @@ function CraftForm({ craft, defaultType, onSaved, onCancel }) {
     <form onSubmit={onSubmit} noValidate>
       <FormErrors message={form.message} />
       <div className={s.formGrid}>
-        <FormField label={t('works.titleEn')} error={e['title.en']} count={v.titleEn.length} max={80} required>
+        <FormField
+          label={t('works.titleEn')}
+          error={e['title.en']}
+          count={v.titleEn.length}
+          max={80}
+          required
+        >
           <input type="text" {...form.bind('titleEn')} />
         </FormField>
-        <FormField label={t('works.titleKn')} error={e['title.kn']} count={v.titleKn.length} max={80}>
+        <FormField
+          label={t('works.titleKn')}
+          error={e['title.kn']}
+          count={v.titleKn.length}
+          max={80}
+        >
           <input type="text" lang="kn" {...form.bind('titleKn')} />
         </FormField>
         <FormField label={t('works.craft')} error={e.craftType}>
@@ -86,7 +97,11 @@ function CraftForm({ craft, defaultType, onSaved, onCancel }) {
             ))}
           </select>
         </FormField>
-        <FormField label={t('works.materials')} hint={t('works.materialsHint')} error={materialsErr}>
+        <FormField
+          label={t('works.materials')}
+          hint={t('works.materialsHint')}
+          error={materialsErr}
+        >
           <input type="text" {...form.bind('materials')} />
         </FormField>
         <FormField
@@ -175,10 +190,7 @@ export default function WorksTab({ craftType }) {
           />
         </div>
       )}
-      <AsyncView
-        state={state}
-        empty={<EmptyScene art="chisel" title={t('works.empty')} />}
-      >
+      <AsyncView state={state} empty={<EmptyScene art="chisel" title={t('works.empty')} />}>
         {(list) => (
           <ul className={s.list}>
             {list.map((c) => (
@@ -189,7 +201,8 @@ export default function WorksTab({ craftType }) {
                 <div className={s.rowMain}>
                   <p className={s.rowTitle}>{localize(c.title, i18n.language)}</p>
                   <p className={s.rowMeta}>
-                    {t(`craft.${c.craftType}`)} — {formatPrice(c.priceMin, c.priceMax, i18n.language, t)}
+                    {t(`craft.${c.craftType}`)} —{' '}
+                    {formatPrice(c.priceMin, c.priceMax, i18n.language, t)}
                   </p>
                 </div>
                 <div className={s.actions}>

@@ -47,7 +47,14 @@ export default function ImageUpload({ label, value, onChange, error }) {
         {label}
       </label>
       {shown && <img src={shown} alt={t('upload.preview')} className={s.preview} />}
-      <input id={id} type="file" accept="image/jpeg,image/png,image/webp,image/gif" onChange={pick} disabled={busy} style={{ minHeight: 44 }} />
+      <input
+        id={id}
+        type="file"
+        accept="image/jpeg,image/png,image/webp,image/gif"
+        onChange={pick}
+        disabled={busy}
+        style={{ minHeight: 44 }}
+      />
       <p aria-live="polite" style={{ margin: '0.3rem 0 0', fontSize: 'var(--fs-sm)' }}>
         {busy ? t('upload.uploading') : ''}
         {problem || error ? (
@@ -55,7 +62,14 @@ export default function ImageUpload({ label, value, onChange, error }) {
         ) : null}
       </p>
       {value && !busy && (
-        <button type="button" className={s.linkBtn} onClick={() => { setLocal(null); onChange(null); }}>
+        <button
+          type="button"
+          className={s.linkBtn}
+          onClick={() => {
+            setLocal(null);
+            onChange(null);
+          }}
+        >
           {t('upload.remove')}
         </button>
       )}

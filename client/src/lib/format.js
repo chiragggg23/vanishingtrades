@@ -1,6 +1,10 @@
 const LOCALES = { en: 'en-IN', kn: 'kn-IN', hi: 'hi-IN' };
 
-export function formatDate(iso, lng = 'en', opts = { day: 'numeric', month: 'short', year: 'numeric' }) {
+export function formatDate(
+  iso,
+  lng = 'en',
+  opts = { day: 'numeric', month: 'short', year: 'numeric' },
+) {
   if (!iso) return '';
   try {
     return new Intl.DateTimeFormat(LOCALES[lng] || 'en-IN', opts).format(new Date(iso));

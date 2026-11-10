@@ -27,9 +27,7 @@ function CraftSpecimen({ craft, index }) {
         <span className={s.name}>{name}</span>
       </Link>
       <p id={`craft-cap-${craft.key}`} className={s.caption}>
-        <span className={s.count}>
-          {t('home.hands', { count: craft.practitioners })}
-        </span>{' '}
+        <span className={s.count}>{t('home.hands', { count: craft.practitioners })}</span>{' '}
         <span className={s.where}>{t('home.handsWhere', { region: craft.region })}</span>{' '}
         {craft.isSample && <SampleStamp />}
       </p>

@@ -50,7 +50,10 @@ export default function Apprenticeships() {
             label={t('appr.statusLabel')}
             value={f.status || 'open'}
             onChange={(v) => update({ status: v === 'open' ? '' : v })}
-            options={['open', 'closed', 'all'].map((v) => ({ value: v, label: t(`appr.show.${v}`) }))}
+            options={['open', 'closed', 'all'].map((v) => ({
+              value: v,
+              label: t(`appr.show.${v}`),
+            }))}
           />
         </FilterDrawer>
         <section aria-labelledby="appr-results">
@@ -66,14 +69,14 @@ export default function Apprenticeships() {
                 label={t('filters.sort')}
                 value={f.sort || 'deadline'}
                 onChange={(v) => update({ sort: v === 'deadline' ? '' : v })}
-                options={['deadline', 'newest'].map((v) => ({ value: v, label: t(`appr.sort.${v}`) }))}
+                options={['deadline', 'newest'].map((v) => ({
+                  value: v,
+                  label: t(`appr.sort.${v}`),
+                }))}
               />
             </div>
           </div>
-          <AsyncView
-            state={state}
-            empty={<EmptyScene art="spinning" title={t('empty.appr')} />}
-          >
+          <AsyncView state={state} empty={<EmptyScene art="spinning" title={t('empty.appr')} />}>
             {(page) => (
               <>
                 <ul className={s.grid}>

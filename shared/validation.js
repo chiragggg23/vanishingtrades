@@ -1,13 +1,6 @@
 // Dependency-free schema validation shared by the server, the browser mock and client forms,
 // so a 422 has exactly the same field paths and messages everywhere.
-import {
-  CRAFT_KEYS,
-  FLAG_TARGETS,
-  LANGS,
-  PUBLIC_ROLES,
-  ROLES,
-  STORY_LANGS,
-} from './constants.js';
+import { CRAFT_KEYS, FLAG_TARGETS, LANGS, PUBLIC_ROLES, ROLES, STORY_LANGS } from './constants.js';
 
 export const M = {
   required: () => 'This is required.',
@@ -89,7 +82,10 @@ function check(schema, value, path, errors, partial, msgs = M) {
         n >= schema.min &&
         n <= schema.max;
       if (!ok)
-        return void (errors[path] = (schema.t === 'int' ? msgs.int : msgs.num)(schema.min, schema.max));
+        return void (errors[path] = (schema.t === 'int' ? msgs.int : msgs.num)(
+          schema.min,
+          schema.max,
+        ));
       return n;
     }
     case 'bool': {
@@ -114,7 +110,8 @@ function check(schema, value, path, errors, partial, msgs = M) {
       return value.map((item, i) => check(schema.item, item, `${path}.${i}`, errors, false, msgs));
     }
     case 'obj': {
-      if (typeof value !== 'object' || Array.isArray(value)) return void (errors[path] = msgs.type());
+      if (typeof value !== 'object' || Array.isArray(value))
+        return void (errors[path] = msgs.type());
       const out = {};
       for (const [k, s] of Object.entries(schema.shape)) {
         const r = check(s, value[k], path ? `${path}.${k}` : k, errors, false, msgs);

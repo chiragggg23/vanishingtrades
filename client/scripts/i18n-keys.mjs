@@ -16,16 +16,50 @@ const DYNAMIC = [
   ...ROADMAP_STEPS.map((s) => `roadmap.${s.key}`),
   ...ROADMAP_STEPS.map((s) => `roadmapHint.${s.key}`),
   ...[4, 8, 11].flatMap((g) => [`sdg.g${g}.name`, `sdg.g${g}.short`]),
-  ...['draft', 'pending', 'approved', 'rejected', 'open', 'answered', 'closed', 'applied', 'shortlisted', 'accepted', 'completed', 'resolved', 'active', 'paused'].map((s) => `status.${s}`),
+  ...[
+    'draft',
+    'pending',
+    'approved',
+    'rejected',
+    'open',
+    'answered',
+    'closed',
+    'applied',
+    'shortlisted',
+    'accepted',
+    'completed',
+    'resolved',
+    'active',
+    'paused',
+  ].map((s) => `status.${s}`),
   ...['newest', 'oldest', 'price-asc', 'price-desc', 'title'].map((s) => `gallery.sort.${s}`),
   ...['newest', 'oldest', 'most-played'].map((s) => `archive.sort.${s}`),
   ...['deadline', 'newest'].map((s) => `appr.sort.${s}`),
   ...['open', 'closed', 'all'].map((s) => `appr.show.${s}`),
-  ...['record', 'keep', 'pass'].flatMap((p) => ['title', 'body', 'goal', 'link'].map((f) => `home.panel.${p}.${f}`)),
+  ...['record', 'keep', 'pass'].flatMap((p) =>
+    ['title', 'body', 'goal', 'link'].map((f) => `home.panel.${p}.${f}`),
+  ),
   ...['sdg8', 'sdg11', 'sdg4'].flatMap((g) => [`impact.why.${g}`, `impact.chart.${g}`]),
-  ...['artisans', 'works', 'enquiries', 'enquiriesAnswered', 'storiesArchived', 'languages', 'minutesRecorded', 'plays', 'openings', 'applications', 'learnersInTraining', 'certificates'].map((f) => `impact.f.${f}`),
-  ...['enquiries', 'works', 'submitted', 'approved', 'applications', 'certificates'].map((f) => `impact.series.${f}`),
-  ...['worksByCraft', 'storiesByLanguage', 'applicationsByStatus'].map((f) => `impact.breakdown.${f}`),
+  ...[
+    'artisans',
+    'works',
+    'enquiries',
+    'enquiriesAnswered',
+    'storiesArchived',
+    'languages',
+    'minutesRecorded',
+    'plays',
+    'openings',
+    'applications',
+    'learnersInTraining',
+    'certificates',
+  ].map((f) => `impact.f.${f}`),
+  ...['enquiries', 'works', 'submitted', 'approved', 'applications', 'certificates'].map(
+    (f) => `impact.series.${f}`,
+  ),
+  ...['worksByCraft', 'storiesByLanguage', 'applicationsByStatus'].map(
+    (f) => `impact.breakdown.${f}`,
+  ),
   ...['stories', 'works', 'enquiries', 'openings', 'profile'].map((k) => `dash.tab.${k}`),
   ...['impact', 'users', 'moderation', 'audit'].map((k) => `admin.tab.${k}`),
   ...['open', 'resolved', 'all'].map((k) => `admin.flagStatus.${k}`),
@@ -89,7 +123,9 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
     }
     const gaps = keys.filter((k) => !has(dict, k));
     missing += gaps.length;
-    console.log(`${lng}: ${keys.length - gaps.length}/${keys.length} keys${gaps.length ? `, missing: ${gaps.join(', ')}` : ''}`);
+    console.log(
+      `${lng}: ${keys.length - gaps.length}/${keys.length} keys${gaps.length ? `, missing: ${gaps.join(', ')}` : ''}`,
+    );
   }
   process.exit(missing ? 1 : 0);
 }

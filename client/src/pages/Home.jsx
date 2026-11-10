@@ -57,9 +57,7 @@ export default function Home() {
             </h2>
             <p className={s.fadingNote}>{t('home.fadingNote')}</p>
           </div>
-          <AsyncView state={types}>
-            {(list) => <FadingCrafts craftTypes={list} />}
-          </AsyncView>
+          <AsyncView state={types}>{(list) => <FadingCrafts craftTypes={list} />}</AsyncView>
         </div>
       </section>
 
@@ -78,10 +76,7 @@ export default function Home() {
           </h2>
           <p className="hand">{t('home.peopleNote')}</p>
         </div>
-        <AsyncView
-          state={featured}
-          empty={<EmptyScene art="chisel" title={t('empty.artisans')} />}
-        >
+        <AsyncView state={featured} empty={<EmptyScene art="chisel" title={t('empty.artisans')} />}>
           {(list) => (
             <ul className={s.wall}>
               {list.map((a) => (
@@ -106,10 +101,7 @@ export default function Home() {
               {t('home.latestLink')}
             </StampButton>
           </div>
-          <AsyncView
-            state={latest}
-            empty={<EmptyScene art="wheel" title={t('empty.stories')} />}
-          >
+          <AsyncView state={latest} empty={<EmptyScene art="wheel" title={t('empty.stories')} />}>
             {(page) => (
               <ul className={s.tapes}>
                 {page.items.map((st) => (

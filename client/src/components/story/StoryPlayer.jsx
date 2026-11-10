@@ -141,7 +141,11 @@ export default function StoryPlayer({ story, onFirstPlay }) {
         >
           <track kind="captions" />
         </audio>
-        <Cassette spinning={playing} progress={duration ? time / duration : 0} label={story.title} />
+        <Cassette
+          spinning={playing}
+          progress={duration ? time / duration : 0}
+          label={story.title}
+        />
         {hasAudio && !unplayable ? (
           <>
             <div className={s.controls}>
@@ -164,12 +168,7 @@ export default function StoryPlayer({ story, onFirstPlay }) {
               >
                 <span aria-hidden="true">+5</span>
               </button>
-              <button
-                type="button"
-                className={s.big}
-                aria-pressed={muted}
-                onClick={toggleMute}
-              >
+              <button type="button" className={s.big} aria-pressed={muted} onClick={toggleMute}>
                 {muted ? t('player.unmute') : t('player.mute')}
               </button>
             </div>

@@ -79,7 +79,9 @@ export function useForm(initial, { schema, partial = false } = {}) {
         return { ok: true, result };
       } catch (err) {
         if (err?.errors) setErrors(err.errors);
-        setMessage(err?.status === 422 ? t('form.fixFields') : err?.message || t('state.errorBody'));
+        setMessage(
+          err?.status === 422 ? t('form.fixFields') : err?.message || t('state.errorBody'),
+        );
         return { ok: false, error: err };
       } finally {
         setSubmitting(false);
@@ -88,5 +90,17 @@ export function useForm(initial, { schema, partial = false } = {}) {
     [values, schema, partial, messages, t],
   );
 
-  return { values, setValues, set, bind, errors, setErrors, message, setMessage, submitting, done, submit };
+  return {
+    values,
+    setValues,
+    set,
+    bind,
+    errors,
+    setErrors,
+    message,
+    setMessage,
+    submitting,
+    done,
+    submit,
+  };
 }

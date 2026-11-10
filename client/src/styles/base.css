@@ -180,8 +180,9 @@ table {
 }
 /* Deckled bottom edge via mask */
 .deckle-bottom {
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 10' preserveAspectRatio='none'%3E%3Cpath d='M0 0H120V6 L116 8 111 5.5 105 8.5 99 6 94 9 88 6.5 82 8 77 5 70 8.5 64 6 58 9 52 6.5 47 8 41 5.5 35 9 29 6 23 8.5 17 5.5 11 8 5 6 0 8.5Z'/%3E%3C/svg%3E")
-    bottom / 100% 18px no-repeat,
+  -webkit-mask:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 10' preserveAspectRatio='none'%3E%3Cpath d='M0 0H120V6 L116 8 111 5.5 105 8.5 99 6 94 9 88 6.5 82 8 77 5 70 8.5 64 6 58 9 52 6.5 47 8 41 5.5 35 9 29 6 23 8.5 17 5.5 11 8 5 6 0 8.5Z'/%3E%3C/svg%3E")
+      bottom / 100% 18px no-repeat,
     linear-gradient(#000, #000) top / 100% calc(100% - 17px) no-repeat;
   mask:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 10' preserveAspectRatio='none'%3E%3Cpath d='M0 0H120V6 L116 8 111 5.5 105 8.5 99 6 94 9 88 6.5 82 8 77 5 70 8.5 64 6 58 9 52 6.5 47 8 41 5.5 35 9 29 6 23 8.5 17 5.5 11 8 5 6 0 8.5Z'/%3E%3C/svg%3E")

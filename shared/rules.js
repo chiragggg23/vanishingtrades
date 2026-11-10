@@ -15,7 +15,8 @@ export function certCode(rand = Math.random) {
   const block = () => Array.from({ length: 4 }, pick).join('');
   return `VT-${block()}-${block()}`;
 }
-export const CERT_RE = /^VT-[ABCDEFGHJKMNPQRSTUVWXYZ23456789]{4}-[ABCDEFGHJKMNPQRSTUVWXYZ23456789]{4}$/;
+export const CERT_RE =
+  /^VT-[ABCDEFGHJKMNPQRSTUVWXYZ23456789]{4}-[ABCDEFGHJKMNPQRSTUVWXYZ23456789]{4}$/;
 
 /** Segment ids are reassigned seg-1..n on every write. */
 export const normaliseSegments = (segs = []) =>

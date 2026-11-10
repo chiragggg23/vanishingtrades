@@ -61,7 +61,11 @@ function UserRow({ u, me, onChange }) {
               size="sm"
               busy={busy === 'role'}
               onClick={() =>
-                act('role', () => admin.setRole(u.id, role), (n) => t('admin.roleChanged', { name: n.name, role: t(`role.${n.role}`) }))
+                act(
+                  'role',
+                  () => admin.setRole(u.id, role),
+                  (n) => t('admin.roleChanged', { name: n.name, role: t(`role.${n.role}`) }),
+                )
               }
             >
               {t('admin.saveRole')}
@@ -79,8 +83,13 @@ function UserRow({ u, me, onChange }) {
             variant={u.active ? 'danger' : 'leaf'}
             busy={busy === 'active'}
             onClick={() =>
-              act('active', () => admin.setActive(u.id, !u.active), (n) =>
-                n.active ? t('admin.reactivated', { name: n.name }) : t('admin.paused', { name: n.name }),
+              act(
+                'active',
+                () => admin.setActive(u.id, !u.active),
+                (n) =>
+                  n.active
+                    ? t('admin.reactivated', { name: n.name })
+                    : t('admin.paused', { name: n.name }),
               )
             }
           >
@@ -103,7 +112,11 @@ export default function UsersTab() {
   return (
     <Panel title={t('admin.usersTitle')} id="users-title">
       <div className={A.filters}>
-        <SearchBox value={f.q} onSearch={(q) => setF({ ...f, q, page: 1 })} label={t('admin.searchUsers')} />
+        <SearchBox
+          value={f.q}
+          onSearch={(q) => setF({ ...f, q, page: 1 })}
+          label={t('admin.searchUsers')}
+        />
         <SelectFilter
           label={t('admin.role')}
           value={f.role}

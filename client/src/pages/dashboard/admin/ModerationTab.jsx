@@ -54,7 +54,10 @@ function Flags() {
               setStatus(v);
               setPage(1);
             }}
-            options={['open', 'resolved', 'all'].map((v) => ({ value: v, label: t(`admin.flagStatus.${v}`) }))}
+            options={['open', 'resolved', 'all'].map((v) => ({
+              value: v,
+              label: t(`admin.flagStatus.${v}`),
+            }))}
           />
         </div>
       }
@@ -68,20 +71,37 @@ function Flags() {
                   <div className={s.rowMain}>
                     <p className={s.rowTitle}>
                       {t(`admin.target.${f.targetType}`)}:{' '}
-                      {targetLink(f) ? <Link to={targetLink(f)}>{f.targetLabel || f.targetId}</Link> : f.targetLabel || f.targetId}
+                      {targetLink(f) ? (
+                        <Link to={targetLink(f)}>{f.targetLabel || f.targetId}</Link>
+                      ) : (
+                        f.targetLabel || f.targetId
+                      )}
                     </p>
                     <p>{f.reason}</p>
                     <p className={s.rowMeta}>
-                      {t('admin.reportedBy', { name: f.reporter.name, date: formatDate(f.createdAt, i18n.language) })}
+                      {t('admin.reportedBy', {
+                        name: f.reporter.name,
+                        date: formatDate(f.createdAt, i18n.language),
+                      })}
                     </p>
                   </div>
                   <StatusBadge status={f.status} />
                   {f.status === 'open' ? (
                     <div className={s.actions}>
-                      <StampButton size="sm" variant="ghost" busy={busy === f.id + 'dismiss'} onClick={() => resolve(f, 'dismiss')}>
+                      <StampButton
+                        size="sm"
+                        variant="ghost"
+                        busy={busy === f.id + 'dismiss'}
+                        onClick={() => resolve(f, 'dismiss')}
+                      >
                         {t('admin.dismiss')}
                       </StampButton>
-                      <StampButton size="sm" variant="danger" busy={busy === f.id + 'remove'} onClick={() => resolve(f, 'remove')}>
+                      <StampButton
+                        size="sm"
+                        variant="danger"
+                        busy={busy === f.id + 'remove'}
+                        onClick={() => resolve(f, 'remove')}
+                      >
                         {f.targetType === 'artisan' ? t('admin.pauseArtisan') : t('admin.remove')}
                       </StampButton>
                     </div>
@@ -145,7 +165,15 @@ function TakeDown() {
                 <li key={item.id} className={s.row}>
                   <div className={s.rowMain}>
                     <p className={s.rowTitle}>
-                      <Link to={kind === 'story' ? `/archive/${item.id}` : `/artisans/${item.artisanId}?craft=${item.id}`}>{label}</Link>
+                      <Link
+                        to={
+                          kind === 'story'
+                            ? `/archive/${item.id}`
+                            : `/artisans/${item.artisanId}?craft=${item.id}`
+                        }
+                      >
+                        {label}
+                      </Link>
                     </p>
                     <p className={s.rowMeta}>{item.artisan?.name}</p>
                   </div>

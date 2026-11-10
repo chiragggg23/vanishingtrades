@@ -1,5 +1,14 @@
 // Recharts lives in its own chunk: only the admin impact tab loads it.
-import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Legend,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
 import { useTranslation } from 'react-i18next';
 import A from './Admin.module.css';
 
@@ -60,24 +69,44 @@ export function MonthlyChart({ title, data, keys }) {
       <figcaption className={A.chartTitle}>{title}</figcaption>
       <div className={A.chartBox} aria-hidden="true">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={rows} barGap={2} barCategoryGap="22%" margin={{ top: 8, right: 8, left: -18, bottom: 0 }}>
+          <BarChart
+            data={rows}
+            barGap={2}
+            barCategoryGap="22%"
+            margin={{ top: 8, right: 8, left: -18, bottom: 0 }}
+          >
             <CartesianGrid vertical={false} stroke="rgba(30,27,24,0.14)" />
             <XAxis dataKey="label" tick={AXIS} tickLine={false} axisLine={{ stroke: '#1E1B18' }} />
             <YAxis allowDecimals={false} tick={AXIS} tickLine={false} axisLine={false} />
             <Tooltip
               cursor={{ fill: 'rgba(224,165,38,0.18)' }}
-              contentStyle={{ background: '#FAF5EA', border: '2px solid #1E1B18', borderRadius: 0, color: '#1E1B18' }}
+              contentStyle={{
+                background: '#FAF5EA',
+                border: '2px solid #1E1B18',
+                borderRadius: 0,
+                color: '#1E1B18',
+              }}
             />
             <Legend wrapperStyle={{ fontSize: 14, color: '#1E1B18' }} iconType="square" />
             {keys.map((k, i) => (
-              <Bar key={k} dataKey={k} name={t(`impact.series.${k}`)} fill={SERIES[i]} radius={[4, 4, 0, 0]} maxBarSize={28} />
+              <Bar
+                key={k}
+                dataKey={k}
+                name={t(`impact.series.${k}`)}
+                fill={SERIES[i]}
+                radius={[4, 4, 0, 0]}
+                maxBarSize={28}
+              />
             ))}
           </BarChart>
         </ResponsiveContainer>
       </div>
       <DataTable
         caption={title}
-        columns={[{ key: 'month', label: t('impact.month') }, ...keys.map((k) => ({ key: k, label: t(`impact.series.${k}`) }))]}
+        columns={[
+          { key: 'month', label: t('impact.month') },
+          ...keys.map((k) => ({ key: k, label: t(`impact.series.${k}`) })),
+        ]}
         rows={data}
       />
     </figure>
@@ -93,21 +122,54 @@ export function BreakdownChart({ title, data, labelFor }) {
       <figcaption className={A.chartTitle}>{title}</figcaption>
       <div className={A.chartBox} aria-hidden="true">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={rows} layout="vertical" margin={{ top: 4, right: 28, left: 8, bottom: 0 }} barCategoryGap="24%">
+          <BarChart
+            data={rows}
+            layout="vertical"
+            margin={{ top: 4, right: 28, left: 8, bottom: 0 }}
+            barCategoryGap="24%"
+          >
             <CartesianGrid horizontal={false} stroke="rgba(30,27,24,0.14)" />
-            <XAxis type="number" allowDecimals={false} tick={AXIS} tickLine={false} axisLine={false} />
-            <YAxis type="category" dataKey="name" width={118} tick={AXIS} tickLine={false} axisLine={{ stroke: '#1E1B18' }} />
+            <XAxis
+              type="number"
+              allowDecimals={false}
+              tick={AXIS}
+              tickLine={false}
+              axisLine={false}
+            />
+            <YAxis
+              type="category"
+              dataKey="name"
+              width={118}
+              tick={AXIS}
+              tickLine={false}
+              axisLine={{ stroke: '#1E1B18' }}
+            />
             <Tooltip
               cursor={{ fill: 'rgba(224,165,38,0.18)' }}
-              contentStyle={{ background: '#FAF5EA', border: '2px solid #1E1B18', borderRadius: 0, color: '#1E1B18' }}
+              contentStyle={{
+                background: '#FAF5EA',
+                border: '2px solid #1E1B18',
+                borderRadius: 0,
+                color: '#1E1B18',
+              }}
             />
-            <Bar dataKey="count" name={t('impact.count')} fill={SERIES[0]} radius={[0, 4, 4, 0]} maxBarSize={22} label={{ position: 'right', fill: '#1E1B18', fontSize: 13 }} />
+            <Bar
+              dataKey="count"
+              name={t('impact.count')}
+              fill={SERIES[0]}
+              radius={[0, 4, 4, 0]}
+              maxBarSize={22}
+              label={{ position: 'right', fill: '#1E1B18', fontSize: 13 }}
+            />
           </BarChart>
         </ResponsiveContainer>
       </div>
       <DataTable
         caption={title}
-        columns={[{ key: 'name', label: t('impact.item') }, { key: 'count', label: t('impact.count') }]}
+        columns={[
+          { key: 'name', label: t('impact.item') },
+          { key: 'count', label: t('impact.count') },
+        ]}
         rows={rows}
       />
     </figure>

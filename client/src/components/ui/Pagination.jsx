@@ -13,12 +13,7 @@ export default function Pagination({ pagination, onPage, label }) {
   }
   return (
     <nav className={s.nav} aria-label={label || t('pagination.label')}>
-      <button
-        type="button"
-        className={s.btn}
-        disabled={page <= 1}
-        onClick={() => onPage(page - 1)}
-      >
+      <button type="button" className={s.btn} disabled={page <= 1} onClick={() => onPage(page - 1)}>
         {t('pagination.prev')}
       </button>
       <ol className={s.list}>

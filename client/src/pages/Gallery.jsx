@@ -74,7 +74,10 @@ export default function Gallery() {
               value={f.minPrice}
               allLabel={t('filters.any')}
               onChange={(v) => update({ minPrice: v })}
-              options={[500, 1000, 3000, 5000, 10000].map((v) => ({ value: String(v), label: `₹${v}` }))}
+              options={[500, 1000, 3000, 5000, 10000].map((v) => ({
+                value: String(v),
+                label: `₹${v}`,
+              }))}
             />
             <SelectFilter
               label={t('filters.maxPrice')}

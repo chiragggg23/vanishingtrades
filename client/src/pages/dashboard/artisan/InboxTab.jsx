@@ -19,7 +19,10 @@ export default function InboxTab({ title }) {
       <AsyncView
         state={state}
         empty={
-          <EmptyScene art="spinning" title={user.role === 'buyer' ? t('inbox.emptyBuyer') : t('inbox.empty')} />
+          <EmptyScene
+            art="spinning"
+            title={user.role === 'buyer' ? t('inbox.emptyBuyer') : t('inbox.empty')}
+          />
         }
       >
         {(page) => (

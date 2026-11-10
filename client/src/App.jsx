@@ -44,10 +44,7 @@ export default function App() {
         <Route path="register" element={<Register />} />
         <Route path="dashboard/artisan" element={guard(['artisan'], <ArtisanDashboard />)} />
         <Route path="dashboard/artisan/:tab" element={guard(['artisan'], <ArtisanDashboard />)} />
-        <Route
-          path="dashboard/artisan/stories/:id"
-          element={guard(['artisan'], <StoryEditor />)}
-        />
+        <Route path="dashboard/artisan/stories/:id" element={guard(['artisan'], <StoryEditor />)} />
         <Route path="dashboard/learner" element={guard(['learner'], <LearnerDashboard />)} />
         <Route path="dashboard/buyer" element={guard(['buyer'], <BuyerDashboard />)} />
         <Route
