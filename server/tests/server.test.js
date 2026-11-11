@@ -3,6 +3,7 @@ import { execFileSync } from 'node:child_process';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 import request from 'supertest';
 import sharp from 'sharp';
 import { config } from '../src/config/env.js';
@@ -72,6 +73,24 @@ describe('auth and accounts', () => {
     const token = await login('buyer');
     await User.deleteOne({ _id: id });
     expect((await api.call('GET', '/auth/me', { token })).status).toBe(401);
+  });
+  it('rejects unsigned (alg: none) tokens', async () => {
+    const header = Buffer.from(JSON.stringify({ alg: 'none', typ: 'JWT' })).toString('base64url');
+    const body = Buffer.from(JSON.stringify({ sub: oid('a1', 5), tv: 0 })).toString('base64url');
+    expect((await api.call('GET', '/auth/me', { token: `${header}.${body}.` })).status).toBe(401);
+  });
+  it('runs bcrypt even for an unknown email, so timing does not reveal accounts', async () => {
+    const spy = vi.spyOn(bcrypt, 'compare');
+    try {
+      const res = await api.call('POST', '/auth/login', {
+        body: { email: 'nobody-here@example.com', password: 'wrong-password' },
+      });
+      expect(res.status).toBe(401);
+      expect(res.body.message).toBe('Email or password is wrong.');
+      expect(spy).toHaveBeenCalledTimes(1);
+    } finally {
+      spy.mockRestore();
+    }
   });
   it('refuses to start in production without JWT_SECRET', () => {
     const script = "import('./src/config/env.js').then(() => console.log('started'))";

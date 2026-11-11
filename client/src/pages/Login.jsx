@@ -11,9 +11,8 @@ import { DEMO_PASSWORD } from '../../../shared/constants.js';
 import StampButton from '../components/ui/StampButton.jsx';
 import { FormErrors, FormField } from '../components/ui/Form.jsx';
 import { Loom } from '../components/art/Illustrations.jsx';
+import { safeNext } from '../lib/safeNext.js';
 import s from './Auth.module.css';
-
-const safeNext = (n) => (n && n.startsWith('/') && !n.startsWith('//') ? n : null);
 
 export default function Login() {
   const { t } = useTranslation();

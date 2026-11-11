@@ -248,8 +248,9 @@ on('POST', '/auth/register', (db, ctx) => {
 });
 on('GET', '/auth/me', (db, ctx) => [200, V.userView(needUser(db, ctx))]);
 on('POST', '/auth/logout', (db, ctx) => {
-  needUser(db, ctx);
-  delete db.sessions[ctx.token];
+  const user = needUser(db, ctx);
+  // Like the server, logging out ends every session this user has.
+  for (const [t, uid] of Object.entries(db.sessions)) if (uid === user.id) delete db.sessions[t];
   return [200, { ok: true }];
 });
 on('PATCH', '/auth/me', (db, ctx) => {

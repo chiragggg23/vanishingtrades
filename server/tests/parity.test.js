@@ -141,6 +141,28 @@ const scenarios = {
       msg,
     );
     expect(bogus.status).toBe(401);
+
+    // Logging out revokes the token used and every other token of that account.
+    const creds = { email: 'demo-learner@vanishingtrades.test', password: 'demo1234' };
+    const t1 = (await api.call('learner login A', 'POST', '/auth/login', { body: creds })).body.data
+      .token;
+    const t2 = (await api.call('learner login B', 'POST', '/auth/login', { body: creds })).body.data
+      .token;
+    expect((await api.call('logout A', 'POST', '/auth/logout', { token: t1 })).status).toBe(200);
+    expect(
+      (await api.call('token A after logout', 'GET', '/auth/me', { token: t1 }, msg)).status,
+    ).toBe(401);
+    expect(
+      (await api.call('token B after logout', 'GET', '/auth/me', { token: t2 }, msg)).status,
+    ).toBe(401);
+    expect(
+      (await api.call('logout again with A', 'POST', '/auth/logout', { token: t1 }, msg)).status,
+    ).toBe(401);
+    const fresh = (await api.call('learner signs in again', 'POST', '/auth/login', { body: creds }))
+      .body.data.token;
+    expect((await api.call('new token works', 'GET', '/auth/me', { token: fresh })).status).toBe(
+      200,
+    );
   },
 
   async '401 and 403 on every role-locked endpoint'(api) {

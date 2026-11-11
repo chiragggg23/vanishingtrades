@@ -4,8 +4,12 @@ import { User } from '../models/index.js';
 import { fail, isObjectId, MSG } from '../utils/http.js';
 import { plain } from '../utils/http.js';
 
-export const signToken = (userId) =>
-  jwt.sign({ sub: String(userId) }, config.jwtSecret, { expiresIn: config.jwtExpiresIn });
+/** Tokens carry the user's tokenVersion; logging out bumps it, which revokes them. */
+export const signToken = (userId, tokenVersion = 0) =>
+  jwt.sign({ sub: String(userId), tv: tokenVersion }, config.jwtSecret, {
+    expiresIn: config.jwtExpiresIn,
+    algorithm: 'HS256',
+  });
 
 /**
  * Require a valid token. The user is loaded from the database on every request, so a paused
@@ -18,13 +22,15 @@ export async function requireAuth(req, _res, next) {
     if (!token) fail(401, MSG.auth);
     let payload;
     try {
-      payload = jwt.verify(token, config.jwtSecret);
+      payload = jwt.verify(token, config.jwtSecret, { algorithms: ['HS256'] });
     } catch {
       fail(401, MSG.auth);
     }
     if (!isObjectId(payload.sub)) fail(401, MSG.auth);
     const user = await User.findById(payload.sub).lean();
     if (!user) fail(401, MSG.auth);
+    // A token from before the last logout is no longer valid.
+    if ((payload.tv ?? 0) !== (user.tokenVersion ?? 0)) fail(401, MSG.auth);
     if (user.active === false) fail(403, MSG.paused, { code: 'ACCOUNT_PAUSED' });
     req.user = plain(user);
     next();

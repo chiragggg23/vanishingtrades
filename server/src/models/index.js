@@ -42,6 +42,8 @@ const userSchema = new Schema(
     active: { type: Boolean, default: true },
     preferredLang: { type: String, enum: LANGS, default: 'en' },
     demo: { type: Boolean, default: false },
+    // Bumped on logout: every token signed with an older version stops working.
+    tokenVersion: { type: Number, default: 0 },
   },
   opts,
 );

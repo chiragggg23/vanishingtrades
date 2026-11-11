@@ -158,7 +158,9 @@ an empty Artisan profile (`craftType: "pottery"`, `village`/`district: "—"`, t
 
 ### POST /auth/logout — signed in
 
-→ 200 `{ ok: true }`. Stateless on the server; the client forgets the token.
+→ 200 `{ ok: true }`. Revokes **every** token the user holds: the server bumps the user's
+`tokenVersion`, which is signed into each token, so any later request with one of them gets 401.
+The client also forgets its token.
 
 ### PATCH /auth/me — signed in
 

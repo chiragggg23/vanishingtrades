@@ -15,7 +15,7 @@ export const authC = {
   login: h(async (req, res) => ok(res, await authS.login(req.body))),
   register: h(async (req, res) => ok(res, await authS.register(req.body), 201)),
   me: h(async (req, res) => ok(res, authS.me(req.user))),
-  logout: h(async (_req, res) => ok(res, { ok: true })),
+  logout: h(async (req, res) => ok(res, await authS.logout(req.user))),
   updateMe: h(async (req, res) => ok(res, await authS.updateMe(req.user, req.body))),
 };
 
