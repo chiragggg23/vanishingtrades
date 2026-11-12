@@ -100,3 +100,21 @@ visitor then gets the in-browser mock with the demo world saved in their own bro
 | API    | `RATE_LIMIT_DISABLED`                                                   | no (false)                   | Only for local testing                                                 |
 | Client | `VITE_USE_MOCK`                                                         | yes                          | `false` to use the API                                                 |
 | Client | `VITE_API_URL`                                                          | when not mock                | API base URL ending in `/api`                                          |
+
+## Demo site on Vercel (website only, no server)
+
+Live at <https://vanishingtrades.vercel.app> since 13 Nov 2026. This is the client built in mock mode
+(`npm run build`), so the whole app runs in the visitor's browser with the demo world. Nothing is
+shared between visitors and nothing reaches a database. It is enough to show every role and flow.
+
+It was deployed as prebuilt static files with the Vercel CLI, not from Git. To publish a new version:
+
+```bash
+cd client && npm run build
+# copy dist/ to an empty folder named "vanishingtrades", add a vercel.json with the "rewrites" and
+# "headers" from client/vercel.json (without buildCommand and outputDirectory), then inside it:
+npx vercel deploy --prod --yes
+```
+
+To serve real data instead, follow sections 1 to 3 above (Atlas, Render, then a Vercel build with
+`VITE_USE_MOCK=false` and `VITE_API_URL` set to the Render URL).
