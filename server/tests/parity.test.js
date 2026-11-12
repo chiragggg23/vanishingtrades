@@ -1390,6 +1390,263 @@ const scenarios = {
       ]),
     );
   },
+  async 'artisan verification from request to public badge'(api) {
+    const pub = (b) => (b.data.artisan ?? b.data).verified;
+    const mine = (b) => {
+      const { submittedAt: _s, decidedAt: _d, ...v } = b.data.verification;
+      return { verified: b.data.verified, ...v };
+    };
+    const row = (b) => ({
+      name: b.data.artisan.name,
+      status: b.data.status,
+      reason: b.data.reason,
+      by: b.data.decidedBy?.name ?? null,
+    });
+    const request = {
+      idType: 'pehchan',
+      idNumber: 'KA-TEST-2026-0042',
+      note: 'Card issued in 2019.',
+    };
+    const nothingPrivate = (res) =>
+      expect(JSON.stringify(res.body)).not.toMatch(/idNumber|verifyId|KA-TEST|SAMPLE-/);
+
+    // Public pages only ever say verified: true/false.
+    const before = await api.call('public, unverified', 'GET', `/artisans/${A(1)}`, {}, pub);
+    expect(pub(before.body)).toBe(false);
+    nothingPrivate(before);
+    const seeded = await api.call('public, verified', 'GET', `/artisans/${A(3)}`, {}, pub);
+    expect(pub(seeded.body)).toBe(true);
+    nothingPrivate(seeded);
+    const list = await api.call(
+      'public list',
+      'GET',
+      '/artisans',
+      { query: { limit: '50' } },
+      (b) => b.data.items.filter((a) => a.verified).length,
+    );
+    expect(list.body.data.items.filter((a) => a.verified)).toHaveLength(9);
+    nothingPrivate(list);
+
+    // Who may ask.
+    const artisan = await api.login('artisan');
+    const buyer = await api.login('buyer');
+    const admin = await api.login('admin');
+    const post = (label, opts, pick) =>
+      api.call(label, 'POST', '/artisans/me/verification', opts, pick);
+    expect((await post('ask, signed out', { body: request }, msg)).status).toBe(401);
+    expect((await post('ask, as buyer', { token: buyer, body: request }, msg)).status).toBe(403);
+    expect((await post('ask, empty', { token: artisan, body: {} }, errKeys)).status).toBe(422);
+    expect(
+      (
+        await post(
+          'ask, bad values',
+          { token: artisan, body: { idType: 'passport', idNumber: 'x' } },
+          errKeys,
+        )
+      ).status,
+    ).toBe(422);
+
+    const start = await api.call(
+      'my profile before',
+      'GET',
+      '/artisans/me',
+      { token: artisan },
+      mine,
+    );
+    expect(start.body.data.verification.status).toBe('none');
+    const asked = await post('ask', { token: artisan, body: request }, mine);
+    expect(asked.status).toBe(200);
+    expect(asked.body.data.verification).toMatchObject({ status: 'pending', ...request });
+    expect(asked.body.data.verified).toBe(false);
+    expect((await post('ask twice', { token: artisan, body: request }, msg)).status).toBe(409);
+    // Still not public while it waits.
+    expect(pub((await api.call('public, pending', 'GET', `/artisans/${A(1)}`, {}, pub)).body)).toBe(
+      false,
+    );
+
+    // The admin queue.
+    const queue = (label, opts, pick) => api.call(label, 'GET', '/admin/verifications', opts, pick);
+    expect((await queue('queue, signed out', {}, msg)).status).toBe(401);
+    expect((await queue('queue, as artisan', { token: artisan }, msg)).status).toBe(403);
+    const names = (b) => ({ p: page(b), n: b.data.items.map((i) => i.artisan.name) });
+    const pending = await queue('queue', { token: admin }, names);
+    expect(pending.body.data.items.map((i) => i.artisan.name)).toEqual([
+      'Shivalingaiah',
+      'Kempamma',
+    ]);
+    expect(pending.body.data.items[1]).toMatchObject({
+      idNumber: request.idNumber,
+      status: 'pending',
+    });
+    await queue('queue, all', { token: admin, query: { status: 'all', limit: '50' } }, (b) => ({
+      p: page(b),
+      s: b.data.items.map((i) => i.status),
+    }));
+    await queue('queue, rejected', { token: admin, query: { status: 'rejected' } }, (b) =>
+      b.data.items.map((i) => row({ data: i })),
+    );
+    await queue('queue, unknown status', { token: admin, query: { status: 'nope' } }, names);
+
+    // Deciding.
+    const decide = (label, id, opts, pick) =>
+      api.call(label, 'POST', `/admin/verifications/${id}/decide`, opts, pick);
+    expect(
+      (
+        await decide(
+          'decide, as artisan',
+          A(1),
+          { token: artisan, body: { action: 'approve' } },
+          msg,
+        )
+      ).status,
+    ).toBe(403);
+    expect(
+      (
+        await decide(
+          'decide, bad action',
+          A(1),
+          { token: admin, body: { action: 'maybe' } },
+          errKeys,
+        )
+      ).status,
+    ).toBe(422);
+    expect(
+      (
+        await decide(
+          'reject, no reason',
+          A(1),
+          { token: admin, body: { action: 'reject' } },
+          errKeys,
+        )
+      ).status,
+    ).toBe(422);
+    expect(
+      (await decide('decide, unknown', A(999), { token: admin, body: { action: 'approve' } }, msg))
+        .status,
+    ).toBe(404);
+    expect(
+      (
+        await decide(
+          'decide, not an id',
+          'nope',
+          { token: admin, body: { action: 'approve' } },
+          msg,
+        )
+      ).status,
+    ).toBe(404);
+    expect(
+      (
+        await decide(
+          'approve, already verified',
+          A(3),
+          { token: admin, body: { action: 'approve' } },
+          msg,
+        )
+      ).status,
+    ).toBe(409);
+    expect(
+      (
+        await decide(
+          'approve, never asked',
+          A(12),
+          { token: admin, body: { action: 'approve' } },
+          msg,
+        )
+      ).status,
+    ).toBe(409);
+
+    const ok = await decide('approve', A(1), { token: admin, body: { action: 'approve' } }, row);
+    expect(ok.status).toBe(200);
+    expect(row(ok.body)).toEqual({
+      name: 'Kempamma',
+      status: 'verified',
+      reason: null,
+      by: 'Raghav Kulkarni',
+    });
+
+    // The badge is now public, on the profile and on every piece in the gallery.
+    const after = await api.call('public, after approval', 'GET', `/artisans/${A(1)}`, {}, pub);
+    expect(pub(after.body)).toBe(true);
+    nothingPrivate(after);
+    const crafts = await api.call('gallery', 'GET', '/crafts', { query: { limit: '50' } }, (b) =>
+      b.data.items.map((c) => c.artisan.verified),
+    );
+    expect(
+      crafts.body.data.items.filter((c) => c.artisanId === A(1)).every((c) => c.artisan.verified),
+    ).toBe(true);
+    nothingPrivate(crafts);
+    await api.call('my profile, verified', 'GET', '/artisans/me', { token: artisan }, mine);
+    expect((await post('ask when verified', { token: artisan, body: request }, msg)).status).toBe(
+      409,
+    );
+    // Editing the profile keeps the private part in the owner's view.
+    await api.call(
+      'edit profile',
+      'PUT',
+      '/artisans/me',
+      { token: artisan, body: { village: 'Kalanagara' } },
+      mine,
+    );
+
+    // An admin can take the badge away again, with a reason the artisan sees.
+    const reason = 'The card belongs to someone else.';
+    const revoked = await decide(
+      'revoke',
+      A(1),
+      { token: admin, body: { action: 'reject', reason } },
+      row,
+    );
+    expect(row(revoked.body)).toMatchObject({ status: 'rejected', reason });
+    expect(pub((await api.call('public, revoked', 'GET', `/artisans/${A(1)}`, {}, pub)).body)).toBe(
+      false,
+    );
+    const told = await api.call(
+      'my profile, rejected',
+      'GET',
+      '/artisans/me',
+      { token: artisan },
+      mine,
+    );
+    expect(told.body.data.verification.reason).toBe(reason);
+    expect(
+      (
+        await decide(
+          'reject twice',
+          A(1),
+          { token: admin, body: { action: 'reject', reason } },
+          msg,
+        )
+      ).status,
+    ).toBe(409);
+    // A rejected artisan may ask again.
+    const again = await post(
+      'ask again',
+      { token: artisan, body: { idType: 'cooperative', idNumber: 'COOP-7781' } },
+      mine,
+    );
+    expect(again.body.data.verification).toMatchObject({
+      status: 'pending',
+      reason: null,
+      note: null,
+    });
+    await decide(
+      'reject a pending request',
+      A(2),
+      { token: admin, body: { action: 'reject', reason: 'Please send a clearer photo.' } },
+      row,
+    );
+
+    const audit = await api.call(
+      'audit',
+      'GET',
+      '/admin/audit',
+      { token: admin, query: { limit: '50' } },
+      (b) => b.data.items.map((x) => [x.action, x.details.name]),
+    );
+    expect(audit.body.data.items.map((x) => x.action)).toEqual(
+      expect.arrayContaining(['artisan.verify', 'artisan.unverify', 'artisan.verify_reject']),
+    );
+  },
 };
 
 describe('contract parity: browser mock vs Express server', () => {

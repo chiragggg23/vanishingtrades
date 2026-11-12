@@ -24,6 +24,9 @@ export const artisansC = {
   featured: h(async (_req, res) => ok(res, await catalog.featuredArtisans())),
   mine: h(async (req, res) => ok(res, await catalog.myProfile(req.user))),
   updateMine: h(async (req, res) => ok(res, await catalog.updateMyProfile(req.user, req.body))),
+  requestVerification: h(async (req, res) =>
+    ok(res, await catalog.requestVerification(req.user, req.body)),
+  ),
   getOne: h(async (req, res) => ok(res, await catalog.getArtisan(req.params.id))),
 };
 
@@ -128,6 +131,10 @@ export const adminC = {
     ok(res, await adminS.resolveFlag(req.user, req.params.id, req.body)),
   ),
   audit: h(async (req, res) => ok(res, await adminS.auditLog(req.query))),
+  verifications: h(async (req, res) => ok(res, await adminS.verifications(req.query))),
+  decideVerification: h(async (req, res) =>
+    ok(res, await adminS.decideVerification(req.user, req.params.artisanId, req.body)),
+  ),
 };
 
 export const uploadsC = {

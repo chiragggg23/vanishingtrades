@@ -726,6 +726,40 @@ export function buildSeed(now = new Date()) {
   addUser(19, 'Thomas Mathew', 'buyer', 'thomas.mathew@buyers.vanishingtrades.test', 90);
   const artisanUser = (i) => (i === 1 ? U(1) : U(4 + i));
 
+  // The demo artisan (first) starts unverified so the whole flow can be shown; the second has a
+  // request waiting for the admin, the last was turned down, the rest were checked by the admin.
+  const ID_TYPES = ['pehchan', 'cooperative', 'award'];
+  const blank = {
+    verifyStatus: 'none',
+    verifyIdType: null,
+    verifyIdNumber: null,
+    verifyNote: null,
+    verifyReason: null,
+    verifySubmittedAt: null,
+    verifyDecidedAt: null,
+    verifyDecidedBy: null,
+  };
+  const seedVerification = (i) => {
+    if (i === 0) return blank;
+    const asked = {
+      ...blank,
+      verifyIdType: ID_TYPES[i % 3],
+      verifyIdNumber: `SAMPLE-${4100 + i * 37}`,
+      verifyNote: 'Sample request from the demo data.',
+      verifySubmittedAt: ago(i === 1 ? 2 : 120 - i * 6),
+    };
+    if (i === 1) return { ...asked, verifyStatus: 'pending' };
+    const decided = { verifyDecidedAt: ago(110 - i * 6), verifyDecidedBy: U(5) };
+    if (i === ARTISANS.length - 1)
+      return {
+        ...asked,
+        ...decided,
+        verifyStatus: 'rejected',
+        verifyReason: 'The card number could not be read. Please send a clearer copy.',
+      };
+    return { ...asked, ...decided, verifyStatus: 'verified' };
+  };
+
   const artisans = ARTISANS.map((a, i) => ({
     id: A(i + 1),
     userId: artisanUser(i + 1),
@@ -740,6 +774,7 @@ export function buildSeed(now = new Date()) {
     avatarUrl: null,
     seed: `artisan-${i + 1}`,
     demo: true,
+    ...seedVerification(i),
     createdAt: ago(175 - i * 9),
     updatedAt: ago(175 - i * 9),
   }));

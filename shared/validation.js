@@ -1,6 +1,14 @@
 // Dependency-free schema validation shared by the server, the browser mock and client forms,
 // so a 422 has exactly the same field paths and messages everywhere.
-import { CRAFT_KEYS, FLAG_TARGETS, LANGS, PUBLIC_ROLES, ROLES, STORY_LANGS } from './constants.js';
+import {
+  CRAFT_KEYS,
+  FLAG_TARGETS,
+  LANGS,
+  PUBLIC_ROLES,
+  ROLES,
+  STORY_LANGS,
+  VERIFY_ID_TYPES,
+} from './constants.js';
 
 export const M = {
   required: () => 'This is required.',
@@ -151,6 +159,10 @@ const priceRefine = (v, errors, msgs = M) => {
     errors.priceMax = msgs.priceOrder();
 };
 
+const rejectNeedsReason = (v, errors, msgs = M) => {
+  if (v.action === 'reject' && !v.reason && !errors.reason) errors.reason = msgs.required();
+};
+
 // ---- schemas from docs/API_CONTRACT.md ------------------------------------------------------------
 export const schemas = {
   login: obj({ email: email({ required: true }), password: str(1, 72, { required: true }) }),
@@ -256,6 +268,18 @@ export const schemas = {
   role: obj({ role: oneOf(ROLES, { required: true }) }),
   active: obj({ active: bool({ required: true }) }),
   resolveFlag: obj({ action: oneOf(['dismiss', 'remove'], { required: true }) }),
+  verificationRequest: obj({
+    idType: oneOf(VERIFY_ID_TYPES, { required: true }),
+    idNumber: str(4, 40, { required: true }),
+    note: str(0, 500, { nullable: true }),
+  }),
+  verificationDecision: {
+    ...obj({
+      action: oneOf(['approve', 'reject'], { required: true }),
+      reason: str(5, 300, { nullable: true }),
+    }),
+    refine: rejectNeedsReason,
+  },
 };
 
 /** Remove keys that start with "$" or contain "." (operator-injection guard). */

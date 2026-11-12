@@ -125,3 +125,7 @@
 .teach {
   margin-top: var(--s8);
 }
+.verified {
+  margin: var(--s2) 0 0;
+  font-size: var(--fs-sm);
+}

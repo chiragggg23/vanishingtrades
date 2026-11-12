@@ -35,6 +35,7 @@ const REF_FIELDS = [
   'targetId',
   'authorId',
   'actorId',
+  'verifyDecidedBy',
 ];
 const DATE_FIELDS = [
   'createdAt',
@@ -46,6 +47,8 @@ const DATE_FIELDS = [
   'issuedAt',
   'resolvedAt',
   'processedAt',
+  'verifySubmittedAt',
+  'verifyDecidedAt',
 ];
 
 /** Convert a plain seed record into a raw Mongo document (ObjectIds and Dates). */

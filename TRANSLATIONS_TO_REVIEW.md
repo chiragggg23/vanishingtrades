@@ -8,7 +8,7 @@ speaker**. Please read each row and fix anything stiff, wrong or too formal. Kee
 (VanishingTrades) and font names in Latin script. Placeholders like `{{name}}` must stay exactly
 as they are. Keys ending in `_one` / `_other` are singular and plural forms.
 
-- UI strings: 652
+- UI strings: 701
 - Strings missing a Kannada or Hindi version: 0
 - Demo world texts (artisan bios, piece names, story lines): 82
 
@@ -19,970 +19,1023 @@ as they are. Keys ending in `_one` / `_other` are singular and plural forms.
    and craft names, which have local spellings.
 3. Run `npm run translations:review` and `npm test` in `client/` afterwards.
 
-
 ## UI: admin
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `admin.actions` | Actions | ಕ್ರಿಯೆಗಳು | कार्य |
-| `admin.allRoles` | All roles | ಎಲ್ಲ ಪಾತ್ರಗಳು | सभी भूमिकाएँ |
-| `admin.allStates` | Active and paused | ಸಕ್ರಿಯ ಮತ್ತು ತಡೆಹಿಡಿದವರು | सक्रिय और रोके गए |
-| `admin.auditTitle` | Audit log | ದಾಖಲೆ ಪುಸ್ತಕ | लेखा-जोखा |
-| `admin.confirmTakeDown` | Yes, take it down | ಹೌದು, ತೆಗೆದುಹಾಕಿ | हाँ, हटाएँ |
-| `admin.dismiss` | Dismiss | ತಳ್ಳಿಹಾಕಿ | ख़ारिज करें |
-| `admin.email` | Email | ಇಮೇಲ್ | ईमेल |
-| `admin.findContent` | Find by title | ಶೀರ್ಷಿಕೆಯಿಂದ ಹುಡುಕಿ | शीर्षक से खोजें |
-| `admin.flagDismissed` | Report dismissed. | ವರದಿ ತಳ್ಳಿಹಾಕಲಾಗಿದೆ. | शिकायत ख़ारिज। |
-| `admin.flagRemoved` | Taken down. | ತೆಗೆದುಹಾಕಲಾಗಿದೆ. | हटा दिया। |
-| `admin.flagStatus.all` | All reports | ಎಲ್ಲ ವರದಿಗಳು | सभी शिकायतें |
-| `admin.flagStatus.open` | Open reports | ತೆರೆದ ವರದಿಗಳು | खुली शिकायतें |
-| `admin.flagStatus.resolved` | Handled | ನಿರ್ವಹಿಸಿದವು | निपटाई गईं |
-| `admin.flagsTitle` | Reports from users | ಬಳಕೆದಾರರ ವರದಿಗಳು | लोगों की शिकायतें |
-| `admin.kind` | Kind | ಬಗೆ | प्रकार |
-| `admin.name` | Name | ಹೆಸರು | नाम |
-| `admin.noAudit` | No admin actions yet. | ಇನ್ನೂ ನಿರ್ವಾಹಕ ಕ್ರಿಯೆಗಳಿಲ್ಲ. | अभी कोई एडमिन कार्य नहीं। |
-| `admin.noFlags` | No reports. Quiet on the loom. | ವರದಿಗಳಿಲ್ಲ. ಮಗ್ಗ ಶಾಂತವಾಗಿದೆ. | कोई शिकायत नहीं। करघा शांत है। |
-| `admin.noUsers` | Nobody matches that search. | ಆ ಹುಡುಕಾಟಕ್ಕೆ ಯಾರೂ ಹೊಂದುತ್ತಿಲ್ಲ. | इस खोज से कोई मेल नहीं खाता। |
-| `admin.nothingFound` | Nothing found. | ಏನೂ ಸಿಗಲಿಲ್ಲ. | कुछ नहीं मिला। |
-| `admin.pause` | Pause | ತಡೆಹಿಡಿಯಿರಿ | रोकें |
-| `admin.pauseArtisan` | Pause the artisan | ಕುಶಲಕರ್ಮಿಯನ್ನು ತಡೆಹಿಡಿಯಿರಿ | कारीगर को रोकें |
-| `admin.paused` | {{name}} is paused and signed out everywhere. | {{name}} ತಡೆಹಿಡಿಯಲಾಗಿದೆ, ಎಲ್ಲೆಡೆಯಿಂದ ಹೊರಗೆ ಕಳುಹಿಸಲಾಗಿದೆ. | {{name}} रोके गए और हर जगह से साइन आउट हुए। |
-| `admin.reactivate` | Reactivate | ಮತ್ತೆ ಸಕ್ರಿಯಗೊಳಿಸಿ | फिर से चालू करें |
-| `admin.reactivated` | {{name}} can sign in again. | {{name}} ಮತ್ತೆ ಒಳಗೆ ಬರಬಹುದು. | {{name}} फिर से साइन इन कर सकते हैं। |
-| `admin.remove` | Take down | ತೆಗೆದುಹಾಕಿ | हटाएँ |
-| `admin.reportedBy` | Reported by {{name}} on {{date}} | {{name}} {{date}} ರಂದು ವರದಿ ಮಾಡಿದ್ದು | {{name}} ने {{date}} को बताया |
-| `admin.resolution.dismissed` | Dismissed | ತಳ್ಳಿಹಾಕಲಾಗಿದೆ | ख़ारिज |
-| `admin.resolution.removed` | Taken down | ತೆಗೆದುಹಾಕಲಾಗಿದೆ | हटाया गया |
-| `admin.role` | Role | ಪಾತ್ರ | भूमिका |
-| `admin.roleChanged` | {{name}} is now a {{role}}. | {{name}} ಈಗ {{role}}. | {{name}} अब {{role}} हैं। |
-| `admin.roleFor` | Role for {{name}} | {{name}} ಅವರ ಪಾತ್ರ | {{name}} की भूमिका |
-| `admin.saveRole` | Save role | ಪಾತ್ರ ಉಳಿಸಿ | भूमिका सहेजें |
-| `admin.searchUsers` | Search by name or email | ಹೆಸರು ಅಥವಾ ಇಮೇಲ್‌ನಿಂದ ಹುಡುಕಿ | नाम या ईमेल से खोजें |
-| `admin.show` | Show | ತೋರಿಸಿ | दिखाएँ |
-| `admin.state` | State | ಸ್ಥಿತಿ | स्थिति |
-| `admin.tab.audit` | Audit log | ದಾಖಲೆ ಪುಸ್ತಕ | लेखा-जोखा |
-| `admin.tab.impact` | Impact | ಪರಿಣಾಮ | असर |
-| `admin.tab.moderation` | Reports | ವರದಿಗಳು | शिकायतें |
-| `admin.tab.users` | People | ಜನರು | लोग |
-| `admin.takeDown` | Take down | ತೆಗೆದುಹಾಕಿ | हटाएँ |
-| `admin.takeDownLede` | For anything that needs to come down without waiting for a report. | ವರದಿಗೆ ಕಾಯದೆ ತೆಗೆಯಬೇಕಾದವುಗಳಿಗಾಗಿ. | उन चीज़ों के लिए जिन्हें शिकायत का इंतज़ार किए बिना हटाना है। |
-| `admin.takeDownTitle` | Take down a story or piece | ಕಥೆ ಅಥವಾ ವಸ್ತು ತೆಗೆದುಹಾಕಿ | कहानी या चीज़ हटाएँ |
-| `admin.takenDown` | Taken down and written to the audit log. | ತೆಗೆದುಹಾಕಿ ದಾಖಲೆ ಪುಸ್ತಕದಲ್ಲಿ ಬರೆಯಲಾಗಿದೆ. | हटा दिया और लेखा-जोखा में लिख दिया। |
-| `admin.target.artisan` | Artisan | ಕುಶಲಕರ್ಮಿ | कारीगर |
-| `admin.target.craft` | Piece | ವಸ್ತು | चीज़ |
-| `admin.target.story` | Story | ಕಥೆ | कहानी |
-| `admin.usersTitle` | People | ಜನರು | लोग |
-| `admin.what` | What happened | ಏನಾಯಿತು | क्या हुआ |
-| `admin.when` | When | ಯಾವಾಗ | कब |
-| `admin.who` | Who | ಯಾರು | किसने |
-| `admin.you` | (you) | (ನೀವು) | (आप) |
+| Key                          | English                                                            | Kannada                                                  | Hindi                                                         |
+| ---------------------------- | ------------------------------------------------------------------ | -------------------------------------------------------- | ------------------------------------------------------------- |
+| `admin.actions`              | Actions                                                            | ಕ್ರಿಯೆಗಳು                                                | कार्य                                                         |
+| `admin.allRoles`             | All roles                                                          | ಎಲ್ಲ ಪಾತ್ರಗಳು                                            | सभी भूमिकाएँ                                                  |
+| `admin.allStates`            | Active and paused                                                  | ಸಕ್ರಿಯ ಮತ್ತು ತಡೆಹಿಡಿದವರು                                 | सक्रिय और रोके गए                                             |
+| `admin.auditTitle`           | Audit log                                                          | ದಾಖಲೆ ಪುಸ್ತಕ                                             | लेखा-जोखा                                                     |
+| `admin.confirmTakeDown`      | Yes, take it down                                                  | ಹೌದು, ತೆಗೆದುಹಾಕಿ                                         | हाँ, हटाएँ                                                    |
+| `admin.dismiss`              | Dismiss                                                            | ತಳ್ಳಿಹಾಕಿ                                                | ख़ारिज करें                                                   |
+| `admin.email`                | Email                                                              | ಇಮೇಲ್                                                    | ईमेल                                                          |
+| `admin.findContent`          | Find by title                                                      | ಶೀರ್ಷಿಕೆಯಿಂದ ಹುಡುಕಿ                                      | शीर्षक से खोजें                                               |
+| `admin.flagDismissed`        | Report dismissed.                                                  | ವರದಿ ತಳ್ಳಿಹಾಕಲಾಗಿದೆ.                                     | शिकायत ख़ारिज।                                                |
+| `admin.flagRemoved`          | Taken down.                                                        | ತೆಗೆದುಹಾಕಲಾಗಿದೆ.                                         | हटा दिया।                                                     |
+| `admin.flagStatus.all`       | All reports                                                        | ಎಲ್ಲ ವರದಿಗಳು                                             | सभी शिकायतें                                                  |
+| `admin.flagStatus.open`      | Open reports                                                       | ತೆರೆದ ವರದಿಗಳು                                            | खुली शिकायतें                                                 |
+| `admin.flagStatus.resolved`  | Handled                                                            | ನಿರ್ವಹಿಸಿದವು                                             | निपटाई गईं                                                    |
+| `admin.flagsTitle`           | Reports from users                                                 | ಬಳಕೆದಾರರ ವರದಿಗಳು                                         | लोगों की शिकायतें                                             |
+| `admin.kind`                 | Kind                                                               | ಬಗೆ                                                      | प्रकार                                                        |
+| `admin.name`                 | Name                                                               | ಹೆಸರು                                                    | नाम                                                           |
+| `admin.noAudit`              | No admin actions yet.                                              | ಇನ್ನೂ ನಿರ್ವಾಹಕ ಕ್ರಿಯೆಗಳಿಲ್ಲ.                             | अभी कोई एडमिन कार्य नहीं।                                     |
+| `admin.noFlags`              | No reports. Quiet on the loom.                                     | ವರದಿಗಳಿಲ್ಲ. ಮಗ್ಗ ಶಾಂತವಾಗಿದೆ.                             | कोई शिकायत नहीं। करघा शांत है।                                |
+| `admin.noUsers`              | Nobody matches that search.                                        | ಆ ಹುಡುಕಾಟಕ್ಕೆ ಯಾರೂ ಹೊಂದುತ್ತಿಲ್ಲ.                         | इस खोज से कोई मेल नहीं खाता।                                  |
+| `admin.nothingFound`         | Nothing found.                                                     | ಏನೂ ಸಿಗಲಿಲ್ಲ.                                            | कुछ नहीं मिला।                                                |
+| `admin.pause`                | Pause                                                              | ತಡೆಹಿಡಿಯಿರಿ                                              | रोकें                                                         |
+| `admin.pauseArtisan`         | Pause the artisan                                                  | ಕುಶಲಕರ್ಮಿಯನ್ನು ತಡೆಹಿಡಿಯಿರಿ                               | कारीगर को रोकें                                               |
+| `admin.paused`               | {{name}} is paused and signed out everywhere.                      | {{name}} ತಡೆಹಿಡಿಯಲಾಗಿದೆ, ಎಲ್ಲೆಡೆಯಿಂದ ಹೊರಗೆ ಕಳುಹಿಸಲಾಗಿದೆ. | {{name}} रोके गए और हर जगह से साइन आउट हुए।                   |
+| `admin.reactivate`           | Reactivate                                                         | ಮತ್ತೆ ಸಕ್ರಿಯಗೊಳಿಸಿ                                       | फिर से चालू करें                                              |
+| `admin.reactivated`          | {{name}} can sign in again.                                        | {{name}} ಮತ್ತೆ ಒಳಗೆ ಬರಬಹುದು.                             | {{name}} फिर से साइन इन कर सकते हैं।                          |
+| `admin.remove`               | Take down                                                          | ತೆಗೆದುಹಾಕಿ                                               | हटाएँ                                                         |
+| `admin.reportedBy`           | Reported by {{name}} on {{date}}                                   | {{name}} {{date}} ರಂದು ವರದಿ ಮಾಡಿದ್ದು                     | {{name}} ने {{date}} को बताया                                 |
+| `admin.resolution.dismissed` | Dismissed                                                          | ತಳ್ಳಿಹಾಕಲಾಗಿದೆ                                           | ख़ारिज                                                        |
+| `admin.resolution.removed`   | Taken down                                                         | ತೆಗೆದುಹಾಕಲಾಗಿದೆ                                          | हटाया गया                                                     |
+| `admin.role`                 | Role                                                               | ಪಾತ್ರ                                                    | भूमिका                                                        |
+| `admin.roleChanged`          | {{name}} is now a {{role}}.                                        | {{name}} ಈಗ {{role}}.                                    | {{name}} अब {{role}} हैं।                                     |
+| `admin.roleFor`              | Role for {{name}}                                                  | {{name}} ಅವರ ಪಾತ್ರ                                       | {{name}} की भूमिका                                            |
+| `admin.saveRole`             | Save role                                                          | ಪಾತ್ರ ಉಳಿಸಿ                                              | भूमिका सहेजें                                                 |
+| `admin.searchUsers`          | Search by name or email                                            | ಹೆಸರು ಅಥವಾ ಇಮೇಲ್‌ನಿಂದ ಹುಡುಕಿ                             | नाम या ईमेल से खोजें                                          |
+| `admin.show`                 | Show                                                               | ತೋರಿಸಿ                                                   | दिखाएँ                                                        |
+| `admin.state`                | State                                                              | ಸ್ಥಿತಿ                                                   | स्थिति                                                        |
+| `admin.tab.audit`            | Audit log                                                          | ದಾಖಲೆ ಪುಸ್ತಕ                                             | लेखा-जोखा                                                     |
+| `admin.tab.impact`           | Impact                                                             | ಪರಿಣಾಮ                                                   | असर                                                           |
+| `admin.tab.moderation`       | Reports                                                            | ವರದಿಗಳು                                                  | शिकायतें                                                      |
+| `admin.tab.users`            | People                                                             | ಜನರು                                                     | लोग                                                           |
+| `admin.tab.verify`           | Verification                                                       | ಪರಿಶೀಲನೆ                                                 | सत्यापन                                                       |
+| `admin.takeDown`             | Take down                                                          | ತೆಗೆದುಹಾಕಿ                                               | हटाएँ                                                         |
+| `admin.takeDownLede`         | For anything that needs to come down without waiting for a report. | ವರದಿಗೆ ಕಾಯದೆ ತೆಗೆಯಬೇಕಾದವುಗಳಿಗಾಗಿ.                        | उन चीज़ों के लिए जिन्हें शिकायत का इंतज़ार किए बिना हटाना है। |
+| `admin.takeDownTitle`        | Take down a story or piece                                         | ಕಥೆ ಅಥವಾ ವಸ್ತು ತೆಗೆದುಹಾಕಿ                                | कहानी या चीज़ हटाएँ                                           |
+| `admin.takenDown`            | Taken down and written to the audit log.                           | ತೆಗೆದುಹಾಕಿ ದಾಖಲೆ ಪುಸ್ತಕದಲ್ಲಿ ಬರೆಯಲಾಗಿದೆ.                 | हटा दिया और लेखा-जोखा में लिख दिया।                           |
+| `admin.target.artisan`       | Artisan                                                            | ಕುಶಲಕರ್ಮಿ                                                | कारीगर                                                        |
+| `admin.target.craft`         | Piece                                                              | ವಸ್ತು                                                    | चीज़                                                          |
+| `admin.target.story`         | Story                                                              | ಕಥೆ                                                      | कहानी                                                         |
+| `admin.usersTitle`           | People                                                             | ಜನರು                                                     | लोग                                                           |
+| `admin.what`                 | What happened                                                      | ಏನಾಯಿತು                                                  | क्या हुआ                                                      |
+| `admin.when`                 | When                                                               | ಯಾವಾಗ                                                    | कब                                                            |
+| `admin.who`                  | Who                                                                | ಯಾರು                                                     | किसने                                                         |
+| `admin.you`                  | (you)                                                              | (ನೀವು)                                                   | (आप)                                                          |
 
 ## UI: appr
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `appr.appliedBody` | The artisan will read it and shortlist, accept or decline. You can follow it on your workbench. | ಕುಶಲಕರ್ಮಿ ಅದನ್ನು ಓದಿ ಆಯ್ಕೆ ಪಟ್ಟಿಗೆ ಸೇರಿಸುತ್ತಾರೆ, ಒಪ್ಪುತ್ತಾರೆ ಅಥವಾ ನಿರಾಕರಿಸುತ್ತಾರೆ. ನಿಮ್ಮ ಕೆಲಸದ ಮೇಜಿನಲ್ಲಿ ನೋಡಬಹುದು. | कारीगर इसे पढ़कर चुनी सूची में रखेंगे, स्वीकार करेंगे या मना करेंगे। आप अपनी कार्य-मेज़ पर देख सकते हैं। |
-| `appr.appliedTitle` | Application sent. | ಅರ್ಜಿ ಕಳುಹಿಸಲಾಗಿದೆ. | आवेदन भेज दिया। |
-| `appr.apply` | Send application | ಅರ್ಜಿ ಕಳುಹಿಸಿ | आवेदन भेजें |
-| `appr.applyTitle` | Apply | ಅರ್ಜಿ ಹಾಕಿ | आवेदन करें |
-| `appr.back` | Back to apprenticeships | ಶಿಷ್ಯವೃತ್ತಿಗಳಿಗೆ ಹಿಂತಿರುಗಿ | शागिर्दी पर लौटें |
-| `appr.closedNote` | This opening is closed. Keep an eye on the list for the next one. | ಈ ಅವಕಾಶ ಮುಚ್ಚಿದೆ. ಮುಂದಿನದಕ್ಕಾಗಿ ಪಟ್ಟಿ ನೋಡುತ್ತಿರಿ. | यह मौक़ा बंद है। अगले के लिए सूची देखते रहें। |
-| `appr.count_one` | {{count}} opening | {{count}} ಅವಕಾಶ | {{count}} मौक़ा |
-| `appr.count_other` | {{count}} openings | {{count}} ಅವಕಾಶಗಳು | {{count}} मौक़े |
-| `appr.deadline` | Apply by | ಕೊನೆಯ ದಿನ | आवेदन की आख़िरी तारीख़ |
-| `appr.duration` | Length | ಅವಧಿ | अवधि |
-| `appr.learnersOnly` | Applications come from learner accounts. | ಅರ್ಜಿಗಳು ಕಲಿಯುವವರ ಖಾತೆಯಿಂದ ಬರುತ್ತವೆ. | आवेदन सीखने वालों के खाते से आते हैं। |
-| `appr.lede` | Artisans who want to pass their craft on. Openings are paid where the artisan can manage it, and every finished apprenticeship ends with a certificate anyone can check. | ತಮ್ಮ ಕಲೆಯನ್ನು ಮುಂದಿನವರಿಗೆ ಕೊಡಲು ಬಯಸುವ ಕುಶಲಕರ್ಮಿಗಳು. ಸಾಧ್ಯವಾದಲ್ಲಿ ಗೌರವಧನ ಇದೆ, ಮತ್ತು ಪ್ರತಿ ಶಿಷ್ಯವೃತ್ತಿ ಯಾರು ಬೇಕಾದರೂ ಪರಿಶೀಲಿಸಬಹುದಾದ ಪ್ರಮಾಣಪತ್ರದೊಂದಿಗೆ ಮುಗಿಯುತ್ತದೆ. | वे कारीगर जो अपना हुनर आगे सौंपना चाहते हैं। जहाँ हो सके वहाँ वज़ीफ़ा मिलता है, और हर पूरी शागिर्दी ऐसे प्रमाणपत्र के साथ ख़त्म होती है जिसे कोई भी जाँच सके। |
-| `appr.motivation` | Why this craft, and why you? | ಈ ಕಲೆ ಯಾಕೆ, ಮತ್ತು ನೀವೇ ಯಾಕೆ? | यही शिल्प क्यों, और आप ही क्यों? |
-| `appr.motivationHint` | A few honest sentences are enough. Mention when you can come. | ಕೆಲವು ಪ್ರಾಮಾಣಿಕ ವಾಕ್ಯಗಳು ಸಾಕು. ನೀವು ಯಾವಾಗ ಬರಬಹುದು ಎಂದು ಹೇಳಿ. | कुछ सच्चे वाक्य काफ़ी हैं। बताइए आप कब आ सकते हैं। |
-| `appr.noStipend` | None | ಇಲ್ಲ | नहीं |
-| `appr.note` | patience is the only real entry requirement | ತಾಳ್ಮೆಯೇ ನಿಜವಾದ ಅರ್ಹತೆ | धीरज ही असली योग्यता है |
-| `appr.perMonth` | ₹{{amount}} a month | ತಿಂಗಳಿಗೆ ₹{{amount}} | ₹{{amount}} महीना |
-| `appr.results` | Openings | ಅವಕಾಶಗಳು | मौक़े |
-| `appr.roadmapTitle` | The five steps | ಐದು ಹಂತಗಳು | पाँच कदम |
-| `appr.searchLabel` | Search openings | ಅವಕಾಶಗಳಲ್ಲಿ ಹುಡುಕಿ | मौक़ों में खोजें |
-| `appr.searchPlaceholder` | loom, Mysuru, fretsaw… | ಮಗ್ಗ, Mysuru, ಗರಗಸ… | करघा, Mysuru, आरी… |
-| `appr.seats` | Places | ಸ್ಥಾನಗಳು | जगहें |
-| `appr.seeApplications` | See my applications | ನನ್ನ ಅರ್ಜಿಗಳು | मेरे आवेदन |
-| `appr.show.all` | All of them | ಎಲ್ಲವೂ | सभी |
-| `appr.show.closed` | Closed | ಮುಚ್ಚಿದವು | बंद |
-| `appr.show.open` | Open now | ಈಗ ತೆರೆದಿರುವವು | अभी खुले |
-| `appr.signInToApply` | Sign in as a learner to apply. | ಅರ್ಜಿ ಹಾಕಲು ಕಲಿಯುವವರಾಗಿ ಒಳಗೆ ಬನ್ನಿ. | आवेदन के लिए सीखने वाले के रूप में साइन इन करें। |
-| `appr.sort.deadline` | Closing soonest | ಬೇಗ ಮುಚ್ಚುವವು ಮೊದಲು | जल्दी बंद होने वाले पहले |
-| `appr.sort.newest` | Newest | ಹೊಸದು ಮೊದಲು | नए पहले |
-| `appr.statusLabel` | Show | ತೋರಿಸಿ | दिखाएँ |
-| `appr.stipend` | Stipend | ಗೌರವಧನ | वज़ीफ़ा |
-| `appr.title` | Apprenticeships | ಶಿಷ್ಯವೃತ್ತಿ | शागिर्दी |
-| `appr.weeks_one` | {{count}} week | {{count}} ವಾರ | {{count}} हफ़्ता |
-| `appr.weeks_other` | {{count}} weeks | {{count}} ವಾರಗಳು | {{count}} हफ़्ते |
-| `appr.with` | with {{name}} | {{name}} ಅವರೊಂದಿಗೆ | {{name}} के साथ |
-| `appr.withLabel` | with | ಗುರು: | उस्ताद: |
+| Key                      | English                                                                                                                                                                  | Kannada                                                                                                                                                         | Hindi                                                                                                                                                         |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `appr.appliedBody`       | The artisan will read it and shortlist, accept or decline. You can follow it on your workbench.                                                                          | ಕುಶಲಕರ್ಮಿ ಅದನ್ನು ಓದಿ ಆಯ್ಕೆ ಪಟ್ಟಿಗೆ ಸೇರಿಸುತ್ತಾರೆ, ಒಪ್ಪುತ್ತಾರೆ ಅಥವಾ ನಿರಾಕರಿಸುತ್ತಾರೆ. ನಿಮ್ಮ ಕೆಲಸದ ಮೇಜಿನಲ್ಲಿ ನೋಡಬಹುದು.                                              | कारीगर इसे पढ़कर चुनी सूची में रखेंगे, स्वीकार करेंगे या मना करेंगे। आप अपनी कार्य-मेज़ पर देख सकते हैं।                                                      |
+| `appr.appliedTitle`      | Application sent.                                                                                                                                                        | ಅರ್ಜಿ ಕಳುಹಿಸಲಾಗಿದೆ.                                                                                                                                             | आवेदन भेज दिया।                                                                                                                                               |
+| `appr.apply`             | Send application                                                                                                                                                         | ಅರ್ಜಿ ಕಳುಹಿಸಿ                                                                                                                                                   | आवेदन भेजें                                                                                                                                                   |
+| `appr.applyTitle`        | Apply                                                                                                                                                                    | ಅರ್ಜಿ ಹಾಕಿ                                                                                                                                                      | आवेदन करें                                                                                                                                                    |
+| `appr.back`              | Back to apprenticeships                                                                                                                                                  | ಶಿಷ್ಯವೃತ್ತಿಗಳಿಗೆ ಹಿಂತಿರುಗಿ                                                                                                                                      | शागिर्दी पर लौटें                                                                                                                                             |
+| `appr.closedNote`        | This opening is closed. Keep an eye on the list for the next one.                                                                                                        | ಈ ಅವಕಾಶ ಮುಚ್ಚಿದೆ. ಮುಂದಿನದಕ್ಕಾಗಿ ಪಟ್ಟಿ ನೋಡುತ್ತಿರಿ.                                                                                                               | यह मौक़ा बंद है। अगले के लिए सूची देखते रहें।                                                                                                                 |
+| `appr.count_one`         | {{count}} opening                                                                                                                                                        | {{count}} ಅವಕಾಶ                                                                                                                                                 | {{count}} मौक़ा                                                                                                                                               |
+| `appr.count_other`       | {{count}} openings                                                                                                                                                       | {{count}} ಅವಕಾಶಗಳು                                                                                                                                              | {{count}} मौक़े                                                                                                                                               |
+| `appr.deadline`          | Apply by                                                                                                                                                                 | ಕೊನೆಯ ದಿನ                                                                                                                                                       | आवेदन की आख़िरी तारीख़                                                                                                                                        |
+| `appr.duration`          | Length                                                                                                                                                                   | ಅವಧಿ                                                                                                                                                            | अवधि                                                                                                                                                          |
+| `appr.learnersOnly`      | Applications come from learner accounts.                                                                                                                                 | ಅರ್ಜಿಗಳು ಕಲಿಯುವವರ ಖಾತೆಯಿಂದ ಬರುತ್ತವೆ.                                                                                                                            | आवेदन सीखने वालों के खाते से आते हैं।                                                                                                                         |
+| `appr.lede`              | Artisans who want to pass their craft on. Openings are paid where the artisan can manage it, and every finished apprenticeship ends with a certificate anyone can check. | ತಮ್ಮ ಕಲೆಯನ್ನು ಮುಂದಿನವರಿಗೆ ಕೊಡಲು ಬಯಸುವ ಕುಶಲಕರ್ಮಿಗಳು. ಸಾಧ್ಯವಾದಲ್ಲಿ ಗೌರವಧನ ಇದೆ, ಮತ್ತು ಪ್ರತಿ ಶಿಷ್ಯವೃತ್ತಿ ಯಾರು ಬೇಕಾದರೂ ಪರಿಶೀಲಿಸಬಹುದಾದ ಪ್ರಮಾಣಪತ್ರದೊಂದಿಗೆ ಮುಗಿಯುತ್ತದೆ. | वे कारीगर जो अपना हुनर आगे सौंपना चाहते हैं। जहाँ हो सके वहाँ वज़ीफ़ा मिलता है, और हर पूरी शागिर्दी ऐसे प्रमाणपत्र के साथ ख़त्म होती है जिसे कोई भी जाँच सके। |
+| `appr.motivation`        | Why this craft, and why you?                                                                                                                                             | ಈ ಕಲೆ ಯಾಕೆ, ಮತ್ತು ನೀವೇ ಯಾಕೆ?                                                                                                                                    | यही शिल्प क्यों, और आप ही क्यों?                                                                                                                              |
+| `appr.motivationHint`    | A few honest sentences are enough. Mention when you can come.                                                                                                            | ಕೆಲವು ಪ್ರಾಮಾಣಿಕ ವಾಕ್ಯಗಳು ಸಾಕು. ನೀವು ಯಾವಾಗ ಬರಬಹುದು ಎಂದು ಹೇಳಿ.                                                                                                    | कुछ सच्चे वाक्य काफ़ी हैं। बताइए आप कब आ सकते हैं।                                                                                                            |
+| `appr.noStipend`         | None                                                                                                                                                                     | ಇಲ್ಲ                                                                                                                                                            | नहीं                                                                                                                                                          |
+| `appr.note`              | patience is the only real entry requirement                                                                                                                              | ತಾಳ್ಮೆಯೇ ನಿಜವಾದ ಅರ್ಹತೆ                                                                                                                                          | धीरज ही असली योग्यता है                                                                                                                                       |
+| `appr.perMonth`          | ₹{{amount}} a month                                                                                                                                                      | ತಿಂಗಳಿಗೆ ₹{{amount}}                                                                                                                                            | ₹{{amount}} महीना                                                                                                                                             |
+| `appr.results`           | Openings                                                                                                                                                                 | ಅವಕಾಶಗಳು                                                                                                                                                        | मौक़े                                                                                                                                                         |
+| `appr.roadmapTitle`      | The five steps                                                                                                                                                           | ಐದು ಹಂತಗಳು                                                                                                                                                      | पाँच कदम                                                                                                                                                      |
+| `appr.searchLabel`       | Search openings                                                                                                                                                          | ಅವಕಾಶಗಳಲ್ಲಿ ಹುಡುಕಿ                                                                                                                                              | मौक़ों में खोजें                                                                                                                                              |
+| `appr.searchPlaceholder` | loom, Mysuru, fretsaw…                                                                                                                                                   | ಮಗ್ಗ, Mysuru, ಗರಗಸ…                                                                                                                                             | करघा, Mysuru, आरी…                                                                                                                                            |
+| `appr.seats`             | Places                                                                                                                                                                   | ಸ್ಥಾನಗಳು                                                                                                                                                        | जगहें                                                                                                                                                         |
+| `appr.seeApplications`   | See my applications                                                                                                                                                      | ನನ್ನ ಅರ್ಜಿಗಳು                                                                                                                                                   | मेरे आवेदन                                                                                                                                                    |
+| `appr.show.all`          | All of them                                                                                                                                                              | ಎಲ್ಲವೂ                                                                                                                                                          | सभी                                                                                                                                                           |
+| `appr.show.closed`       | Closed                                                                                                                                                                   | ಮುಚ್ಚಿದವು                                                                                                                                                       | बंद                                                                                                                                                           |
+| `appr.show.open`         | Open now                                                                                                                                                                 | ಈಗ ತೆರೆದಿರುವವು                                                                                                                                                  | अभी खुले                                                                                                                                                      |
+| `appr.signInToApply`     | Sign in as a learner to apply.                                                                                                                                           | ಅರ್ಜಿ ಹಾಕಲು ಕಲಿಯುವವರಾಗಿ ಒಳಗೆ ಬನ್ನಿ.                                                                                                                             | आवेदन के लिए सीखने वाले के रूप में साइन इन करें।                                                                                                              |
+| `appr.sort.deadline`     | Closing soonest                                                                                                                                                          | ಬೇಗ ಮುಚ್ಚುವವು ಮೊದಲು                                                                                                                                             | जल्दी बंद होने वाले पहले                                                                                                                                      |
+| `appr.sort.newest`       | Newest                                                                                                                                                                   | ಹೊಸದು ಮೊದಲು                                                                                                                                                     | नए पहले                                                                                                                                                       |
+| `appr.statusLabel`       | Show                                                                                                                                                                     | ತೋರಿಸಿ                                                                                                                                                          | दिखाएँ                                                                                                                                                        |
+| `appr.stipend`           | Stipend                                                                                                                                                                  | ಗೌರವಧನ                                                                                                                                                          | वज़ीफ़ा                                                                                                                                                       |
+| `appr.title`             | Apprenticeships                                                                                                                                                          | ಶಿಷ್ಯವೃತ್ತಿ                                                                                                                                                     | शागिर्दी                                                                                                                                                      |
+| `appr.weeks_one`         | {{count}} week                                                                                                                                                           | {{count}} ವಾರ                                                                                                                                                   | {{count}} हफ़्ता                                                                                                                                              |
+| `appr.weeks_other`       | {{count}} weeks                                                                                                                                                          | {{count}} ವಾರಗಳು                                                                                                                                                | {{count}} हफ़्ते                                                                                                                                              |
+| `appr.with`              | with {{name}}                                                                                                                                                            | {{name}} ಅವರೊಂದಿಗೆ                                                                                                                                              | {{name}} के साथ                                                                                                                                               |
+| `appr.withLabel`         | with                                                                                                                                                                     | ಗುರು:                                                                                                                                                           | उस्ताद:                                                                                                                                                       |
 
 ## UI: archive
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `archive.count_one` | {{count}} story | {{count}} ಕಥೆ | {{count}} कहानी |
-| `archive.count_other` | {{count}} stories | {{count}} ಕಥೆಗಳು | {{count}} कहानियाँ |
-| `archive.lede` | Artisans telling their crafts in their own languages. Each story was transcribed, translated, and then read line by line by a reviewer before going up. | ಕುಶಲಕರ್ಮಿಗಳು ತಮ್ಮ ಕಲೆಯನ್ನು ತಮ್ಮದೇ ಭಾಷೆಯಲ್ಲಿ ಹೇಳುತ್ತಾರೆ. ಪ್ರತಿ ಕಥೆಯನ್ನು ಬರಹಕ್ಕಿಳಿಸಿ, ಅನುವಾದಿಸಿ, ಪರಿಶೀಲಕರು ಸಾಲು ಸಾಲಾಗಿ ಓದಿದ ಮೇಲೆ ಪ್ರಕಟಿಸಲಾಗಿದೆ. | कारीगर अपने शिल्प की बात अपनी भाषा में कहते हैं। हर कहानी लिखी गई, अनुवाद हुई, और फिर एक समीक्षक ने पंक्ति-दर-पंक्ति पढ़कर उसे छापा। |
-| `archive.note` | headphones help; the looms are loud | ಹೆಡ್‌ಫೋನ್ ಸಹಾಯ ಮಾಡುತ್ತದೆ; ಮಗ್ಗಗಳ ಸದ್ದು ಜೋರು | हेडफ़ोन मदद करते हैं; करघों का शोर तेज़ है |
-| `archive.plays_one` | Heard {{count}} time | {{count}} ಬಾರಿ ಕೇಳಲಾಗಿದೆ | {{count}} बार सुनी गई |
-| `archive.plays_other` | Heard {{count}} times | {{count}} ಬಾರಿ ಕೇಳಲಾಗಿದೆ | {{count}} बार सुनी गई |
-| `archive.results` | Stories | ಕಥೆಗಳು | कहानियाँ |
-| `archive.searchLabel` | Search the stories | ಕಥೆಗಳಲ್ಲಿ ಹುಡುಕಿ | कहानियों में खोजें |
-| `archive.searchPlaceholder` | lac, grandfather, kiln… | ಅರಗು, ಅಜ್ಜ, ಒಲೆ… | लाख, दादा, भट्ठी… |
-| `archive.sort.most-played` | Most heard | ಹೆಚ್ಚು ಕೇಳಿದ್ದು | सबसे ज़्यादा सुनी |
-| `archive.sort.newest` | Newest first | ಹೊಸದು ಮೊದಲು | नई पहले |
-| `archive.sort.oldest` | Oldest first | ಹಳೆಯದು ಮೊದಲು | पुरानी पहले |
-| `archive.title` | The story archive | ಕಥಾ ಸಂಗ್ರಹ | कहानी संग्रह |
-| `archive.toldBy` | Told by {{name}} | {{name}} ಹೇಳಿದ್ದು | {{name}} की ज़ुबानी |
+| Key                         | English                                                                                                                                                 | Kannada                                                                                                                                       | Hindi                                                                                                                                |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `archive.count_one`         | {{count}} story                                                                                                                                         | {{count}} ಕಥೆ                                                                                                                                 | {{count}} कहानी                                                                                                                      |
+| `archive.count_other`       | {{count}} stories                                                                                                                                       | {{count}} ಕಥೆಗಳು                                                                                                                              | {{count}} कहानियाँ                                                                                                                   |
+| `archive.lede`              | Artisans telling their crafts in their own languages. Each story was transcribed, translated, and then read line by line by a reviewer before going up. | ಕುಶಲಕರ್ಮಿಗಳು ತಮ್ಮ ಕಲೆಯನ್ನು ತಮ್ಮದೇ ಭಾಷೆಯಲ್ಲಿ ಹೇಳುತ್ತಾರೆ. ಪ್ರತಿ ಕಥೆಯನ್ನು ಬರಹಕ್ಕಿಳಿಸಿ, ಅನುವಾದಿಸಿ, ಪರಿಶೀಲಕರು ಸಾಲು ಸಾಲಾಗಿ ಓದಿದ ಮೇಲೆ ಪ್ರಕಟಿಸಲಾಗಿದೆ. | कारीगर अपने शिल्प की बात अपनी भाषा में कहते हैं। हर कहानी लिखी गई, अनुवाद हुई, और फिर एक समीक्षक ने पंक्ति-दर-पंक्ति पढ़कर उसे छापा। |
+| `archive.note`              | headphones help; the looms are loud                                                                                                                     | ಹೆಡ್‌ಫೋನ್ ಸಹಾಯ ಮಾಡುತ್ತದೆ; ಮಗ್ಗಗಳ ಸದ್ದು ಜೋರು                                                                                                   | हेडफ़ोन मदद करते हैं; करघों का शोर तेज़ है                                                                                           |
+| `archive.plays_one`         | Heard {{count}} time                                                                                                                                    | {{count}} ಬಾರಿ ಕೇಳಲಾಗಿದೆ                                                                                                                      | {{count}} बार सुनी गई                                                                                                                |
+| `archive.plays_other`       | Heard {{count}} times                                                                                                                                   | {{count}} ಬಾರಿ ಕೇಳಲಾಗಿದೆ                                                                                                                      | {{count}} बार सुनी गई                                                                                                                |
+| `archive.results`           | Stories                                                                                                                                                 | ಕಥೆಗಳು                                                                                                                                        | कहानियाँ                                                                                                                             |
+| `archive.searchLabel`       | Search the stories                                                                                                                                      | ಕಥೆಗಳಲ್ಲಿ ಹುಡುಕಿ                                                                                                                              | कहानियों में खोजें                                                                                                                   |
+| `archive.searchPlaceholder` | lac, grandfather, kiln…                                                                                                                                 | ಅರಗು, ಅಜ್ಜ, ಒಲೆ…                                                                                                                              | लाख, दादा, भट्ठी…                                                                                                                    |
+| `archive.sort.most-played`  | Most heard                                                                                                                                              | ಹೆಚ್ಚು ಕೇಳಿದ್ದು                                                                                                                               | सबसे ज़्यादा सुनी                                                                                                                    |
+| `archive.sort.newest`       | Newest first                                                                                                                                            | ಹೊಸದು ಮೊದಲು                                                                                                                                   | नई पहले                                                                                                                              |
+| `archive.sort.oldest`       | Oldest first                                                                                                                                            | ಹಳೆಯದು ಮೊದಲು                                                                                                                                  | पुरानी पहले                                                                                                                          |
+| `archive.title`             | The story archive                                                                                                                                       | ಕಥಾ ಸಂಗ್ರಹ                                                                                                                                    | कहानी संग्रह                                                                                                                         |
+| `archive.toldBy`            | Told by {{name}}                                                                                                                                        | {{name}} ಹೇಳಿದ್ದು                                                                                                                             | {{name}} की ज़ुबानी                                                                                                                  |
 
 ## UI: artisan
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `artisan.archived` | In the archive | ಸಂಗ್ರಹದಲ್ಲಿ | संग्रह में |
-| `artisan.photoOf` | Photo of {{name}} | {{name}} ಅವರ ಫೋಟೋ | {{name}} की तस्वीर |
-| `artisan.practice` | At the craft | ಕಸುಬಿನಲ್ಲಿ | हुनर में |
-| `artisan.speaks` | Speaks | ಮಾತನಾಡುವ ಭಾಷೆ | भाषाएँ |
-| `artisan.stories_one` | {{count}} story | {{count}} ಕಥೆ | {{count}} कहानी |
-| `artisan.stories_other` | {{count}} stories | {{count}} ಕಥೆಗಳು | {{count}} कहानियाँ |
-| `artisan.teachTitle` | Taking apprentices | ಶಿಷ್ಯರನ್ನು ತೆಗೆದುಕೊಳ್ಳುತ್ತಿದ್ದಾರೆ | शागिर्द ले रहे हैं |
-| `artisan.title` | Artisan | ಕುಶಲಕರ್ಮಿ | कारीगर |
-| `artisan.voiceTitle` | In {{name}}'s own words | {{name}} ಅವರ ಮಾತಿನಲ್ಲೇ | {{name}} के अपने शब्दों में |
-| `artisan.worksTitle` | Pieces you can ask about | ವಿಚಾರಿಸಬಹುದಾದ ವಸ್ತುಗಳು | जिनके बारे में पूछ सकते हैं |
-| `artisan.works_one` | {{count}} piece listed | {{count}} ವಸ್ತು ಪಟ್ಟಿಯಲ್ಲಿ | {{count}} चीज़ सूची में |
-| `artisan.works_other` | {{count}} pieces listed | {{count}} ವಸ್ತುಗಳು ಪಟ್ಟಿಯಲ್ಲಿ | {{count}} चीज़ें सूची में |
-| `artisan.years_one` | {{count}} year | {{count}} ವರ್ಷ | {{count}} साल |
-| `artisan.years_other` | {{count}} years | {{count}} ವರ್ಷಗಳು | {{count}} साल |
+| Key                     | English                  | Kannada                           | Hindi                       |
+| ----------------------- | ------------------------ | --------------------------------- | --------------------------- |
+| `artisan.archived`      | In the archive           | ಸಂಗ್ರಹದಲ್ಲಿ                       | संग्रह में                  |
+| `artisan.photoOf`       | Photo of {{name}}        | {{name}} ಅವರ ಫೋಟೋ                 | {{name}} की तस्वीर          |
+| `artisan.practice`      | At the craft             | ಕಸುಬಿನಲ್ಲಿ                        | हुनर में                    |
+| `artisan.speaks`        | Speaks                   | ಮಾತನಾಡುವ ಭಾಷೆ                     | भाषाएँ                      |
+| `artisan.stories_one`   | {{count}} story          | {{count}} ಕಥೆ                     | {{count}} कहानी             |
+| `artisan.stories_other` | {{count}} stories        | {{count}} ಕಥೆಗಳು                  | {{count}} कहानियाँ          |
+| `artisan.teachTitle`    | Taking apprentices       | ಶಿಷ್ಯರನ್ನು ತೆಗೆದುಕೊಳ್ಳುತ್ತಿದ್ದಾರೆ | शागिर्द ले रहे हैं          |
+| `artisan.title`         | Artisan                  | ಕುಶಲಕರ್ಮಿ                         | कारीगर                      |
+| `artisan.voiceTitle`    | In {{name}}'s own words  | {{name}} ಅವರ ಮಾತಿನಲ್ಲೇ            | {{name}} के अपने शब्दों में |
+| `artisan.worksTitle`    | Pieces you can ask about | ವಿಚಾರಿಸಬಹುದಾದ ವಸ್ತುಗಳು            | जिनके बारे में पूछ सकते हैं |
+| `artisan.works_one`     | {{count}} piece listed   | {{count}} ವಸ್ತು ಪಟ್ಟಿಯಲ್ಲಿ        | {{count}} चीज़ सूची में     |
+| `artisan.works_other`   | {{count}} pieces listed  | {{count}} ವಸ್ತುಗಳು ಪಟ್ಟಿಯಲ್ಲಿ     | {{count}} चीज़ें सूची में   |
+| `artisan.years_one`     | {{count}} year           | {{count}} ವರ್ಷ                    | {{count}} साल               |
+| `artisan.years_other`   | {{count}} years          | {{count}} ವರ್ಷಗಳು                 | {{count}} साल               |
 
 ## UI: audit
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `audit.craftRemove` | Took down the piece {{label}} | {{label}} ವಸ್ತು ತೆಗೆದುಹಾಕಲಾಗಿದೆ | चीज़ {{label}} हटाई |
-| `audit.flagDismiss` | Dismissed a report about {{label}} | {{label}} ಕುರಿತ ವರದಿ ತಳ್ಳಿಹಾಕಲಾಗಿದೆ | {{label}} की शिकायत ख़ारिज की |
-| `audit.flagRemove` | Acted on a report about {{label}} | {{label}} ಕುರಿತ ವರದಿಯ ಮೇಲೆ ಕ್ರಮ | {{label}} की शिकायत पर कार्रवाई की |
-| `audit.pause` | Paused {{name}} | {{name}} ಅವರನ್ನು ತಡೆಹಿಡಿಯಲಾಗಿದೆ | {{name}} को रोका |
-| `audit.reactivate` | Reactivated {{name}} | {{name}} ಅವರನ್ನು ಮತ್ತೆ ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ | {{name}} को फिर से चालू किया |
-| `audit.role` | Changed {{name}} from {{from}} to {{to}} | {{name}} ಅವರನ್ನು {{from}} ಇಂದ {{to}} ಆಗಿ ಬದಲಿಸಲಾಗಿದೆ | {{name}} को {{from}} से {{to}} बनाया |
-| `audit.storyRemove` | Took down the story {{label}} | {{label}} ಕಥೆ ತೆಗೆದುಹಾಕಲಾಗಿದೆ | कहानी {{label}} हटाई |
+| Key                  | English                                            | Kannada                                              | Hindi                                    |
+| -------------------- | -------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------- |
+| `audit.craftRemove`  | Took down the piece {{label}}                      | {{label}} ವಸ್ತು ತೆಗೆದುಹಾಕಲಾಗಿದೆ                      | चीज़ {{label}} हटाई                      |
+| `audit.flagDismiss`  | Dismissed a report about {{label}}                 | {{label}} ಕುರಿತ ವರದಿ ತಳ್ಳಿಹಾಕಲಾಗಿದೆ                  | {{label}} की शिकायत ख़ारिज की            |
+| `audit.flagRemove`   | Acted on a report about {{label}}                  | {{label}} ಕುರಿತ ವರದಿಯ ಮೇಲೆ ಕ್ರಮ                      | {{label}} की शिकायत पर कार्रवाई की       |
+| `audit.pause`        | Paused {{name}}                                    | {{name}} ಅವರನ್ನು ತಡೆಹಿಡಿಯಲಾಗಿದೆ                      | {{name}} को रोका                         |
+| `audit.reactivate`   | Reactivated {{name}}                               | {{name}} ಅವರನ್ನು ಮತ್ತೆ ಸಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ             | {{name}} को फिर से चालू किया             |
+| `audit.role`         | Changed {{name}} from {{from}} to {{to}}           | {{name}} ಅವರನ್ನು {{from}} ಇಂದ {{to}} ಆಗಿ ಬದಲಿಸಲಾಗಿದೆ | {{name}} को {{from}} से {{to}} बनाया     |
+| `audit.storyRemove`  | Took down the story {{label}}                      | {{label}} ಕಥೆ ತೆಗೆದುಹಾಕಲಾಗಿದೆ                        | कहानी {{label}} हटाई                     |
+| `audit.unverify`     | Removed the verified mark from {{name}}            | {{name}} ಅವರ ಪರಿಶೀಲಿತ ಗುರುತು ತೆಗೆಯಲಾಗಿದೆ             | {{name}} से सत्यापित निशान हटाया         |
+| `audit.verify`       | Verified the artisan {{name}}                      | ಕುಶಲಕರ್ಮಿ {{name}} ಅವರನ್ನು ಪರಿಶೀಲಿಸಲಾಗಿದೆ            | कारीगर {{name}} को सत्यापित किया         |
+| `audit.verifyReject` | Turned down the verification request from {{name}} | {{name}} ಅವರ ಪರಿಶೀಲನೆ ಕೋರಿಕೆ ನಿರಾಕರಿಸಲಾಗಿದೆ          | {{name}} का सत्यापन अनुरोध अस्वीकार किया |
 
 ## UI: auth
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `auth.demoLede` | This copy of VanishingTrades runs on demo data. Pick a role to sign in without typing. | ಈ VanishingTrades ಮಾದರಿ ಡೇಟಾದಲ್ಲಿ ನಡೆಯುತ್ತಿದೆ. ಏನನ್ನೂ ಬರೆಯದೆ ಒಳಗೆ ಬರಲು ಒಂದು ಪಾತ್ರ ಆರಿಸಿ. | यह VanishingTrades नमूना डेटा पर चल रहा है। बिना कुछ लिखे साइन इन करने के लिए एक भूमिका चुनें। |
-| `auth.demoPassword` | Every demo account uses the password {{password}}. | ಎಲ್ಲ ಮಾದರಿ ಖಾತೆಗಳ ಪಾಸ್‌ವರ್ಡ್ {{password}}. | हर नमूना खाते का पासवर्ड {{password}} है। |
-| `auth.demoTitle` | Look around as anyone | ಯಾರಾಗಿ ಬೇಕಾದರೂ ನೋಡಿ | किसी के भी रूप में देखें |
-| `auth.email` | Email | ಇಮೇಲ್ | ईमेल |
-| `auth.haveAccount` | Already have an account? | ಈಗಾಗಲೇ ಖಾತೆ ಇದೆಯೇ? | पहले से खाता है? |
-| `auth.iAm` | I am joining as | ನಾನು ಸೇರುತ್ತಿರುವುದು | मैं जुड़ रहा/रही हूँ |
-| `auth.makeOne` | Make an account | ಖಾತೆ ತೆರೆಯಿರಿ | खाता बनाएँ |
-| `auth.name` | Your name | ನಿಮ್ಮ ಹೆಸರು | आपका नाम |
-| `auth.noAccount` | New here? | ಇಲ್ಲಿ ಹೊಸಬರೇ? | यहाँ नए हैं? |
-| `auth.password` | Password | ಪಾಸ್‌ವರ್ಡ್ | पासवर्ड |
-| `auth.passwordHint` | At least 8 characters. | ಕನಿಷ್ಠ 8 ಅಕ್ಷರಗಳು. | कम से कम 8 अक्षर। |
-| `auth.pausedNotice` | Your account has been paused by the VanishingTrades team, so you have been signed out. Write to the team if you think this is a mistake. | VanishingTrades ತಂಡ ನಿಮ್ಮ ಖಾತೆಯನ್ನು ತಡೆಹಿಡಿದಿದೆ, ಆದ್ದರಿಂದ ನಿಮ್ಮನ್ನು ಹೊರಗೆ ಕಳುಹಿಸಲಾಗಿದೆ. ಇದು ತಪ್ಪೆಂದು ಅನಿಸಿದರೆ ತಂಡಕ್ಕೆ ಬರೆಯಿರಿ. | VanishingTrades टीम ने आपका खाता रोक दिया है, इसलिए आपको साइन आउट कर दिया गया। अगर यह ग़लती लगे तो टीम को लिखें। |
-| `auth.register` | Make my account | ನನ್ನ ಖಾತೆ ತೆರೆಯಿರಿ | मेरा खाता बनाएँ |
-| `auth.registerLede` | Reviewer and admin accounts are made by the team; everyone else starts here. | ಪರಿಶೀಲಕರು ಮತ್ತು ನಿರ್ವಾಹಕರ ಖಾತೆಗಳನ್ನು ತಂಡ ತೆರೆಯುತ್ತದೆ; ಉಳಿದವರೆಲ್ಲ ಇಲ್ಲಿಂದ ಆರಂಭಿಸಿ. | समीक्षक और एडमिन के खाते टीम बनाती है; बाक़ी सब यहाँ से शुरू करें। |
-| `auth.registerNote` | the wheel turns faster with more hands | ಕೈಗಳು ಹೆಚ್ಚಾದಷ್ಟೂ ಚಕ್ರ ವೇಗವಾಗಿ ತಿರುಗುತ್ತದೆ | जितने ज़्यादा हाथ, उतना तेज़ चाक |
-| `auth.registerTitle` | Make an account | ಖಾತೆ ತೆರೆಯಿರಿ | खाता बनाएँ |
-| `auth.roleHint.artisan` | List your work, record your story, take apprentices. | ನಿಮ್ಮ ಕೆಲಸ ಪಟ್ಟಿ ಮಾಡಿ, ಕಥೆ ದಾಖಲಿಸಿ, ಶಿಷ್ಯರನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ. | अपना काम सूची में रखें, अपनी कहानी रिकॉर्ड करें, शागिर्द लें। |
-| `auth.roleHint.buyer` | Write to artisans about their work. | ಕುಶಲಕರ್ಮಿಗಳಿಗೆ ಅವರ ಕೆಲಸದ ಬಗ್ಗೆ ಬರೆಯಿರಿ. | कारीगरों को उनके काम के बारे में लिखें। |
-| `auth.roleHint.learner` | Apply for apprenticeships and log your progress. | ಶಿಷ್ಯವೃತ್ತಿಗೆ ಅರ್ಜಿ ಹಾಕಿ, ಪ್ರಗತಿ ದಾಖಲಿಸಿ. | शागिर्दी के लिए आवेदन करें और अपनी प्रगति लिखें। |
-| `auth.roleTitle.artisan` | An artisan | ಕುಶಲಕರ್ಮಿಯಾಗಿ | कारीगर के रूप में |
-| `auth.roleTitle.buyer` | A buyer | ಖರೀದಿದಾರರಾಗಿ | ख़रीदार के रूप में |
-| `auth.roleTitle.learner` | A learner | ಕಲಿಯುವವರಾಗಿ | सीखने वाले के रूप में |
-| `auth.signIn` | Sign in | ಒಳಗೆ ಬನ್ನಿ | साइन इन |
-| `auth.signInLede` | Welcome back to the bench. | ಮತ್ತೆ ಕೆಲಸದ ಮೇಜಿಗೆ ಸ್ವಾಗತ. | कार्य-मेज़ पर फिर से स्वागत है। |
-| `auth.signInTitle` | Sign in | ಒಳಗೆ ಬನ್ನಿ | साइन इन |
-| `auth.tryAs` | Try as {{role}} | {{role}} ಆಗಿ ನೋಡಿ | {{role}} बनकर देखें |
+| Key                      | English                                                                                                                                  | Kannada                                                                                                                        | Hindi                                                                                                            |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| `auth.demoLede`          | This copy of VanishingTrades runs on demo data. Pick a role to sign in without typing.                                                   | ಈ VanishingTrades ಮಾದರಿ ಡೇಟಾದಲ್ಲಿ ನಡೆಯುತ್ತಿದೆ. ಏನನ್ನೂ ಬರೆಯದೆ ಒಳಗೆ ಬರಲು ಒಂದು ಪಾತ್ರ ಆರಿಸಿ.                                       | यह VanishingTrades नमूना डेटा पर चल रहा है। बिना कुछ लिखे साइन इन करने के लिए एक भूमिका चुनें।                   |
+| `auth.demoPassword`      | Every demo account uses the password {{password}}.                                                                                       | ಎಲ್ಲ ಮಾದರಿ ಖಾತೆಗಳ ಪಾಸ್‌ವರ್ಡ್ {{password}}.                                                                                     | हर नमूना खाते का पासवर्ड {{password}} है।                                                                        |
+| `auth.demoTitle`         | Look around as anyone                                                                                                                    | ಯಾರಾಗಿ ಬೇಕಾದರೂ ನೋಡಿ                                                                                                            | किसी के भी रूप में देखें                                                                                         |
+| `auth.email`             | Email                                                                                                                                    | ಇಮೇಲ್                                                                                                                          | ईमेल                                                                                                             |
+| `auth.haveAccount`       | Already have an account?                                                                                                                 | ಈಗಾಗಲೇ ಖಾತೆ ಇದೆಯೇ?                                                                                                             | पहले से खाता है?                                                                                                 |
+| `auth.iAm`               | I am joining as                                                                                                                          | ನಾನು ಸೇರುತ್ತಿರುವುದು                                                                                                            | मैं जुड़ रहा/रही हूँ                                                                                             |
+| `auth.makeOne`           | Make an account                                                                                                                          | ಖಾತೆ ತೆರೆಯಿರಿ                                                                                                                  | खाता बनाएँ                                                                                                       |
+| `auth.name`              | Your name                                                                                                                                | ನಿಮ್ಮ ಹೆಸರು                                                                                                                    | आपका नाम                                                                                                         |
+| `auth.noAccount`         | New here?                                                                                                                                | ಇಲ್ಲಿ ಹೊಸಬರೇ?                                                                                                                  | यहाँ नए हैं?                                                                                                     |
+| `auth.password`          | Password                                                                                                                                 | ಪಾಸ್‌ವರ್ಡ್                                                                                                                     | पासवर्ड                                                                                                          |
+| `auth.passwordHint`      | At least 8 characters.                                                                                                                   | ಕನಿಷ್ಠ 8 ಅಕ್ಷರಗಳು.                                                                                                             | कम से कम 8 अक्षर।                                                                                                |
+| `auth.pausedNotice`      | Your account has been paused by the VanishingTrades team, so you have been signed out. Write to the team if you think this is a mistake. | VanishingTrades ತಂಡ ನಿಮ್ಮ ಖಾತೆಯನ್ನು ತಡೆಹಿಡಿದಿದೆ, ಆದ್ದರಿಂದ ನಿಮ್ಮನ್ನು ಹೊರಗೆ ಕಳುಹಿಸಲಾಗಿದೆ. ಇದು ತಪ್ಪೆಂದು ಅನಿಸಿದರೆ ತಂಡಕ್ಕೆ ಬರೆಯಿರಿ. | VanishingTrades टीम ने आपका खाता रोक दिया है, इसलिए आपको साइन आउट कर दिया गया। अगर यह ग़लती लगे तो टीम को लिखें। |
+| `auth.register`          | Make my account                                                                                                                          | ನನ್ನ ಖಾತೆ ತೆರೆಯಿರಿ                                                                                                             | मेरा खाता बनाएँ                                                                                                  |
+| `auth.registerLede`      | Reviewer and admin accounts are made by the team; everyone else starts here.                                                             | ಪರಿಶೀಲಕರು ಮತ್ತು ನಿರ್ವಾಹಕರ ಖಾತೆಗಳನ್ನು ತಂಡ ತೆರೆಯುತ್ತದೆ; ಉಳಿದವರೆಲ್ಲ ಇಲ್ಲಿಂದ ಆರಂಭಿಸಿ.                                              | समीक्षक और एडमिन के खाते टीम बनाती है; बाक़ी सब यहाँ से शुरू करें।                                               |
+| `auth.registerNote`      | the wheel turns faster with more hands                                                                                                   | ಕೈಗಳು ಹೆಚ್ಚಾದಷ್ಟೂ ಚಕ್ರ ವೇಗವಾಗಿ ತಿರುಗುತ್ತದೆ                                                                                     | जितने ज़्यादा हाथ, उतना तेज़ चाक                                                                                 |
+| `auth.registerTitle`     | Make an account                                                                                                                          | ಖಾತೆ ತೆರೆಯಿರಿ                                                                                                                  | खाता बनाएँ                                                                                                       |
+| `auth.roleHint.artisan`  | List your work, record your story, take apprentices.                                                                                     | ನಿಮ್ಮ ಕೆಲಸ ಪಟ್ಟಿ ಮಾಡಿ, ಕಥೆ ದಾಖಲಿಸಿ, ಶಿಷ್ಯರನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ.                                                                   | अपना काम सूची में रखें, अपनी कहानी रिकॉर्ड करें, शागिर्द लें।                                                    |
+| `auth.roleHint.buyer`    | Write to artisans about their work.                                                                                                      | ಕುಶಲಕರ್ಮಿಗಳಿಗೆ ಅವರ ಕೆಲಸದ ಬಗ್ಗೆ ಬರೆಯಿರಿ.                                                                                        | कारीगरों को उनके काम के बारे में लिखें।                                                                          |
+| `auth.roleHint.learner`  | Apply for apprenticeships and log your progress.                                                                                         | ಶಿಷ್ಯವೃತ್ತಿಗೆ ಅರ್ಜಿ ಹಾಕಿ, ಪ್ರಗತಿ ದಾಖಲಿಸಿ.                                                                                      | शागिर्दी के लिए आवेदन करें और अपनी प्रगति लिखें।                                                                 |
+| `auth.roleTitle.artisan` | An artisan                                                                                                                               | ಕುಶಲಕರ್ಮಿಯಾಗಿ                                                                                                                  | कारीगर के रूप में                                                                                                |
+| `auth.roleTitle.buyer`   | A buyer                                                                                                                                  | ಖರೀದಿದಾರರಾಗಿ                                                                                                                   | ख़रीदार के रूप में                                                                                               |
+| `auth.roleTitle.learner` | A learner                                                                                                                                | ಕಲಿಯುವವರಾಗಿ                                                                                                                    | सीखने वाले के रूप में                                                                                            |
+| `auth.signIn`            | Sign in                                                                                                                                  | ಒಳಗೆ ಬನ್ನಿ                                                                                                                     | साइन इन                                                                                                          |
+| `auth.signInLede`        | Welcome back to the bench.                                                                                                               | ಮತ್ತೆ ಕೆಲಸದ ಮೇಜಿಗೆ ಸ್ವಾಗತ.                                                                                                     | कार्य-मेज़ पर फिर से स्वागत है।                                                                                  |
+| `auth.signInTitle`       | Sign in                                                                                                                                  | ಒಳಗೆ ಬನ್ನಿ                                                                                                                     | साइन इन                                                                                                          |
+| `auth.tryAs`             | Try as {{role}}                                                                                                                          | {{role}} ಆಗಿ ನೋಡಿ                                                                                                              | {{role}} बनकर देखें                                                                                              |
 
 ## UI: common
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `common.cancel` | Cancel | ರದ್ದು | रद्द करें |
-| `common.confirmDelete` | Yes, delete it | ಹೌದು, ಅಳಿಸಿ | हाँ, मिटाएँ |
-| `common.delete` | Delete | ಅಳಿಸಿ | मिटाएँ |
-| `common.dismiss` | Dismiss | ಮುಚ್ಚಿ | हटाएँ |
-| `common.edit` | Edit | ತಿದ್ದಿ | बदलें |
-| `common.keep` | No, keep it | ಬೇಡ, ಇರಲಿ | नहीं, रहने दें |
-| `common.search` | Search | ಹುಡುಕಿ | खोजें |
-| `common.tryAgain` | Try again | ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ | फिर कोशिश करें |
+| Key                    | English        | Kannada          | Hindi          |
+| ---------------------- | -------------- | ---------------- | -------------- |
+| `common.cancel`        | Cancel         | ರದ್ದು            | रद्द करें      |
+| `common.confirmDelete` | Yes, delete it | ಹೌದು, ಅಳಿಸಿ      | हाँ, मिटाएँ    |
+| `common.delete`        | Delete         | ಅಳಿಸಿ            | मिटाएँ         |
+| `common.dismiss`       | Dismiss        | ಮುಚ್ಚಿ           | हटाएँ          |
+| `common.edit`          | Edit           | ತಿದ್ದಿ           | बदलें          |
+| `common.keep`          | No, keep it    | ಬೇಡ, ಇರಲಿ        | नहीं, रहने दें |
+| `common.search`        | Search         | ಹುಡುಕಿ           | खोजें          |
+| `common.tryAgain`      | Try again      | ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ | फिर कोशिश करें |
 
 ## UI: craft
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `craft.bidriware` | Bidriware | ಬಿದರಿ ಕಲೆ | बीदरी शिल्प |
-| `craft.channapatna` | Channapatna toys | ಚನ್ನಪಟ್ಟಣದ ಗೊಂಬೆಗಳು | चन्नपटना के खिलौने |
-| `craft.ilkal` | Ilkal weaving | ಇಳಕಲ್ ನೇಯ್ಗೆ | इलकल बुनाई |
-| `craft.kinhal` | Kinhal lacquerware | ಕಿನ್ನಾಳ ಕಲೆ | किन्हाल लाख शिल्प |
-| `craft.pottery` | Village pottery | ಹಳ್ಳಿಯ ಕುಂಬಾರಿಕೆ | गाँव की कुम्हारी |
-| `craft.rosewood-inlay` | Rosewood inlay | ರೋಸ್‌ವುಡ್ ಕೆತ್ತನೆ | रोज़वुड जड़ाई |
+| Key                    | English            | Kannada             | Hindi              |
+| ---------------------- | ------------------ | ------------------- | ------------------ |
+| `craft.bidriware`      | Bidriware          | ಬಿದರಿ ಕಲೆ           | बीदरी शिल्प        |
+| `craft.channapatna`    | Channapatna toys   | ಚನ್ನಪಟ್ಟಣದ ಗೊಂಬೆಗಳು | चन्नपटना के खिलौने |
+| `craft.ilkal`          | Ilkal weaving      | ಇಳಕಲ್ ನೇಯ್ಗೆ        | इलकल बुनाई         |
+| `craft.kinhal`         | Kinhal lacquerware | ಕಿನ್ನಾಳ ಕಲೆ         | किन्हाल लाख शिल्प  |
+| `craft.pottery`        | Village pottery    | ಹಳ್ಳಿಯ ಕುಂಬಾರಿಕೆ    | गाँव की कुम्हारी   |
+| `craft.rosewood-inlay` | Rosewood inlay     | ರೋಸ್‌ವುಡ್ ಕೆತ್ತನೆ   | रोज़वुड जड़ाई      |
 
 ## UI: dash
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `dash.adminLede` | People, reports, the audit log and the impact numbers. | ಜನರು, ವರದಿಗಳು, ದಾಖಲೆ ಪುಸ್ತಕ ಮತ್ತು ಪರಿಣಾಮದ ಸಂಖ್ಯೆಗಳು. | लोग, शिकायतें, लेखा-जोखा और असर की संख्याएँ। |
-| `dash.adminTitle` | Admin | ನಿರ್ವಾಹಕ | एडमिन |
-| `dash.artisanLede` | Good to see you, {{name}}. | ನಿಮ್ಮನ್ನು ನೋಡಿ ಸಂತೋಷ, {{name}}. | आपको देखकर अच्छा लगा, {{name}}। |
-| `dash.artisanTitle` | Your workbench | ನಿಮ್ಮ ಕೆಲಸದ ಮೇಜು | आपकी कार्य-मेज़ |
-| `dash.buyerLede` | Letters to and from artisans. | ಕುಶಲಕರ್ಮಿಗಳೊಂದಿಗಿನ ಪತ್ರಗಳು. | कारीगरों के साथ चिट्ठियाँ। |
-| `dash.buyerTitle` | Your enquiries | ನಿಮ್ಮ ವಿಚಾರಣೆಗಳು | आपकी पूछताछ |
-| `dash.findMore` | Find more pieces | ಇನ್ನಷ್ಟು ವಸ್ತುಗಳು | और चीज़ें देखें |
-| `dash.learnerLede` | Applications, the roadmap and your progress log. | ಅರ್ಜಿಗಳು, ಹಂತಗಳು ಮತ್ತು ನಿಮ್ಮ ಪ್ರಗತಿ ದಾಖಲೆ. | आवेदन, कदमों की राह और आपकी प्रगति। |
-| `dash.learnerTitle` | Your apprenticeships | ನಿಮ್ಮ ಶಿಷ್ಯವೃತ್ತಿಗಳು | आपकी शागिर्दी |
-| `dash.reviewQueue` | Open the review desk | ಪರಿಶೀಲನಾ ಮೇಜು ತೆರೆಯಿರಿ | समीक्षा मेज़ खोलें |
-| `dash.reviewerLede` | Stories waiting for a person to read them before they go public. | ಸಾರ್ವಜನಿಕವಾಗುವ ಮುನ್ನ ಯಾರಾದರೂ ಓದಬೇಕಾದ ಕಥೆಗಳು. | वे कहानियाँ जिन्हें सार्वजनिक होने से पहले किसी को पढ़ना है। |
-| `dash.reviewerTitle` | Review desk | ಪರಿಶೀಲನಾ ಮೇಜು | समीक्षा मेज़ |
-| `dash.sections` | Workbench sections | ಕೆಲಸದ ಮೇಜಿನ ವಿಭಾಗಗಳು | कार्य-मेज़ के हिस्से |
-| `dash.tab.enquiries` | Enquiries | ವಿಚಾರಣೆಗಳು | पूछताछ |
-| `dash.tab.openings` | Apprenticeships | ಶಿಷ್ಯವೃತ್ತಿ | शागिर्दी |
-| `dash.tab.profile` | Profile | ನನ್ನ ಪುಟ | मेरा पन्ना |
-| `dash.tab.stories` | My stories | ನನ್ನ ಕಥೆಗಳು | मेरी कहानियाँ |
-| `dash.tab.works` | My pieces | ನನ್ನ ವಸ್ತುಗಳು | मेरी चीज़ें |
+| Key                  | English                                                          | Kannada                                              | Hindi                                                        |
+| -------------------- | ---------------------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------ |
+| `dash.adminLede`     | People, reports, the audit log and the impact numbers.           | ಜನರು, ವರದಿಗಳು, ದಾಖಲೆ ಪುಸ್ತಕ ಮತ್ತು ಪರಿಣಾಮದ ಸಂಖ್ಯೆಗಳು. | लोग, शिकायतें, लेखा-जोखा और असर की संख्याएँ।                 |
+| `dash.adminTitle`    | Admin                                                            | ನಿರ್ವಾಹಕ                                             | एडमिन                                                        |
+| `dash.artisanLede`   | Good to see you, {{name}}.                                       | ನಿಮ್ಮನ್ನು ನೋಡಿ ಸಂತೋಷ, {{name}}.                      | आपको देखकर अच्छा लगा, {{name}}।                              |
+| `dash.artisanTitle`  | Your workbench                                                   | ನಿಮ್ಮ ಕೆಲಸದ ಮೇಜು                                     | आपकी कार्य-मेज़                                              |
+| `dash.buyerLede`     | Letters to and from artisans.                                    | ಕುಶಲಕರ್ಮಿಗಳೊಂದಿಗಿನ ಪತ್ರಗಳು.                          | कारीगरों के साथ चिट्ठियाँ।                                   |
+| `dash.buyerTitle`    | Your enquiries                                                   | ನಿಮ್ಮ ವಿಚಾರಣೆಗಳು                                     | आपकी पूछताछ                                                  |
+| `dash.findMore`      | Find more pieces                                                 | ಇನ್ನಷ್ಟು ವಸ್ತುಗಳು                                    | और चीज़ें देखें                                              |
+| `dash.learnerLede`   | Applications, the roadmap and your progress log.                 | ಅರ್ಜಿಗಳು, ಹಂತಗಳು ಮತ್ತು ನಿಮ್ಮ ಪ್ರಗತಿ ದಾಖಲೆ.           | आवेदन, कदमों की राह और आपकी प्रगति।                          |
+| `dash.learnerTitle`  | Your apprenticeships                                             | ನಿಮ್ಮ ಶಿಷ್ಯವೃತ್ತಿಗಳು                                 | आपकी शागिर्दी                                                |
+| `dash.reviewQueue`   | Open the review desk                                             | ಪರಿಶೀಲನಾ ಮೇಜು ತೆರೆಯಿರಿ                               | समीक्षा मेज़ खोलें                                           |
+| `dash.reviewerLede`  | Stories waiting for a person to read them before they go public. | ಸಾರ್ವಜನಿಕವಾಗುವ ಮುನ್ನ ಯಾರಾದರೂ ಓದಬೇಕಾದ ಕಥೆಗಳು.         | वे कहानियाँ जिन्हें सार्वजनिक होने से पहले किसी को पढ़ना है। |
+| `dash.reviewerTitle` | Review desk                                                      | ಪರಿಶೀಲನಾ ಮೇಜು                                        | समीक्षा मेज़                                                 |
+| `dash.sections`      | Workbench sections                                               | ಕೆಲಸದ ಮೇಜಿನ ವಿಭಾಗಗಳು                                 | कार्य-मेज़ के हिस्से                                         |
+| `dash.tab.enquiries` | Enquiries                                                        | ವಿಚಾರಣೆಗಳು                                           | पूछताछ                                                       |
+| `dash.tab.openings`  | Apprenticeships                                                  | ಶಿಷ್ಯವೃತ್ತಿ                                          | शागिर्दी                                                     |
+| `dash.tab.profile`   | Profile                                                          | ನನ್ನ ಪುಟ                                             | मेरा पन्ना                                                   |
+| `dash.tab.stories`   | My stories                                                       | ನನ್ನ ಕಥೆಗಳು                                          | मेरी कहानियाँ                                                |
+| `dash.tab.works`     | My pieces                                                        | ನನ್ನ ವಸ್ತುಗಳು                                        | मेरी चीज़ें                                                  |
 
 ## UI: demo
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `demo.confirm` | Throw away every change and start over? | ಎಲ್ಲ ಬದಲಾವಣೆಗಳನ್ನು ಬಿಟ್ಟು ಮತ್ತೆ ಆರಂಭಿಸಬೇಕೇ? | सारे बदलाव छोड़कर फिर से शुरू करें? |
-| `demo.reset` | Reset demo data | ಮಾದರಿ ಡೇಟಾ ಮರುಹೊಂದಿಸಿ | नमूना डेटा फिर से शुरू करें |
-| `demo.resetDone` | Demo data is fresh again. | ಮಾದರಿ ಡೇಟಾ ಮತ್ತೆ ಹೊಸದಾಗಿದೆ. | नमूना डेटा फिर से ताज़ा है। |
-| `demo.resetting` | Resetting… | ಮರುಹೊಂದಿಸುತ್ತಿದೆ… | फिर से शुरू हो रहा है… |
-| `demo.tag` | DEMO | DEMO | DEMO |
-| `demo.text` | Sample data. Nothing here is real, and you cannot break it. | ಮಾದರಿ ಡೇಟಾ. ಇಲ್ಲಿ ಏನೂ ನಿಜವಲ್ಲ, ನೀವು ಏನನ್ನೂ ಕೆಡಿಸಲು ಆಗುವುದಿಲ್ಲ. | नमूना डेटा। यहाँ कुछ भी असली नहीं, और आप कुछ बिगाड़ नहीं सकते। |
-| `demo.yesReset` | Yes, reset | ಹೌದು, ಮರುಹೊಂದಿಸಿ | हाँ, फिर से शुरू करें |
+| Key              | English                                                     | Kannada                                                        | Hindi                                                          |
+| ---------------- | ----------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `demo.confirm`   | Throw away every change and start over?                     | ಎಲ್ಲ ಬದಲಾವಣೆಗಳನ್ನು ಬಿಟ್ಟು ಮತ್ತೆ ಆರಂಭಿಸಬೇಕೇ?                    | सारे बदलाव छोड़कर फिर से शुरू करें?                            |
+| `demo.reset`     | Reset demo data                                             | ಮಾದರಿ ಡೇಟಾ ಮರುಹೊಂದಿಸಿ                                          | नमूना डेटा फिर से शुरू करें                                    |
+| `demo.resetDone` | Demo data is fresh again.                                   | ಮಾದರಿ ಡೇಟಾ ಮತ್ತೆ ಹೊಸದಾಗಿದೆ.                                    | नमूना डेटा फिर से ताज़ा है।                                    |
+| `demo.resetting` | Resetting…                                                  | ಮರುಹೊಂದಿಸುತ್ತಿದೆ…                                              | फिर से शुरू हो रहा है…                                         |
+| `demo.tag`       | DEMO                                                        | DEMO                                                           | DEMO                                                           |
+| `demo.text`      | Sample data. Nothing here is real, and you cannot break it. | ಮಾದರಿ ಡೇಟಾ. ಇಲ್ಲಿ ಏನೂ ನಿಜವಲ್ಲ, ನೀವು ಏನನ್ನೂ ಕೆಡಿಸಲು ಆಗುವುದಿಲ್ಲ. | नमूना डेटा। यहाँ कुछ भी असली नहीं, और आप कुछ बिगाड़ नहीं सकते। |
+| `demo.yesReset`  | Yes, reset                                                  | ಹೌದು, ಮರುಹೊಂದಿಸಿ                                               | हाँ, फिर से शुरू करें                                          |
 
 ## UI: editor
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `editor.addSegment` | Add a line | ಸಾಲು ಸೇರಿಸಿ | पंक्ति जोड़ें |
-| `editor.aiAgain` | Process again | ಮತ್ತೆ ಸಿದ್ಧಪಡಿಸಿ | फिर से तैयार करें |
-| `editor.aiDone` | Transcript and translation are ready to check. | ಬರಹ ಮತ್ತು ಅನುವಾದ ಪರಿಶೀಲನೆಗೆ ಸಿದ್ಧ. | लिखित प्रति और अनुवाद जाँच के लिए तैयार। |
-| `editor.aiLede` | The AI writes down what you said, translates it into English and drafts a short summary. You check it in the next step. | ನೀವು ಹೇಳಿದ್ದನ್ನು AI ಬರೆದು, ಇಂಗ್ಲಿಷ್‌ಗೆ ಅನುವಾದಿಸಿ, ಸಣ್ಣ ಸಾರಾಂಶ ಸಿದ್ಧಪಡಿಸುತ್ತದೆ. ಮುಂದಿನ ಹಂತದಲ್ಲಿ ನೀವು ಪರಿಶೀಲಿಸುತ್ತೀರಿ. | AI आपकी बात लिखता है, अंग्रेज़ी में अनुवाद करता है और छोटा सार बनाता है। अगले कदम में आप जाँचते हैं। |
-| `editor.aiRun` | Process with AI | AI ಮೂಲಕ ಸಿದ್ಧಪಡಿಸಿ | AI से तैयार करें |
-| `editor.aiSample` | This text came from the sample AI. Please correct it before you send it for review. | ಈ ಬರಹ ಮಾದರಿ AI ಇಂದ ಬಂದಿದೆ. ಪರಿಶೀಲನೆಗೆ ಕಳುಹಿಸುವ ಮೊದಲು ತಿದ್ದಿ. | यह पाठ नमूना AI से आया है। समीक्षा के लिए भेजने से पहले सुधार लें। |
-| `editor.aiTitle` | 2. Transcribe and translate | 2. ಬರಹ ಮತ್ತು ಅನುವಾದ | 2. लिखित प्रति और अनुवाद |
-| `editor.aiWorking` | Listening carefully and winding the words onto the spool… | ಗಮನವಿಟ್ಟು ಕೇಳುತ್ತಾ, ಮಾತುಗಳನ್ನು ಉಂಡೆಗೆ ಸುತ್ತುತ್ತಿದೆ… | ध्यान से सुना जा रहा है, शब्द तकली पर लपेटे जा रहे हैं… |
-| `editor.approvedNote` | This story is in the public archive. | ಈ ಕಥೆ ಸಾರ್ವಜನಿಕ ಸಂಗ್ರಹದಲ್ಲಿದೆ. | यह कहानी सार्वजनिक संग्रह में है। |
-| `editor.audioSaved` | Recording saved. | ಧ್ವನಿಮುದ್ರಣ ಉಳಿಸಲಾಗಿದೆ. | रिकॉर्डिंग सहेज ली। |
-| `editor.backToStories` | Back to my stories | ನನ್ನ ಕಥೆಗಳಿಗೆ ಹಿಂತಿರುಗಿ | मेरी कहानियों पर लौटें |
-| `editor.craft` | Craft | ಕಲೆ | शिल्प |
-| `editor.create` | Start this story | ಈ ಕಥೆ ಆರಂಭಿಸಿ | यह कहानी शुरू करें |
-| `editor.delete` | Delete this story | ಈ ಕಥೆ ಅಳಿಸಿ | यह कहानी मिटाएँ |
-| `editor.deleted` | Story deleted. | ಕಥೆ ಅಳಿಸಲಾಗಿದೆ. | कहानी मिटा दी। |
-| `editor.hasAudio` | A recording of {{secs}} seconds is saved with this story. | {{secs}} ಸೆಕೆಂಡಿನ ಧ್ವನಿಮುದ್ರಣ ಈ ಕಥೆಯೊಂದಿಗೆ ಉಳಿದಿದೆ. | इस कहानी के साथ {{secs}} सेकंड की रिकॉर्डिंग सहेजी गई है। |
-| `editor.language` | Language | ಭಾಷೆ | भाषा |
-| `editor.newLede` | Give it a title and pick the language you will tell it in. You can record or type it on the next screen. | ಶೀರ್ಷಿಕೆ ಕೊಡಿ ಮತ್ತು ಹೇಳುವ ಭಾಷೆ ಆರಿಸಿ. ಮುಂದಿನ ಪುಟದಲ್ಲಿ ಧ್ವನಿಮುದ್ರಿಸಬಹುದು ಅಥವಾ ಬರೆಯಬಹುದು. | शीर्षक दें और वह भाषा चुनें जिसमें कहेंगे। अगले पन्ने पर रिकॉर्ड कर सकते हैं या लिख सकते हैं। |
-| `editor.newTitle` | A new story | ಹೊಸ ಕಥೆ | नई कहानी |
-| `editor.noSegments` | Nothing here yet. Process the recording, or add a line. | ಇಲ್ಲಿ ಇನ್ನೂ ಏನೂ ಇಲ್ಲ. ಧ್ವನಿಮುದ್ರಣ ಸಿದ್ಧಪಡಿಸಿ, ಅಥವಾ ಸಾಲು ಸೇರಿಸಿ. | अभी यहाँ कुछ नहीं। रिकॉर्डिंग तैयार करें, या पंक्ति जोड़ें। |
-| `editor.pageTitle` | Story | ಕಥೆ | कहानी |
-| `editor.pendingNote` | This story is with a reviewer. You can edit it again if it comes back. | ಈ ಕಥೆ ಪರಿಶೀಲಕರ ಬಳಿ ಇದೆ. ಹಿಂದಿರುಗಿದರೆ ಮತ್ತೆ ತಿದ್ದಬಹುದು. | यह कहानी समीक्षक के पास है। लौटे तो फिर बदल सकते हैं। |
-| `editor.preview` | What listeners hear | ಕೇಳುಗರು ಕೇಳುವುದು | सुनने वाले क्या सुनते हैं |
-| `editor.recordLede` | Press Record and talk as you would to a visitor at your bench. You can pause, listen back, and record again. | ಧ್ವನಿಮುದ್ರಣ ಒತ್ತಿ, ನಿಮ್ಮ ಮೇಜಿನ ಬಳಿ ಬಂದ ಅತಿಥಿಗೆ ಹೇಳುವಂತೆ ಮಾತನಾಡಿ. ನಿಲ್ಲಿಸಬಹುದು, ಕೇಳಬಹುದು, ಮತ್ತೆ ಮಾಡಬಹುದು. | रिकॉर्ड दबाएँ और वैसे बोलें जैसे अपनी मेज़ पर आए मेहमान से बोलते हैं। रोक सकते हैं, सुन सकते हैं, फिर से कर सकते हैं। |
-| `editor.recordTitle` | 1. Record it | 1. ಧ್ವನಿಮುದ್ರಿಸಿ | 1. रिकॉर्ड करें |
-| `editor.removeSegment` | Remove line {{n}} | ಸಾಲು {{n}} ತೆಗೆಯಿರಿ | पंक्ति {{n}} हटाएँ |
-| `editor.resubmit` | Send for review again | ಮತ್ತೆ ಪರಿಶೀಲನೆಗೆ ಕಳುಹಿಸಿ | फिर से समीक्षा के लिए भेजें |
-| `editor.reviewLede` | Correct anything the AI misheard. A reviewer reads it next. | AI ತಪ್ಪಾಗಿ ಕೇಳಿದ್ದನ್ನು ತಿದ್ದಿ. ನಂತರ ಪರಿಶೀಲಕರು ಓದುತ್ತಾರೆ. | AI ने जो ग़लत सुना, उसे सुधारें। इसके बाद समीक्षक पढ़ेंगे। |
-| `editor.reviewTitle` | 3. Check and send | 3. ಪರಿಶೀಲಿಸಿ ಕಳುಹಿಸಿ | 3. जाँचें और भेजें |
-| `editor.save` | Save changes | ಬದಲಾವಣೆ ಉಳಿಸಿ | बदलाव सहेजें |
-| `editor.saved` | Saved. | ಉಳಿಸಲಾಗಿದೆ. | सहेज लिया। |
-| `editor.seeInArchive` | See it in the archive | ಸಂಗ್ರಹದಲ್ಲಿ ನೋಡಿ | संग्रह में देखें |
-| `editor.segment` | Line {{n}} | ಸಾಲು {{n}} | पंक्ति {{n}} |
-| `editor.submit` | Send for review | ಪರಿಶೀಲನೆಗೆ ಕಳುಹಿಸಿ | समीक्षा के लिए भेजें |
-| `editor.submitted` | Sent to the review desk. | ಪರಿಶೀಲನಾ ಮೇಜಿಗೆ ಕಳುಹಿಸಲಾಗಿದೆ. | समीक्षा मेज़ पर भेज दिया। |
-| `editor.summary` | Short summary in English | ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಸಣ್ಣ ಸಾರಾಂಶ | अंग्रेज़ी में छोटा सार |
-| `editor.tags` | Tags | ಟ್ಯಾಗ್‌ಗಳು | टैग |
-| `editor.tagsHint` | Separate with commas, for example: family, lac | ಅಲ್ಪವಿರಾಮದಿಂದ ಬೇರ್ಪಡಿಸಿ, ಉದಾ: family, lac | अल्पविराम से अलग करें, जैसे: family, lac |
-| `editor.text` | Written version (optional) | ಬರೆದ ರೂಪ (ಬೇಕಾದರೆ) | लिखा हुआ रूप (चाहें तो) |
-| `editor.textHint` | Type the story here if you prefer writing to recording. | ಧ್ವನಿಮುದ್ರಿಸುವ ಬದಲು ಬರೆಯಲು ಇಷ್ಟವಿದ್ದರೆ ಇಲ್ಲಿ ಬರೆಯಿರಿ. | रिकॉर्ड करने के बजाय लिखना पसंद हो तो यहाँ लिखें। |
-| `editor.title` | Title | ಶೀರ್ಷಿಕೆ | शीर्षक |
-| `editor.transcript` | Transcript (original language) | ಬರಹ (ಮೂಲ ಭಾಷೆ) | लिखित प्रति (मूल भाषा) |
-| `editor.translation` | English translation | ಇಂಗ್ಲಿಷ್ ಅನುವಾದ | अंग्रेज़ी अनुवाद |
+| Key                    | English                                                                                                                 | Kannada                                                                                                              | Hindi                                                                                                                 |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `editor.addSegment`    | Add a line                                                                                                              | ಸಾಲು ಸೇರಿಸಿ                                                                                                          | पंक्ति जोड़ें                                                                                                         |
+| `editor.aiAgain`       | Process again                                                                                                           | ಮತ್ತೆ ಸಿದ್ಧಪಡಿಸಿ                                                                                                     | फिर से तैयार करें                                                                                                     |
+| `editor.aiDone`        | Transcript and translation are ready to check.                                                                          | ಬರಹ ಮತ್ತು ಅನುವಾದ ಪರಿಶೀಲನೆಗೆ ಸಿದ್ಧ.                                                                                   | लिखित प्रति और अनुवाद जाँच के लिए तैयार।                                                                              |
+| `editor.aiLede`        | The AI writes down what you said, translates it into English and drafts a short summary. You check it in the next step. | ನೀವು ಹೇಳಿದ್ದನ್ನು AI ಬರೆದು, ಇಂಗ್ಲಿಷ್‌ಗೆ ಅನುವಾದಿಸಿ, ಸಣ್ಣ ಸಾರಾಂಶ ಸಿದ್ಧಪಡಿಸುತ್ತದೆ. ಮುಂದಿನ ಹಂತದಲ್ಲಿ ನೀವು ಪರಿಶೀಲಿಸುತ್ತೀರಿ. | AI आपकी बात लिखता है, अंग्रेज़ी में अनुवाद करता है और छोटा सार बनाता है। अगले कदम में आप जाँचते हैं।                  |
+| `editor.aiRun`         | Process with AI                                                                                                         | AI ಮೂಲಕ ಸಿದ್ಧಪಡಿಸಿ                                                                                                   | AI से तैयार करें                                                                                                      |
+| `editor.aiSample`      | This text came from the sample AI. Please correct it before you send it for review.                                     | ಈ ಬರಹ ಮಾದರಿ AI ಇಂದ ಬಂದಿದೆ. ಪರಿಶೀಲನೆಗೆ ಕಳುಹಿಸುವ ಮೊದಲು ತಿದ್ದಿ.                                                         | यह पाठ नमूना AI से आया है। समीक्षा के लिए भेजने से पहले सुधार लें।                                                    |
+| `editor.aiTitle`       | 2. Transcribe and translate                                                                                             | 2. ಬರಹ ಮತ್ತು ಅನುವಾದ                                                                                                  | 2. लिखित प्रति और अनुवाद                                                                                              |
+| `editor.aiWorking`     | Listening carefully and winding the words onto the spool…                                                               | ಗಮನವಿಟ್ಟು ಕೇಳುತ್ತಾ, ಮಾತುಗಳನ್ನು ಉಂಡೆಗೆ ಸುತ್ತುತ್ತಿದೆ…                                                                  | ध्यान से सुना जा रहा है, शब्द तकली पर लपेटे जा रहे हैं…                                                               |
+| `editor.approvedNote`  | This story is in the public archive.                                                                                    | ಈ ಕಥೆ ಸಾರ್ವಜನಿಕ ಸಂಗ್ರಹದಲ್ಲಿದೆ.                                                                                       | यह कहानी सार्वजनिक संग्रह में है।                                                                                     |
+| `editor.audioSaved`    | Recording saved.                                                                                                        | ಧ್ವನಿಮುದ್ರಣ ಉಳಿಸಲಾಗಿದೆ.                                                                                              | रिकॉर्डिंग सहेज ली।                                                                                                   |
+| `editor.backToStories` | Back to my stories                                                                                                      | ನನ್ನ ಕಥೆಗಳಿಗೆ ಹಿಂತಿರುಗಿ                                                                                              | मेरी कहानियों पर लौटें                                                                                                |
+| `editor.craft`         | Craft                                                                                                                   | ಕಲೆ                                                                                                                  | शिल्प                                                                                                                 |
+| `editor.create`        | Start this story                                                                                                        | ಈ ಕಥೆ ಆರಂಭಿಸಿ                                                                                                        | यह कहानी शुरू करें                                                                                                    |
+| `editor.delete`        | Delete this story                                                                                                       | ಈ ಕಥೆ ಅಳಿಸಿ                                                                                                          | यह कहानी मिटाएँ                                                                                                       |
+| `editor.deleted`       | Story deleted.                                                                                                          | ಕಥೆ ಅಳಿಸಲಾಗಿದೆ.                                                                                                      | कहानी मिटा दी।                                                                                                        |
+| `editor.hasAudio`      | A recording of {{secs}} seconds is saved with this story.                                                               | {{secs}} ಸೆಕೆಂಡಿನ ಧ್ವನಿಮುದ್ರಣ ಈ ಕಥೆಯೊಂದಿಗೆ ಉಳಿದಿದೆ.                                                                  | इस कहानी के साथ {{secs}} सेकंड की रिकॉर्डिंग सहेजी गई है।                                                             |
+| `editor.language`      | Language                                                                                                                | ಭಾಷೆ                                                                                                                 | भाषा                                                                                                                  |
+| `editor.newLede`       | Give it a title and pick the language you will tell it in. You can record or type it on the next screen.                | ಶೀರ್ಷಿಕೆ ಕೊಡಿ ಮತ್ತು ಹೇಳುವ ಭಾಷೆ ಆರಿಸಿ. ಮುಂದಿನ ಪುಟದಲ್ಲಿ ಧ್ವನಿಮುದ್ರಿಸಬಹುದು ಅಥವಾ ಬರೆಯಬಹುದು.                              | शीर्षक दें और वह भाषा चुनें जिसमें कहेंगे। अगले पन्ने पर रिकॉर्ड कर सकते हैं या लिख सकते हैं।                         |
+| `editor.newTitle`      | A new story                                                                                                             | ಹೊಸ ಕಥೆ                                                                                                              | नई कहानी                                                                                                              |
+| `editor.noSegments`    | Nothing here yet. Process the recording, or add a line.                                                                 | ಇಲ್ಲಿ ಇನ್ನೂ ಏನೂ ಇಲ್ಲ. ಧ್ವನಿಮುದ್ರಣ ಸಿದ್ಧಪಡಿಸಿ, ಅಥವಾ ಸಾಲು ಸೇರಿಸಿ.                                                      | अभी यहाँ कुछ नहीं। रिकॉर्डिंग तैयार करें, या पंक्ति जोड़ें।                                                           |
+| `editor.pageTitle`     | Story                                                                                                                   | ಕಥೆ                                                                                                                  | कहानी                                                                                                                 |
+| `editor.pendingNote`   | This story is with a reviewer. You can edit it again if it comes back.                                                  | ಈ ಕಥೆ ಪರಿಶೀಲಕರ ಬಳಿ ಇದೆ. ಹಿಂದಿರುಗಿದರೆ ಮತ್ತೆ ತಿದ್ದಬಹುದು.                                                               | यह कहानी समीक्षक के पास है। लौटे तो फिर बदल सकते हैं।                                                                 |
+| `editor.preview`       | What listeners hear                                                                                                     | ಕೇಳುಗರು ಕೇಳುವುದು                                                                                                     | सुनने वाले क्या सुनते हैं                                                                                             |
+| `editor.recordLede`    | Press Record and talk as you would to a visitor at your bench. You can pause, listen back, and record again.            | ಧ್ವನಿಮುದ್ರಣ ಒತ್ತಿ, ನಿಮ್ಮ ಮೇಜಿನ ಬಳಿ ಬಂದ ಅತಿಥಿಗೆ ಹೇಳುವಂತೆ ಮಾತನಾಡಿ. ನಿಲ್ಲಿಸಬಹುದು, ಕೇಳಬಹುದು, ಮತ್ತೆ ಮಾಡಬಹುದು.             | रिकॉर्ड दबाएँ और वैसे बोलें जैसे अपनी मेज़ पर आए मेहमान से बोलते हैं। रोक सकते हैं, सुन सकते हैं, फिर से कर सकते हैं। |
+| `editor.recordTitle`   | 1. Record it                                                                                                            | 1. ಧ್ವನಿಮುದ್ರಿಸಿ                                                                                                     | 1. रिकॉर्ड करें                                                                                                       |
+| `editor.removeSegment` | Remove line {{n}}                                                                                                       | ಸಾಲು {{n}} ತೆಗೆಯಿರಿ                                                                                                  | पंक्ति {{n}} हटाएँ                                                                                                    |
+| `editor.resubmit`      | Send for review again                                                                                                   | ಮತ್ತೆ ಪರಿಶೀಲನೆಗೆ ಕಳುಹಿಸಿ                                                                                             | फिर से समीक्षा के लिए भेजें                                                                                           |
+| `editor.reviewLede`    | Correct anything the AI misheard. A reviewer reads it next.                                                             | AI ತಪ್ಪಾಗಿ ಕೇಳಿದ್ದನ್ನು ತಿದ್ದಿ. ನಂತರ ಪರಿಶೀಲಕರು ಓದುತ್ತಾರೆ.                                                             | AI ने जो ग़लत सुना, उसे सुधारें। इसके बाद समीक्षक पढ़ेंगे।                                                            |
+| `editor.reviewTitle`   | 3. Check and send                                                                                                       | 3. ಪರಿಶೀಲಿಸಿ ಕಳುಹಿಸಿ                                                                                                 | 3. जाँचें और भेजें                                                                                                    |
+| `editor.save`          | Save changes                                                                                                            | ಬದಲಾವಣೆ ಉಳಿಸಿ                                                                                                        | बदलाव सहेजें                                                                                                          |
+| `editor.saved`         | Saved.                                                                                                                  | ಉಳಿಸಲಾಗಿದೆ.                                                                                                          | सहेज लिया।                                                                                                            |
+| `editor.seeInArchive`  | See it in the archive                                                                                                   | ಸಂಗ್ರಹದಲ್ಲಿ ನೋಡಿ                                                                                                     | संग्रह में देखें                                                                                                      |
+| `editor.segment`       | Line {{n}}                                                                                                              | ಸಾಲು {{n}}                                                                                                           | पंक्ति {{n}}                                                                                                          |
+| `editor.submit`        | Send for review                                                                                                         | ಪರಿಶೀಲನೆಗೆ ಕಳುಹಿಸಿ                                                                                                   | समीक्षा के लिए भेजें                                                                                                  |
+| `editor.submitted`     | Sent to the review desk.                                                                                                | ಪರಿಶೀಲನಾ ಮೇಜಿಗೆ ಕಳುಹಿಸಲಾಗಿದೆ.                                                                                        | समीक्षा मेज़ पर भेज दिया।                                                                                             |
+| `editor.summary`       | Short summary in English                                                                                                | ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಸಣ್ಣ ಸಾರಾಂಶ                                                                                           | अंग्रेज़ी में छोटा सार                                                                                                |
+| `editor.tags`          | Tags                                                                                                                    | ಟ್ಯಾಗ್‌ಗಳು                                                                                                           | टैग                                                                                                                   |
+| `editor.tagsHint`      | Separate with commas, for example: family, lac                                                                          | ಅಲ್ಪವಿರಾಮದಿಂದ ಬೇರ್ಪಡಿಸಿ, ಉದಾ: family, lac                                                                            | अल्पविराम से अलग करें, जैसे: family, lac                                                                              |
+| `editor.text`          | Written version (optional)                                                                                              | ಬರೆದ ರೂಪ (ಬೇಕಾದರೆ)                                                                                                   | लिखा हुआ रूप (चाहें तो)                                                                                               |
+| `editor.textHint`      | Type the story here if you prefer writing to recording.                                                                 | ಧ್ವನಿಮುದ್ರಿಸುವ ಬದಲು ಬರೆಯಲು ಇಷ್ಟವಿದ್ದರೆ ಇಲ್ಲಿ ಬರೆಯಿರಿ.                                                                | रिकॉर्ड करने के बजाय लिखना पसंद हो तो यहाँ लिखें।                                                                     |
+| `editor.title`         | Title                                                                                                                   | ಶೀರ್ಷಿಕೆ                                                                                                             | शीर्षक                                                                                                                |
+| `editor.transcript`    | Transcript (original language)                                                                                          | ಬರಹ (ಮೂಲ ಭಾಷೆ)                                                                                                       | लिखित प्रति (मूल भाषा)                                                                                                |
+| `editor.translation`   | English translation                                                                                                     | ಇಂಗ್ಲಿಷ್ ಅನುವಾದ                                                                                                      | अंग्रेज़ी अनुवाद                                                                                                      |
 
 ## UI: empty
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `empty.appr` | No openings match. The spinning wheel is idle for now. | ಹೊಂದುವ ಅವಕಾಶಗಳಿಲ್ಲ. ಚರಕ ಸದ್ಯಕ್ಕೆ ಸುಮ್ಮನಿದೆ. | कोई मौक़ा मेल नहीं खाता। चरखा अभी थमा है। |
-| `empty.artisans` | No artisans to show right now. | ಈಗ ತೋರಿಸಲು ಕುಶಲಕರ್ಮಿಗಳಿಲ್ಲ. | अभी दिखाने को कोई कारीगर नहीं। |
-| `empty.gallery` | Nothing on the loom for that search. | ಆ ಹುಡುಕಾಟಕ್ಕೆ ಮಗ್ಗದಲ್ಲಿ ಏನೂ ಇಲ್ಲ. | इस खोज के लिए करघे पर कुछ नहीं। |
-| `empty.galleryHint` | Try fewer words, or clear a filter or two. | ಕಡಿಮೆ ಪದಗಳಿಂದ ಹುಡುಕಿ, ಅಥವಾ ಒಂದೆರಡು ಫಿಲ್ಟರ್ ತೆಗೆಯಿರಿ. | कम शब्दों से खोजें, या एक-दो फ़िल्टर हटाएँ। |
-| `empty.stories` | No stories here yet. The elders are still talking. | ಇಲ್ಲಿ ಇನ್ನೂ ಕಥೆಗಳಿಲ್ಲ. ಹಿರಿಯರು ಇನ್ನೂ ಮಾತನಾಡುತ್ತಿದ್ದಾರೆ. | यहाँ अभी कोई कहानी नहीं। बुज़ुर्ग अभी बोल रहे हैं। |
-| `empty.storiesHint` | Try another language or craft, or clear the search. | ಬೇರೆ ಭಾಷೆ ಅಥವಾ ಕಲೆ ಆರಿಸಿ, ಅಥವಾ ಹುಡುಕಾಟ ತೆಗೆಯಿರಿ. | दूसरी भाषा या शिल्प चुनें, या खोज हटाएँ। |
-| `empty.works` | No pieces listed yet. | ಇನ್ನೂ ಯಾವ ವಸ್ತುವೂ ಪಟ್ಟಿಯಲ್ಲಿಲ್ಲ. | अभी कोई चीज़ सूची में नहीं। |
+| Key                 | English                                                | Kannada                                                 | Hindi                                              |
+| ------------------- | ------------------------------------------------------ | ------------------------------------------------------- | -------------------------------------------------- |
+| `empty.appr`        | No openings match. The spinning wheel is idle for now. | ಹೊಂದುವ ಅವಕಾಶಗಳಿಲ್ಲ. ಚರಕ ಸದ್ಯಕ್ಕೆ ಸುಮ್ಮನಿದೆ.             | कोई मौक़ा मेल नहीं खाता। चरखा अभी थमा है।          |
+| `empty.artisans`    | No artisans to show right now.                         | ಈಗ ತೋರಿಸಲು ಕುಶಲಕರ್ಮಿಗಳಿಲ್ಲ.                             | अभी दिखाने को कोई कारीगर नहीं।                     |
+| `empty.gallery`     | Nothing on the loom for that search.                   | ಆ ಹುಡುಕಾಟಕ್ಕೆ ಮಗ್ಗದಲ್ಲಿ ಏನೂ ಇಲ್ಲ.                       | इस खोज के लिए करघे पर कुछ नहीं।                    |
+| `empty.galleryHint` | Try fewer words, or clear a filter or two.             | ಕಡಿಮೆ ಪದಗಳಿಂದ ಹುಡುಕಿ, ಅಥವಾ ಒಂದೆರಡು ಫಿಲ್ಟರ್ ತೆಗೆಯಿರಿ.    | कम शब्दों से खोजें, या एक-दो फ़िल्टर हटाएँ।        |
+| `empty.stories`     | No stories here yet. The elders are still talking.     | ಇಲ್ಲಿ ಇನ್ನೂ ಕಥೆಗಳಿಲ್ಲ. ಹಿರಿಯರು ಇನ್ನೂ ಮಾತನಾಡುತ್ತಿದ್ದಾರೆ. | यहाँ अभी कोई कहानी नहीं। बुज़ुर्ग अभी बोल रहे हैं। |
+| `empty.storiesHint` | Try another language or craft, or clear the search.    | ಬೇರೆ ಭಾಷೆ ಅಥವಾ ಕಲೆ ಆರಿಸಿ, ಅಥವಾ ಹುಡುಕಾಟ ತೆಗೆಯಿರಿ.        | दूसरी भाषा या शिल्प चुनें, या खोज हटाएँ।           |
+| `empty.works`       | No pieces listed yet.                                  | ಇನ್ನೂ ಯಾವ ವಸ್ತುವೂ ಪಟ್ಟಿಯಲ್ಲಿಲ್ಲ.                        | अभी कोई चीज़ सूची में नहीं।                        |
 
 ## UI: enquiry
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `enquiry.anyPiece` | Something else, or several pieces | ಬೇರೆ ಏನೋ, ಅಥವಾ ಹಲವು ವಸ್ತುಗಳು | कुछ और, या कई चीज़ें |
-| `enquiry.buyersOnly` | Enquiries come from buyer accounts. Artisans and learners can reach out through the apprenticeship pages. | ವಿಚಾರಣೆಗಳು ಖರೀದಿದಾರರ ಖಾತೆಯಿಂದ ಬರುತ್ತವೆ. ಕುಶಲಕರ್ಮಿಗಳು ಮತ್ತು ಕಲಿಯುವವರು ಶಿಷ್ಯವೃತ್ತಿ ಪುಟಗಳ ಮೂಲಕ ಸಂಪರ್ಕಿಸಬಹುದು. | पूछताछ ख़रीदार के खाते से आती है। कारीगर और सीखने वाले शागिर्दी के पन्नों से संपर्क कर सकते हैं। |
-| `enquiry.close` | Close this enquiry | ಈ ವಿಚಾರಣೆ ಮುಚ್ಚಿ | यह पूछताछ बंद करें |
-| `enquiry.closedToast` | Enquiry closed. | ವಿಚಾರಣೆ ಮುಚ್ಚಲಾಗಿದೆ. | पूछताछ बंद। |
-| `enquiry.fromName` | From {{name}} | {{name}} ಅವರಿಂದ | {{name}} से |
-| `enquiry.hideThread` | Fold away | ಮಡಚಿ ಇಡಿ | समेटें |
-| `enquiry.lede` | Your message goes straight to the artisan. Say what you would like and when you need it. | ನಿಮ್ಮ ಸಂದೇಶ ನೇರವಾಗಿ ಕುಶಲಕರ್ಮಿಗೆ ಹೋಗುತ್ತದೆ. ಏನು ಬೇಕು, ಯಾವಾಗ ಬೇಕು ಎಂದು ಹೇಳಿ. | आपका संदेश सीधे कारीगर तक जाता है। बताइए क्या चाहिए और कब तक। |
-| `enquiry.message` | Your message | ನಿಮ್ಮ ಸಂದೇಶ | आपका संदेश |
-| `enquiry.messageHint` | Quantities, colours, dates. The more specific, the better the reply. | ಎಷ್ಟು, ಯಾವ ಬಣ್ಣ, ಯಾವ ದಿನಾಂಕ. ಸ್ಪಷ್ಟವಾಗಿದ್ದಷ್ಟೂ ಉತ್ತರ ಉತ್ತಮ. | कितनी, कौन से रंग, कौन सी तारीख़। जितना साफ़, उतना अच्छा जवाब। |
-| `enquiry.piece` | Which piece? | ಯಾವ ವಸ್ತು? | कौन सी चीज़? |
-| `enquiry.reopen` | Reopen | ಮತ್ತೆ ತೆರೆಯಿರಿ | फिर खोलें |
-| `enquiry.reopenedToast` | Enquiry reopened. | ವಿಚಾರಣೆ ಮತ್ತೆ ತೆರೆಯಲಾಗಿದೆ. | पूछताछ फिर खुली। |
-| `enquiry.replySent` | Reply sent. | ಉತ್ತರ ಕಳುಹಿಸಲಾಗಿದೆ. | जवाब भेज दिया। |
-| `enquiry.seeMine` | See my enquiries | ನನ್ನ ವಿಚಾರಣೆಗಳು | मेरी पूछताछ |
-| `enquiry.send` | Send enquiry | ವಿಚಾರಣೆ ಕಳುಹಿಸಿ | पूछताछ भेजें |
-| `enquiry.sendReply` | Send reply | ಉತ್ತರ ಕಳುಹಿಸಿ | जवाब भेजें |
-| `enquiry.sentBody` | Replies arrive on your workbench. Artisans are often at the wheel or the loom, so give it a day or two. | ಉತ್ತರಗಳು ನಿಮ್ಮ ಕೆಲಸದ ಮೇಜಿಗೆ ಬರುತ್ತವೆ. ಕುಶಲಕರ್ಮಿಗಳು ಹೆಚ್ಚಾಗಿ ಚಕ್ರ ಅಥವಾ ಮಗ್ಗದ ಬಳಿ ಇರುತ್ತಾರೆ, ಒಂದೆರಡು ದಿನ ಕಾಯಿರಿ. | जवाब आपकी कार्य-मेज़ पर आएँगे। कारीगर अक्सर चाक या करघे पर होते हैं, एक-दो दिन दीजिए। |
-| `enquiry.sentTitle` | Sent to {{name}}. | {{name}} ಅವರಿಗೆ ಕಳುಹಿಸಲಾಗಿದೆ. | {{name}} को भेज दिया। |
-| `enquiry.showThread_one` | Open letter ({{count}} reply) | ಪತ್ರ ತೆರೆಯಿರಿ ({{count}} ಉತ್ತರ) | चिट्ठी खोलें ({{count}} जवाब) |
-| `enquiry.showThread_other` | Open letters ({{count}} replies) | ಪತ್ರಗಳನ್ನು ತೆರೆಯಿರಿ ({{count}} ಉತ್ತರಗಳು) | चिट्ठियाँ खोलें ({{count}} जवाब) |
-| `enquiry.signInFirst` | Sign in as a buyer to send an enquiry. | ವಿಚಾರಣೆ ಕಳುಹಿಸಲು ಖರೀದಿದಾರರಾಗಿ ಒಳಗೆ ಬನ್ನಿ. | पूछताछ भेजने के लिए ख़रीदार के रूप में साइन इन करें। |
-| `enquiry.subject` | Subject | ವಿಷಯ | विषय |
-| `enquiry.title` | Write to {{name}} | {{name}} ಅವರಿಗೆ ಬರೆಯಿರಿ | {{name}} को लिखें |
-| `enquiry.toName` | To {{name}} | {{name}} ಅವರಿಗೆ | {{name}} को |
-| `enquiry.yourReply` | Your reply | ನಿಮ್ಮ ಉತ್ತರ | आपका जवाब |
+| Key                        | English                                                                                                   | Kannada                                                                                                        | Hindi                                                                                            |
+| -------------------------- | --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `enquiry.anyPiece`         | Something else, or several pieces                                                                         | ಬೇರೆ ಏನೋ, ಅಥವಾ ಹಲವು ವಸ್ತುಗಳು                                                                                   | कुछ और, या कई चीज़ें                                                                             |
+| `enquiry.buyersOnly`       | Enquiries come from buyer accounts. Artisans and learners can reach out through the apprenticeship pages. | ವಿಚಾರಣೆಗಳು ಖರೀದಿದಾರರ ಖಾತೆಯಿಂದ ಬರುತ್ತವೆ. ಕುಶಲಕರ್ಮಿಗಳು ಮತ್ತು ಕಲಿಯುವವರು ಶಿಷ್ಯವೃತ್ತಿ ಪುಟಗಳ ಮೂಲಕ ಸಂಪರ್ಕಿಸಬಹುದು.     | पूछताछ ख़रीदार के खाते से आती है। कारीगर और सीखने वाले शागिर्दी के पन्नों से संपर्क कर सकते हैं। |
+| `enquiry.close`            | Close this enquiry                                                                                        | ಈ ವಿಚಾರಣೆ ಮುಚ್ಚಿ                                                                                               | यह पूछताछ बंद करें                                                                               |
+| `enquiry.closedToast`      | Enquiry closed.                                                                                           | ವಿಚಾರಣೆ ಮುಚ್ಚಲಾಗಿದೆ.                                                                                           | पूछताछ बंद।                                                                                      |
+| `enquiry.fromName`         | From {{name}}                                                                                             | {{name}} ಅವರಿಂದ                                                                                                | {{name}} से                                                                                      |
+| `enquiry.hideThread`       | Fold away                                                                                                 | ಮಡಚಿ ಇಡಿ                                                                                                       | समेटें                                                                                           |
+| `enquiry.lede`             | Your message goes straight to the artisan. Say what you would like and when you need it.                  | ನಿಮ್ಮ ಸಂದೇಶ ನೇರವಾಗಿ ಕುಶಲಕರ್ಮಿಗೆ ಹೋಗುತ್ತದೆ. ಏನು ಬೇಕು, ಯಾವಾಗ ಬೇಕು ಎಂದು ಹೇಳಿ.                                     | आपका संदेश सीधे कारीगर तक जाता है। बताइए क्या चाहिए और कब तक।                                    |
+| `enquiry.message`          | Your message                                                                                              | ನಿಮ್ಮ ಸಂದೇಶ                                                                                                    | आपका संदेश                                                                                       |
+| `enquiry.messageHint`      | Quantities, colours, dates. The more specific, the better the reply.                                      | ಎಷ್ಟು, ಯಾವ ಬಣ್ಣ, ಯಾವ ದಿನಾಂಕ. ಸ್ಪಷ್ಟವಾಗಿದ್ದಷ್ಟೂ ಉತ್ತರ ಉತ್ತಮ.                                                    | कितनी, कौन से रंग, कौन सी तारीख़। जितना साफ़, उतना अच्छा जवाब।                                   |
+| `enquiry.piece`            | Which piece?                                                                                              | ಯಾವ ವಸ್ತು?                                                                                                     | कौन सी चीज़?                                                                                     |
+| `enquiry.reopen`           | Reopen                                                                                                    | ಮತ್ತೆ ತೆರೆಯಿರಿ                                                                                                 | फिर खोलें                                                                                        |
+| `enquiry.reopenedToast`    | Enquiry reopened.                                                                                         | ವಿಚಾರಣೆ ಮತ್ತೆ ತೆರೆಯಲಾಗಿದೆ.                                                                                     | पूछताछ फिर खुली।                                                                                 |
+| `enquiry.replySent`        | Reply sent.                                                                                               | ಉತ್ತರ ಕಳುಹಿಸಲಾಗಿದೆ.                                                                                            | जवाब भेज दिया।                                                                                   |
+| `enquiry.seeMine`          | See my enquiries                                                                                          | ನನ್ನ ವಿಚಾರಣೆಗಳು                                                                                                | मेरी पूछताछ                                                                                      |
+| `enquiry.send`             | Send enquiry                                                                                              | ವಿಚಾರಣೆ ಕಳುಹಿಸಿ                                                                                                | पूछताछ भेजें                                                                                     |
+| `enquiry.sendReply`        | Send reply                                                                                                | ಉತ್ತರ ಕಳುಹಿಸಿ                                                                                                  | जवाब भेजें                                                                                       |
+| `enquiry.sentBody`         | Replies arrive on your workbench. Artisans are often at the wheel or the loom, so give it a day or two.   | ಉತ್ತರಗಳು ನಿಮ್ಮ ಕೆಲಸದ ಮೇಜಿಗೆ ಬರುತ್ತವೆ. ಕುಶಲಕರ್ಮಿಗಳು ಹೆಚ್ಚಾಗಿ ಚಕ್ರ ಅಥವಾ ಮಗ್ಗದ ಬಳಿ ಇರುತ್ತಾರೆ, ಒಂದೆರಡು ದಿನ ಕಾಯಿರಿ. | जवाब आपकी कार्य-मेज़ पर आएँगे। कारीगर अक्सर चाक या करघे पर होते हैं, एक-दो दिन दीजिए।            |
+| `enquiry.sentTitle`        | Sent to {{name}}.                                                                                         | {{name}} ಅವರಿಗೆ ಕಳುಹಿಸಲಾಗಿದೆ.                                                                                  | {{name}} को भेज दिया।                                                                            |
+| `enquiry.showThread_one`   | Open letter ({{count}} reply)                                                                             | ಪತ್ರ ತೆರೆಯಿರಿ ({{count}} ಉತ್ತರ)                                                                                | चिट्ठी खोलें ({{count}} जवाब)                                                                    |
+| `enquiry.showThread_other` | Open letters ({{count}} replies)                                                                          | ಪತ್ರಗಳನ್ನು ತೆರೆಯಿರಿ ({{count}} ಉತ್ತರಗಳು)                                                                       | चिट्ठियाँ खोलें ({{count}} जवाब)                                                                 |
+| `enquiry.signInFirst`      | Sign in as a buyer to send an enquiry.                                                                    | ವಿಚಾರಣೆ ಕಳುಹಿಸಲು ಖರೀದಿದಾರರಾಗಿ ಒಳಗೆ ಬನ್ನಿ.                                                                      | पूछताछ भेजने के लिए ख़रीदार के रूप में साइन इन करें।                                             |
+| `enquiry.subject`          | Subject                                                                                                   | ವಿಷಯ                                                                                                           | विषय                                                                                             |
+| `enquiry.title`            | Write to {{name}}                                                                                         | {{name}} ಅವರಿಗೆ ಬರೆಯಿರಿ                                                                                        | {{name}} को लिखें                                                                                |
+| `enquiry.toName`           | To {{name}}                                                                                               | {{name}} ಅವರಿಗೆ                                                                                                | {{name}} को                                                                                      |
+| `enquiry.yourReply`        | Your reply                                                                                                | ನಿಮ್ಮ ಉತ್ತರ                                                                                                    | आपका जवाब                                                                                        |
 
 ## UI: filters
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `filters.active_one` | {{count}} filter on | {{count}} ಫಿಲ್ಟರ್ ಹಾಕಲಾಗಿದೆ | {{count}} फ़िल्टर लगा है |
-| `filters.active_other` | {{count}} filters on | {{count}} ಫಿಲ್ಟರ್‌ಗಳು ಹಾಕಲಾಗಿವೆ | {{count}} फ़िल्टर लगे हैं |
-| `filters.allCrafts` | All six crafts | ಎಲ್ಲ ಆರು ಕಲೆಗಳು | सभी छह शिल्प |
-| `filters.allDistricts` | Every district | ಎಲ್ಲ ಜಿಲ್ಲೆಗಳು | हर ज़िला |
-| `filters.allLanguages` | Every language | ಎಲ್ಲ ಭಾಷೆಗಳು | हर भाषा |
-| `filters.any` | Any | ಯಾವುದಾದರೂ | कोई भी |
-| `filters.clear` | Clear all filters | ಎಲ್ಲ ಫಿಲ್ಟರ್ ತೆಗೆಯಿರಿ | सारे फ़िल्टर हटाएँ |
-| `filters.craft` | Craft | ಕಲೆ | शिल्प |
-| `filters.district` | District | ಜಿಲ್ಲೆ | ज़िला |
-| `filters.hide` | Hide filters | ಫಿಲ್ಟರ್ ಮರೆಮಾಡಿ | फ़िल्टर छिपाएँ |
-| `filters.language` | Language | ಭಾಷೆ | भाषा |
-| `filters.maxPrice` | Up to | ವರೆಗೆ | तक |
-| `filters.minPrice` | From | ಇಂದ | से |
-| `filters.price` | Price | ಬೆಲೆ | क़ीमत |
-| `filters.show` | Show filters | ಫಿಲ್ಟರ್ ತೋರಿಸಿ | फ़िल्टर दिखाएँ |
-| `filters.sort` | Sort by | ಕ್ರಮ | क्रम |
-| `filters.title` | Sort through the drawer | ಡ್ರಾಯರ್‌ನಲ್ಲಿ ಹುಡುಕಿ | दराज़ में छाँटें |
-| `filters.withCount` | {{label}} ({{count}}) | {{label}} ({{count}}) | {{label}} ({{count}}) |
+| Key                    | English                 | Kannada                         | Hindi                     |
+| ---------------------- | ----------------------- | ------------------------------- | ------------------------- |
+| `filters.active_one`   | {{count}} filter on     | {{count}} ಫಿಲ್ಟರ್ ಹಾಕಲಾಗಿದೆ     | {{count}} फ़िल्टर लगा है  |
+| `filters.active_other` | {{count}} filters on    | {{count}} ಫಿಲ್ಟರ್‌ಗಳು ಹಾಕಲಾಗಿವೆ | {{count}} फ़िल्टर लगे हैं |
+| `filters.allCrafts`    | All six crafts          | ಎಲ್ಲ ಆರು ಕಲೆಗಳು                 | सभी छह शिल्प              |
+| `filters.allDistricts` | Every district          | ಎಲ್ಲ ಜಿಲ್ಲೆಗಳು                  | हर ज़िला                  |
+| `filters.allLanguages` | Every language          | ಎಲ್ಲ ಭಾಷೆಗಳು                    | हर भाषा                   |
+| `filters.any`          | Any                     | ಯಾವುದಾದರೂ                       | कोई भी                    |
+| `filters.clear`        | Clear all filters       | ಎಲ್ಲ ಫಿಲ್ಟರ್ ತೆಗೆಯಿರಿ           | सारे फ़िल्टर हटाएँ        |
+| `filters.craft`        | Craft                   | ಕಲೆ                             | शिल्प                     |
+| `filters.district`     | District                | ಜಿಲ್ಲೆ                          | ज़िला                     |
+| `filters.hide`         | Hide filters            | ಫಿಲ್ಟರ್ ಮರೆಮಾಡಿ                 | फ़िल्टर छिपाएँ            |
+| `filters.language`     | Language                | ಭಾಷೆ                            | भाषा                      |
+| `filters.maxPrice`     | Up to                   | ವರೆಗೆ                           | तक                        |
+| `filters.minPrice`     | From                    | ಇಂದ                             | से                        |
+| `filters.price`        | Price                   | ಬೆಲೆ                            | क़ीमत                     |
+| `filters.show`         | Show filters            | ಫಿಲ್ಟರ್ ತೋರಿಸಿ                  | फ़िल्टर दिखाएँ            |
+| `filters.sort`         | Sort by                 | ಕ್ರಮ                            | क्रम                      |
+| `filters.title`        | Sort through the drawer | ಡ್ರಾಯರ್‌ನಲ್ಲಿ ಹುಡುಕಿ            | दराज़ में छाँटें          |
+| `filters.withCount`    | {{label}} ({{count}})   | {{label}} ({{count}})           | {{label}} ({{count}})     |
 
 ## UI: footer
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `footer.colophon` | Printed by hand, in a browser. | ಕೈಯಿಂದ ಮುದ್ರಿಸಿದ್ದು, ಬ್ರೌಸರ್‌ನಲ್ಲಿ. | हाथ से छपा, ब्राउज़र में। |
-| `footer.colophonSub` | See what the press has printed so far | ಮುದ್ರಣಾಲಯ ಇದುವರೆಗೆ ಮುದ್ರಿಸಿದ್ದನ್ನು ನೋಡಿ | देखें छापेख़ाने ने अब तक क्या छापा |
-| `footer.course` | A college project for Full Stack Development (26CS3AEFSD). | Full Stack Development (26CS3AEFSD) ಕಾಲೇಜು ಯೋಜನೆ. | Full Stack Development (26CS3AEFSD) की एक कॉलेज परियोजना। |
-| `footer.fictional` | The artisans and their stories are fictional. The crafts are real and need the help. | ಕುಶಲಕರ್ಮಿಗಳು ಮತ್ತು ಅವರ ಕಥೆಗಳು ಕಾಲ್ಪನಿಕ. ಕಲೆಗಳು ನಿಜ, ಮತ್ತು ಅವಕ್ಕೆ ಸಹಾಯ ಬೇಕು. | कारीगर और उनकी कहानियाँ काल्पनिक हैं। शिल्प असली हैं, और उन्हें मदद चाहिए। |
-| `footer.goal11` | Goal 11.4: safeguarding cultural heritage | ಗುರಿ 11.4: ಸಾಂಸ್ಕೃತಿಕ ಪರಂಪರೆಯ ರಕ್ಷಣೆ | लक्ष्य 11.4: सांस्कृतिक विरासत की रक्षा |
-| `footer.goal4` | Goal 4: quality education through apprenticeship | ಗುರಿ 4: ಶಿಷ್ಯವೃತ್ತಿಯ ಮೂಲಕ ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣ | लक्ष्य 4: शागिर्दी से गुणवत्तापूर्ण शिक्षा |
-| `footer.goal8` | Goal 8: decent work for artisans | ಗುರಿ 8: ಕುಶಲಕರ್ಮಿಗಳಿಗೆ ಘನತೆಯ ಕೆಲಸ | लक्ष्य 8: कारीगरों के लिए सम्मानजनक काम |
-| `footer.goalsHead` | working toward | ಗುರಿಗಳತ್ತ | इन लक्ष्यों की ओर |
-| `footer.lampOff` | Back to daylight | ಹಗಲಿಗೆ ಮರಳಿ | दिन की रोशनी में लौटें |
-| `footer.lampOn` | Light the lamp (dark mode) | ದೀಪ ಹಚ್ಚಿ (ಕತ್ತಲೆ ಮೋಡ್) | दीया जलाएँ (डार्क मोड) |
+| Key                  | English                                                                              | Kannada                                                                     | Hindi                                                                      |
+| -------------------- | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `footer.colophon`    | Printed by hand, in a browser.                                                       | ಕೈಯಿಂದ ಮುದ್ರಿಸಿದ್ದು, ಬ್ರೌಸರ್‌ನಲ್ಲಿ.                                         | हाथ से छपा, ब्राउज़र में।                                                  |
+| `footer.colophonSub` | See what the press has printed so far                                                | ಮುದ್ರಣಾಲಯ ಇದುವರೆಗೆ ಮುದ್ರಿಸಿದ್ದನ್ನು ನೋಡಿ                                     | देखें छापेख़ाने ने अब तक क्या छापा                                         |
+| `footer.course`      | A college project for Full Stack Development (26CS3AEFSD).                           | Full Stack Development (26CS3AEFSD) ಕಾಲೇಜು ಯೋಜನೆ.                           | Full Stack Development (26CS3AEFSD) की एक कॉलेज परियोजना।                  |
+| `footer.fictional`   | The artisans and their stories are fictional. The crafts are real and need the help. | ಕುಶಲಕರ್ಮಿಗಳು ಮತ್ತು ಅವರ ಕಥೆಗಳು ಕಾಲ್ಪನಿಕ. ಕಲೆಗಳು ನಿಜ, ಮತ್ತು ಅವಕ್ಕೆ ಸಹಾಯ ಬೇಕು. | कारीगर और उनकी कहानियाँ काल्पनिक हैं। शिल्प असली हैं, और उन्हें मदद चाहिए। |
+| `footer.goal11`      | Goal 11.4: safeguarding cultural heritage                                            | ಗುರಿ 11.4: ಸಾಂಸ್ಕೃತಿಕ ಪರಂಪರೆಯ ರಕ್ಷಣೆ                                        | लक्ष्य 11.4: सांस्कृतिक विरासत की रक्षा                                    |
+| `footer.goal4`       | Goal 4: quality education through apprenticeship                                     | ಗುರಿ 4: ಶಿಷ್ಯವೃತ್ತಿಯ ಮೂಲಕ ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣ                                   | लक्ष्य 4: शागिर्दी से गुणवत्तापूर्ण शिक्षा                                 |
+| `footer.goal8`       | Goal 8: decent work for artisans                                                     | ಗುರಿ 8: ಕುಶಲಕರ್ಮಿಗಳಿಗೆ ಘನತೆಯ ಕೆಲಸ                                           | लक्ष्य 8: कारीगरों के लिए सम्मानजनक काम                                    |
+| `footer.goalsHead`   | working toward                                                                       | ಗುರಿಗಳತ್ತ                                                                   | इन लक्ष्यों की ओर                                                          |
+| `footer.lampOff`     | Back to daylight                                                                     | ಹಗಲಿಗೆ ಮರಳಿ                                                                 | दिन की रोशनी में लौटें                                                     |
+| `footer.lampOn`      | Light the lamp (dark mode)                                                           | ದೀಪ ಹಚ್ಚಿ (ಕತ್ತಲೆ ಮೋಡ್)                                                     | दीया जलाएँ (डार्क मोड)                                                     |
 
 ## UI: form
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `form.counter` | {{count}} of {{max}} | {{max}} ರಲ್ಲಿ {{count}} | {{max}} में से {{count}} |
+| Key              | English                                                | Kannada                                                           | Hindi                                                        |
+| ---------------- | ------------------------------------------------------ | ----------------------------------------------------------------- | ------------------------------------------------------------ |
+| `form.counter`   | {{count}} of {{max}}                                   | {{max}} ರಲ್ಲಿ {{count}}                                           | {{max}} में से {{count}}                                     |
 | `form.fixFields` | A few fields need another look. They are marked below. | ಕೆಲವು ಜಾಗಗಳನ್ನು ಮತ್ತೊಮ್ಮೆ ನೋಡಬೇಕು. ಅವುಗಳನ್ನು ಕೆಳಗೆ ಗುರುತಿಸಲಾಗಿದೆ. | कुछ ख़ाने दोबारा देखने हैं। उन्हें नीचे चिह्नित किया गया है। |
-| `form.required` | (needed) | (ಬೇಕು) | (ज़रूरी) |
+| `form.required`  | (needed)                                               | (ಬೇಕು)                                                            | (ज़रूरी)                                                     |
 
 ## UI: gallery
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `gallery.by` | by {{name}} | {{name}} ಅವರಿಂದ | {{name}} का |
-| `gallery.count_one` | {{count}} piece | {{count}} ವಸ್ತು | {{count}} चीज़ |
-| `gallery.count_other` | {{count}} pieces | {{count}} ವಸ್ತುಗಳು | {{count}} चीज़ें |
-| `gallery.lede` | Pieces made by hand in Karnataka, listed by the people who made them. Prices are set by the artisan. Write to them directly. | ಕರ್ನಾಟಕದಲ್ಲಿ ಕೈಯಿಂದ ಮಾಡಿದ ವಸ್ತುಗಳು, ಮಾಡಿದವರೇ ಪಟ್ಟಿ ಮಾಡಿದ್ದಾರೆ. ಬೆಲೆಯನ್ನು ಕುಶಲಕರ್ಮಿಯೇ ನಿರ್ಧರಿಸುತ್ತಾರೆ. ನೇರವಾಗಿ ಅವರಿಗೆ ಬರೆಯಿರಿ. | कर्नाटक में हाथ से बनी चीज़ें, जिन्हें बनाने वालों ने ख़ुद यहाँ रखा है। क़ीमत कारीगर तय करते हैं। सीधे उन्हें लिखें। |
-| `gallery.note` | nothing here was made by a machine, including the pictures | ಇಲ್ಲಿ ಯಾವುದನ್ನೂ ಯಂತ್ರ ಮಾಡಿಲ್ಲ, ಚಿತ್ರಗಳನ್ನೂ ಸೇರಿ | यहाँ कुछ भी मशीन से नहीं बना, तस्वीरें भी नहीं |
-| `gallery.priceOnRequest` | Price on request | ಬೆಲೆ ಕೇಳಿ ತಿಳಿಯಿರಿ | क़ीमत पूछें |
-| `gallery.results` | Pieces | ವಸ್ತುಗಳು | चीज़ें |
-| `gallery.searchLabel` | Search the gallery | ಗ್ಯಾಲರಿಯಲ್ಲಿ ಹುಡುಕಿ | गैलरी में खोजें |
-| `gallery.searchPlaceholder` | silver vine, saree, Mysuru… | ಬೆಳ್ಳಿ ಬಳ್ಳಿ, ಸೀರೆ, Mysuru… | चाँदी की बेल, साड़ी, Mysuru… |
-| `gallery.sort.newest` | Newest first | ಹೊಸದು ಮೊದಲು | नई पहले |
-| `gallery.sort.oldest` | Oldest first | ಹಳೆಯದು ಮೊದಲು | पुरानी पहले |
-| `gallery.sort.price-asc` | Price, lowest first | ಕಡಿಮೆ ಬೆಲೆ ಮೊದಲು | सस्ती पहले |
-| `gallery.sort.price-desc` | Price, highest first | ಹೆಚ್ಚು ಬೆಲೆ ಮೊದಲು | महँगी पहले |
-| `gallery.sort.title` | Name, A to Z | ಹೆಸರಿನ ಕ್ರಮದಲ್ಲಿ | नाम के क्रम में |
-| `gallery.title` | The gallery | ಗ್ಯಾಲರಿ | गैलरी |
+| Key                         | English                                                                                                                      | Kannada                                                                                                                       | Hindi                                                                                                                |
+| --------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `gallery.by`                | by {{name}}                                                                                                                  | {{name}} ಅವರಿಂದ                                                                                                               | {{name}} का                                                                                                          |
+| `gallery.count_one`         | {{count}} piece                                                                                                              | {{count}} ವಸ್ತು                                                                                                               | {{count}} चीज़                                                                                                       |
+| `gallery.count_other`       | {{count}} pieces                                                                                                             | {{count}} ವಸ್ತುಗಳು                                                                                                            | {{count}} चीज़ें                                                                                                     |
+| `gallery.lede`              | Pieces made by hand in Karnataka, listed by the people who made them. Prices are set by the artisan. Write to them directly. | ಕರ್ನಾಟಕದಲ್ಲಿ ಕೈಯಿಂದ ಮಾಡಿದ ವಸ್ತುಗಳು, ಮಾಡಿದವರೇ ಪಟ್ಟಿ ಮಾಡಿದ್ದಾರೆ. ಬೆಲೆಯನ್ನು ಕುಶಲಕರ್ಮಿಯೇ ನಿರ್ಧರಿಸುತ್ತಾರೆ. ನೇರವಾಗಿ ಅವರಿಗೆ ಬರೆಯಿರಿ. | कर्नाटक में हाथ से बनी चीज़ें, जिन्हें बनाने वालों ने ख़ुद यहाँ रखा है। क़ीमत कारीगर तय करते हैं। सीधे उन्हें लिखें। |
+| `gallery.note`              | nothing here was made by a machine, including the pictures                                                                   | ಇಲ್ಲಿ ಯಾವುದನ್ನೂ ಯಂತ್ರ ಮಾಡಿಲ್ಲ, ಚಿತ್ರಗಳನ್ನೂ ಸೇರಿ                                                                               | यहाँ कुछ भी मशीन से नहीं बना, तस्वीरें भी नहीं                                                                       |
+| `gallery.priceOnRequest`    | Price on request                                                                                                             | ಬೆಲೆ ಕೇಳಿ ತಿಳಿಯಿರಿ                                                                                                            | क़ीमत पूछें                                                                                                          |
+| `gallery.results`           | Pieces                                                                                                                       | ವಸ್ತುಗಳು                                                                                                                      | चीज़ें                                                                                                               |
+| `gallery.searchLabel`       | Search the gallery                                                                                                           | ಗ್ಯಾಲರಿಯಲ್ಲಿ ಹುಡುಕಿ                                                                                                           | गैलरी में खोजें                                                                                                      |
+| `gallery.searchPlaceholder` | silver vine, saree, Mysuru…                                                                                                  | ಬೆಳ್ಳಿ ಬಳ್ಳಿ, ಸೀರೆ, Mysuru…                                                                                                   | चाँदी की बेल, साड़ी, Mysuru…                                                                                         |
+| `gallery.sort.newest`       | Newest first                                                                                                                 | ಹೊಸದು ಮೊದಲು                                                                                                                   | नई पहले                                                                                                              |
+| `gallery.sort.oldest`       | Oldest first                                                                                                                 | ಹಳೆಯದು ಮೊದಲು                                                                                                                  | पुरानी पहले                                                                                                          |
+| `gallery.sort.price-asc`    | Price, lowest first                                                                                                          | ಕಡಿಮೆ ಬೆಲೆ ಮೊದಲು                                                                                                              | सस्ती पहले                                                                                                           |
+| `gallery.sort.price-desc`   | Price, highest first                                                                                                         | ಹೆಚ್ಚು ಬೆಲೆ ಮೊದಲು                                                                                                             | महँगी पहले                                                                                                           |
+| `gallery.sort.title`        | Name, A to Z                                                                                                                 | ಹೆಸರಿನ ಕ್ರಮದಲ್ಲಿ                                                                                                              | नाम के क्रम में                                                                                                      |
+| `gallery.title`             | The gallery                                                                                                                  | ಗ್ಯಾಲರಿ                                                                                                                       | गैलरी                                                                                                                |
 
 ## UI: home
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `home.ctaGallery` | Browse the gallery | ಗ್ಯಾಲರಿ ನೋಡಿ | गैलरी देखें |
-| `home.ctaListen` | Hear a story | ಒಂದು ಕಥೆ ಕೇಳಿ | एक कहानी सुनें |
-| `home.fadingNote` | Scroll, hover or tab to each one. The colour comes back when someone pays attention. | ಸ್ಕ್ರಾಲ್ ಮಾಡಿ, ಮೌಸ್ ಇಡಿ ಅಥವಾ ಟ್ಯಾಬ್ ಒತ್ತಿ. ಯಾರಾದರೂ ಗಮನ ಕೊಟ್ಟಾಗ ಬಣ್ಣ ಮರಳುತ್ತದೆ. | स्क्रॉल करें, माउस ले जाएँ या टैब दबाएँ। कोई ध्यान दे, तो रंग लौट आता है। |
-| `home.fadingTitle` | Six crafts, slowly losing their colour | ನಿಧಾನವಾಗಿ ಬಣ್ಣ ಕಳೆದುಕೊಳ್ಳುತ್ತಿರುವ ಆರು ಕಲೆಗಳು | छह शिल्प, जिनका रंग धीरे-धीरे उतर रहा है |
-| `home.handsWhere` | still practise it around {{region}}. | {{region}} ಸುತ್ತ ಇನ್ನೂ ಈ ಕೆಲಸ ಮಾಡುತ್ತಿವೆ. | {{region}} के आसपास अब भी यह काम करते हैं। |
-| `home.hands_one` | About {{count}} pair of hands | ಸುಮಾರು {{count}} ಜೋಡಿ ಕೈಗಳು | लगभग {{count}} जोड़ी हाथ |
-| `home.hands_other` | About {{count}} pairs of hands | ಸುಮಾರು {{count}} ಜೋಡಿ ಕೈಗಳು | लगभग {{count}} जोड़ी हाथ |
-| `home.headline` | Hear the hands before they go quiet. | ಕೈಗಳು ಮೌನವಾಗುವ ಮುನ್ನ ಅವುಗಳ ಮಾತು ಕೇಳಿ. | हाथ चुप हों, उससे पहले उनकी बात सुनिए। |
-| `home.kicker` | six crafts, twelve workshops, one archive | ಆರು ಕಲೆಗಳು, ಹನ್ನೆರಡು ಕಾರ್ಯಾಗಾರಗಳು, ಒಂದು ಸಂಗ್ರಹ | छह शिल्प, बारह कारख़ाने, एक संग्रह |
-| `home.latestBody` | Stories go up once a reviewer has read every line. | ಪರಿಶೀಲಕರು ಪ್ರತಿ ಸಾಲು ಓದಿದ ನಂತರವೇ ಕಥೆಗಳು ಪ್ರಕಟವಾಗುತ್ತವೆ. | समीक्षक हर पंक्ति पढ़ लें, तभी कहानियाँ छपती हैं। |
-| `home.latestLink` | All stories | ಎಲ್ಲ ಕಥೆಗಳು | सभी कहानियाँ |
-| `home.latestTitle` | Newly in the archive | ಸಂಗ್ರಹಕ್ಕೆ ಹೊಸದಾಗಿ ಸೇರಿದ್ದು | संग्रह में नया |
-| `home.lede` | VanishingTrades keeps the stories of Karnataka's endangered crafts in the makers' own voices, puts buyers in touch with the makers directly, and finds them apprentices. | ಕರ್ನಾಟಕದ ಅಳಿವಿನಂಚಿನ ಕಲೆಗಳ ಕಥೆಗಳನ್ನು ಕಲಾವಿದರ ಸ್ವಂತ ಧ್ವನಿಯಲ್ಲೇ VanishingTrades ಉಳಿಸುತ್ತದೆ, ಖರೀದಿದಾರರನ್ನು ನೇರವಾಗಿ ಅವರೊಂದಿಗೆ ಸೇರಿಸುತ್ತದೆ, ಮತ್ತು ಅವರಿಗೆ ಶಿಷ್ಯರನ್ನು ಹುಡುಕುತ್ತದೆ. | VanishingTrades कर्नाटक के लुप्त होते शिल्पों की कहानियाँ कारीगरों की अपनी आवाज़ में सहेजता है, ख़रीदारों को सीधे उनसे जोड़ता है, और उनके लिए शागिर्द ढूँढता है। |
-| `home.marginNote` | every story is checked by a person before it goes up | ಪ್ರತಿ ಕಥೆಯನ್ನು ಪ್ರಕಟಿಸುವ ಮೊದಲು ಒಬ್ಬ ವ್ಯಕ್ತಿ ಓದುತ್ತಾರೆ | हर कहानी छपने से पहले एक इंसान पढ़ता है |
-| `home.panel.keep.body` | Each artisan has a profile with their work and prices. Buyers write to them directly, with nobody in between taking a cut. A craft survives when it pays. | ಪ್ರತಿ ಕುಶಲಕರ್ಮಿಗೆ ಅವರ ಕೆಲಸ ಮತ್ತು ಬೆಲೆಗಳ ಪುಟವಿದೆ. ಖರೀದಿದಾರರು ನೇರವಾಗಿ ಅವರಿಗೆ ಬರೆಯುತ್ತಾರೆ, ನಡುವೆ ಯಾರೂ ಪಾಲು ತೆಗೆದುಕೊಳ್ಳುವುದಿಲ್ಲ. ಹೊಟ್ಟೆ ತುಂಬಿಸಿದಾಗಲೇ ಕಲೆ ಉಳಿಯುತ್ತದೆ. | हर कारीगर का अपना पन्ना है, उनके काम और क़ीमतों के साथ। ख़रीदार सीधे उन्हें लिखते हैं, बीच में कोई हिस्सा नहीं लेता। शिल्प तभी बचता है जब उससे रोज़ी चले। |
-| `home.panel.keep.goal` | Goal 8 is decent work. The fastest way to keep a craft alive is a fair order. | ಗುರಿ 8 ಘನತೆಯ ಕೆಲಸ. ಕಲೆಯನ್ನು ಉಳಿಸುವ ವೇಗದ ದಾರಿ ಒಂದು ನ್ಯಾಯದ ಆರ್ಡರ್. | लक्ष्य 8 सम्मानजनक काम है। शिल्प को ज़िंदा रखने का सबसे तेज़ रास्ता एक उचित ऑर्डर है। |
-| `home.panel.keep.link` | Browse the gallery | ಗ್ಯಾಲರಿ ನೋಡಿ | गैलरी देखें |
-| `home.panel.keep.title` | Keep it | ಉಳಿಸಿ | सहेजें |
-| `home.panel.pass.body` | Artisans post apprenticeships. Learners apply, follow a five-step roadmap, keep a progress log and finish with a certificate anyone can check. | ಕುಶಲಕರ್ಮಿಗಳು ಶಿಷ್ಯವೃತ್ತಿ ಪ್ರಕಟಿಸುತ್ತಾರೆ. ಕಲಿಯುವವರು ಅರ್ಜಿ ಹಾಕಿ, ಐದು ಹಂತದ ದಾರಿ ಅನುಸರಿಸಿ, ಪ್ರಗತಿ ದಾಖಲಿಸಿ, ಯಾರು ಬೇಕಾದರೂ ಪರಿಶೀಲಿಸಬಹುದಾದ ಪ್ರಮಾಣಪತ್ರ ಪಡೆಯುತ್ತಾರೆ. | कारीगर शागिर्दी के मौक़े डालते हैं। सीखने वाले आवेदन करते हैं, पाँच कदमों की राह पर चलते हैं, प्रगति लिखते हैं और ऐसा प्रमाणपत्र पाते हैं जिसे कोई भी जाँच सके। |
-| `home.panel.pass.goal` | Goal 4 is quality education. Some of the best teachers here never went to college. | ಗುರಿ 4 ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣ. ಇಲ್ಲಿನ ಕೆಲವು ಅತ್ಯುತ್ತಮ ಗುರುಗಳು ಕಾಲೇಜಿಗೆ ಹೋಗಿಲ್ಲ. | लक्ष्य 4 गुणवत्तापूर्ण शिक्षा है। यहाँ के कुछ सबसे अच्छे उस्ताद कभी कॉलेज नहीं गए। |
-| `home.panel.pass.link` | See open apprenticeships | ತೆರೆದ ಶಿಷ್ಯವೃತ್ತಿಗಳು | खुले शागिर्दी के मौक़े |
-| `home.panel.pass.title` | Pass it on | ಮುಂದಿನವರಿಗೆ ಕೊಡಿ | आगे सौंपें |
-| `home.panel.record.body` | An artisan speaks into a phone, in Kannada, Hindi or English. The recording, a transcript and an English translation go to a human reviewer, who checks every line before anything is public. | ಕುಶಲಕರ್ಮಿ ಫೋನಿನಲ್ಲಿ ಕನ್ನಡ, ಹಿಂದಿ ಅಥವಾ ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಮಾತನಾಡುತ್ತಾರೆ. ಧ್ವನಿಮುದ್ರಣ, ಅದರ ಬರಹ ಮತ್ತು ಇಂಗ್ಲಿಷ್ ಅನುವಾದ ಒಬ್ಬ ಪರಿಶೀಲಕರ ಬಳಿ ಹೋಗುತ್ತವೆ. ಅವರು ಪ್ರತಿ ಸಾಲು ಓದಿದ ಮೇಲೆಯೇ ಏನಾದರೂ ಸಾರ್ವಜನಿಕವಾಗುತ್ತದೆ. | कारीगर फ़ोन में कन्नड़, हिन्दी या अंग्रेज़ी में बोलते हैं। रिकॉर्डिंग, उसकी लिखित प्रति और अंग्रेज़ी अनुवाद एक समीक्षक के पास जाते हैं, जो हर पंक्ति पढ़ते हैं। उसके बाद ही कुछ सार्वजनिक होता है। |
-| `home.panel.record.goal` | This is target 11.4 of the Global Goals: protect the world's cultural heritage. A craft is mostly knowledge, and knowledge lives in people. | ಇದು ಜಾಗತಿಕ ಗುರಿಗಳ 11.4: ಜಗತ್ತಿನ ಸಾಂಸ್ಕೃತಿಕ ಪರಂಪರೆಯ ರಕ್ಷಣೆ. ಕಲೆ ಹೆಚ್ಚಾಗಿ ಜ್ಞಾನ, ಮತ್ತು ಜ್ಞಾನ ಜನರಲ್ಲಿ ಬದುಕುತ್ತದೆ. | यह वैश्विक लक्ष्यों का 11.4 है: दुनिया की सांस्कृतिक विरासत की रक्षा। शिल्प ज़्यादातर ज्ञान है, और ज्ञान लोगों में जीता है। |
-| `home.panel.record.link` | Open the story archive | ಕಥಾ ಸಂಗ್ರಹ ತೆರೆಯಿರಿ | कहानी संग्रह खोलें |
-| `home.panel.record.title` | Record it | ದಾಖಲಿಸಿ | रिकॉर्ड करें |
-| `home.panel.step` | Step {{n}} of 3 | 3 ರಲ್ಲಿ {{n}}ನೇ ಹಂತ | 3 में से कदम {{n}} |
-| `home.peopleNote` | fictional people, real crafts | ಕಾಲ್ಪನಿಕ ಜನರು, ನಿಜವಾದ ಕಲೆಗಳು | काल्पनिक लोग, असली शिल्प |
-| `home.peopleTitle` | The people at the benches | ಕೆಲಸದ ಮೇಜಿನ ಜನರು | कार्य-मेज़ पर बैठे लोग |
-| `home.sticker` | Made long before us | ನಮಗಿಂತ ಬಹಳ ಹಿಂದೆಯೇ ಮಾಡಿದ್ದು | हमसे बहुत पहले बना |
-| `home.storyTitle` | What happens to a story here | ಇಲ್ಲಿ ಒಂದು ಕಥೆಗೆ ಏನಾಗುತ್ತದೆ | यहाँ एक कहानी के साथ क्या होता है |
+| Key                       | English                                                                                                                                                                                       | Kannada                                                                                                                                                                                            | Hindi                                                                                                                                                                                              |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `home.ctaGallery`         | Browse the gallery                                                                                                                                                                            | ಗ್ಯಾಲರಿ ನೋಡಿ                                                                                                                                                                                       | गैलरी देखें                                                                                                                                                                                        |
+| `home.ctaListen`          | Hear a story                                                                                                                                                                                  | ಒಂದು ಕಥೆ ಕೇಳಿ                                                                                                                                                                                      | एक कहानी सुनें                                                                                                                                                                                     |
+| `home.fadingNote`         | Scroll, hover or tab to each one. The colour comes back when someone pays attention.                                                                                                          | ಸ್ಕ್ರಾಲ್ ಮಾಡಿ, ಮೌಸ್ ಇಡಿ ಅಥವಾ ಟ್ಯಾಬ್ ಒತ್ತಿ. ಯಾರಾದರೂ ಗಮನ ಕೊಟ್ಟಾಗ ಬಣ್ಣ ಮರಳುತ್ತದೆ.                                                                                                                     | स्क्रॉल करें, माउस ले जाएँ या टैब दबाएँ। कोई ध्यान दे, तो रंग लौट आता है।                                                                                                                          |
+| `home.fadingTitle`        | Six crafts, slowly losing their colour                                                                                                                                                        | ನಿಧಾನವಾಗಿ ಬಣ್ಣ ಕಳೆದುಕೊಳ್ಳುತ್ತಿರುವ ಆರು ಕಲೆಗಳು                                                                                                                                                       | छह शिल्प, जिनका रंग धीरे-धीरे उतर रहा है                                                                                                                                                           |
+| `home.handsWhere`         | still practise it around {{region}}.                                                                                                                                                          | {{region}} ಸುತ್ತ ಇನ್ನೂ ಈ ಕೆಲಸ ಮಾಡುತ್ತಿವೆ.                                                                                                                                                          | {{region}} के आसपास अब भी यह काम करते हैं।                                                                                                                                                         |
+| `home.hands_one`          | About {{count}} pair of hands                                                                                                                                                                 | ಸುಮಾರು {{count}} ಜೋಡಿ ಕೈಗಳು                                                                                                                                                                        | लगभग {{count}} जोड़ी हाथ                                                                                                                                                                           |
+| `home.hands_other`        | About {{count}} pairs of hands                                                                                                                                                                | ಸುಮಾರು {{count}} ಜೋಡಿ ಕೈಗಳು                                                                                                                                                                        | लगभग {{count}} जोड़ी हाथ                                                                                                                                                                           |
+| `home.headline`           | Hear the hands before they go quiet.                                                                                                                                                          | ಕೈಗಳು ಮೌನವಾಗುವ ಮುನ್ನ ಅವುಗಳ ಮಾತು ಕೇಳಿ.                                                                                                                                                              | हाथ चुप हों, उससे पहले उनकी बात सुनिए।                                                                                                                                                             |
+| `home.kicker`             | six crafts, twelve workshops, one archive                                                                                                                                                     | ಆರು ಕಲೆಗಳು, ಹನ್ನೆರಡು ಕಾರ್ಯಾಗಾರಗಳು, ಒಂದು ಸಂಗ್ರಹ                                                                                                                                                     | छह शिल्प, बारह कारख़ाने, एक संग्रह                                                                                                                                                                 |
+| `home.latestBody`         | Stories go up once a reviewer has read every line.                                                                                                                                            | ಪರಿಶೀಲಕರು ಪ್ರತಿ ಸಾಲು ಓದಿದ ನಂತರವೇ ಕಥೆಗಳು ಪ್ರಕಟವಾಗುತ್ತವೆ.                                                                                                                                            | समीक्षक हर पंक्ति पढ़ लें, तभी कहानियाँ छपती हैं।                                                                                                                                                  |
+| `home.latestLink`         | All stories                                                                                                                                                                                   | ಎಲ್ಲ ಕಥೆಗಳು                                                                                                                                                                                        | सभी कहानियाँ                                                                                                                                                                                       |
+| `home.latestTitle`        | Newly in the archive                                                                                                                                                                          | ಸಂಗ್ರಹಕ್ಕೆ ಹೊಸದಾಗಿ ಸೇರಿದ್ದು                                                                                                                                                                        | संग्रह में नया                                                                                                                                                                                     |
+| `home.lede`               | VanishingTrades keeps the stories of Karnataka's endangered crafts in the makers' own voices, puts buyers in touch with the makers directly, and finds them apprentices.                      | ಕರ್ನಾಟಕದ ಅಳಿವಿನಂಚಿನ ಕಲೆಗಳ ಕಥೆಗಳನ್ನು ಕಲಾವಿದರ ಸ್ವಂತ ಧ್ವನಿಯಲ್ಲೇ VanishingTrades ಉಳಿಸುತ್ತದೆ, ಖರೀದಿದಾರರನ್ನು ನೇರವಾಗಿ ಅವರೊಂದಿಗೆ ಸೇರಿಸುತ್ತದೆ, ಮತ್ತು ಅವರಿಗೆ ಶಿಷ್ಯರನ್ನು ಹುಡುಕುತ್ತದೆ.                         | VanishingTrades कर्नाटक के लुप्त होते शिल्पों की कहानियाँ कारीगरों की अपनी आवाज़ में सहेजता है, ख़रीदारों को सीधे उनसे जोड़ता है, और उनके लिए शागिर्द ढूँढता है।                                   |
+| `home.marginNote`         | every story is checked by a person before it goes up                                                                                                                                          | ಪ್ರತಿ ಕಥೆಯನ್ನು ಪ್ರಕಟಿಸುವ ಮೊದಲು ಒಬ್ಬ ವ್ಯಕ್ತಿ ಓದುತ್ತಾರೆ                                                                                                                                              | हर कहानी छपने से पहले एक इंसान पढ़ता है                                                                                                                                                            |
+| `home.panel.keep.body`    | Each artisan has a profile with their work and prices. Buyers write to them directly, with nobody in between taking a cut. A craft survives when it pays.                                     | ಪ್ರತಿ ಕುಶಲಕರ್ಮಿಗೆ ಅವರ ಕೆಲಸ ಮತ್ತು ಬೆಲೆಗಳ ಪುಟವಿದೆ. ಖರೀದಿದಾರರು ನೇರವಾಗಿ ಅವರಿಗೆ ಬರೆಯುತ್ತಾರೆ, ನಡುವೆ ಯಾರೂ ಪಾಲು ತೆಗೆದುಕೊಳ್ಳುವುದಿಲ್ಲ. ಹೊಟ್ಟೆ ತುಂಬಿಸಿದಾಗಲೇ ಕಲೆ ಉಳಿಯುತ್ತದೆ.                                   | हर कारीगर का अपना पन्ना है, उनके काम और क़ीमतों के साथ। ख़रीदार सीधे उन्हें लिखते हैं, बीच में कोई हिस्सा नहीं लेता। शिल्प तभी बचता है जब उससे रोज़ी चले।                                          |
+| `home.panel.keep.goal`    | Goal 8 is decent work. The fastest way to keep a craft alive is a fair order.                                                                                                                 | ಗುರಿ 8 ಘನತೆಯ ಕೆಲಸ. ಕಲೆಯನ್ನು ಉಳಿಸುವ ವೇಗದ ದಾರಿ ಒಂದು ನ್ಯಾಯದ ಆರ್ಡರ್.                                                                                                                                   | लक्ष्य 8 सम्मानजनक काम है। शिल्प को ज़िंदा रखने का सबसे तेज़ रास्ता एक उचित ऑर्डर है।                                                                                                              |
+| `home.panel.keep.link`    | Browse the gallery                                                                                                                                                                            | ಗ್ಯಾಲರಿ ನೋಡಿ                                                                                                                                                                                       | गैलरी देखें                                                                                                                                                                                        |
+| `home.panel.keep.title`   | Keep it                                                                                                                                                                                       | ಉಳಿಸಿ                                                                                                                                                                                              | सहेजें                                                                                                                                                                                             |
+| `home.panel.pass.body`    | Artisans post apprenticeships. Learners apply, follow a five-step roadmap, keep a progress log and finish with a certificate anyone can check.                                                | ಕುಶಲಕರ್ಮಿಗಳು ಶಿಷ್ಯವೃತ್ತಿ ಪ್ರಕಟಿಸುತ್ತಾರೆ. ಕಲಿಯುವವರು ಅರ್ಜಿ ಹಾಕಿ, ಐದು ಹಂತದ ದಾರಿ ಅನುಸರಿಸಿ, ಪ್ರಗತಿ ದಾಖಲಿಸಿ, ಯಾರು ಬೇಕಾದರೂ ಪರಿಶೀಲಿಸಬಹುದಾದ ಪ್ರಮಾಣಪತ್ರ ಪಡೆಯುತ್ತಾರೆ.                                         | कारीगर शागिर्दी के मौक़े डालते हैं। सीखने वाले आवेदन करते हैं, पाँच कदमों की राह पर चलते हैं, प्रगति लिखते हैं और ऐसा प्रमाणपत्र पाते हैं जिसे कोई भी जाँच सके।                                    |
+| `home.panel.pass.goal`    | Goal 4 is quality education. Some of the best teachers here never went to college.                                                                                                            | ಗುರಿ 4 ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣ. ಇಲ್ಲಿನ ಕೆಲವು ಅತ್ಯುತ್ತಮ ಗುರುಗಳು ಕಾಲೇಜಿಗೆ ಹೋಗಿಲ್ಲ.                                                                                                                           | लक्ष्य 4 गुणवत्तापूर्ण शिक्षा है। यहाँ के कुछ सबसे अच्छे उस्ताद कभी कॉलेज नहीं गए।                                                                                                                 |
+| `home.panel.pass.link`    | See open apprenticeships                                                                                                                                                                      | ತೆರೆದ ಶಿಷ್ಯವೃತ್ತಿಗಳು                                                                                                                                                                               | खुले शागिर्दी के मौक़े                                                                                                                                                                             |
+| `home.panel.pass.title`   | Pass it on                                                                                                                                                                                    | ಮುಂದಿನವರಿಗೆ ಕೊಡಿ                                                                                                                                                                                   | आगे सौंपें                                                                                                                                                                                         |
+| `home.panel.record.body`  | An artisan speaks into a phone, in Kannada, Hindi or English. The recording, a transcript and an English translation go to a human reviewer, who checks every line before anything is public. | ಕುಶಲಕರ್ಮಿ ಫೋನಿನಲ್ಲಿ ಕನ್ನಡ, ಹಿಂದಿ ಅಥವಾ ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಮಾತನಾಡುತ್ತಾರೆ. ಧ್ವನಿಮುದ್ರಣ, ಅದರ ಬರಹ ಮತ್ತು ಇಂಗ್ಲಿಷ್ ಅನುವಾದ ಒಬ್ಬ ಪರಿಶೀಲಕರ ಬಳಿ ಹೋಗುತ್ತವೆ. ಅವರು ಪ್ರತಿ ಸಾಲು ಓದಿದ ಮೇಲೆಯೇ ಏನಾದರೂ ಸಾರ್ವಜನಿಕವಾಗುತ್ತದೆ. | कारीगर फ़ोन में कन्नड़, हिन्दी या अंग्रेज़ी में बोलते हैं। रिकॉर्डिंग, उसकी लिखित प्रति और अंग्रेज़ी अनुवाद एक समीक्षक के पास जाते हैं, जो हर पंक्ति पढ़ते हैं। उसके बाद ही कुछ सार्वजनिक होता है। |
+| `home.panel.record.goal`  | This is target 11.4 of the Global Goals: protect the world's cultural heritage. A craft is mostly knowledge, and knowledge lives in people.                                                   | ಇದು ಜಾಗತಿಕ ಗುರಿಗಳ 11.4: ಜಗತ್ತಿನ ಸಾಂಸ್ಕೃತಿಕ ಪರಂಪರೆಯ ರಕ್ಷಣೆ. ಕಲೆ ಹೆಚ್ಚಾಗಿ ಜ್ಞಾನ, ಮತ್ತು ಜ್ಞಾನ ಜನರಲ್ಲಿ ಬದುಕುತ್ತದೆ.                                                                                     | यह वैश्विक लक्ष्यों का 11.4 है: दुनिया की सांस्कृतिक विरासत की रक्षा। शिल्प ज़्यादातर ज्ञान है, और ज्ञान लोगों में जीता है।                                                                        |
+| `home.panel.record.link`  | Open the story archive                                                                                                                                                                        | ಕಥಾ ಸಂಗ್ರಹ ತೆರೆಯಿರಿ                                                                                                                                                                                | कहानी संग्रह खोलें                                                                                                                                                                                 |
+| `home.panel.record.title` | Record it                                                                                                                                                                                     | ದಾಖಲಿಸಿ                                                                                                                                                                                            | रिकॉर्ड करें                                                                                                                                                                                       |
+| `home.panel.step`         | Step {{n}} of 3                                                                                                                                                                               | 3 ರಲ್ಲಿ {{n}}ನೇ ಹಂತ                                                                                                                                                                                | 3 में से कदम {{n}}                                                                                                                                                                                 |
+| `home.peopleNote`         | fictional people, real crafts                                                                                                                                                                 | ಕಾಲ್ಪನಿಕ ಜನರು, ನಿಜವಾದ ಕಲೆಗಳು                                                                                                                                                                       | काल्पनिक लोग, असली शिल्प                                                                                                                                                                           |
+| `home.peopleTitle`        | The people at the benches                                                                                                                                                                     | ಕೆಲಸದ ಮೇಜಿನ ಜನರು                                                                                                                                                                                   | कार्य-मेज़ पर बैठे लोग                                                                                                                                                                             |
+| `home.sticker`            | Made long before us                                                                                                                                                                           | ನಮಗಿಂತ ಬಹಳ ಹಿಂದೆಯೇ ಮಾಡಿದ್ದು                                                                                                                                                                        | हमसे बहुत पहले बना                                                                                                                                                                                 |
+| `home.storyTitle`         | What happens to a story here                                                                                                                                                                  | ಇಲ್ಲಿ ಒಂದು ಕಥೆಗೆ ಏನಾಗುತ್ತದೆ                                                                                                                                                                        | यहाँ एक कहानी के साथ क्या होता है                                                                                                                                                                  |
 
 ## UI: impact
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `impact.breakdown.applicationsByStatus` | Applications by status | ಸ್ಥಿತಿಯ ಪ್ರಕಾರ ಅರ್ಜಿಗಳು | स्थिति के हिसाब से आवेदन |
-| `impact.breakdown.storiesByLanguage` | Archived stories by language | ಭಾಷೆಯ ಪ್ರಕಾರ ಕಥೆಗಳು | भाषा के हिसाब से कहानियाँ |
-| `impact.breakdown.worksByCraft` | Pieces by craft | ಕಲೆಯ ಪ್ರಕಾರ ವಸ್ತುಗಳು | शिल्प के हिसाब से चीज़ें |
-| `impact.chart.sdg11` | Stories submitted and approved, last six months | ಕಳುಹಿಸಿದ ಮತ್ತು ಒಪ್ಪಿದ ಕಥೆಗಳು, ಕಳೆದ ಆರು ತಿಂಗಳು | भेजी और स्वीकृत कहानियाँ, पिछले छह महीने |
-| `impact.chart.sdg4` | Applications and certificates, last six months | ಅರ್ಜಿಗಳು ಮತ್ತು ಪ್ರಮಾಣಪತ್ರಗಳು, ಕಳೆದ ಆರು ತಿಂಗಳು | आवेदन और प्रमाणपत्र, पिछले छह महीने |
-| `impact.chart.sdg8` | Enquiries and new pieces, last six months | ವಿಚಾರಣೆಗಳು ಮತ್ತು ಹೊಸ ವಸ್ತುಗಳು, ಕಳೆದ ಆರು ತಿಂಗಳು | पूछताछ और नई चीज़ें, पिछले छह महीने |
-| `impact.count` | Count | ಸಂಖ್ಯೆ | गिनती |
-| `impact.f.applications` | applications | ಅರ್ಜಿಗಳು | आवेदन |
-| `impact.f.artisans` | artisans with profiles | ಪುಟ ಇರುವ ಕುಶಲಕರ್ಮಿಗಳು | पन्नों वाले कारीगर |
-| `impact.f.certificates` | certificates issued | ನೀಡಿದ ಪ್ರಮಾಣಪತ್ರಗಳು | दिए गए प्रमाणपत्र |
-| `impact.f.enquiries` | enquiries sent | ಕಳುಹಿಸಿದ ವಿಚಾರಣೆಗಳು | भेजी गई पूछताछ |
-| `impact.f.enquiriesAnswered` | enquiries answered | ಉತ್ತರಿಸಿದ ವಿಚಾರಣೆಗಳು | जवाब मिली पूछताछ |
-| `impact.f.languages` | languages heard | ಕೇಳಿಬಂದ ಭಾಷೆಗಳು | सुनी गई भाषाएँ |
-| `impact.f.learnersInTraining` | learners in training | ತರಬೇತಿಯಲ್ಲಿರುವವರು | सीख रहे लोग |
-| `impact.f.minutesRecorded` | minutes recorded | ಧ್ವನಿಮುದ್ರಿತ ನಿಮಿಷಗಳು | रिकॉर्ड हुए मिनट |
-| `impact.f.openings` | openings now | ಈಗಿನ ಅವಕಾಶಗಳು | अभी के मौक़े |
-| `impact.f.plays` | times listened | ಕೇಳಿದ ಬಾರಿ | बार सुना गया |
-| `impact.f.storiesArchived` | stories archived | ಸಂಗ್ರಹಿಸಿದ ಕಥೆಗಳು | संग्रह में कहानियाँ |
-| `impact.f.works` | pieces listed | ಪಟ್ಟಿಯಲ್ಲಿರುವ ವಸ್ತುಗಳು | सूची की चीज़ें |
-| `impact.item` | Item | ಐಟಂ | चीज़ |
-| `impact.lede` | What has happened on VanishingTrades so far, counted straight from the database and grouped under the three Global Goals the project works toward. | VanishingTrades ನಲ್ಲಿ ಇದುವರೆಗೆ ನಡೆದದ್ದು, ನೇರವಾಗಿ ಡೇಟಾಬೇಸ್‌ನಿಂದ ಎಣಿಸಿ, ಯೋಜನೆಯ ಮೂರು ಜಾಗತಿಕ ಗುರಿಗಳ ಅಡಿಯಲ್ಲಿ ಜೋಡಿಸಲಾಗಿದೆ. | VanishingTrades पर अब तक जो हुआ, सीधे डेटाबेस से गिना गया, और परियोजना के तीन वैश्विक लक्ष्यों के नीचे रखा गया। |
-| `impact.loadingCharts` | Inking the charts… | ಚಾರ್ಟ್‌ಗಳಿಗೆ ಶಾಯಿ ಹಚ್ಚುತ್ತಿದೆ… | चार्ट पर स्याही लग रही है… |
-| `impact.month` | Month | ತಿಂಗಳು | महीना |
-| `impact.note` | small numbers, honestly counted | ಸಣ್ಣ ಸಂಖ್ಯೆಗಳು, ಪ್ರಾಮಾಣಿಕವಾಗಿ ಎಣಿಸಿದವು | छोटी संख्याएँ, ईमानदारी से गिनी हुई |
-| `impact.sampleNote` | Everything counted here is demo data, so these are sample numbers. | ಇಲ್ಲಿ ಎಣಿಸಿದ್ದೆಲ್ಲ ಮಾದರಿ ಡೇಟಾ, ಆದ್ದರಿಂದ ಇವು ಮಾದರಿ ಸಂಖ್ಯೆಗಳು. | यहाँ गिना गया सब कुछ नमूना डेटा है, इसलिए ये नमूना संख्याएँ हैं। |
-| `impact.series.applications` | Applications | ಅರ್ಜಿಗಳು | आवेदन |
-| `impact.series.approved` | Approved | ಒಪ್ಪಿದವು | स्वीकृत |
-| `impact.series.certificates` | Certificates | ಪ್ರಮಾಣಪತ್ರಗಳು | प्रमाणपत्र |
-| `impact.series.enquiries` | Enquiries | ವಿಚಾರಣೆಗಳು | पूछताछ |
-| `impact.series.submitted` | Submitted | ಕಳುಹಿಸಿದವು | भेजी गईं |
-| `impact.series.works` | Pieces listed | ಪಟ್ಟಿಯ ವಸ್ತುಗಳು | सूची की चीज़ें |
-| `impact.title` | Impact, grouped by goal | ಗುರಿಗಳ ಪ್ರಕಾರ ಪರಿಣಾಮ | लक्ष्यों के हिसाब से असर |
-| `impact.why.sdg11` | Stories kept in the public archive, in the languages they were told in. | ಹೇಳಿದ ಭಾಷೆಯಲ್ಲೇ ಸಾರ್ವಜನಿಕ ಸಂಗ್ರಹದಲ್ಲಿರುವ ಕಥೆಗಳು. | सार्वजनिक संग्रह में रखी कहानियाँ, उसी भाषा में जिसमें कही गईं। |
-| `impact.why.sdg4` | Learners taking up the craft through apprenticeships. | ಶಿಷ್ಯವೃತ್ತಿಯ ಮೂಲಕ ಕಲೆ ಕಲಿಯುತ್ತಿರುವವರು. | शागिर्दी के ज़रिए हुनर सीखते लोग। |
-| `impact.why.sdg8` | Artisans earning from their craft, through direct enquiries. | ನೇರ ವಿಚಾರಣೆಗಳ ಮೂಲಕ ಕಲೆಯಿಂದ ಸಂಪಾದಿಸುತ್ತಿರುವ ಕುಶಲಕರ್ಮಿಗಳು. | सीधी पूछताछ से अपने हुनर से कमाते कारीगर। |
+| Key                                     | English                                                                                                                                            | Kannada                                                                                                               | Hindi                                                                                                           |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `impact.breakdown.applicationsByStatus` | Applications by status                                                                                                                             | ಸ್ಥಿತಿಯ ಪ್ರಕಾರ ಅರ್ಜಿಗಳು                                                                                               | स्थिति के हिसाब से आवेदन                                                                                        |
+| `impact.breakdown.storiesByLanguage`    | Archived stories by language                                                                                                                       | ಭಾಷೆಯ ಪ್ರಕಾರ ಕಥೆಗಳು                                                                                                   | भाषा के हिसाब से कहानियाँ                                                                                       |
+| `impact.breakdown.worksByCraft`         | Pieces by craft                                                                                                                                    | ಕಲೆಯ ಪ್ರಕಾರ ವಸ್ತುಗಳು                                                                                                  | शिल्प के हिसाब से चीज़ें                                                                                        |
+| `impact.chart.sdg11`                    | Stories submitted and approved, last six months                                                                                                    | ಕಳುಹಿಸಿದ ಮತ್ತು ಒಪ್ಪಿದ ಕಥೆಗಳು, ಕಳೆದ ಆರು ತಿಂಗಳು                                                                         | भेजी और स्वीकृत कहानियाँ, पिछले छह महीने                                                                        |
+| `impact.chart.sdg4`                     | Applications and certificates, last six months                                                                                                     | ಅರ್ಜಿಗಳು ಮತ್ತು ಪ್ರಮಾಣಪತ್ರಗಳು, ಕಳೆದ ಆರು ತಿಂಗಳು                                                                         | आवेदन और प्रमाणपत्र, पिछले छह महीने                                                                             |
+| `impact.chart.sdg8`                     | Enquiries and new pieces, last six months                                                                                                          | ವಿಚಾರಣೆಗಳು ಮತ್ತು ಹೊಸ ವಸ್ತುಗಳು, ಕಳೆದ ಆರು ತಿಂಗಳು                                                                        | पूछताछ और नई चीज़ें, पिछले छह महीने                                                                             |
+| `impact.count`                          | Count                                                                                                                                              | ಸಂಖ್ಯೆ                                                                                                                | गिनती                                                                                                           |
+| `impact.f.applications`                 | applications                                                                                                                                       | ಅರ್ಜಿಗಳು                                                                                                              | आवेदन                                                                                                           |
+| `impact.f.artisans`                     | artisans with profiles                                                                                                                             | ಪುಟ ಇರುವ ಕುಶಲಕರ್ಮಿಗಳು                                                                                                 | पन्नों वाले कारीगर                                                                                              |
+| `impact.f.certificates`                 | certificates issued                                                                                                                                | ನೀಡಿದ ಪ್ರಮಾಣಪತ್ರಗಳು                                                                                                   | दिए गए प्रमाणपत्र                                                                                               |
+| `impact.f.enquiries`                    | enquiries sent                                                                                                                                     | ಕಳುಹಿಸಿದ ವಿಚಾರಣೆಗಳು                                                                                                   | भेजी गई पूछताछ                                                                                                  |
+| `impact.f.enquiriesAnswered`            | enquiries answered                                                                                                                                 | ಉತ್ತರಿಸಿದ ವಿಚಾರಣೆಗಳು                                                                                                  | जवाब मिली पूछताछ                                                                                                |
+| `impact.f.languages`                    | languages heard                                                                                                                                    | ಕೇಳಿಬಂದ ಭಾಷೆಗಳು                                                                                                       | सुनी गई भाषाएँ                                                                                                  |
+| `impact.f.learnersInTraining`           | learners in training                                                                                                                               | ತರಬೇತಿಯಲ್ಲಿರುವವರು                                                                                                     | सीख रहे लोग                                                                                                     |
+| `impact.f.minutesRecorded`              | minutes recorded                                                                                                                                   | ಧ್ವನಿಮುದ್ರಿತ ನಿಮಿಷಗಳು                                                                                                 | रिकॉर्ड हुए मिनट                                                                                                |
+| `impact.f.openings`                     | openings now                                                                                                                                       | ಈಗಿನ ಅವಕಾಶಗಳು                                                                                                         | अभी के मौक़े                                                                                                    |
+| `impact.f.plays`                        | times listened                                                                                                                                     | ಕೇಳಿದ ಬಾರಿ                                                                                                            | बार सुना गया                                                                                                    |
+| `impact.f.storiesArchived`              | stories archived                                                                                                                                   | ಸಂಗ್ರಹಿಸಿದ ಕಥೆಗಳು                                                                                                     | संग्रह में कहानियाँ                                                                                             |
+| `impact.f.works`                        | pieces listed                                                                                                                                      | ಪಟ್ಟಿಯಲ್ಲಿರುವ ವಸ್ತುಗಳು                                                                                                | सूची की चीज़ें                                                                                                  |
+| `impact.item`                           | Item                                                                                                                                               | ಐಟಂ                                                                                                                   | चीज़                                                                                                            |
+| `impact.lede`                           | What has happened on VanishingTrades so far, counted straight from the database and grouped under the three Global Goals the project works toward. | VanishingTrades ನಲ್ಲಿ ಇದುವರೆಗೆ ನಡೆದದ್ದು, ನೇರವಾಗಿ ಡೇಟಾಬೇಸ್‌ನಿಂದ ಎಣಿಸಿ, ಯೋಜನೆಯ ಮೂರು ಜಾಗತಿಕ ಗುರಿಗಳ ಅಡಿಯಲ್ಲಿ ಜೋಡಿಸಲಾಗಿದೆ. | VanishingTrades पर अब तक जो हुआ, सीधे डेटाबेस से गिना गया, और परियोजना के तीन वैश्विक लक्ष्यों के नीचे रखा गया। |
+| `impact.loadingCharts`                  | Inking the charts…                                                                                                                                 | ಚಾರ್ಟ್‌ಗಳಿಗೆ ಶಾಯಿ ಹಚ್ಚುತ್ತಿದೆ…                                                                                        | चार्ट पर स्याही लग रही है…                                                                                      |
+| `impact.month`                          | Month                                                                                                                                              | ತಿಂಗಳು                                                                                                                | महीना                                                                                                           |
+| `impact.note`                           | small numbers, honestly counted                                                                                                                    | ಸಣ್ಣ ಸಂಖ್ಯೆಗಳು, ಪ್ರಾಮಾಣಿಕವಾಗಿ ಎಣಿಸಿದವು                                                                                | छोटी संख्याएँ, ईमानदारी से गिनी हुई                                                                             |
+| `impact.sampleNote`                     | Everything counted here is demo data, so these are sample numbers.                                                                                 | ಇಲ್ಲಿ ಎಣಿಸಿದ್ದೆಲ್ಲ ಮಾದರಿ ಡೇಟಾ, ಆದ್ದರಿಂದ ಇವು ಮಾದರಿ ಸಂಖ್ಯೆಗಳು.                                                          | यहाँ गिना गया सब कुछ नमूना डेटा है, इसलिए ये नमूना संख्याएँ हैं।                                                |
+| `impact.series.applications`            | Applications                                                                                                                                       | ಅರ್ಜಿಗಳು                                                                                                              | आवेदन                                                                                                           |
+| `impact.series.approved`                | Approved                                                                                                                                           | ಒಪ್ಪಿದವು                                                                                                              | स्वीकृत                                                                                                         |
+| `impact.series.certificates`            | Certificates                                                                                                                                       | ಪ್ರಮಾಣಪತ್ರಗಳು                                                                                                         | प्रमाणपत्र                                                                                                      |
+| `impact.series.enquiries`               | Enquiries                                                                                                                                          | ವಿಚಾರಣೆಗಳು                                                                                                            | पूछताछ                                                                                                          |
+| `impact.series.submitted`               | Submitted                                                                                                                                          | ಕಳುಹಿಸಿದವು                                                                                                            | भेजी गईं                                                                                                        |
+| `impact.series.works`                   | Pieces listed                                                                                                                                      | ಪಟ್ಟಿಯ ವಸ್ತುಗಳು                                                                                                       | सूची की चीज़ें                                                                                                  |
+| `impact.title`                          | Impact, grouped by goal                                                                                                                            | ಗುರಿಗಳ ಪ್ರಕಾರ ಪರಿಣಾಮ                                                                                                  | लक्ष्यों के हिसाब से असर                                                                                        |
+| `impact.why.sdg11`                      | Stories kept in the public archive, in the languages they were told in.                                                                            | ಹೇಳಿದ ಭಾಷೆಯಲ್ಲೇ ಸಾರ್ವಜನಿಕ ಸಂಗ್ರಹದಲ್ಲಿರುವ ಕಥೆಗಳು.                                                                      | सार्वजनिक संग्रह में रखी कहानियाँ, उसी भाषा में जिसमें कही गईं।                                                 |
+| `impact.why.sdg4`                       | Learners taking up the craft through apprenticeships.                                                                                              | ಶಿಷ್ಯವೃತ್ತಿಯ ಮೂಲಕ ಕಲೆ ಕಲಿಯುತ್ತಿರುವವರು.                                                                                | शागिर्दी के ज़रिए हुनर सीखते लोग।                                                                               |
+| `impact.why.sdg8`                       | Artisans earning from their craft, through direct enquiries.                                                                                       | ನೇರ ವಿಚಾರಣೆಗಳ ಮೂಲಕ ಕಲೆಯಿಂದ ಸಂಪಾದಿಸುತ್ತಿರುವ ಕುಶಲಕರ್ಮಿಗಳು.                                                              | सीधी पूछताछ से अपने हुनर से कमाते कारीगर।                                                                       |
 
 ## UI: inbox
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `inbox.buyerTitle` | Letters | ಪತ್ರಗಳು | चिट्ठियाँ |
-| `inbox.empty` | No enquiries yet. They will arrive here. | ಇನ್ನೂ ವಿಚಾರಣೆಗಳಿಲ್ಲ. ಬಂದಾಗ ಇಲ್ಲಿ ಕಾಣುತ್ತವೆ. | अभी कोई पूछताछ नहीं। आएगी तो यहाँ दिखेगी। |
+| Key                | English                                                                   | Kannada                                          | Hindi                                           |
+| ------------------ | ------------------------------------------------------------------------- | ------------------------------------------------ | ----------------------------------------------- |
+| `inbox.buyerTitle` | Letters                                                                   | ಪತ್ರಗಳು                                          | चिट्ठियाँ                                       |
+| `inbox.empty`      | No enquiries yet. They will arrive here.                                  | ಇನ್ನೂ ವಿಚಾರಣೆಗಳಿಲ್ಲ. ಬಂದಾಗ ಇಲ್ಲಿ ಕಾಣುತ್ತವೆ.      | अभी कोई पूछताछ नहीं। आएगी तो यहाँ दिखेगी।       |
 | `inbox.emptyBuyer` | You have not written to anyone yet. The gallery is a good place to start. | ನೀವು ಇನ್ನೂ ಯಾರಿಗೂ ಬರೆದಿಲ್ಲ. ಗ್ಯಾಲರಿಯಿಂದ ಆರಂಭಿಸಿ. | आपने अभी किसी को नहीं लिखा। गैलरी से शुरू करें। |
-| `inbox.title` | Enquiries from buyers | ಖರೀದಿದಾರರ ವಿಚಾರಣೆಗಳು | ख़रीदारों की पूछताछ |
+| `inbox.title`      | Enquiries from buyers                                                     | ಖರೀದಿದಾರರ ವಿಚಾರಣೆಗಳು                             | ख़रीदारों की पूछताछ                             |
 
 ## UI: intro
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
+| Key          | English       | Kannada           | Hindi       |
+| ------------ | ------------- | ----------------- | ----------- |
 | `intro.skip` | Skip the loom | ಮಗ್ಗ ಬಿಟ್ಟು ಮುಂದೆ | करघा छोड़ें |
 
 ## UI: lang
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `lang.label` | Language | ಭಾಷೆ | भाषा |
-| `lang.name.en` | English | ಇಂಗ್ಲಿಷ್ | अंग्रेज़ी |
-| `lang.name.hi` | Hindi | ಹಿಂದಿ | हिन्दी |
-| `lang.name.kn` | Kannada | ಕನ್ನಡ | कन्नड़ |
+| Key            | English  | Kannada  | Hindi     |
+| -------------- | -------- | -------- | --------- |
+| `lang.label`   | Language | ಭಾಷೆ     | भाषा      |
+| `lang.name.en` | English  | ಇಂಗ್ಲಿಷ್ | अंग्रेज़ी |
+| `lang.name.hi` | Hindi    | ಹಿಂದಿ    | हिन्दी    |
+| `lang.name.kn` | Kannada  | ಕನ್ನಡ    | कन्नड़    |
 
 ## UI: learner
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `learner.addEntry` | Add to the log | ದಾಖಲೆಗೆ ಸೇರಿಸಿ | लेखे में जोड़ें |
-| `learner.appliedOn` | applied {{date}} | {{date}} ರಂದು ಅರ್ಜಿ | {{date}} को आवेदन |
-| `learner.browse` | Browse apprenticeships | ಶಿಷ್ಯವೃತ್ತಿಗಳನ್ನು ನೋಡಿ | शागिर्दी के मौक़े देखें |
-| `learner.completed` | Apprenticeship complete | ಶಿಷ್ಯವೃತ್ತಿ ಪೂರ್ಣಗೊಂಡಿದೆ | शागिर्दी पूरी हुई |
-| `learner.doneOn` | done {{date}} | {{date}} ರಂದು ಮುಗಿದಿದೆ | {{date}} को पूरा |
-| `learner.empty` | No applications yet. | ಇನ್ನೂ ಅರ್ಜಿಗಳಿಲ್ಲ. | अभी कोई आवेदन नहीं। |
-| `learner.logged` | Added to your log. | ನಿಮ್ಮ ದಾಖಲೆಗೆ ಸೇರಿಸಲಾಗಿದೆ. | आपके लेखे में जोड़ दिया। |
-| `learner.noProgress` | Nothing logged yet. | ಇನ್ನೂ ಏನೂ ದಾಖಲಿಸಿಲ್ಲ. | अभी कुछ नहीं लिखा। |
-| `learner.note` | What did you work on? | ಇಂದು ಏನು ಕಲಿತಿರಿ? | आज किस पर काम किया? |
-| `learner.photo` | Photo (optional) | ಫೋಟೋ (ಬೇಕಾದರೆ) | तस्वीर (चाहें तो) |
-| `learner.photoAlt` | Photo from the progress log | ಪ್ರಗತಿ ದಾಖಲೆಯ ಫೋಟೋ | प्रगति लेखे की तस्वीर |
-| `learner.progress` | Progress log | ಪ್ರಗತಿ ದಾಖಲೆ | प्रगति लेखा |
-| `learner.roadmap` | Roadmap: {{done}} of {{total}} steps | ಹಂತಗಳು: {{total}} ರಲ್ಲಿ {{done}} | कदमों की राह: {{total}} में से {{done}} |
-| `learner.status.applied` | The artisan has your application and will reply. | ಕುಶಲಕರ್ಮಿಗೆ ನಿಮ್ಮ ಅರ್ಜಿ ತಲುಪಿದೆ, ಉತ್ತರಿಸುತ್ತಾರೆ. | कारीगर के पास आपका आवेदन है, वे जवाब देंगे। |
-| `learner.status.rejected` | The artisan could not take you this time. Other openings are listed. | ಈ ಬಾರಿ ಕುಶಲಕರ್ಮಿ ನಿಮ್ಮನ್ನು ತೆಗೆದುಕೊಳ್ಳಲಾಗಲಿಲ್ಲ. ಬೇರೆ ಅವಕಾಶಗಳು ಪಟ್ಟಿಯಲ್ಲಿವೆ. | इस बार कारीगर आपको नहीं ले पाए। दूसरे मौक़े सूची में हैं। |
-| `learner.status.shortlisted` | You are on the shortlist. The artisan may get in touch. | ನೀವು ಆಯ್ಕೆ ಪಟ್ಟಿಯಲ್ಲಿದ್ದೀರಿ. ಕುಶಲಕರ್ಮಿ ಸಂಪರ್ಕಿಸಬಹುದು. | आप चुनी सूची में हैं। कारीगर संपर्क कर सकते हैं। |
-| `learner.viewCert` | Certificate {{code}} | ಪ್ರಮಾಣಪತ್ರ {{code}} | प्रमाणपत्र {{code}} |
-| `learner.with` | with {{name}} | {{name}} ಅವರೊಂದಿಗೆ | {{name}} के साथ |
+| Key                          | English                                                              | Kannada                                                                     | Hindi                                                     |
+| ---------------------------- | -------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------- |
+| `learner.addEntry`           | Add to the log                                                       | ದಾಖಲೆಗೆ ಸೇರಿಸಿ                                                              | लेखे में जोड़ें                                           |
+| `learner.appliedOn`          | applied {{date}}                                                     | {{date}} ರಂದು ಅರ್ಜಿ                                                         | {{date}} को आवेदन                                         |
+| `learner.browse`             | Browse apprenticeships                                               | ಶಿಷ್ಯವೃತ್ತಿಗಳನ್ನು ನೋಡಿ                                                      | शागिर्दी के मौक़े देखें                                   |
+| `learner.completed`          | Apprenticeship complete                                              | ಶಿಷ್ಯವೃತ್ತಿ ಪೂರ್ಣಗೊಂಡಿದೆ                                                    | शागिर्दी पूरी हुई                                         |
+| `learner.doneOn`             | done {{date}}                                                        | {{date}} ರಂದು ಮುಗಿದಿದೆ                                                      | {{date}} को पूरा                                          |
+| `learner.empty`              | No applications yet.                                                 | ಇನ್ನೂ ಅರ್ಜಿಗಳಿಲ್ಲ.                                                          | अभी कोई आवेदन नहीं।                                       |
+| `learner.logged`             | Added to your log.                                                   | ನಿಮ್ಮ ದಾಖಲೆಗೆ ಸೇರಿಸಲಾಗಿದೆ.                                                  | आपके लेखे में जोड़ दिया।                                  |
+| `learner.noProgress`         | Nothing logged yet.                                                  | ಇನ್ನೂ ಏನೂ ದಾಖಲಿಸಿಲ್ಲ.                                                       | अभी कुछ नहीं लिखा।                                        |
+| `learner.note`               | What did you work on?                                                | ಇಂದು ಏನು ಕಲಿತಿರಿ?                                                           | आज किस पर काम किया?                                       |
+| `learner.photo`              | Photo (optional)                                                     | ಫೋಟೋ (ಬೇಕಾದರೆ)                                                              | तस्वीर (चाहें तो)                                         |
+| `learner.photoAlt`           | Photo from the progress log                                          | ಪ್ರಗತಿ ದಾಖಲೆಯ ಫೋಟೋ                                                          | प्रगति लेखे की तस्वीर                                     |
+| `learner.progress`           | Progress log                                                         | ಪ್ರಗತಿ ದಾಖಲೆ                                                                | प्रगति लेखा                                               |
+| `learner.roadmap`            | Roadmap: {{done}} of {{total}} steps                                 | ಹಂತಗಳು: {{total}} ರಲ್ಲಿ {{done}}                                            | कदमों की राह: {{total}} में से {{done}}                   |
+| `learner.status.applied`     | The artisan has your application and will reply.                     | ಕುಶಲಕರ್ಮಿಗೆ ನಿಮ್ಮ ಅರ್ಜಿ ತಲುಪಿದೆ, ಉತ್ತರಿಸುತ್ತಾರೆ.                            | कारीगर के पास आपका आवेदन है, वे जवाब देंगे।               |
+| `learner.status.rejected`    | The artisan could not take you this time. Other openings are listed. | ಈ ಬಾರಿ ಕುಶಲಕರ್ಮಿ ನಿಮ್ಮನ್ನು ತೆಗೆದುಕೊಳ್ಳಲಾಗಲಿಲ್ಲ. ಬೇರೆ ಅವಕಾಶಗಳು ಪಟ್ಟಿಯಲ್ಲಿವೆ. | इस बार कारीगर आपको नहीं ले पाए। दूसरे मौक़े सूची में हैं। |
+| `learner.status.shortlisted` | You are on the shortlist. The artisan may get in touch.              | ನೀವು ಆಯ್ಕೆ ಪಟ್ಟಿಯಲ್ಲಿದ್ದೀರಿ. ಕುಶಲಕರ್ಮಿ ಸಂಪರ್ಕಿಸಬಹುದು.                       | आप चुनी सूची में हैं। कारीगर संपर्क कर सकते हैं।          |
+| `learner.viewCert`           | Certificate {{code}}                                                 | ಪ್ರಮಾಣಪತ್ರ {{code}}                                                         | प्रमाणपत्र {{code}}                                       |
+| `learner.with`               | with {{name}}                                                        | {{name}} ಅವರೊಂದಿಗೆ                                                          | {{name}} के साथ                                           |
 
 ## UI: myStories
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `myStories.empty` | No stories yet. | ಇನ್ನೂ ಕಥೆಗಳಿಲ್ಲ. | अभी कोई कहानी नहीं। |
-| `myStories.emptyHint` | Start with something small: who taught you, or the first piece you made. | ಸಣ್ಣದರಿಂದ ಆರಂಭಿಸಿ: ನಿಮಗೆ ಯಾರು ಕಲಿಸಿದರು, ಅಥವಾ ನೀವು ಮಾಡಿದ ಮೊದಲ ವಸ್ತು. | छोटी बात से शुरू करें: आपको किसने सिखाया, या आपकी बनाई पहली चीज़। |
-| `myStories.new` | Record a new story | ಹೊಸ ಕಥೆ ದಾಖಲಿಸಿ | नई कहानी रिकॉर्ड करें |
-| `myStories.reviewerSaid` | The reviewer said: | ಪರಿಶೀಲಕರು ಹೇಳಿದ್ದು: | समीक्षक ने कहा: |
-| `myStories.title` | My stories | ನನ್ನ ಕಥೆಗಳು | मेरी कहानियाँ |
-| `myStories.updated` | updated {{date}} | {{date}} ರಂದು ಬದಲಿಸಲಾಗಿದೆ | {{date}} को बदली |
+| Key                      | English                                                                  | Kannada                                                             | Hindi                                                             |
+| ------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `myStories.empty`        | No stories yet.                                                          | ಇನ್ನೂ ಕಥೆಗಳಿಲ್ಲ.                                                    | अभी कोई कहानी नहीं।                                               |
+| `myStories.emptyHint`    | Start with something small: who taught you, or the first piece you made. | ಸಣ್ಣದರಿಂದ ಆರಂಭಿಸಿ: ನಿಮಗೆ ಯಾರು ಕಲಿಸಿದರು, ಅಥವಾ ನೀವು ಮಾಡಿದ ಮೊದಲ ವಸ್ತು. | छोटी बात से शुरू करें: आपको किसने सिखाया, या आपकी बनाई पहली चीज़। |
+| `myStories.new`          | Record a new story                                                       | ಹೊಸ ಕಥೆ ದಾಖಲಿಸಿ                                                     | नई कहानी रिकॉर्ड करें                                             |
+| `myStories.reviewerSaid` | The reviewer said:                                                       | ಪರಿಶೀಲಕರು ಹೇಳಿದ್ದು:                                                 | समीक्षक ने कहा:                                                   |
+| `myStories.title`        | My stories                                                               | ನನ್ನ ಕಥೆಗಳು                                                         | मेरी कहानियाँ                                                     |
+| `myStories.updated`      | updated {{date}}                                                         | {{date}} ರಂದು ಬದಲಿಸಲಾಗಿದೆ                                           | {{date}} को बदली                                                  |
 
 ## UI: nav
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `nav.admin` | Admin | ನಿರ್ವಾಹಕ | एडमिन |
-| `nav.apprenticeships` | Apprenticeships | ಶಿಷ್ಯವೃತ್ತಿ | शागिर्दी |
-| `nav.archive` | Story archive | ಕಥಾ ಸಂಗ್ರಹ | कहानी संग्रह |
-| `nav.close` | Close | ಮುಚ್ಚಿ | बंद करें |
-| `nav.dashboard` | My workbench | ನನ್ನ ಕೆಲಸದ ಮೇಜು | मेरी कार्य-मेज़ |
-| `nav.gallery` | Gallery | ಗ್ಯಾಲರಿ | गैलरी |
-| `nav.homeLabel` | VanishingTrades, home | VanishingTrades, ಮುಖಪುಟ | VanishingTrades, मुखपृष्ठ |
-| `nav.impact` | Impact | ಪರಿಣಾಮ | असर |
-| `nav.join` | Join | ಸೇರಿ | जुड़ें |
-| `nav.main` | Main | ಮುಖ್ಯ | मुख्य |
-| `nav.menu` | Menu | ಮೆನು | मेनू |
-| `nav.signIn` | Sign in | ಒಳಗೆ ಬನ್ನಿ | साइन इन |
-| `nav.signOut` | Sign out | ಹೊರಗೆ ಹೋಗಿ | साइन आउट |
-| `nav.skip` | Skip to content | ವಿಷಯಕ್ಕೆ ನೇರವಾಗಿ ಹೋಗಿ | सीधे सामग्री पर जाएँ |
+| Key                   | English               | Kannada                 | Hindi                     |
+| --------------------- | --------------------- | ----------------------- | ------------------------- |
+| `nav.admin`           | Admin                 | ನಿರ್ವಾಹಕ                | एडमिन                     |
+| `nav.apprenticeships` | Apprenticeships       | ಶಿಷ್ಯವೃತ್ತಿ             | शागिर्दी                  |
+| `nav.archive`         | Story archive         | ಕಥಾ ಸಂಗ್ರಹ              | कहानी संग्रह              |
+| `nav.close`           | Close                 | ಮುಚ್ಚಿ                  | बंद करें                  |
+| `nav.dashboard`       | My workbench          | ನನ್ನ ಕೆಲಸದ ಮೇಜು         | मेरी कार्य-मेज़           |
+| `nav.gallery`         | Gallery               | ಗ್ಯಾಲರಿ                 | गैलरी                     |
+| `nav.homeLabel`       | VanishingTrades, home | VanishingTrades, ಮುಖಪುಟ | VanishingTrades, मुखपृष्ठ |
+| `nav.impact`          | Impact                | ಪರಿಣಾಮ                  | असर                       |
+| `nav.join`            | Join                  | ಸೇರಿ                    | जुड़ें                    |
+| `nav.main`            | Main                  | ಮುಖ್ಯ                   | मुख्य                     |
+| `nav.menu`            | Menu                  | ಮೆನು                    | मेनू                      |
+| `nav.signIn`          | Sign in               | ಒಳಗೆ ಬನ್ನಿ              | साइन इन                   |
+| `nav.signOut`         | Sign out              | ಹೊರಗೆ ಹೋಗಿ              | साइन आउट                  |
+| `nav.skip`            | Skip to content       | ವಿಷಯಕ್ಕೆ ನೇರವಾಗಿ ಹೋಗಿ   | सीधे सामग्री पर जाएँ      |
 
 ## UI: notFound
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `notFound.body` | Nothing is woven at this address. Try the gallery? | ಈ ವಿಳಾಸದಲ್ಲಿ ಏನೂ ನೇಯ್ದಿಲ್ಲ. ಗ್ಯಾಲರಿ ನೋಡುತ್ತೀರಾ? | इस पते पर कुछ नहीं बुना गया। गैलरी देखें? |
-| `notFound.gallery` | Go to the gallery | ಗ್ಯಾಲರಿಗೆ ಹೋಗಿ | गैलरी पर जाएँ |
-| `notFound.home` | Back to the start | ಮೊದಲ ಪುಟಕ್ಕೆ | शुरुआत पर लौटें |
-| `notFound.note` | the threads are still here, the cloth is not | ದಾರಗಳು ಇಲ್ಲೇ ಇವೆ, ಬಟ್ಟೆ ಇಲ್ಲ | धागे यहीं हैं, कपड़ा नहीं |
-| `notFound.title` | This craft has vanished. | ಈ ಕಲೆ ಮಾಯವಾಗಿದೆ. | यह शिल्प ग़ायब हो गया है। |
+| Key                | English                                            | Kannada                                         | Hindi                                     |
+| ------------------ | -------------------------------------------------- | ----------------------------------------------- | ----------------------------------------- |
+| `notFound.body`    | Nothing is woven at this address. Try the gallery? | ಈ ವಿಳಾಸದಲ್ಲಿ ಏನೂ ನೇಯ್ದಿಲ್ಲ. ಗ್ಯಾಲರಿ ನೋಡುತ್ತೀರಾ? | इस पते पर कुछ नहीं बुना गया। गैलरी देखें? |
+| `notFound.gallery` | Go to the gallery                                  | ಗ್ಯಾಲರಿಗೆ ಹೋಗಿ                                  | गैलरी पर जाएँ                             |
+| `notFound.home`    | Back to the start                                  | ಮೊದಲ ಪುಟಕ್ಕೆ                                    | शुरुआत पर लौटें                           |
+| `notFound.note`    | the threads are still here, the cloth is not       | ದಾರಗಳು ಇಲ್ಲೇ ಇವೆ, ಬಟ್ಟೆ ಇಲ್ಲ                    | धागे यहीं हैं, कपड़ा नहीं                 |
+| `notFound.title`   | This craft has vanished.                           | ಈ ಕಲೆ ಮಾಯವಾಗಿದೆ.                                | यह शिल्प ग़ायब हो गया है।                 |
 
 ## UI: openings
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `openings.accept` | Accept | ಒಪ್ಪಿ | स्वीकार करें |
-| `openings.accepted` | {{name}} accepted. | {{name}} ಒಪ್ಪಲಾಗಿದೆ. | {{name}} स्वीकार। |
-| `openings.appliedOn` | Applied {{date}} | {{date}} ರಂದು ಅರ್ಜಿ | {{date}} को आवेदन |
-| `openings.completed` | Certificate {{code}} issued. | ಪ್ರಮಾಣಪತ್ರ {{code}} ನೀಡಲಾಗಿದೆ. | प्रमाणपत्र {{code}} जारी हुआ। |
-| `openings.craft` | Craft | ಕಲೆ | शिल्प |
-| `openings.deadline` | Applications close on | ಅರ್ಜಿ ಕೊನೆಯ ದಿನ | आवेदन की आख़िरी तारीख़ |
-| `openings.description` | What the apprentice will do | ಶಿಷ್ಯರು ಏನು ಮಾಡುತ್ತಾರೆ | शागिर्द क्या करेंगे |
-| `openings.empty` | No openings yet. | ಇನ್ನೂ ಅವಕಾಶಗಳಿಲ್ಲ. | अभी कोई मौक़ा नहीं। |
-| `openings.hideApplicants` | Hide applicants | ಅರ್ಜಿದಾರರನ್ನು ಮರೆಮಾಡಿ | आवेदक छिपाएँ |
-| `openings.location` | Where | ಎಲ್ಲಿ | कहाँ |
-| `openings.markComplete` | Mark complete | ಪೂರ್ಣ ಎಂದು ಗುರುತಿಸಿ | पूरा मानें |
-| `openings.meta_one` | {{count}} application, closes {{date}} | {{count}} ಅರ್ಜಿ, {{date}} ರಂದು ಮುಚ್ಚುತ್ತದೆ | {{count}} आवेदन, {{date}} को बंद |
-| `openings.meta_other` | {{count}} applications, closes {{date}} | {{count}} ಅರ್ಜಿಗಳು, {{date}} ರಂದು ಮುಚ್ಚುತ್ತದೆ | {{count}} आवेदन, {{date}} को बंद |
-| `openings.new` | Post an opening | ಅವಕಾಶ ಪ್ರಕಟಿಸಿ | मौक़ा डालें |
-| `openings.noApplicants` | Nobody has applied yet. | ಇನ್ನೂ ಯಾರೂ ಅರ್ಜಿ ಹಾಕಿಲ್ಲ. | अभी किसी ने आवेदन नहीं किया। |
-| `openings.post` | Post opening | ಅವಕಾಶ ಪ್ರಕಟಿಸಿ | मौक़ा डालें |
-| `openings.posted` | Opening posted. | ಅವಕಾಶ ಪ್ರಕಟಿಸಲಾಗಿದೆ. | मौक़ा डाल दिया। |
-| `openings.reject` | Decline | ನಿರಾಕರಿಸಿ | मना करें |
-| `openings.rejected` | {{name}} declined. | {{name}} ನಿರಾಕರಿಸಲಾಗಿದೆ. | {{name}} को मना किया। |
-| `openings.seats` | Places | ಸ್ಥಾನಗಳು | जगहें |
-| `openings.shortlist` | Shortlist | ಆಯ್ಕೆ ಪಟ್ಟಿಗೆ | चुनी सूची में |
-| `openings.shortlisted` | {{name}} shortlisted. | {{name}} ಆಯ್ಕೆ ಪಟ್ಟಿಯಲ್ಲಿ. | {{name}} चुनी सूची में। |
-| `openings.showApplicants` | Show applicants | ಅರ್ಜಿದಾರರನ್ನು ತೋರಿಸಿ | आवेदक दिखाएँ |
-| `openings.stipend` | Monthly stipend (₹) | ತಿಂಗಳ ಗೌರವಧನ (₹) | महीने का वज़ीफ़ा (₹) |
-| `openings.stipendHint` | Leave empty if there is none. | ಇಲ್ಲದಿದ್ದರೆ ಖಾಲಿ ಬಿಡಿ. | न हो तो ख़ाली छोड़ें। |
-| `openings.title` | My apprenticeship openings | ನನ್ನ ಶಿಷ್ಯವೃತ್ತಿ ಅವಕಾಶಗಳು | मेरे शागिर्दी के मौक़े |
-| `openings.titleField` | Title | ಶೀರ್ಷಿಕೆ | शीर्षक |
-| `openings.viewCert` | Certificate {{code}} | ಪ್ರಮಾಣಪತ್ರ {{code}} | प्रमाणपत्र {{code}} |
-| `openings.weeks` | Length in weeks | ವಾರಗಳಲ್ಲಿ ಅವಧಿ | हफ़्तों में अवधि |
+| Key                       | English                                 | Kannada                                       | Hindi                            |
+| ------------------------- | --------------------------------------- | --------------------------------------------- | -------------------------------- |
+| `openings.accept`         | Accept                                  | ಒಪ್ಪಿ                                         | स्वीकार करें                     |
+| `openings.accepted`       | {{name}} accepted.                      | {{name}} ಒಪ್ಪಲಾಗಿದೆ.                          | {{name}} स्वीकार।                |
+| `openings.appliedOn`      | Applied {{date}}                        | {{date}} ರಂದು ಅರ್ಜಿ                           | {{date}} को आवेदन                |
+| `openings.completed`      | Certificate {{code}} issued.            | ಪ್ರಮಾಣಪತ್ರ {{code}} ನೀಡಲಾಗಿದೆ.                | प्रमाणपत्र {{code}} जारी हुआ।    |
+| `openings.craft`          | Craft                                   | ಕಲೆ                                           | शिल्प                            |
+| `openings.deadline`       | Applications close on                   | ಅರ್ಜಿ ಕೊನೆಯ ದಿನ                               | आवेदन की आख़िरी तारीख़           |
+| `openings.description`    | What the apprentice will do             | ಶಿಷ್ಯರು ಏನು ಮಾಡುತ್ತಾರೆ                        | शागिर्द क्या करेंगे              |
+| `openings.empty`          | No openings yet.                        | ಇನ್ನೂ ಅವಕಾಶಗಳಿಲ್ಲ.                            | अभी कोई मौक़ा नहीं।              |
+| `openings.hideApplicants` | Hide applicants                         | ಅರ್ಜಿದಾರರನ್ನು ಮರೆಮಾಡಿ                         | आवेदक छिपाएँ                     |
+| `openings.location`       | Where                                   | ಎಲ್ಲಿ                                         | कहाँ                             |
+| `openings.markComplete`   | Mark complete                           | ಪೂರ್ಣ ಎಂದು ಗುರುತಿಸಿ                           | पूरा मानें                       |
+| `openings.meta_one`       | {{count}} application, closes {{date}}  | {{count}} ಅರ್ಜಿ, {{date}} ರಂದು ಮುಚ್ಚುತ್ತದೆ    | {{count}} आवेदन, {{date}} को बंद |
+| `openings.meta_other`     | {{count}} applications, closes {{date}} | {{count}} ಅರ್ಜಿಗಳು, {{date}} ರಂದು ಮುಚ್ಚುತ್ತದೆ | {{count}} आवेदन, {{date}} को बंद |
+| `openings.new`            | Post an opening                         | ಅವಕಾಶ ಪ್ರಕಟಿಸಿ                                | मौक़ा डालें                      |
+| `openings.noApplicants`   | Nobody has applied yet.                 | ಇನ್ನೂ ಯಾರೂ ಅರ್ಜಿ ಹಾಕಿಲ್ಲ.                     | अभी किसी ने आवेदन नहीं किया।     |
+| `openings.post`           | Post opening                            | ಅವಕಾಶ ಪ್ರಕಟಿಸಿ                                | मौक़ा डालें                      |
+| `openings.posted`         | Opening posted.                         | ಅವಕಾಶ ಪ್ರಕಟಿಸಲಾಗಿದೆ.                          | मौक़ा डाल दिया।                  |
+| `openings.reject`         | Decline                                 | ನಿರಾಕರಿಸಿ                                     | मना करें                         |
+| `openings.rejected`       | {{name}} declined.                      | {{name}} ನಿರಾಕರಿಸಲಾಗಿದೆ.                      | {{name}} को मना किया।            |
+| `openings.seats`          | Places                                  | ಸ್ಥಾನಗಳು                                      | जगहें                            |
+| `openings.shortlist`      | Shortlist                               | ಆಯ್ಕೆ ಪಟ್ಟಿಗೆ                                 | चुनी सूची में                    |
+| `openings.shortlisted`    | {{name}} shortlisted.                   | {{name}} ಆಯ್ಕೆ ಪಟ್ಟಿಯಲ್ಲಿ.                    | {{name}} चुनी सूची में।          |
+| `openings.showApplicants` | Show applicants                         | ಅರ್ಜಿದಾರರನ್ನು ತೋರಿಸಿ                          | आवेदक दिखाएँ                     |
+| `openings.stipend`        | Monthly stipend (₹)                     | ತಿಂಗಳ ಗೌರವಧನ (₹)                              | महीने का वज़ीफ़ा (₹)             |
+| `openings.stipendHint`    | Leave empty if there is none.           | ಇಲ್ಲದಿದ್ದರೆ ಖಾಲಿ ಬಿಡಿ.                        | न हो तो ख़ाली छोड़ें।            |
+| `openings.title`          | My apprenticeship openings              | ನನ್ನ ಶಿಷ್ಯವೃತ್ತಿ ಅವಕಾಶಗಳು                     | मेरे शागिर्दी के मौक़े           |
+| `openings.titleField`     | Title                                   | ಶೀರ್ಷಿಕೆ                                      | शीर्षक                           |
+| `openings.viewCert`       | Certificate {{code}}                    | ಪ್ರಮಾಣಪತ್ರ {{code}}                           | प्रमाणपत्र {{code}}              |
+| `openings.weeks`          | Length in weeks                         | ವಾರಗಳಲ್ಲಿ ಅವಧಿ                                | हफ़्तों में अवधि                 |
 
 ## UI: pagination
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `pagination.label` | Pages | ಪುಟಗಳು | पन्ने |
-| `pagination.next` | Next | ಮುಂದಿನದು | अगला |
-| `pagination.page` | Page | ಪುಟ | पन्ना |
-| `pagination.prev` | Previous | ಹಿಂದಿನದು | पिछला |
+| Key                | English  | Kannada  | Hindi |
+| ------------------ | -------- | -------- | ----- |
+| `pagination.label` | Pages    | ಪುಟಗಳು   | पन्ने |
+| `pagination.next`  | Next     | ಮುಂದಿನದು | अगला  |
+| `pagination.page`  | Page     | ಪುಟ      | पन्ना |
+| `pagination.prev`  | Previous | ಹಿಂದಿನದು | पिछला |
 
 ## UI: player
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `player.back` | Back 5 seconds | 5 ಸೆಕೆಂಡ್ ಹಿಂದೆ | 5 सेकंड पीछे |
-| `player.cannotPlay` | This browser could not play the recording. Try another browser, or read the transcript. | ಈ ಬ್ರೌಸರ್ ಧ್ವನಿಮುದ್ರಣವನ್ನು ಕೇಳಿಸಲಿಲ್ಲ. ಬೇರೆ ಬ್ರೌಸರ್ ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ಬರಹ ಓದಿ. | यह ब्राउज़र रिकॉर्डिंग नहीं चला पाया। दूसरा ब्राउज़र आज़माएँ, या लिखित प्रति पढ़ें। |
-| `player.english` | English | ಇಂಗ್ಲಿಷ್ | अंग्रेज़ी |
-| `player.forward` | Forward 5 seconds | 5 ಸೆಕೆಂಡ್ ಮುಂದೆ | 5 सेकंड आगे |
-| `player.keys` | Keys: Space plays or pauses, arrows skip 5 seconds, M mutes. Nothing plays until you press Play. | ಕೀಲಿಗಳು: Space ಕೇಳಿಸುತ್ತದೆ ಅಥವಾ ನಿಲ್ಲಿಸುತ್ತದೆ, ಬಾಣದ ಗುರುತು 5 ಸೆಕೆಂಡ್ ಜಿಗಿಯುತ್ತದೆ, M ಸದ್ದು ಆರಿಸುತ್ತದೆ. ನೀವು ಒತ್ತುವವರೆಗೆ ಏನೂ ಕೇಳಿಸುವುದಿಲ್ಲ. | कुंजियाँ: Space चलाता या रोकता है, तीर 5 सेकंड कूदते हैं, M आवाज़ बंद करता है। जब तक आप न दबाएँ, कुछ नहीं बजता। |
-| `player.label` | Player for {{title}} | {{title}} ಕೇಳುವ ಯಂತ್ರ | {{title}} का प्लेयर |
-| `player.mute` | Mute | ಸದ್ದು ಆರಿಸಿ | आवाज़ बंद |
-| `player.noAudio` | This story was written down rather than recorded. | ಈ ಕಥೆಯನ್ನು ಧ್ವನಿಮುದ್ರಿಸದೆ ಬರೆಯಲಾಗಿದೆ. | यह कहानी रिकॉर्ड नहीं, लिखी गई थी। |
-| `player.original` | {{lang}} (original) | {{lang}} (ಮೂಲ) | {{lang}} (मूल) |
-| `player.pause` | Pause | ನಿಲ್ಲಿಸಿ | रोकें |
-| `player.play` | Play | ಕೇಳಿ | चलाएँ |
-| `player.position` | Position | ಸ್ಥಾನ | स्थान |
-| `player.positionText` | {{at}} of {{total}} | {{total}} ರಲ್ಲಿ {{at}} | {{total}} में से {{at}} |
-| `player.sampleAi` | This translation was made by the sample AI, not a person or a real model. | ಈ ಅನುವಾದವನ್ನು ಮಾದರಿ AI ಮಾಡಿದೆ, ವ್ಯಕ್ತಿ ಅಥವಾ ನಿಜವಾದ ಮಾದರಿ ಅಲ್ಲ. | यह अनुवाद नमूना AI ने किया है, किसी इंसान या असली मॉडल ने नहीं। |
-| `player.sampleAudio` | No real recording exists for this demo story. You will hear a soft placeholder hum. | ಈ ಮಾದರಿ ಕಥೆಗೆ ನಿಜವಾದ ಧ್ವನಿಮುದ್ರಣ ಇಲ್ಲ. ಬದಲಿಗೆ ಮೃದುವಾದ ಗುನುಗು ಕೇಳಿಸುತ್ತದೆ. | इस नमूना कहानी की कोई असली रिकॉर्डिंग नहीं है। आपको एक धीमी गुनगुनाहट सुनाई देगी। |
-| `player.textChoice` | Show the text in | ಬರಹವನ್ನು ಈ ಭಾಷೆಯಲ್ಲಿ ತೋರಿಸಿ | पाठ इस भाषा में दिखाएँ |
-| `player.transcript` | Transcript | ಬರಹ | लिखित प्रति |
-| `player.unmute` | Unmute | ಸದ್ದು ಬರಲಿ | आवाज़ चालू |
-| `player.unplayable` | This recording only lived in the browser that made it, so it cannot play here. | ಈ ಧ್ವನಿಮುದ್ರಣ ಅದನ್ನು ಮಾಡಿದ ಬ್ರೌಸರ್‌ನಲ್ಲಿ ಮಾತ್ರ ಇತ್ತು, ಇಲ್ಲಿ ಕೇಳಿಸಲು ಆಗುವುದಿಲ್ಲ. | यह रिकॉर्डिंग सिर्फ़ उसी ब्राउज़र में थी जिसमें बनी, इसलिए यहाँ नहीं चल सकती। |
+| Key                   | English                                                                                          | Kannada                                                                                                                                   | Hindi                                                                                                           |
+| --------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `player.back`         | Back 5 seconds                                                                                   | 5 ಸೆಕೆಂಡ್ ಹಿಂದೆ                                                                                                                           | 5 सेकंड पीछे                                                                                                    |
+| `player.cannotPlay`   | This browser could not play the recording. Try another browser, or read the transcript.          | ಈ ಬ್ರೌಸರ್ ಧ್ವನಿಮುದ್ರಣವನ್ನು ಕೇಳಿಸಲಿಲ್ಲ. ಬೇರೆ ಬ್ರೌಸರ್ ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ಬರಹ ಓದಿ.                                                              | यह ब्राउज़र रिकॉर्डिंग नहीं चला पाया। दूसरा ब्राउज़र आज़माएँ, या लिखित प्रति पढ़ें।                             |
+| `player.english`      | English                                                                                          | ಇಂಗ್ಲಿಷ್                                                                                                                                  | अंग्रेज़ी                                                                                                       |
+| `player.forward`      | Forward 5 seconds                                                                                | 5 ಸೆಕೆಂಡ್ ಮುಂದೆ                                                                                                                           | 5 सेकंड आगे                                                                                                     |
+| `player.keys`         | Keys: Space plays or pauses, arrows skip 5 seconds, M mutes. Nothing plays until you press Play. | ಕೀಲಿಗಳು: Space ಕೇಳಿಸುತ್ತದೆ ಅಥವಾ ನಿಲ್ಲಿಸುತ್ತದೆ, ಬಾಣದ ಗುರುತು 5 ಸೆಕೆಂಡ್ ಜಿಗಿಯುತ್ತದೆ, M ಸದ್ದು ಆರಿಸುತ್ತದೆ. ನೀವು ಒತ್ತುವವರೆಗೆ ಏನೂ ಕೇಳಿಸುವುದಿಲ್ಲ. | कुंजियाँ: Space चलाता या रोकता है, तीर 5 सेकंड कूदते हैं, M आवाज़ बंद करता है। जब तक आप न दबाएँ, कुछ नहीं बजता। |
+| `player.label`        | Player for {{title}}                                                                             | {{title}} ಕೇಳುವ ಯಂತ್ರ                                                                                                                     | {{title}} का प्लेयर                                                                                             |
+| `player.mute`         | Mute                                                                                             | ಸದ್ದು ಆರಿಸಿ                                                                                                                               | आवाज़ बंद                                                                                                       |
+| `player.noAudio`      | This story was written down rather than recorded.                                                | ಈ ಕಥೆಯನ್ನು ಧ್ವನಿಮುದ್ರಿಸದೆ ಬರೆಯಲಾಗಿದೆ.                                                                                                     | यह कहानी रिकॉर्ड नहीं, लिखी गई थी।                                                                              |
+| `player.original`     | {{lang}} (original)                                                                              | {{lang}} (ಮೂಲ)                                                                                                                            | {{lang}} (मूल)                                                                                                  |
+| `player.pause`        | Pause                                                                                            | ನಿಲ್ಲಿಸಿ                                                                                                                                  | रोकें                                                                                                           |
+| `player.play`         | Play                                                                                             | ಕೇಳಿ                                                                                                                                      | चलाएँ                                                                                                           |
+| `player.position`     | Position                                                                                         | ಸ್ಥಾನ                                                                                                                                     | स्थान                                                                                                           |
+| `player.positionText` | {{at}} of {{total}}                                                                              | {{total}} ರಲ್ಲಿ {{at}}                                                                                                                    | {{total}} में से {{at}}                                                                                         |
+| `player.sampleAi`     | This translation was made by the sample AI, not a person or a real model.                        | ಈ ಅನುವಾದವನ್ನು ಮಾದರಿ AI ಮಾಡಿದೆ, ವ್ಯಕ್ತಿ ಅಥವಾ ನಿಜವಾದ ಮಾದರಿ ಅಲ್ಲ.                                                                            | यह अनुवाद नमूना AI ने किया है, किसी इंसान या असली मॉडल ने नहीं।                                                 |
+| `player.sampleAudio`  | No real recording exists for this demo story. You will hear a soft placeholder hum.              | ಈ ಮಾದರಿ ಕಥೆಗೆ ನಿಜವಾದ ಧ್ವನಿಮುದ್ರಣ ಇಲ್ಲ. ಬದಲಿಗೆ ಮೃದುವಾದ ಗುನುಗು ಕೇಳಿಸುತ್ತದೆ.                                                                 | इस नमूना कहानी की कोई असली रिकॉर्डिंग नहीं है। आपको एक धीमी गुनगुनाहट सुनाई देगी।                               |
+| `player.textChoice`   | Show the text in                                                                                 | ಬರಹವನ್ನು ಈ ಭಾಷೆಯಲ್ಲಿ ತೋರಿಸಿ                                                                                                               | पाठ इस भाषा में दिखाएँ                                                                                          |
+| `player.transcript`   | Transcript                                                                                       | ಬರಹ                                                                                                                                       | लिखित प्रति                                                                                                     |
+| `player.unmute`       | Unmute                                                                                           | ಸದ್ದು ಬರಲಿ                                                                                                                                | आवाज़ चालू                                                                                                      |
+| `player.unplayable`   | This recording only lived in the browser that made it, so it cannot play here.                   | ಈ ಧ್ವನಿಮುದ್ರಣ ಅದನ್ನು ಮಾಡಿದ ಬ್ರೌಸರ್‌ನಲ್ಲಿ ಮಾತ್ರ ಇತ್ತು, ಇಲ್ಲಿ ಕೇಳಿಸಲು ಆಗುವುದಿಲ್ಲ.                                                           | यह रिकॉर्डिंग सिर्फ़ उसी ब्राउज़र में थी जिसमें बनी, इसलिए यहाँ नहीं चल सकती।                                   |
 
 ## UI: profile
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `profile.bioEn` | About me, in English | ನನ್ನ ಬಗ್ಗೆ, ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ | मेरे बारे में, अंग्रेज़ी में |
-| `profile.bioHi` | About me, in Hindi | ನನ್ನ ಬಗ್ಗೆ, ಹಿಂದಿಯಲ್ಲಿ | मेरे बारे में, हिन्दी में |
-| `profile.bioHint` | A few sentences visitors will read first. | ಸಂದರ್ಶಕರು ಮೊದಲು ಓದುವ ಕೆಲವು ವಾಕ್ಯಗಳು. | कुछ वाक्य जो लोग सबसे पहले पढ़ेंगे। |
-| `profile.bioKn` | About me, in Kannada | ನನ್ನ ಬಗ್ಗೆ, ಕನ್ನಡದಲ್ಲಿ | मेरे बारे में, कन्नड़ में |
-| `profile.craft` | Craft | ಕಲೆ | शिल्प |
-| `profile.district` | District | ಜಿಲ್ಲೆ | ज़िला |
-| `profile.languages` | Languages I speak | ನಾನು ಮಾತನಾಡುವ ಭಾಷೆಗಳು | मैं जो भाषाएँ बोलता/बोलती हूँ |
-| `profile.name` | Name | ಹೆಸರು | नाम |
-| `profile.photo` | Photo | ಫೋಟೋ | तस्वीर |
-| `profile.save` | Save profile | ಪುಟ ಉಳಿಸಿ | पन्ना सहेजें |
-| `profile.saved` | Profile saved. | ಪುಟ ಉಳಿಸಲಾಗಿದೆ. | पन्ना सहेज लिया। |
-| `profile.title` | My public profile | ನನ್ನ ಸಾರ್ವಜನಿಕ ಪುಟ | मेरा सार्वजनिक पन्ना |
-| `profile.village` | Village or town | ಹಳ್ಳಿ ಅಥವಾ ಊರು | गाँव या क़स्बा |
-| `profile.years` | Years at the craft | ಕಸುಬಿನಲ್ಲಿ ವರ್ಷಗಳು | हुनर में साल |
+| Key                 | English                                   | Kannada                              | Hindi                               |
+| ------------------- | ----------------------------------------- | ------------------------------------ | ----------------------------------- |
+| `profile.bioEn`     | About me, in English                      | ನನ್ನ ಬಗ್ಗೆ, ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ           | मेरे बारे में, अंग्रेज़ी में        |
+| `profile.bioHi`     | About me, in Hindi                        | ನನ್ನ ಬಗ್ಗೆ, ಹಿಂದಿಯಲ್ಲಿ               | मेरे बारे में, हिन्दी में           |
+| `profile.bioHint`   | A few sentences visitors will read first. | ಸಂದರ್ಶಕರು ಮೊದಲು ಓದುವ ಕೆಲವು ವಾಕ್ಯಗಳು. | कुछ वाक्य जो लोग सबसे पहले पढ़ेंगे। |
+| `profile.bioKn`     | About me, in Kannada                      | ನನ್ನ ಬಗ್ಗೆ, ಕನ್ನಡದಲ್ಲಿ               | मेरे बारे में, कन्नड़ में           |
+| `profile.craft`     | Craft                                     | ಕಲೆ                                  | शिल्प                               |
+| `profile.district`  | District                                  | ಜಿಲ್ಲೆ                               | ज़िला                               |
+| `profile.languages` | Languages I speak                         | ನಾನು ಮಾತನಾಡುವ ಭಾಷೆಗಳು                | मैं जो भाषाएँ बोलता/बोलती हूँ       |
+| `profile.name`      | Name                                      | ಹೆಸರು                                | नाम                                 |
+| `profile.photo`     | Photo                                     | ಫೋಟೋ                                 | तस्वीर                              |
+| `profile.save`      | Save profile                              | ಪುಟ ಉಳಿಸಿ                            | पन्ना सहेजें                        |
+| `profile.saved`     | Profile saved.                            | ಪುಟ ಉಳಿಸಲಾಗಿದೆ.                      | पन्ना सहेज लिया।                    |
+| `profile.title`     | My public profile                         | ನನ್ನ ಸಾರ್ವಜನಿಕ ಪುಟ                   | मेरा सार्वजनिक पन्ना                |
+| `profile.village`   | Village or town                           | ಹಳ್ಳಿ ಅಥವಾ ಊರು                       | गाँव या क़स्बा                      |
+| `profile.years`     | Years at the craft                        | ಕಸುಬಿನಲ್ಲಿ ವರ್ಷಗಳು                   | हुनर में साल                        |
 
 ## UI: recorder
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `recorder.asking` | Asking for the microphone… | ಮೈಕ್ರೋಫೋನ್ ಅನುಮತಿ ಕೇಳುತ್ತಿದೆ… | माइक्रोफ़ोन की अनुमति माँगी जा रही है… |
-| `recorder.blocked` | The microphone is blocked. Allow it in the browser's address bar, or upload a recording below. | ಮೈಕ್ರೋಫೋನ್ ತಡೆಯಲಾಗಿದೆ. ಬ್ರೌಸರ್‌ನ ವಿಳಾಸ ಪಟ್ಟಿಯಲ್ಲಿ ಅನುಮತಿ ಕೊಡಿ, ಅಥವಾ ಕೆಳಗೆ ಧ್ವನಿಮುದ್ರಣ ಏರಿಸಿ. | माइक्रोफ़ोन बंद है। ब्राउज़र के पता-बार में अनुमति दें, या नीचे रिकॉर्डिंग अपलोड करें। |
-| `recorder.busy` | Another app is using the microphone. Close it and try again. | ಬೇರೆ ಆಪ್ ಮೈಕ್ರೋಫೋನ್ ಬಳಸುತ್ತಿದೆ. ಅದನ್ನು ಮುಚ್ಚಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ. | कोई और ऐप माइक्रोफ़ोन इस्तेमाल कर रहा है। उसे बंद करके फिर कोशिश करें। |
-| `recorder.failed` | The recorder could not start. Upload a recording below, or type the story instead. | ಧ್ವನಿಮುದ್ರಕ ಆರಂಭವಾಗಲಿಲ್ಲ. ಕೆಳಗೆ ಧ್ವನಿಮುದ್ರಣ ಏರಿಸಿ, ಅಥವಾ ಕಥೆ ಬರೆಯಿರಿ. | रिकॉर्डर शुरू नहीं हो पाया। नीचे रिकॉर्डिंग अपलोड करें, या कहानी लिखें। |
-| `recorder.idle` | Ready when you are. | ನೀವು ಸಿದ್ಧವಾದಾಗ ಆರಂಭಿಸಿ. | जब आप तैयार हों। |
-| `recorder.keep` | Keep this recording | ಈ ಧ್ವನಿಮುದ್ರಣ ಉಳಿಸಿ | यह रिकॉर्डिंग रखें |
-| `recorder.noMic` | No microphone was found. Plug one in, or upload a recording below. | ಮೈಕ್ರೋಫೋನ್ ಸಿಗಲಿಲ್ಲ. ಒಂದನ್ನು ಜೋಡಿಸಿ, ಅಥವಾ ಕೆಳಗೆ ಧ್ವನಿಮುದ್ರಣ ಏರಿಸಿ. | कोई माइक्रोफ़ोन नहीं मिला। एक लगाएँ, या नीचे रिकॉर्डिंग अपलोड करें। |
-| `recorder.pause` | Pause | ತಾತ್ಕಾಲಿಕ ನಿಲುಗಡೆ | ठहरें |
-| `recorder.pausePreview` | Pause | ನಿಲ್ಲಿಸಿ | रोकें |
-| `recorder.paused` | Paused. | ನಿಲ್ಲಿಸಲಾಗಿದೆ. | रुका हुआ। |
-| `recorder.play` | Play | ಕೇಳಿ | सुनें |
-| `recorder.reRecord` | Record again | ಮತ್ತೆ ಧ್ವನಿಮುದ್ರಿಸಿ | फिर से रिकॉर्ड करें |
-| `recorder.ready` | Saved take ready. | ಉಳಿಸಿದ ಧ್ವನಿಮುದ್ರಣ ಸಿದ್ಧ. | सहेजी हुई रिकॉर्डिंग तैयार। |
-| `recorder.recDot` | REC | REC | REC |
-| `recorder.record` | Record | ಧ್ವನಿಮುದ್ರಿಸಿ | रिकॉर्ड |
-| `recorder.recording` | Recording. Speak as you would at your bench. | ಧ್ವನಿಮುದ್ರಣ ನಡೆಯುತ್ತಿದೆ. ಮೇಜಿನ ಬಳಿ ಹೇಳುವಂತೆ ಮಾತನಾಡಿ. | रिकॉर्ड हो रहा है। वैसे बोलें जैसे अपनी मेज़ पर बोलते हैं। |
-| `recorder.resume` | Resume | ಮುಂದುವರಿಸಿ | जारी रखें |
-| `recorder.saving` | Saving… | ಉಳಿಸುತ್ತಿದೆ… | सहेजा जा रहा है… |
-| `recorder.stop` | Stop | ನಿಲ್ಲಿಸಿ | रोकें |
-| `recorder.stopped` | Stopped. Listen back, record again, or keep it. | ಮುಗಿದಿದೆ. ಕೇಳಿ, ಮತ್ತೆ ಮಾಡಿ, ಅಥವಾ ಉಳಿಸಿ. | रुक गया। सुनें, फिर से रिकॉर्ड करें, या रख लें। |
-| `recorder.tapeLabel` | my story | ನನ್ನ ಕಥೆ | मेरी कहानी |
-| `recorder.tooBig` | That recording is over 10 MB. Try a shorter one. | ಆ ಧ್ವನಿಮುದ್ರಣ 10 MB ಗಿಂತ ದೊಡ್ಡದು. ಚಿಕ್ಕದನ್ನು ಪ್ರಯತ್ನಿಸಿ. | यह रिकॉर्डिंग 10 MB से बड़ी है। छोटी आज़माएँ। |
-| `recorder.unsupported` | This browser cannot record audio. Upload a recording made on a phone, or type the story. | ಈ ಬ್ರೌಸರ್ ಧ್ವನಿಮುದ್ರಿಸಲಾರದು. ಫೋನಿನಲ್ಲಿ ಮಾಡಿದ ಧ್ವನಿಮುದ್ರಣ ಏರಿಸಿ, ಅಥವಾ ಕಥೆ ಬರೆಯಿರಿ. | यह ब्राउज़र आवाज़ रिकॉर्ड नहीं कर सकता। फ़ोन पर बनी रिकॉर्डिंग अपलोड करें, या कहानी लिखें। |
-| `recorder.uploadHint` | webm, m4a, mp3, ogg or wav, up to 10 MB. | webm, m4a, mp3, ogg ಅಥವಾ wav, 10 MB ವರೆಗೆ. | webm, m4a, mp3, ogg या wav, 10 MB तक। |
-| `recorder.uploadInstead` | Or upload a recording | ಅಥವಾ ಧ್ವನಿಮುದ್ರಣ ಏರಿಸಿ | या रिकॉर्डिंग अपलोड करें |
+| Key                      | English                                                                                        | Kannada                                                                                      | Hindi                                                                                      |
+| ------------------------ | ---------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `recorder.asking`        | Asking for the microphone…                                                                     | ಮೈಕ್ರೋಫೋನ್ ಅನುಮತಿ ಕೇಳುತ್ತಿದೆ…                                                                | माइक्रोफ़ोन की अनुमति माँगी जा रही है…                                                     |
+| `recorder.blocked`       | The microphone is blocked. Allow it in the browser's address bar, or upload a recording below. | ಮೈಕ್ರೋಫೋನ್ ತಡೆಯಲಾಗಿದೆ. ಬ್ರೌಸರ್‌ನ ವಿಳಾಸ ಪಟ್ಟಿಯಲ್ಲಿ ಅನುಮತಿ ಕೊಡಿ, ಅಥವಾ ಕೆಳಗೆ ಧ್ವನಿಮುದ್ರಣ ಏರಿಸಿ. | माइक्रोफ़ोन बंद है। ब्राउज़र के पता-बार में अनुमति दें, या नीचे रिकॉर्डिंग अपलोड करें।     |
+| `recorder.busy`          | Another app is using the microphone. Close it and try again.                                   | ಬೇರೆ ಆಪ್ ಮೈಕ್ರೋಫೋನ್ ಬಳಸುತ್ತಿದೆ. ಅದನ್ನು ಮುಚ್ಚಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.                              | कोई और ऐप माइक्रोफ़ोन इस्तेमाल कर रहा है। उसे बंद करके फिर कोशिश करें।                     |
+| `recorder.failed`        | The recorder could not start. Upload a recording below, or type the story instead.             | ಧ್ವನಿಮುದ್ರಕ ಆರಂಭವಾಗಲಿಲ್ಲ. ಕೆಳಗೆ ಧ್ವನಿಮುದ್ರಣ ಏರಿಸಿ, ಅಥವಾ ಕಥೆ ಬರೆಯಿರಿ.                         | रिकॉर्डर शुरू नहीं हो पाया। नीचे रिकॉर्डिंग अपलोड करें, या कहानी लिखें।                    |
+| `recorder.idle`          | Ready when you are.                                                                            | ನೀವು ಸಿದ್ಧವಾದಾಗ ಆರಂಭಿಸಿ.                                                                     | जब आप तैयार हों।                                                                           |
+| `recorder.keep`          | Keep this recording                                                                            | ಈ ಧ್ವನಿಮುದ್ರಣ ಉಳಿಸಿ                                                                          | यह रिकॉर्डिंग रखें                                                                         |
+| `recorder.noMic`         | No microphone was found. Plug one in, or upload a recording below.                             | ಮೈಕ್ರೋಫೋನ್ ಸಿಗಲಿಲ್ಲ. ಒಂದನ್ನು ಜೋಡಿಸಿ, ಅಥವಾ ಕೆಳಗೆ ಧ್ವನಿಮುದ್ರಣ ಏರಿಸಿ.                           | कोई माइक्रोफ़ोन नहीं मिला। एक लगाएँ, या नीचे रिकॉर्डिंग अपलोड करें।                        |
+| `recorder.pause`         | Pause                                                                                          | ತಾತ್ಕಾಲಿಕ ನಿಲುಗಡೆ                                                                            | ठहरें                                                                                      |
+| `recorder.pausePreview`  | Pause                                                                                          | ನಿಲ್ಲಿಸಿ                                                                                     | रोकें                                                                                      |
+| `recorder.paused`        | Paused.                                                                                        | ನಿಲ್ಲಿಸಲಾಗಿದೆ.                                                                               | रुका हुआ।                                                                                  |
+| `recorder.play`          | Play                                                                                           | ಕೇಳಿ                                                                                         | सुनें                                                                                      |
+| `recorder.reRecord`      | Record again                                                                                   | ಮತ್ತೆ ಧ್ವನಿಮುದ್ರಿಸಿ                                                                          | फिर से रिकॉर्ड करें                                                                        |
+| `recorder.ready`         | Saved take ready.                                                                              | ಉಳಿಸಿದ ಧ್ವನಿಮುದ್ರಣ ಸಿದ್ಧ.                                                                    | सहेजी हुई रिकॉर्डिंग तैयार।                                                                |
+| `recorder.recDot`        | REC                                                                                            | REC                                                                                          | REC                                                                                        |
+| `recorder.record`        | Record                                                                                         | ಧ್ವನಿಮುದ್ರಿಸಿ                                                                                | रिकॉर्ड                                                                                    |
+| `recorder.recording`     | Recording. Speak as you would at your bench.                                                   | ಧ್ವನಿಮುದ್ರಣ ನಡೆಯುತ್ತಿದೆ. ಮೇಜಿನ ಬಳಿ ಹೇಳುವಂತೆ ಮಾತನಾಡಿ.                                         | रिकॉर्ड हो रहा है। वैसे बोलें जैसे अपनी मेज़ पर बोलते हैं।                                 |
+| `recorder.resume`        | Resume                                                                                         | ಮುಂದುವರಿಸಿ                                                                                   | जारी रखें                                                                                  |
+| `recorder.saving`        | Saving…                                                                                        | ಉಳಿಸುತ್ತಿದೆ…                                                                                 | सहेजा जा रहा है…                                                                           |
+| `recorder.stop`          | Stop                                                                                           | ನಿಲ್ಲಿಸಿ                                                                                     | रोकें                                                                                      |
+| `recorder.stopped`       | Stopped. Listen back, record again, or keep it.                                                | ಮುಗಿದಿದೆ. ಕೇಳಿ, ಮತ್ತೆ ಮಾಡಿ, ಅಥವಾ ಉಳಿಸಿ.                                                      | रुक गया। सुनें, फिर से रिकॉर्ड करें, या रख लें।                                            |
+| `recorder.tapeLabel`     | my story                                                                                       | ನನ್ನ ಕಥೆ                                                                                     | मेरी कहानी                                                                                 |
+| `recorder.tooBig`        | That recording is over 10 MB. Try a shorter one.                                               | ಆ ಧ್ವನಿಮುದ್ರಣ 10 MB ಗಿಂತ ದೊಡ್ಡದು. ಚಿಕ್ಕದನ್ನು ಪ್ರಯತ್ನಿಸಿ.                                     | यह रिकॉर्डिंग 10 MB से बड़ी है। छोटी आज़माएँ।                                              |
+| `recorder.unsupported`   | This browser cannot record audio. Upload a recording made on a phone, or type the story.       | ಈ ಬ್ರೌಸರ್ ಧ್ವನಿಮುದ್ರಿಸಲಾರದು. ಫೋನಿನಲ್ಲಿ ಮಾಡಿದ ಧ್ವನಿಮುದ್ರಣ ಏರಿಸಿ, ಅಥವಾ ಕಥೆ ಬರೆಯಿರಿ.            | यह ब्राउज़र आवाज़ रिकॉर्ड नहीं कर सकता। फ़ोन पर बनी रिकॉर्डिंग अपलोड करें, या कहानी लिखें। |
+| `recorder.uploadHint`    | webm, m4a, mp3, ogg or wav, up to 10 MB.                                                       | webm, m4a, mp3, ogg ಅಥವಾ wav, 10 MB ವರೆಗೆ.                                                   | webm, m4a, mp3, ogg या wav, 10 MB तक।                                                      |
+| `recorder.uploadInstead` | Or upload a recording                                                                          | ಅಥವಾ ಧ್ವನಿಮುದ್ರಣ ಏರಿಸಿ                                                                       | या रिकॉर्डिंग अपलोड करें                                                                   |
 
 ## UI: report
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `report.hint` | An admin reads every report. | ಪ್ರತಿ ವರದಿಯನ್ನು ನಿರ್ವಾಹಕರು ಓದುತ್ತಾರೆ. | हर शिकायत एडमिन पढ़ते हैं। |
-| `report.reason` | What is wrong? | ಏನು ತಪ್ಪಿದೆ? | क्या ग़लत है? |
-| `report.send` | Send report | ವರದಿ ಕಳುಹಿಸಿ | शिकायत भेजें |
-| `report.sent` | Thank you. An admin will look at it. | ಧನ್ಯವಾದ. ನಿರ್ವಾಹಕರು ನೋಡುತ್ತಾರೆ. | धन्यवाद। एडमिन इसे देखेंगे। |
-| `report.toggle` | Report a problem with this | ಇದರಲ್ಲಿ ಸಮಸ್ಯೆ ವರದಿ ಮಾಡಿ | इसमें कोई समस्या बताएँ |
+| Key             | English                              | Kannada                               | Hindi                       |
+| --------------- | ------------------------------------ | ------------------------------------- | --------------------------- |
+| `report.hint`   | An admin reads every report.         | ಪ್ರತಿ ವರದಿಯನ್ನು ನಿರ್ವಾಹಕರು ಓದುತ್ತಾರೆ. | हर शिकायत एडमिन पढ़ते हैं।  |
+| `report.reason` | What is wrong?                       | ಏನು ತಪ್ಪಿದೆ?                          | क्या ग़लत है?               |
+| `report.send`   | Send report                          | ವರದಿ ಕಳುಹಿಸಿ                          | शिकायत भेजें                |
+| `report.sent`   | Thank you. An admin will look at it. | ಧನ್ಯವಾದ. ನಿರ್ವಾಹಕರು ನೋಡುತ್ತಾರೆ.       | धन्यवाद। एडमिन इसे देखेंगे। |
+| `report.toggle` | Report a problem with this           | ಇದರಲ್ಲಿ ಸಮಸ್ಯೆ ವರದಿ ಮಾಡಿ              | इसमें कोई समस्या बताएँ      |
 
 ## UI: reviewer
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `reviewer.approve` | Approve as it is | ಇರುವಂತೆಯೇ ಒಪ್ಪಿ | जैसा है वैसा स्वीकार करें |
-| `reviewer.approveNote` | Note for the artisan (optional) | ಕುಶಲಕರ್ಮಿಗೆ ಟಿಪ್ಪಣಿ (ಬೇಕಾದರೆ) | कारीगर के लिए नोट (चाहें तो) |
-| `reviewer.approveNoteHint` | A thank-you is always welcome. | ಒಂದು ಧನ್ಯವಾದ ಯಾವಾಗಲೂ ಸ್ವಾಗತ. | एक धन्यवाद हमेशा अच्छा लगता है। |
-| `reviewer.approveTitle` | Approve | ಒಪ್ಪಿ | स्वीकार करें |
-| `reviewer.approved` | Approved. It is now in the archive. | ಒಪ್ಪಲಾಗಿದೆ. ಈಗ ಸಂಗ್ರಹದಲ್ಲಿದೆ. | स्वीकार। अब यह संग्रह में है। |
-| `reviewer.back` | Back to the queue | ಸರತಿಗೆ ಹಿಂತಿರುಗಿ | क़तार पर लौटें |
-| `reviewer.by` | By {{name}}, told in {{lang}}. | {{name}}, {{lang}} ಭಾಷೆಯಲ್ಲಿ ಹೇಳಿದ್ದು. | {{name}} की, {{lang}} में कही गई। |
-| `reviewer.compare` | Original and translation | ಮೂಲ ಮತ್ತು ಅನುವಾದ | मूल और अनुवाद |
-| `reviewer.edit` | Edit | ತಿದ್ದಿ | बदलें |
-| `reviewer.editApprove` | Save edits and approve | ತಿದ್ದುಪಡಿ ಉಳಿಸಿ ಒಪ್ಪಿ | बदलाव सहेजकर स्वीकार करें |
-| `reviewer.empty` | The queue is empty. Every story has been read. | ಸರತಿ ಖಾಲಿ. ಎಲ್ಲ ಕಥೆಗಳನ್ನೂ ಓದಲಾಗಿದೆ. | क़तार ख़ाली है। हर कहानी पढ़ी जा चुकी है। |
-| `reviewer.meta` | {{name}}, {{lang}}, sent {{date}} | {{name}}, {{lang}}, {{date}} ರಂದು ಕಳುಹಿಸಿದ್ದು | {{name}}, {{lang}}, {{date}} को भेजी |
-| `reviewer.mode` | Mode | ಮೋಡ್ | मोड |
-| `reviewer.noSummary` | No summary yet. | ಇನ್ನೂ ಸಾರಾಂಶವಿಲ್ಲ. | अभी कोई सार नहीं। |
-| `reviewer.notPending` | This story is not waiting for review, so it cannot be approved or sent back. | ಈ ಕಥೆ ಪರಿಶೀಲನೆಗೆ ಕಾಯುತ್ತಿಲ್ಲ, ಆದ್ದರಿಂದ ಒಪ್ಪಲು ಅಥವಾ ಹಿಂದಿರುಗಿಸಲು ಆಗುವುದಿಲ್ಲ. | यह कहानी समीक्षा की प्रतीक्षा में नहीं है, इसलिए इसे स्वीकार या वापस नहीं किया जा सकता। |
-| `reviewer.open` | Review | ಪರಿಶೀಲಿಸಿ | समीक्षा करें |
-| `reviewer.original` | {{lang}}, as told | {{lang}}, ಹೇಳಿದಂತೆ | {{lang}}, जैसा कहा गया |
-| `reviewer.queue` | Waiting for review | ಪರಿಶೀಲನೆಗೆ ಕಾಯುತ್ತಿರುವವು | समीक्षा की प्रतीक्षा में |
-| `reviewer.read` | Read | ಓದಿ | पढ़ें |
-| `reviewer.reject` | Send back with note | ಟಿಪ್ಪಣಿಯೊಂದಿಗೆ ಹಿಂದಿರುಗಿಸಿ | नोट के साथ लौटाएँ |
-| `reviewer.rejectHint` | Be specific and kind. The artisan sees this note. | ಸ್ಪಷ್ಟವಾಗಿ, ದಯೆಯಿಂದ ಬರೆಯಿರಿ. ಕುಶಲಕರ್ಮಿ ಈ ಟಿಪ್ಪಣಿ ನೋಡುತ್ತಾರೆ. | साफ़ और नरमी से लिखें। कारीगर यह नोट देखेंगे। |
-| `reviewer.rejectNote` | What should the artisan change? | ಕುಶಲಕರ್ಮಿ ಏನು ಬದಲಿಸಬೇಕು? | कारीगर क्या बदलें? |
-| `reviewer.rejectTitle` | Send back | ಹಿಂದಿರುಗಿಸಿ | लौटाएँ |
-| `reviewer.rejected` | Sent back to the artisan. | ಕುಶಲಕರ್ಮಿಗೆ ಹಿಂದಿರುಗಿಸಲಾಗಿದೆ. | कारीगर को लौटा दिया। |
-| `reviewer.sampleAi` | The transcript and translation came from the sample AI. Read them closely. | ಬರಹ ಮತ್ತು ಅನುವಾದ ಮಾದರಿ AI ಇಂದ ಬಂದಿವೆ. ಗಮನವಿಟ್ಟು ಓದಿ. | लिखित प्रति और अनुवाद नमूना AI से आए हैं। ध्यान से पढ़ें। |
-| `reviewer.screenTitle` | Review a story | ಕಥೆ ಪರಿಶೀಲಿಸಿ | कहानी की समीक्षा |
-| `reviewer.summary` | Summary | ಸಾರಾಂಶ | सार |
-| `reviewer.translation` | English | ಇಂಗ್ಲಿಷ್ | अंग्रेज़ी |
+| Key                        | English                                                                      | Kannada                                                                     | Hindi                                                                                   |
+| -------------------------- | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `reviewer.approve`         | Approve as it is                                                             | ಇರುವಂತೆಯೇ ಒಪ್ಪಿ                                                             | जैसा है वैसा स्वीकार करें                                                               |
+| `reviewer.approveNote`     | Note for the artisan (optional)                                              | ಕುಶಲಕರ್ಮಿಗೆ ಟಿಪ್ಪಣಿ (ಬೇಕಾದರೆ)                                               | कारीगर के लिए नोट (चाहें तो)                                                            |
+| `reviewer.approveNoteHint` | A thank-you is always welcome.                                               | ಒಂದು ಧನ್ಯವಾದ ಯಾವಾಗಲೂ ಸ್ವಾಗತ.                                                | एक धन्यवाद हमेशा अच्छा लगता है।                                                         |
+| `reviewer.approveTitle`    | Approve                                                                      | ಒಪ್ಪಿ                                                                       | स्वीकार करें                                                                            |
+| `reviewer.approved`        | Approved. It is now in the archive.                                          | ಒಪ್ಪಲಾಗಿದೆ. ಈಗ ಸಂಗ್ರಹದಲ್ಲಿದೆ.                                               | स्वीकार। अब यह संग्रह में है।                                                           |
+| `reviewer.back`            | Back to the queue                                                            | ಸರತಿಗೆ ಹಿಂತಿರುಗಿ                                                            | क़तार पर लौटें                                                                          |
+| `reviewer.by`              | By {{name}}, told in {{lang}}.                                               | {{name}}, {{lang}} ಭಾಷೆಯಲ್ಲಿ ಹೇಳಿದ್ದು.                                      | {{name}} की, {{lang}} में कही गई।                                                       |
+| `reviewer.compare`         | Original and translation                                                     | ಮೂಲ ಮತ್ತು ಅನುವಾದ                                                            | मूल और अनुवाद                                                                           |
+| `reviewer.edit`            | Edit                                                                         | ತಿದ್ದಿ                                                                      | बदलें                                                                                   |
+| `reviewer.editApprove`     | Save edits and approve                                                       | ತಿದ್ದುಪಡಿ ಉಳಿಸಿ ಒಪ್ಪಿ                                                       | बदलाव सहेजकर स्वीकार करें                                                               |
+| `reviewer.empty`           | The queue is empty. Every story has been read.                               | ಸರತಿ ಖಾಲಿ. ಎಲ್ಲ ಕಥೆಗಳನ್ನೂ ಓದಲಾಗಿದೆ.                                         | क़तार ख़ाली है। हर कहानी पढ़ी जा चुकी है।                                               |
+| `reviewer.meta`            | {{name}}, {{lang}}, sent {{date}}                                            | {{name}}, {{lang}}, {{date}} ರಂದು ಕಳುಹಿಸಿದ್ದು                               | {{name}}, {{lang}}, {{date}} को भेजी                                                    |
+| `reviewer.mode`            | Mode                                                                         | ಮೋಡ್                                                                        | मोड                                                                                     |
+| `reviewer.noSummary`       | No summary yet.                                                              | ಇನ್ನೂ ಸಾರಾಂಶವಿಲ್ಲ.                                                          | अभी कोई सार नहीं।                                                                       |
+| `reviewer.notPending`      | This story is not waiting for review, so it cannot be approved or sent back. | ಈ ಕಥೆ ಪರಿಶೀಲನೆಗೆ ಕಾಯುತ್ತಿಲ್ಲ, ಆದ್ದರಿಂದ ಒಪ್ಪಲು ಅಥವಾ ಹಿಂದಿರುಗಿಸಲು ಆಗುವುದಿಲ್ಲ. | यह कहानी समीक्षा की प्रतीक्षा में नहीं है, इसलिए इसे स्वीकार या वापस नहीं किया जा सकता। |
+| `reviewer.open`            | Review                                                                       | ಪರಿಶೀಲಿಸಿ                                                                   | समीक्षा करें                                                                            |
+| `reviewer.original`        | {{lang}}, as told                                                            | {{lang}}, ಹೇಳಿದಂತೆ                                                          | {{lang}}, जैसा कहा गया                                                                  |
+| `reviewer.queue`           | Waiting for review                                                           | ಪರಿಶೀಲನೆಗೆ ಕಾಯುತ್ತಿರುವವು                                                    | समीक्षा की प्रतीक्षा में                                                                |
+| `reviewer.read`            | Read                                                                         | ಓದಿ                                                                         | पढ़ें                                                                                   |
+| `reviewer.reject`          | Send back with note                                                          | ಟಿಪ್ಪಣಿಯೊಂದಿಗೆ ಹಿಂದಿರುಗಿಸಿ                                                  | नोट के साथ लौटाएँ                                                                       |
+| `reviewer.rejectHint`      | Be specific and kind. The artisan sees this note.                            | ಸ್ಪಷ್ಟವಾಗಿ, ದಯೆಯಿಂದ ಬರೆಯಿರಿ. ಕುಶಲಕರ್ಮಿ ಈ ಟಿಪ್ಪಣಿ ನೋಡುತ್ತಾರೆ.                | साफ़ और नरमी से लिखें। कारीगर यह नोट देखेंगे।                                           |
+| `reviewer.rejectNote`      | What should the artisan change?                                              | ಕುಶಲಕರ್ಮಿ ಏನು ಬದಲಿಸಬೇಕು?                                                    | कारीगर क्या बदलें?                                                                      |
+| `reviewer.rejectTitle`     | Send back                                                                    | ಹಿಂದಿರುಗಿಸಿ                                                                 | लौटाएँ                                                                                  |
+| `reviewer.rejected`        | Sent back to the artisan.                                                    | ಕುಶಲಕರ್ಮಿಗೆ ಹಿಂದಿರುಗಿಸಲಾಗಿದೆ.                                               | कारीगर को लौटा दिया।                                                                    |
+| `reviewer.sampleAi`        | The transcript and translation came from the sample AI. Read them closely.   | ಬರಹ ಮತ್ತು ಅನುವಾದ ಮಾದರಿ AI ಇಂದ ಬಂದಿವೆ. ಗಮನವಿಟ್ಟು ಓದಿ.                        | लिखित प्रति और अनुवाद नमूना AI से आए हैं। ध्यान से पढ़ें।                               |
+| `reviewer.screenTitle`     | Review a story                                                               | ಕಥೆ ಪರಿಶೀಲಿಸಿ                                                               | कहानी की समीक्षा                                                                        |
+| `reviewer.summary`         | Summary                                                                      | ಸಾರಾಂಶ                                                                      | सार                                                                                     |
+| `reviewer.translation`     | English                                                                      | ಇಂಗ್ಲಿಷ್                                                                    | अंग्रेज़ी                                                                               |
 
 ## UI: roadmap
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `roadmap.first-piece` | Finish a first piece | ಮೊದಲ ವಸ್ತು ಮುಗಿಸಿ | पहली चीज़ पूरी करें |
-| `roadmap.materials` | Prepare the materials | ವಸ್ತುಗಳ ತಯಾರಿ | सामग्री की तैयारी |
-| `roadmap.showcase` | Show the work | ಕೆಲಸ ತೋರಿಸಿ | काम दिखाएँ |
-| `roadmap.technique` | Practise the core technique | ಮುಖ್ಯ ತಂತ್ರದ ಅಭ್ಯಾಸ | मुख्य तकनीक का अभ्यास |
-| `roadmap.tools` | Know the tools | ಉಪಕರಣಗಳ ಪರಿಚಯ | औज़ारों की पहचान |
+| Key                   | English                     | Kannada             | Hindi                 |
+| --------------------- | --------------------------- | ------------------- | --------------------- |
+| `roadmap.first-piece` | Finish a first piece        | ಮೊದಲ ವಸ್ತು ಮುಗಿಸಿ   | पहली चीज़ पूरी करें   |
+| `roadmap.materials`   | Prepare the materials       | ವಸ್ತುಗಳ ತಯಾರಿ       | सामग्री की तैयारी     |
+| `roadmap.showcase`    | Show the work               | ಕೆಲಸ ತೋರಿಸಿ         | काम दिखाएँ            |
+| `roadmap.technique`   | Practise the core technique | ಮುಖ್ಯ ತಂತ್ರದ ಅಭ್ಯಾಸ | मुख्य तकनीक का अभ्यास |
+| `roadmap.tools`       | Know the tools              | ಉಪಕರಣಗಳ ಪರಿಚಯ       | औज़ारों की पहचान      |
 
 ## UI: roadmapHint
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `roadmapHint.first-piece` | Make one piece from start to finish. | ಒಂದು ವಸ್ತುವನ್ನು ಮೊದಲಿನಿಂದ ಕೊನೆವರೆಗೆ ಮಾಡಿ. | एक चीज़ शुरू से आख़िर तक बनाएँ। |
-| `roadmapHint.materials` | Gather, clean and ready the raw material. | ಕಚ್ಚಾ ವಸ್ತು ಸಂಗ್ರಹಿಸಿ, ಸ್ವಚ್ಛಗೊಳಿಸಿ, ಸಿದ್ಧಗೊಳಿಸಿ. | कच्चा माल जुटाएँ, साफ़ करें, तैयार करें। |
-| `roadmapHint.showcase` | Present it to the artisan and a visitor. | ಕುಶಲಕರ್ಮಿ ಮತ್ತು ಒಬ್ಬ ಅತಿಥಿಗೆ ತೋರಿಸಿ. | कारीगर और एक मेहमान को दिखाएँ। |
-| `roadmapHint.technique` | Repeat the main movement until it is steady. | ಮುಖ್ಯ ಚಲನೆ ಸ್ಥಿರವಾಗುವವರೆಗೆ ಮಾಡುತ್ತಿರಿ. | मुख्य हरकत तब तक दोहराएँ जब तक हाथ सध न जाए। |
-| `roadmapHint.tools` | Name, hold and care for each tool. | ಪ್ರತಿ ಉಪಕರಣದ ಹೆಸರು, ಹಿಡಿಯುವ ರೀತಿ, ಆರೈಕೆ. | हर औज़ार का नाम, पकड़ और देखभाल। |
+| Key                       | English                                      | Kannada                                           | Hindi                                        |
+| ------------------------- | -------------------------------------------- | ------------------------------------------------- | -------------------------------------------- |
+| `roadmapHint.first-piece` | Make one piece from start to finish.         | ಒಂದು ವಸ್ತುವನ್ನು ಮೊದಲಿನಿಂದ ಕೊನೆವರೆಗೆ ಮಾಡಿ.         | एक चीज़ शुरू से आख़िर तक बनाएँ।              |
+| `roadmapHint.materials`   | Gather, clean and ready the raw material.    | ಕಚ್ಚಾ ವಸ್ತು ಸಂಗ್ರಹಿಸಿ, ಸ್ವಚ್ಛಗೊಳಿಸಿ, ಸಿದ್ಧಗೊಳಿಸಿ. | कच्चा माल जुटाएँ, साफ़ करें, तैयार करें।     |
+| `roadmapHint.showcase`    | Present it to the artisan and a visitor.     | ಕುಶಲಕರ್ಮಿ ಮತ್ತು ಒಬ್ಬ ಅತಿಥಿಗೆ ತೋರಿಸಿ.              | कारीगर और एक मेहमान को दिखाएँ।               |
+| `roadmapHint.technique`   | Repeat the main movement until it is steady. | ಮುಖ್ಯ ಚಲನೆ ಸ್ಥಿರವಾಗುವವರೆಗೆ ಮಾಡುತ್ತಿರಿ.            | मुख्य हरकत तब तक दोहराएँ जब तक हाथ सध न जाए। |
+| `roadmapHint.tools`       | Name, hold and care for each tool.           | ಪ್ರತಿ ಉಪಕರಣದ ಹೆಸರು, ಹಿಡಿಯುವ ರೀತಿ, ಆರೈಕೆ.          | हर औज़ार का नाम, पकड़ और देखभाल।             |
 
 ## UI: role
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `role.admin` | admin | ನಿರ್ವಾಹಕರು | एडमिन |
-| `role.artisan` | artisan | ಕುಶಲಕರ್ಮಿ | कारीगर |
-| `role.buyer` | buyer | ಖರೀದಿದಾರರು | ख़रीदार |
-| `role.learner` | learner | ಕಲಿಯುವವರು | सीखने वाले |
-| `role.reviewer` | reviewer | ಪರಿಶೀಲಕರು | समीक्षक |
+| Key             | English  | Kannada    | Hindi      |
+| --------------- | -------- | ---------- | ---------- |
+| `role.admin`    | admin    | ನಿರ್ವಾಹಕರು | एडमिन      |
+| `role.artisan`  | artisan  | ಕುಶಲಕರ್ಮಿ  | कारीगर     |
+| `role.buyer`    | buyer    | ಖರೀದಿದಾರರು | ख़रीदार    |
+| `role.learner`  | learner  | ಕಲಿಯುವವರು  | सीखने वाले |
+| `role.reviewer` | reviewer | ಪರಿಶೀಲಕರು  | समीक्षक    |
 
 ## UI: sample
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `sample.label` | SAMPLE | SAMPLE | SAMPLE |
+| Key            | English                                  | Kannada                               | Hindi                                 |
+| -------------- | ---------------------------------------- | ------------------------------------- | ------------------------------------- |
+| `sample.label` | SAMPLE                                   | SAMPLE                                | SAMPLE                                |
 | `sample.title` | Illustrative number, not a survey result | ಉದಾಹರಣೆಯ ಸಂಖ್ಯೆ, ಸಮೀಕ್ಷೆಯ ಫಲಿತಾಂಶವಲ್ಲ | उदाहरण की संख्या, सर्वे का नतीजा नहीं |
 
 ## UI: sdg
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `sdg.g11.name` | Safeguarding cultural heritage | ಸಾಂಸ್ಕೃತಿಕ ಪರಂಪರೆಯ ರಕ್ಷಣೆ | सांस्कृतिक विरासत की रक्षा |
-| `sdg.g11.short` | Keeping the heritage | ಪರಂಪರೆಯ ಉಳಿವು | विरासत को बचाना |
-| `sdg.g4.name` | Quality education | ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣ | गुणवत्तापूर्ण शिक्षा |
-| `sdg.g4.short` | Learning the trade | ಕಸುಬು ಕಲಿಕೆ | हुनर सीखना |
-| `sdg.g8.name` | Decent work and economic growth | ಘನತೆಯ ಕೆಲಸ ಮತ್ತು ಆರ್ಥಿಕ ಬೆಳವಣಿಗೆ | सम्मानजनक काम और आर्थिक विकास |
-| `sdg.g8.short` | A fair living from the craft | ಕಸುಬಿನಿಂದ ನ್ಯಾಯದ ಬದುಕು | हुनर से उचित रोज़ी |
+| Key              | English                                            | Kannada                                                | Hindi                                               |
+| ---------------- | -------------------------------------------------- | ------------------------------------------------------ | --------------------------------------------------- |
+| `sdg.g11.name`   | Safeguarding cultural heritage                     | ಸಾಂಸ್ಕೃತಿಕ ಪರಂಪರೆಯ ರಕ್ಷಣೆ                              | सांस्कृतिक विरासत की रक्षा                          |
+| `sdg.g11.short`  | Keeping the heritage                               | ಪರಂಪರೆಯ ಉಳಿವು                                          | विरासत को बचाना                                     |
+| `sdg.g4.name`    | Quality education                                  | ಗುಣಮಟ್ಟದ ಶಿಕ್ಷಣ                                        | गुणवत्तापूर्ण शिक्षा                                |
+| `sdg.g4.short`   | Learning the trade                                 | ಕಸುಬು ಕಲಿಕೆ                                            | हुनर सीखना                                          |
+| `sdg.g8.name`    | Decent work and economic growth                    | ಘನತೆಯ ಕೆಲಸ ಮತ್ತು ಆರ್ಥಿಕ ಬೆಳವಣಿಗೆ                       | सम्मानजनक काम और आर्थिक विकास                       |
+| `sdg.g8.short`   | A fair living from the craft                       | ಕಸುಬಿನಿಂದ ನ್ಯಾಯದ ಬದುಕು                                 | हुनर से उचित रोज़ी                                  |
 | `sdg.stampLabel` | UN Sustainable Development Goal {{goal}}: {{name}} | ವಿಶ್ವಸಂಸ್ಥೆಯ ಸುಸ್ಥಿರ ಅಭಿವೃದ್ಧಿ ಗುರಿ {{goal}}: {{name}} | संयुक्त राष्ट्र सतत विकास लक्ष्य {{goal}}: {{name}} |
 
 ## UI: state
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `state.errorBody` | Something went wrong on the way. Try again in a moment. | ದಾರಿಯಲ್ಲಿ ಏನೋ ತಪ್ಪಾಯಿತು. ಸ್ವಲ್ಪ ಹೊತ್ತಿನಲ್ಲಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ. | रास्ते में कुछ गड़बड़ हो गई। थोड़ी देर में फिर कोशिश करें। |
-| `state.errorTitle` | The chisel slipped. | ಉಳಿ ಜಾರಿತು. | छेनी फिसल गई। |
-| `state.loading` | Winding the thread… | ದಾರ ಸುತ್ತುತ್ತಿದೆ… | धागा लपेटा जा रहा है… |
+| Key                | English                                                 | Kannada                                                       | Hindi                                                      |
+| ------------------ | ------------------------------------------------------- | ------------------------------------------------------------- | ---------------------------------------------------------- |
+| `state.errorBody`  | Something went wrong on the way. Try again in a moment. | ದಾರಿಯಲ್ಲಿ ಏನೋ ತಪ್ಪಾಯಿತು. ಸ್ವಲ್ಪ ಹೊತ್ತಿನಲ್ಲಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ. | रास्ते में कुछ गड़बड़ हो गई। थोड़ी देर में फिर कोशिश करें। |
+| `state.errorTitle` | The chisel slipped.                                     | ಉಳಿ ಜಾರಿತು.                                                   | छेनी फिसल गई।                                              |
+| `state.loading`    | Winding the thread…                                     | ದಾರ ಸುತ್ತುತ್ತಿದೆ…                                             | धागा लपेटा जा रहा है…                                      |
 
 ## UI: status
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `status.accepted` | accepted | ಒಪ್ಪಲಾಗಿದೆ | स्वीकार |
-| `status.active` | active | ಸಕ್ರಿಯ | सक्रिय |
-| `status.answered` | answered | ಉತ್ತರಿಸಲಾಗಿದೆ | जवाब दिया |
-| `status.applied` | applied | ಅರ್ಜಿ ಹಾಕಲಾಗಿದೆ | आवेदन किया |
-| `status.approved` | in the archive | ಸಂಗ್ರಹದಲ್ಲಿದೆ | संग्रह में |
-| `status.closed` | closed | ಮುಚ್ಚಲಾಗಿದೆ | बंद |
-| `status.completed` | completed | ಪೂರ್ಣಗೊಂಡಿದೆ | पूरा |
-| `status.draft` | draft | ಕರಡು | मसौदा |
-| `status.open` | open | ತೆರೆದಿದೆ | खुला |
-| `status.paused` | paused | ತಡೆಹಿಡಿಯಲಾಗಿದೆ | रोका गया |
-| `status.pending` | with reviewer | ಪರಿಶೀಲನೆಯಲ್ಲಿ | समीक्षा में |
-| `status.rejected` | sent back | ಹಿಂದಿರುಗಿಸಲಾಗಿದೆ | लौटाया गया |
-| `status.resolved` | handled | ನಿರ್ವಹಿಸಲಾಗಿದೆ | निपटाया |
-| `status.shortlisted` | shortlisted | ಆಯ್ಕೆ ಪಟ್ಟಿಯಲ್ಲಿ | चुनी सूची में |
+| Key                  | English        | Kannada          | Hindi         |
+| -------------------- | -------------- | ---------------- | ------------- |
+| `status.accepted`    | accepted       | ಒಪ್ಪಲಾಗಿದೆ       | स्वीकार       |
+| `status.active`      | active         | ಸಕ್ರಿಯ           | सक्रिय        |
+| `status.answered`    | answered       | ಉತ್ತರಿಸಲಾಗಿದೆ    | जवाब दिया     |
+| `status.applied`     | applied        | ಅರ್ಜಿ ಹಾಕಲಾಗಿದೆ  | आवेदन किया    |
+| `status.approved`    | in the archive | ಸಂಗ್ರಹದಲ್ಲಿದೆ    | संग्रह में    |
+| `status.closed`      | closed         | ಮುಚ್ಚಲಾಗಿದೆ      | बंद           |
+| `status.completed`   | completed      | ಪೂರ್ಣಗೊಂಡಿದೆ     | पूरा          |
+| `status.draft`       | draft          | ಕರಡು             | मसौदा         |
+| `status.open`        | open           | ತೆರೆದಿದೆ         | खुला          |
+| `status.paused`      | paused         | ತಡೆಹಿಡಿಯಲಾಗಿದೆ   | रोका गया      |
+| `status.pending`     | with reviewer  | ಪರಿಶೀಲನೆಯಲ್ಲಿ    | समीक्षा में   |
+| `status.rejected`    | sent back      | ಹಿಂದಿರುಗಿಸಲಾಗಿದೆ | लौटाया गया    |
+| `status.resolved`    | handled        | ನಿರ್ವಹಿಸಲಾಗಿದೆ   | निपटाया       |
+| `status.shortlisted` | shortlisted    | ಆಯ್ಕೆ ಪಟ್ಟಿಯಲ್ಲಿ | चुनी सूची में |
 
 ## UI: story
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `story.archivedOn` | Archived {{date}}. | {{date}} ರಂದು ಸಂಗ್ರಹಿಸಲಾಗಿದೆ. | {{date}} को संग्रह में आई। |
-| `story.back` | Back to the archive | ಸಂಗ್ರಹಕ್ಕೆ ಹಿಂತಿರುಗಿ | संग्रह पर लौटें |
-| `story.summary` | In short | ಸಂಕ್ಷಿಪ್ತವಾಗಿ | संक्षेप में |
-| `story.tags` | Tags | ಟ್ಯಾಗ್‌ಗಳು | टैग |
-| `story.toldBy` | Told by | ಹೇಳಿದವರು | कहने वाले |
+| Key                | English             | Kannada                       | Hindi                      |
+| ------------------ | ------------------- | ----------------------------- | -------------------------- |
+| `story.archivedOn` | Archived {{date}}.  | {{date}} ರಂದು ಸಂಗ್ರಹಿಸಲಾಗಿದೆ. | {{date}} को संग्रह में आई। |
+| `story.back`       | Back to the archive | ಸಂಗ್ರಹಕ್ಕೆ ಹಿಂತಿರುಗಿ          | संग्रह पर लौटें            |
+| `story.summary`    | In short            | ಸಂಕ್ಷಿಪ್ತವಾಗಿ                 | संक्षेप में                |
+| `story.tags`       | Tags                | ಟ್ಯಾಗ್‌ಗಳು                    | टैग                        |
+| `story.toldBy`     | Told by             | ಹೇಳಿದವರು                      | कहने वाले                  |
+
+## UI: trust
+
+| Key                         | English                                                                                                                                               | Kannada                                                                                                                                                                       | Hindi                                                                                                                                                  |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `trust.adminLede`           | Check each artisan's proof before approving. Approved artisans get a public verified mark.                                                            | ಒಪ್ಪುವ ಮೊದಲು ಪ್ರತಿ ಕುಶಲಕರ್ಮಿಯ ಪುರಾವೆಯನ್ನು ನೋಡಿ. ಒಪ್ಪಿದವರಿಗೆ ಸಾರ್ವಜನಿಕ ಪರಿಶೀಲಿತ ಗುರುತು ಸಿಗುತ್ತದೆ.                                                                              | मंज़ूर करने से पहले हर कारीगर का प्रमाण जाँचें। मंज़ूर कारीगरों को सार्वजनिक सत्यापित निशान मिलता है।                                                  |
+| `trust.adminTitle`          | Artisan verification                                                                                                                                  | ಕುಶಲಕರ್ಮಿ ಪರಿಶೀಲನೆ                                                                                                                                                            | कारीगर सत्यापन                                                                                                                                         |
+| `trust.approve`             | Approve                                                                                                                                               | ಒಪ್ಪಿ                                                                                                                                                                         | मंज़ूर करें                                                                                                                                            |
+| `trust.approved`            | {{name}} is now verified.                                                                                                                             | {{name}} ಈಗ ಪರಿಶೀಲಿತ.                                                                                                                                                         | {{name}} अब सत्यापित हैं।                                                                                                                              |
+| `trust.askedOn`             | Asked on {{date}}                                                                                                                                     | {{date}} ರಂದು ಕೇಳಿದ್ದಾರೆ                                                                                                                                                      | {{date}} को कहा                                                                                                                                        |
+| `trust.badge`               | Verified artisan                                                                                                                                      | ಪರಿಶೀಲಿತ ಕುಶಲಕರ್ಮಿ                                                                                                                                                            | सत्यापित कारीगर                                                                                                                                        |
+| `trust.badgeShort`          | verified                                                                                                                                              | ಪರಿಶೀಲಿತ                                                                                                                                                                      | सत्यापित                                                                                                                                               |
+| `trust.badgeTitle`          | An admin has checked this artisan's proof of craft                                                                                                    | ಈ ಕುಶಲಕರ್ಮಿಯ ಕಸುಬಿನ ಪುರಾವೆಯನ್ನು ನಿರ್ವಾಹಕರು ಪರಿಶೀಲಿಸಿದ್ದಾರೆ                                                                                                                    | एडमिन ने इस कारीगर के शिल्प का प्रमाण जाँचा है                                                                                                         |
+| `trust.cancel`              | Cancel                                                                                                                                                | ರದ್ದುಮಾಡಿ                                                                                                                                                                     | रद्द करें                                                                                                                                              |
+| `trust.checkedOn`           | Checked on {{date}}                                                                                                                                   | {{date}} ರಂದು ಪರಿಶೀಲಿಸಲಾಗಿದೆ                                                                                                                                                  | {{date}} को जाँचा गया                                                                                                                                  |
+| `trust.confirmReject`       | Send                                                                                                                                                  | ಕಳುಹಿಸಿ                                                                                                                                                                       | भेजें                                                                                                                                                  |
+| `trust.decidedBy`           | decided by {{name}} on {{date}}                                                                                                                       | {{name}} ಅವರು {{date}} ರಂದು ನಿರ್ಧರಿಸಿದ್ದಾರೆ                                                                                                                                   | {{name}} ने {{date}} को तय किया                                                                                                                        |
+| `trust.empty`               | No requests here.                                                                                                                                     | ಇಲ್ಲಿ ಯಾವ ಕೋರಿಕೆಯೂ ಇಲ್ಲ.                                                                                                                                                      | यहाँ कोई अनुरोध नहीं है।                                                                                                                               |
+| `trust.filter.all`          | All requests                                                                                                                                          | ಎಲ್ಲಾ ಕೋರಿಕೆಗಳು                                                                                                                                                               | सभी अनुरोध                                                                                                                                             |
+| `trust.filter.pending`      | Waiting                                                                                                                                               | ಕಾಯುತ್ತಿರುವವು                                                                                                                                                                 | प्रतीक्षा में                                                                                                                                          |
+| `trust.filter.rejected`     | Turned down                                                                                                                                           | ನಿರಾಕರಿಸಿದವು                                                                                                                                                                  | अस्वीकार किए गए                                                                                                                                        |
+| `trust.filter.verified`     | Verified                                                                                                                                              | ಪರಿಶೀಲಿತ                                                                                                                                                                      | सत्यापित                                                                                                                                               |
+| `trust.idNumber`            | Card or reference number                                                                                                                              | ಚೀಟಿ ಅಥವಾ ಉಲ್ಲೇಖ ಸಂಖ್ಯೆ                                                                                                                                                       | कार्ड या संदर्भ संख्या                                                                                                                                 |
+| `trust.idType`              | Proof you can show                                                                                                                                    | ನೀವು ತೋರಿಸಬಹುದಾದ ಪುರಾವೆ                                                                                                                                                       | आप कौन-सा प्रमाण दिखा सकते हैं                                                                                                                         |
+| `trust.idTypes.award`       | State or national award                                                                                                                               | ರಾಜ್ಯ ಅಥವಾ ರಾಷ್ಟ್ರೀಯ ಪ್ರಶಸ್ತಿ                                                                                                                                                 | राज्य या राष्ट्रीय पुरस्कार                                                                                                                            |
+| `trust.idTypes.cooperative` | Cooperative or society membership                                                                                                                     | ಸಹಕಾರ ಸಂಘದ ಸದಸ್ಯತ್ವ                                                                                                                                                           | सहकारी समिति की सदस्यता                                                                                                                                |
+| `trust.idTypes.other`       | Other proof                                                                                                                                           | ಬೇರೆ ಪುರಾವೆ                                                                                                                                                                   | अन्य प्रमाण                                                                                                                                            |
+| `trust.idTypes.pehchan`     | Artisan ID card (Pehchan)                                                                                                                             | ಕುಶಲಕರ್ಮಿ ಗುರುತಿನ ಚೀಟಿ (ಪಹಚಾನ್)                                                                                                                                               | कारीगर पहचान पत्र (पहचान कार्ड)                                                                                                                        |
+| `trust.lede`                | Show buyers and learners that you are a practising artisan. An admin checks your proof, then a verified mark appears on your page and on every piece. | ನೀವು ಕೆಲಸ ಮಾಡುತ್ತಿರುವ ಕುಶಲಕರ್ಮಿ ಎಂದು ಖರೀದಿದಾರರಿಗೂ ಕಲಿಯುವವರಿಗೂ ತೋರಿಸಿ. ನಿರ್ವಾಹಕರು ನಿಮ್ಮ ಪುರಾವೆಯನ್ನು ನೋಡುತ್ತಾರೆ; ನಂತರ ನಿಮ್ಮ ಪುಟದಲ್ಲೂ ಪ್ರತಿ ಕೃತಿಯಲ್ಲೂ ಪರಿಶೀಲಿತ ಗುರುತು ಕಾಣುತ್ತದೆ. | ख़रीदारों और सीखने वालों को दिखाएँ कि आप काम करने वाले कारीगर हैं। एडमिन आपका प्रमाण जाँचते हैं, फिर आपके पन्ने और हर कृति पर सत्यापित निशान दिखता है। |
+| `trust.note`                | Anything the admin should know (optional)                                                                                                             | ನಿರ್ವಾಹಕರಿಗೆ ತಿಳಿಸಬೇಕಾದದ್ದು (ಐಚ್ಛಿಕ)                                                                                                                                          | एडमिन को कुछ बताना हो (वैकल्पिक)                                                                                                                       |
+| `trust.pendingBody`         | You asked on {{date}} with: {{type}}.                                                                                                                 | ನೀವು {{date}} ರಂದು ಕೇಳಿದ್ದೀರಿ: {{type}}.                                                                                                                                      | आपने {{date}} को कहा था: {{type}}।                                                                                                                     |
+| `trust.pendingTitle`        | Waiting for an admin                                                                                                                                  | ನಿರ್ವಾಹಕರಿಗಾಗಿ ಕಾಯುತ್ತಿದೆ                                                                                                                                                     | एडमिन की प्रतीक्षा में                                                                                                                                 |
+| `trust.private`             | Only admins see this. It is never shown on your public page.                                                                                          | ಇದನ್ನು ನಿರ್ವಾಹಕರು ಮಾತ್ರ ನೋಡುತ್ತಾರೆ. ನಿಮ್ಮ ಸಾರ್ವಜನಿಕ ಪುಟದಲ್ಲಿ ಇದು ಎಂದಿಗೂ ಕಾಣುವುದಿಲ್ಲ.                                                                                          | यह केवल एडमिन देखते हैं। आपके सार्वजनिक पन्ने पर यह कभी नहीं दिखता।                                                                                    |
+| `trust.proof`               | {{type}}: {{number}}                                                                                                                                  | {{type}}: {{number}}                                                                                                                                                          | {{type}}: {{number}}                                                                                                                                   |
+| `trust.reason`              | Reason (the artisan will see this)                                                                                                                    | ಕಾರಣ (ಕುಶಲಕರ್ಮಿ ಇದನ್ನು ನೋಡುತ್ತಾರೆ)                                                                                                                                            | कारण (कारीगर इसे देखेंगे)                                                                                                                              |
+| `trust.reject`              | Turn down                                                                                                                                             | ನಿರಾಕರಿಸಿ                                                                                                                                                                     | अस्वीकार करें                                                                                                                                          |
+| `trust.rejected`            | {{name}} was turned down and can ask again.                                                                                                           | {{name}} ಅವರ ಕೋರಿಕೆ ನಿರಾಕರಿಸಲಾಗಿದೆ; ಅವರು ಮತ್ತೆ ಕೇಳಬಹುದು.                                                                                                                      | {{name}} का अनुरोध अस्वीकार हुआ; वे फिर से कह सकते हैं।                                                                                                |
+| `trust.rejectedBody`        | The admin wrote: {{reason}}                                                                                                                           | ನಿರ್ವಾಹಕರು ಬರೆದದ್ದು: {{reason}}                                                                                                                                               | एडमिन ने लिखा: {{reason}}                                                                                                                              |
+| `trust.rejectedTitle`       | Not verified yet                                                                                                                                      | ಇನ್ನೂ ಪರಿಶೀಲನೆ ಆಗಿಲ್ಲ                                                                                                                                                         | अभी सत्यापित नहीं                                                                                                                                      |
+| `trust.revoke`              | Remove mark                                                                                                                                           | ಗುರುತು ತೆಗೆಯಿರಿ                                                                                                                                                               | निशान हटाएँ                                                                                                                                            |
+| `trust.revoked`             | The verified mark was removed from {{name}}.                                                                                                          | {{name}} ಅವರ ಪರಿಶೀಲಿತ ಗುರುತು ತೆಗೆಯಲಾಗಿದೆ.                                                                                                                                     | {{name}} से सत्यापित निशान हटा दिया गया।                                                                                                               |
+| `trust.send`                | Ask to be verified                                                                                                                                    | ಪರಿಶೀಲನೆಗೆ ಕೇಳಿ                                                                                                                                                               | सत्यापन के लिए कहें                                                                                                                                    |
+| `trust.sendAgain`           | Ask again                                                                                                                                             | ಮತ್ತೆ ಕೇಳಿ                                                                                                                                                                    | फिर से कहें                                                                                                                                            |
+| `trust.sent`                | Sent. An admin will check it.                                                                                                                         | ಕಳುಹಿಸಲಾಗಿದೆ. ನಿರ್ವಾಹಕರು ಪರಿಶೀಲಿಸುತ್ತಾರೆ.                                                                                                                                     | भेज दिया। एडमिन इसे जाँचेंगे।                                                                                                                          |
+| `trust.status.none`         | not asked                                                                                                                                             | ಕೇಳಿಲ್ಲ                                                                                                                                                                       | नहीं कहा                                                                                                                                               |
+| `trust.status.pending`      | waiting                                                                                                                                               | ಕಾಯುತ್ತಿದೆ                                                                                                                                                                    | प्रतीक्षा में                                                                                                                                          |
+| `trust.status.rejected`     | turned down                                                                                                                                           | ನಿರಾಕರಿಸಲಾಗಿದೆ                                                                                                                                                                | अस्वीकार                                                                                                                                               |
+| `trust.status.verified`     | verified                                                                                                                                              | ಪರಿಶೀಲಿತ                                                                                                                                                                      | सत्यापित                                                                                                                                               |
+| `trust.title`               | Get verified                                                                                                                                          | ಪರಿಶೀಲನೆ ಪಡೆಯಿರಿ                                                                                                                                                              | सत्यापन करवाएँ                                                                                                                                         |
+| `trust.verifiedBody`        | Your page and pieces have shown the verified mark since {{date}}.                                                                                     | {{date}} ರಿಂದ ನಿಮ್ಮ ಪುಟ ಮತ್ತು ಕೃತಿಗಳಲ್ಲಿ ಪರಿಶೀಲಿತ ಗುರುತು ಕಾಣುತ್ತಿದೆ.                                                                                                          | {{date}} से आपके पन्ने और कृतियों पर सत्यापित निशान दिख रहा है।                                                                                        |
 
 ## UI: upload
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `upload.notImage` | Choose a JPEG, PNG, WebP or GIF image. | JPEG, PNG, WebP ಅಥವಾ GIF ಚಿತ್ರ ಆರಿಸಿ. | JPEG, PNG, WebP या GIF तस्वीर चुनें। |
-| `upload.preview` | Preview of the chosen image | ಆರಿಸಿದ ಚಿತ್ರದ ಮುನ್ನೋಟ | चुनी गई तस्वीर की झलक |
-| `upload.remove` | Remove image | ಚಿತ್ರ ತೆಗೆಯಿರಿ | तस्वीर हटाएँ |
-| `upload.tooBig` | That image is over 5 MB. Try a smaller one. | ಆ ಚಿತ್ರ 5 MB ಗಿಂತ ದೊಡ್ಡದು. ಚಿಕ್ಕದನ್ನು ಪ್ರಯತ್ನಿಸಿ. | यह तस्वीर 5 MB से बड़ी है। छोटी आज़माएँ। |
-| `upload.uploading` | Uploading… | ಏರಿಸುತ್ತಿದೆ… | अपलोड हो रहा है… |
+| Key                | English                                     | Kannada                                           | Hindi                                    |
+| ------------------ | ------------------------------------------- | ------------------------------------------------- | ---------------------------------------- |
+| `upload.notImage`  | Choose a JPEG, PNG, WebP or GIF image.      | JPEG, PNG, WebP ಅಥವಾ GIF ಚಿತ್ರ ಆರಿಸಿ.             | JPEG, PNG, WebP या GIF तस्वीर चुनें।     |
+| `upload.preview`   | Preview of the chosen image                 | ಆರಿಸಿದ ಚಿತ್ರದ ಮುನ್ನೋಟ                             | चुनी गई तस्वीर की झलक                    |
+| `upload.remove`    | Remove image                                | ಚಿತ್ರ ತೆಗೆಯಿರಿ                                    | तस्वीर हटाएँ                             |
+| `upload.tooBig`    | That image is over 5 MB. Try a smaller one. | ಆ ಚಿತ್ರ 5 MB ಗಿಂತ ದೊಡ್ಡದು. ಚಿಕ್ಕದನ್ನು ಪ್ರಯತ್ನಿಸಿ. | यह तस्वीर 5 MB से बड़ी है। छोटी आज़माएँ। |
+| `upload.uploading` | Uploading…                                  | ಏರಿಸುತ್ತಿದೆ…                                      | अपलोड हो रहा है…                         |
 
 ## UI: v
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `v.date` | Enter a date. | ದಿನಾಂಕ ಬರೆಯಿರಿ. | तारीख़ लिखें। |
-| `v.email` | Enter an email address like name@example.com. | name@example.com ರೀತಿಯ ಇಮೇಲ್ ವಿಳಾಸ ಬರೆಯಿರಿ. | name@example.com जैसा ईमेल पता लिखें। |
-| `v.future` | Pick a date that has not passed yet. | ಇನ್ನೂ ಬರಬೇಕಾದ ದಿನಾಂಕ ಆರಿಸಿ. | ऐसी तारीख़ चुनें जो अभी आई न हो। |
-| `v.int` | Enter a whole number from {{a}} to {{b}}. | {{a}} ರಿಂದ {{b}} ರವರೆಗಿನ ಪೂರ್ಣ ಸಂಖ್ಯೆ ಬರೆಯಿರಿ. | {{a}} से {{b}} तक की पूरी संख्या लिखें। |
-| `v.items_one` | Add at most {{count}} item. | ಗರಿಷ್ಠ {{count}} ಐಟಂ ಸೇರಿಸಿ. | ज़्यादा से ज़्यादा {{count}} चीज़ जोड़ें। |
-| `v.items_other` | Add at most {{count}} items. | ಗರಿಷ್ಠ {{count}} ಐಟಂಗಳನ್ನು ಸೇರಿಸಿ. | ज़्यादा से ज़्यादा {{count}} चीज़ें जोड़ें। |
-| `v.max_one` | Use at most {{count}} character. | ಗರಿಷ್ಠ {{count}} ಅಕ್ಷರ ಮಾತ್ರ. | ज़्यादा से ज़्यादा {{count}} अक्षर। |
-| `v.max_other` | Use at most {{count}} characters. | ಗರಿಷ್ಠ {{count}} ಅಕ್ಷರಗಳು ಮಾತ್ರ. | ज़्यादा से ज़्यादा {{count}} अक्षर। |
-| `v.min_one` | Use at least {{count}} character. | ಕನಿಷ್ಠ {{count}} ಅಕ್ಷರ ಬರೆಯಿರಿ. | कम से कम {{count}} अक्षर लिखें। |
-| `v.min_other` | Use at least {{count}} characters. | ಕನಿಷ್ಠ {{count}} ಅಕ್ಷರಗಳನ್ನು ಬರೆಯಿರಿ. | कम से कम {{count}} अक्षर लिखें। |
-| `v.num` | Enter a number from {{a}} to {{b}}. | {{a}} ರಿಂದ {{b}} ರವರೆಗಿನ ಸಂಖ್ಯೆ ಬರೆಯಿರಿ. | {{a}} से {{b}} तक की संख्या लिखें। |
-| `v.oneOf` | Pick one of the options. | ಆಯ್ಕೆಗಳಲ್ಲಿ ಒಂದನ್ನು ಆರಿಸಿ. | विकल्पों में से एक चुनें। |
-| `v.priceOrder` | The highest price must be at least the lowest price. | ಹೆಚ್ಚಿನ ಬೆಲೆ ಕಡಿಮೆ ಬೆಲೆಗಿಂತ ಕಡಿಮೆ ಇರಬಾರದು. | सबसे ऊँची क़ीमत सबसे कम क़ीमत से कम नहीं हो सकती। |
-| `v.required` | This is needed. | ಇದು ಬೇಕು. | यह ज़रूरी है। |
-| `v.type` | This value is not the right kind. | ಈ ಮೌಲ್ಯ ಸರಿಯಾದ ಬಗೆಯದಲ್ಲ. | यह मान सही तरह का नहीं है। |
+| Key             | English                                              | Kannada                                        | Hindi                                             |
+| --------------- | ---------------------------------------------------- | ---------------------------------------------- | ------------------------------------------------- |
+| `v.date`        | Enter a date.                                        | ದಿನಾಂಕ ಬರೆಯಿರಿ.                                | तारीख़ लिखें।                                     |
+| `v.email`       | Enter an email address like name@example.com.        | name@example.com ರೀತಿಯ ಇಮೇಲ್ ವಿಳಾಸ ಬರೆಯಿರಿ.    | name@example.com जैसा ईमेल पता लिखें।             |
+| `v.future`      | Pick a date that has not passed yet.                 | ಇನ್ನೂ ಬರಬೇಕಾದ ದಿನಾಂಕ ಆರಿಸಿ.                    | ऐसी तारीख़ चुनें जो अभी आई न हो।                  |
+| `v.int`         | Enter a whole number from {{a}} to {{b}}.            | {{a}} ರಿಂದ {{b}} ರವರೆಗಿನ ಪೂರ್ಣ ಸಂಖ್ಯೆ ಬರೆಯಿರಿ. | {{a}} से {{b}} तक की पूरी संख्या लिखें।           |
+| `v.items_one`   | Add at most {{count}} item.                          | ಗರಿಷ್ಠ {{count}} ಐಟಂ ಸೇರಿಸಿ.                   | ज़्यादा से ज़्यादा {{count}} चीज़ जोड़ें।         |
+| `v.items_other` | Add at most {{count}} items.                         | ಗರಿಷ್ಠ {{count}} ಐಟಂಗಳನ್ನು ಸೇರಿಸಿ.             | ज़्यादा से ज़्यादा {{count}} चीज़ें जोड़ें।       |
+| `v.max_one`     | Use at most {{count}} character.                     | ಗರಿಷ್ಠ {{count}} ಅಕ್ಷರ ಮಾತ್ರ.                  | ज़्यादा से ज़्यादा {{count}} अक्षर।               |
+| `v.max_other`   | Use at most {{count}} characters.                    | ಗರಿಷ್ಠ {{count}} ಅಕ್ಷರಗಳು ಮಾತ್ರ.               | ज़्यादा से ज़्यादा {{count}} अक्षर।               |
+| `v.min_one`     | Use at least {{count}} character.                    | ಕನಿಷ್ಠ {{count}} ಅಕ್ಷರ ಬರೆಯಿರಿ.                | कम से कम {{count}} अक्षर लिखें।                   |
+| `v.min_other`   | Use at least {{count}} characters.                   | ಕನಿಷ್ಠ {{count}} ಅಕ್ಷರಗಳನ್ನು ಬರೆಯಿರಿ.          | कम से कम {{count}} अक्षर लिखें।                   |
+| `v.num`         | Enter a number from {{a}} to {{b}}.                  | {{a}} ರಿಂದ {{b}} ರವರೆಗಿನ ಸಂಖ್ಯೆ ಬರೆಯಿರಿ.       | {{a}} से {{b}} तक की संख्या लिखें।                |
+| `v.oneOf`       | Pick one of the options.                             | ಆಯ್ಕೆಗಳಲ್ಲಿ ಒಂದನ್ನು ಆರಿಸಿ.                     | विकल्पों में से एक चुनें।                         |
+| `v.priceOrder`  | The highest price must be at least the lowest price. | ಹೆಚ್ಚಿನ ಬೆಲೆ ಕಡಿಮೆ ಬೆಲೆಗಿಂತ ಕಡಿಮೆ ಇರಬಾರದು.     | सबसे ऊँची क़ीमत सबसे कम क़ीमत से कम नहीं हो सकती। |
+| `v.required`    | This is needed.                                      | ಇದು ಬೇಕು.                                      | यह ज़रूरी है।                                     |
+| `v.type`        | This value is not the right kind.                    | ಈ ಮೌಲ್ಯ ಸರಿಯಾದ ಬಗೆಯದಲ್ಲ.                       | यह मान सही तरह का नहीं है।                        |
 
 ## UI: verify
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `verify.certKicker` | VanishingTrades apprenticeship | VanishingTrades ಶಿಷ್ಯವೃತ್ತಿ | VanishingTrades शागिर्दी |
-| `verify.certTitle` | Certificate of craft | ಕಲಾ ಪ್ರಮಾಣಪತ್ರ | हुनर का प्रमाणपत्र |
-| `verify.certifies` | This is to say that | ಈ ಮೂಲಕ ತಿಳಿಸುವುದೇನೆಂದರೆ | प्रमाणित किया जाता है कि |
-| `verify.check` | Check | ಪರಿಶೀಲಿಸಿ | जाँचें |
-| `verify.checking` | Looking through the ledger… | ಲೆಕ್ಕದ ಪುಸ್ತಕ ನೋಡುತ್ತಿದೆ… | बही-खाता देखा जा रहा है… |
-| `verify.codeHint` | It looks like VT-7K3M-9QX2. | ಇದು VT-7K3M-9QX2 ರೀತಿ ಕಾಣುತ್ತದೆ. | यह VT-7K3M-9QX2 जैसा दिखता है। |
-| `verify.codeLabel` | Certificate code | ಪ್ರಮಾಣಪತ್ರದ ಸಂಕೇತ | प्रमाणपत्र का कोड |
-| `verify.completed` | completed {{title}}, {{weeks}} weeks of {{craft}}, at the bench and in good faith. | {{title}} ಅನ್ನು ಪೂರ್ಣಗೊಳಿಸಿದ್ದಾರೆ: {{craft}} ಕಲೆಯಲ್ಲಿ {{weeks}} ವಾರಗಳು, ಕೆಲಸದ ಮೇಜಿನ ಬಳಿ, ಪ್ರಾಮಾಣಿಕವಾಗಿ. | ने {{title}} पूरी की: {{craft}} में {{weeks}} हफ़्ते, कार्य-मेज़ पर, ईमानदारी से। |
-| `verify.issued` | Issued | ನೀಡಿದ ದಿನ | जारी |
-| `verify.lede` | Every finished apprenticeship gets a code. Type it in to see the certificate it belongs to. | ಮುಗಿದ ಪ್ರತಿ ಶಿಷ್ಯವೃತ್ತಿಗೆ ಒಂದು ಸಂಕೇತವಿದೆ. ಅದನ್ನು ಬರೆದು ಯಾವ ಪ್ರಮಾಣಪತ್ರದ್ದು ಎಂದು ನೋಡಿ. | हर पूरी शागिर्दी को एक कोड मिलता है। उसे लिखकर देखें कि वह किस प्रमाणपत्र का है। |
-| `verify.master` | Master artisan | ಗುರು ಕುಶಲಕರ್ಮಿ | उस्ताद कारीगर |
-| `verify.notFound` | No certificate has the code {{code}}. | {{code}} ಸಂಕೇತದ ಪ್ರಮಾಣಪತ್ರ ಇಲ್ಲ. | {{code}} कोड का कोई प्रमाणपत्र नहीं है। |
-| `verify.notFoundHint` | Check for a mixed-up 0 and O, or 1 and I. Codes never use those letters. | 0 ಮತ್ತು O, ಅಥವಾ 1 ಮತ್ತು I ಗೊಂದಲವಾಗಿದೆಯೇ ನೋಡಿ. ಸಂಕೇತಗಳಲ್ಲಿ ಆ ಅಕ್ಷರಗಳಿಲ್ಲ. | देखें कहीं 0 और O, या 1 और I में गड़बड़ तो नहीं। कोड में ये अक्षर नहीं होते। |
-| `verify.print` | Print certificate | ಪ್ರಮಾಣಪತ್ರ ಮುದ್ರಿಸಿ | प्रमाणपत्र छापें |
-| `verify.title` | Check a certificate | ಪ್ರಮಾಣಪತ್ರ ಪರಿಶೀಲಿಸಿ | प्रमाणपत्र जाँचें |
-| `verify.valid` | This certificate is genuine. | ಈ ಪ್ರಮಾಣಪತ್ರ ನಿಜವಾದದ್ದು. | यह प्रमाणपत्र असली है। |
+| Key                   | English                                                                                     | Kannada                                                                                                 | Hindi                                                                             |
+| --------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `verify.certKicker`   | VanishingTrades apprenticeship                                                              | VanishingTrades ಶಿಷ್ಯವೃತ್ತಿ                                                                             | VanishingTrades शागिर्दी                                                          |
+| `verify.certTitle`    | Certificate of craft                                                                        | ಕಲಾ ಪ್ರಮಾಣಪತ್ರ                                                                                          | हुनर का प्रमाणपत्र                                                                |
+| `verify.certifies`    | This is to say that                                                                         | ಈ ಮೂಲಕ ತಿಳಿಸುವುದೇನೆಂದರೆ                                                                                 | प्रमाणित किया जाता है कि                                                          |
+| `verify.check`        | Check                                                                                       | ಪರಿಶೀಲಿಸಿ                                                                                               | जाँचें                                                                            |
+| `verify.checking`     | Looking through the ledger…                                                                 | ಲೆಕ್ಕದ ಪುಸ್ತಕ ನೋಡುತ್ತಿದೆ…                                                                               | बही-खाता देखा जा रहा है…                                                          |
+| `verify.codeHint`     | It looks like VT-7K3M-9QX2.                                                                 | ಇದು VT-7K3M-9QX2 ರೀತಿ ಕಾಣುತ್ತದೆ.                                                                        | यह VT-7K3M-9QX2 जैसा दिखता है।                                                    |
+| `verify.codeLabel`    | Certificate code                                                                            | ಪ್ರಮಾಣಪತ್ರದ ಸಂಕೇತ                                                                                       | प्रमाणपत्र का कोड                                                                 |
+| `verify.completed`    | completed {{title}}, {{weeks}} weeks of {{craft}}, at the bench and in good faith.          | {{title}} ಅನ್ನು ಪೂರ್ಣಗೊಳಿಸಿದ್ದಾರೆ: {{craft}} ಕಲೆಯಲ್ಲಿ {{weeks}} ವಾರಗಳು, ಕೆಲಸದ ಮೇಜಿನ ಬಳಿ, ಪ್ರಾಮಾಣಿಕವಾಗಿ. | ने {{title}} पूरी की: {{craft}} में {{weeks}} हफ़्ते, कार्य-मेज़ पर, ईमानदारी से। |
+| `verify.issued`       | Issued                                                                                      | ನೀಡಿದ ದಿನ                                                                                               | जारी                                                                              |
+| `verify.lede`         | Every finished apprenticeship gets a code. Type it in to see the certificate it belongs to. | ಮುಗಿದ ಪ್ರತಿ ಶಿಷ್ಯವೃತ್ತಿಗೆ ಒಂದು ಸಂಕೇತವಿದೆ. ಅದನ್ನು ಬರೆದು ಯಾವ ಪ್ರಮಾಣಪತ್ರದ್ದು ಎಂದು ನೋಡಿ.                    | हर पूरी शागिर्दी को एक कोड मिलता है। उसे लिखकर देखें कि वह किस प्रमाणपत्र का है।  |
+| `verify.master`       | Master artisan                                                                              | ಗುರು ಕುಶಲಕರ್ಮಿ                                                                                          | उस्ताद कारीगर                                                                     |
+| `verify.notFound`     | No certificate has the code {{code}}.                                                       | {{code}} ಸಂಕೇತದ ಪ್ರಮಾಣಪತ್ರ ಇಲ್ಲ.                                                                        | {{code}} कोड का कोई प्रमाणपत्र नहीं है।                                           |
+| `verify.notFoundHint` | Check for a mixed-up 0 and O, or 1 and I. Codes never use those letters.                    | 0 ಮತ್ತು O, ಅಥವಾ 1 ಮತ್ತು I ಗೊಂದಲವಾಗಿದೆಯೇ ನೋಡಿ. ಸಂಕೇತಗಳಲ್ಲಿ ಆ ಅಕ್ಷರಗಳಿಲ್ಲ.                                | देखें कहीं 0 और O, या 1 और I में गड़बड़ तो नहीं। कोड में ये अक्षर नहीं होते।      |
+| `verify.print`        | Print certificate                                                                           | ಪ್ರಮಾಣಪತ್ರ ಮುದ್ರಿಸಿ                                                                                     | प्रमाणपत्र छापें                                                                  |
+| `verify.title`        | Check a certificate                                                                         | ಪ್ರಮಾಣಪತ್ರ ಪರಿಶೀಲಿಸಿ                                                                                    | प्रमाणपत्र जाँचें                                                                 |
+| `verify.valid`        | This certificate is genuine.                                                                | ಈ ಪ್ರಮಾಣಪತ್ರ ನಿಜವಾದದ್ದು.                                                                                | यह प्रमाणपत्र असली है।                                                            |
 
 ## UI: works
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `works.add` | List this piece | ಈ ವಸ್ತು ಪಟ್ಟಿಗೆ ಸೇರಿಸಿ | यह चीज़ सूची में जोड़ें |
-| `works.added` | Piece listed. | ವಸ್ತು ಸೇರಿಸಲಾಗಿದೆ. | चीज़ जोड़ दी। |
-| `works.craft` | Craft | ಕಲೆ | शिल्प |
-| `works.deleted` | Piece removed. | ವಸ್ತು ತೆಗೆಯಲಾಗಿದೆ. | चीज़ हटा दी। |
-| `works.description` | Description | ವಿವರಣೆ | विवरण |
-| `works.editTitle` | Edit piece | ವಸ್ತು ತಿದ್ದಿ | चीज़ बदलें |
-| `works.empty` | No pieces listed yet. Buyers can only ask about what they can see. | ಇನ್ನೂ ವಸ್ತುಗಳಿಲ್ಲ. ಖರೀದಿದಾರರು ಕಾಣುವುದರ ಬಗ್ಗೆ ಮಾತ್ರ ಕೇಳಬಲ್ಲರು. | अभी कोई चीज़ नहीं। ख़रीदार वही पूछ सकते हैं जो उन्हें दिखे। |
-| `works.materials` | Materials | ವಸ್ತುಗಳು | सामग्री |
-| `works.materialsHint` | Separate with commas, up to eight. | ಅಲ್ಪವಿರಾಮದಿಂದ ಬೇರ್ಪಡಿಸಿ, ಎಂಟರವರೆಗೆ. | अल्पविराम से अलग करें, आठ तक। |
-| `works.new` | List a piece | ವಸ್ತು ಸೇರಿಸಿ | चीज़ जोड़ें |
-| `works.newTitle` | A new piece | ಹೊಸ ವಸ್ತು | नई चीज़ |
-| `works.photo` | Photo | ಫೋಟೋ | तस्वीर |
-| `works.priceMax` | Highest price (₹) | ಹೆಚ್ಚು ಬೆಲೆ (₹) | सबसे ऊँची क़ीमत (₹) |
-| `works.priceMin` | Lowest price (₹) | ಕಡಿಮೆ ಬೆಲೆ (₹) | सबसे कम क़ीमत (₹) |
-| `works.saveChanges` | Save changes | ಬದಲಾವಣೆ ಉಳಿಸಿ | बदलाव सहेजें |
-| `works.title` | My pieces | ನನ್ನ ವಸ್ತುಗಳು | मेरी चीज़ें |
-| `works.titleEn` | Name in English | ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಹೆಸರು | अंग्रेज़ी में नाम |
-| `works.titleKn` | Name in Kannada | ಕನ್ನಡದಲ್ಲಿ ಹೆಸರು | कन्नड़ में नाम |
-| `works.updated` | Piece updated. | ವಸ್ತು ಬದಲಿಸಲಾಗಿದೆ. | चीज़ बदल दी। |
+| Key                   | English                                                            | Kannada                                                       | Hindi                                                       |
+| --------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------- | ----------------------------------------------------------- |
+| `works.add`           | List this piece                                                    | ಈ ವಸ್ತು ಪಟ್ಟಿಗೆ ಸೇರಿಸಿ                                        | यह चीज़ सूची में जोड़ें                                     |
+| `works.added`         | Piece listed.                                                      | ವಸ್ತು ಸೇರಿಸಲಾಗಿದೆ.                                            | चीज़ जोड़ दी।                                               |
+| `works.craft`         | Craft                                                              | ಕಲೆ                                                           | शिल्प                                                       |
+| `works.deleted`       | Piece removed.                                                     | ವಸ್ತು ತೆಗೆಯಲಾಗಿದೆ.                                            | चीज़ हटा दी।                                                |
+| `works.description`   | Description                                                        | ವಿವರಣೆ                                                        | विवरण                                                       |
+| `works.editTitle`     | Edit piece                                                         | ವಸ್ತು ತಿದ್ದಿ                                                  | चीज़ बदलें                                                  |
+| `works.empty`         | No pieces listed yet. Buyers can only ask about what they can see. | ಇನ್ನೂ ವಸ್ತುಗಳಿಲ್ಲ. ಖರೀದಿದಾರರು ಕಾಣುವುದರ ಬಗ್ಗೆ ಮಾತ್ರ ಕೇಳಬಲ್ಲರು. | अभी कोई चीज़ नहीं। ख़रीदार वही पूछ सकते हैं जो उन्हें दिखे। |
+| `works.materials`     | Materials                                                          | ವಸ್ತುಗಳು                                                      | सामग्री                                                     |
+| `works.materialsHint` | Separate with commas, up to eight.                                 | ಅಲ್ಪವಿರಾಮದಿಂದ ಬೇರ್ಪಡಿಸಿ, ಎಂಟರವರೆಗೆ.                           | अल्पविराम से अलग करें, आठ तक।                               |
+| `works.new`           | List a piece                                                       | ವಸ್ತು ಸೇರಿಸಿ                                                  | चीज़ जोड़ें                                                 |
+| `works.newTitle`      | A new piece                                                        | ಹೊಸ ವಸ್ತು                                                     | नई चीज़                                                     |
+| `works.photo`         | Photo                                                              | ಫೋಟೋ                                                          | तस्वीर                                                      |
+| `works.priceMax`      | Highest price (₹)                                                  | ಹೆಚ್ಚು ಬೆಲೆ (₹)                                               | सबसे ऊँची क़ीमत (₹)                                         |
+| `works.priceMin`      | Lowest price (₹)                                                   | ಕಡಿಮೆ ಬೆಲೆ (₹)                                                | सबसे कम क़ीमत (₹)                                           |
+| `works.saveChanges`   | Save changes                                                       | ಬದಲಾವಣೆ ಉಳಿಸಿ                                                 | बदलाव सहेजें                                                |
+| `works.title`         | My pieces                                                          | ನನ್ನ ವಸ್ತುಗಳು                                                 | मेरी चीज़ें                                                 |
+| `works.titleEn`       | Name in English                                                    | ಇಂಗ್ಲಿಷ್‌ನಲ್ಲಿ ಹೆಸರು                                          | अंग्रेज़ी में नाम                                           |
+| `works.titleKn`       | Name in Kannada                                                    | ಕನ್ನಡದಲ್ಲಿ ಹೆಸರು                                              | कन्नड़ में नाम                                              |
+| `works.updated`       | Piece updated.                                                     | ವಸ್ತು ಬದಲಿಸಲಾಗಿದೆ.                                            | चीज़ बदल दी।                                                |
 
 ## Demo world text (shared/seed.js)
 
 Artisan bios and piece names are in English and Kannada; story lines are in the language the
 story was told in, next to the English translation shown in the archive.
 
-| Key | English | Kannada | Hindi |
-| --- | --- | --- | --- |
-| `seed.artisan.Kempamma.bio` | Turns toys on a lathe her husband built from a cycle wheel. Colours everything with lac and kitchen dyes. | ಸೈಕಲ್ ಚಕ್ರದಿಂದ ಗಂಡ ಮಾಡಿದ ಯಂತ್ರದಲ್ಲಿ ಗೊಂಬೆಗಳನ್ನು ಕಡೆಯುತ್ತಾರೆ. ಅರಗು ಮತ್ತು ಅಡುಗೆಮನೆಯ ಬಣ್ಣಗಳನ್ನೇ ಬಳಸುತ್ತಾರೆ. |  |
-| `seed.artisan.Shivalingaiah.bio` | Third generation toy-maker. Known in the lane for spinning tops that hum. | ಮೂರನೇ ತಲೆಮಾರಿನ ಗೊಂಬೆ ಕಲಾವಿದರು. ಗುನುಗುವ ಬುಗುರಿಗಳಿಗೆ ಬೀದಿಯಲ್ಲಿ ಹೆಸರುವಾಸಿ. |  |
-| `seed.artisan.Mohammed Rafiq.bio` | Inlays silver wire into blackened zinc. Insists the soil of the old fort is the real artist. | ಕಪ್ಪಾದ ಸತುವಿನ ಮೇಲೆ ಬೆಳ್ಳಿ ತಂತಿ ಕೂರಿಸುತ್ತಾರೆ. ಹಳೆಯ ಕೋಟೆಯ ಮಣ್ಣೇ ನಿಜವಾದ ಕಲಾವಿದ ಎನ್ನುತ್ತಾರೆ. |  |
-| `seed.artisan.Shabana Begum.bio` | Learnt the poppy and vine patterns from her mother. Teaches two girls from her lane on Sundays. | ಅಮ್ಮನಿಂದ ಗಸಗಸೆ ಹೂ ಮತ್ತು ಬಳ್ಳಿ ವಿನ್ಯಾಸ ಕಲಿತರು. ಭಾನುವಾರ ಬೀದಿಯ ಇಬ್ಬರು ಹುಡುಗಿಯರಿಗೆ ಕಲಿಸುತ್ತಾರೆ. |  |
-| `seed.artisan.Gangamma Hiremath.bio` | Weaves Ilkal sarees with the kondi join, ten days a saree. Her daughter sits at the loom in the holidays. | ಕೊಂಡಿ ಜೋಡಣೆಯ ಇಳಕಲ್ ಸೀರೆ ನೇಯುತ್ತಾರೆ, ಒಂದು ಸೀರೆಗೆ ಹತ್ತು ದಿನ. ರಜೆಯಲ್ಲಿ ಮಗಳು ಮಗ್ಗದ ಬಳಿ ಕೂರುತ್ತಾಳೆ. |  |
-| `seed.artisan.Basavaraj Kalaburgi.bio` | Handloom weaver holding out against the power looms down the road. | ರಸ್ತೆಯ ಆಚೆಯ ವಿದ್ಯುತ್ ಮಗ್ಗಗಳ ನಡುವೆಯೂ ಕೈಮಗ್ಗ ಬಿಡದ ನೇಕಾರರು. |  |
-| `seed.artisan.Murthy Chitragar.bio` | One of the few Chitragar craftsmen still shaping festival figures from light wood and tamarind paste. | ಹಗುರ ಮರ ಮತ್ತು ಹುಣಸೆ ಅಂಟಿನಿಂದ ಹಬ್ಬದ ಮೂರ್ತಿಗಳನ್ನು ಮಾಡುವ ಕೆಲವೇ ಚಿತ್ರಗಾರರಲ್ಲಿ ಒಬ್ಬರು. |  |
-| `seed.artisan.Lakshmi Chitragar.bio` | Painted figures for years before anyone let her carve one. Now does the whole piece, wood to varnish. | ಹಲವು ವರ್ಷ ಬಣ್ಣ ಮಾತ್ರ ಹಚ್ಚುತ್ತಿದ್ದರು. ಈಗ ಮರದಿಂದ ಕೊನೆಯ ಹೊಳಪಿನವರೆಗೆ ಪೂರ್ತಿ ಮೂರ್ತಿ ಮಾಡುತ್ತಾರೆ. |  |
-| `seed.artisan.Abdul Sattar.bio` | Fits slivers of light wood into rosewood, one piece at a time. An elephant panel takes him three weeks. | ರೋಸ್‌ವುಡ್‌ನಲ್ಲಿ ತಿಳಿ ಮರದ ಚೂರುಗಳನ್ನು ಒಂದೊಂದಾಗಿ ಕೂರಿಸುತ್ತಾರೆ. ಒಂದು ಆನೆ ಫಲಕಕ್ಕೆ ಮೂರು ವಾರ. |  |
-| `seed.artisan.Nagaraj Achar.bio` | Keeps two fretsaws that belonged to his teacher and is looking for someone to hand them to. | ಗುರುಗಳ ಎರಡು ಗರಗಸಗಳನ್ನು ಜೋಪಾನ ಮಾಡಿದ್ದಾರೆ. ಅವನ್ನು ಕೊಡಲು ಶಿಷ್ಯರನ್ನು ಹುಡುಕುತ್ತಿದ್ದಾರೆ. |  |
-| `seed.artisan.Puttamma Kumbar.bio` | Digs clay from the lake bed every summer. Nobody in her house sleeps on the night of a firing. | ಪ್ರತಿ ಬೇಸಿಗೆಯಲ್ಲಿ ಕೆರೆಯ ತಳದ ಮಣ್ಣು ತರುತ್ತಾರೆ. ಸುಡುವ ರಾತ್ರಿ ಮನೆಯಲ್ಲಿ ಯಾರೂ ನಿದ್ದೆ ಮಾಡುವುದಿಲ್ಲ. |  |
-| `seed.artisan.Venkappa Moolya.bio` | Makes curd pots and festival lamps on a stone wheel his grandfather set in the yard. | ಅಜ್ಜ ಅಂಗಳದಲ್ಲಿ ಇಟ್ಟ ಕಲ್ಲಿನ ಚಕ್ರದಲ್ಲಿ ಮೊಸರು ಗಡಿಗೆ ಮತ್ತು ಹಬ್ಬದ ದೀಪಗಳನ್ನು ಮಾಡುತ್ತಾರೆ. |  |
-| `seed.work.1.title` | Small rocking horse | ಸಣ್ಣ ತೂಗುಕುದುರೆ |  |
-| `seed.work.2.title` | Abacus with turned beads | ಮಣಿಗಳ ಲೆಕ್ಕದ ಚೌಕಟ್ಟು |  |
-| `seed.work.3.title` | Spinning tops, set of six | ಆರು ಬುಗುರಿಗಳ ಸೆಟ್ |  |
-| `seed.work.4.title` | Bride and groom dolls | ವಧು-ವರ ಗೊಂಬೆಗಳು |  |
-| `seed.work.5.title` | Surahi with poppy inlay | ಗಸಗಸೆ ಹೂವಿನ ಸುರಾಹಿ |  |
-| `seed.work.6.title` | Paan box, vine pattern | ಬಳ್ಳಿ ವಿನ್ಯಾಸದ ಎಲೆ-ಅಡಿಕೆ ಡಬ್ಬಿ |  |
-| `seed.work.7.title` | Bangle box with silver vine | ಬೆಳ್ಳಿ ಬಳ್ಳಿಯ ಬಳೆ ಡಬ್ಬಿ |  |
-| `seed.work.8.title` | Hookah base, fish-scale pattern | ಮೀನು-ಹುರುಪೆ ವಿನ್ಯಾಸದ ಹುಕ್ಕಾ ತಳ |  |
-| `seed.work.9.title` | Ilkal saree, kumkum red pallu | ಕುಂಕುಮ ಕೆಂಪು ಸೆರಗಿನ ಇಳಕಲ್ ಸೀರೆ |  |
-| `seed.work.10.title` | Saree with chikki paras border | ಚಿಕ್ಕಿ ಪರಸ್ ಅಂಚಿನ ಸೀರೆ |  |
-| `seed.work.11.title` | Saree with gomi border | ಗೋಮಿ ಅಂಚಿನ ಸೀರೆ |  |
-| `seed.work.12.title` | Cotton dupatta, kondi join | ಕೊಂಡಿ ಜೋಡಣೆಯ ಹತ್ತಿ ದುಪಟ್ಟಾ |  |
-| `seed.work.13.title` | Garuda figure for festivals | ಹಬ್ಬದ ಗರುಡ ಮೂರ್ತಿ |  |
-| `seed.work.14.title` | Pair of painted parrots | ಬಣ್ಣದ ಗಿಳಿಗಳ ಜೋಡಿ |  |
-| `seed.work.15.title` | Hanuman mask | ಹನುಮಂತನ ಮುಖವಾಡ |  |
-| `seed.work.16.title` | Cradle toys, set of four | ತೊಟ್ಟಿಲ ಆಟಿಕೆಗಳು |  |
-| `seed.work.17.title` | Elephant panel in rosewood | ಆನೆಯ ಫಲಕ |  |
-| `seed.work.18.title` | Jewellery box with lotus | ಕಮಲದ ಆಭರಣ ಪೆಟ್ಟಿಗೆ |  |
-| `seed.work.19.title` | Tray with peacock inlay | ನವಿಲು ಕೆತ್ತನೆಯ ತಟ್ಟೆ |  |
-| `seed.work.20.title` | Wall plaque of Chamundi hill | ಚಾಮುಂಡಿ ಬೆಟ್ಟದ ಗೋಡೆ ಫಲಕ |  |
-| `seed.work.21.title` | Water pot with lid | ಮುಚ್ಚಳದ ನೀರಿನ ಮಡಕೆ |  |
-| `seed.work.22.title` | Curd pots, set of three | ಮೊಸರು ಗಡಿಗೆಗಳು |  |
-| `seed.work.23.title` | Tulasi planter | ತುಳಸಿ ಕಟ್ಟೆ ಕುಂಡ |  |
-| `seed.work.24.title` | Festival lamp stand | ಹಬ್ಬದ ದೀಪದ ಕಂಬ |  |
-| `seed.story.1.1` | My grandfather taught me to make my first toy. | ನನ್ನ ಅಜ್ಜ ನನಗೆ ಮೊದಲ ಗೊಂಬೆ ಮಾಡಲು ಕಲಿಸಿದರು. |  |
-| `seed.story.1.2` | We turn aale wood on the lathe, press on lac, and polish it with a screwpine leaf. | ಆಲೆ ಮರವನ್ನು ಕಡೆತದ ಯಂತ್ರದ ಮೇಲೆ ಕಡೆದು, ಅರಗು ಹಚ್ಚಿ, ಕೇದಗೆ ಎಲೆಯಿಂದ ಹೊಳಪು ಕೊಡುತ್ತೇವೆ. |  |
-| `seed.story.1.3` | Now only three houses on our street still do this work. | ಈಗ ನಮ್ಮ ಬೀದಿಯಲ್ಲಿ ಮೂರೇ ಮನೆಗಳು ಈ ಕೆಲಸ ಮಾಡುತ್ತವೆ. |  |
-| `seed.story.1.4` | When children hold a toy and laugh, my hands forget they are tired. | ಮಕ್ಕಳು ಗೊಂಬೆ ಹಿಡಿದು ನಗುವಾಗ ನನ್ನ ಕೈ ದಣಿವು ಮರೆಯುತ್ತದೆ. |  |
-| `seed.story.2.1` | Our colours don't come from a shop; they come from the kitchen. | ನಮ್ಮ ಬಣ್ಣಗಳು ಅಂಗಡಿಯಿಂದ ಬರುವುದಿಲ್ಲ, ಅಡುಗೆಮನೆಯಿಂದ ಬರುತ್ತವೆ. |  |
-| `seed.story.2.2` | Turmeric gives yellow, kumkum gives red, and indigo gives blue. | ಅರಿಶಿನದಿಂದ ಹಳದಿ, ಕುಂಕುಮದಿಂದ ಕೆಂಪು, ನೀಲಿಯಿಂದ ನೀಲಿ ಬಣ್ಣ ಮಾಡುತ್ತೇವೆ. |  |
-| `seed.story.2.3` | We melt the colour into a stick of lac and press it against the spinning wood. | ಬಣ್ಣವನ್ನು ಅರಗಿನ ಕಡ್ಡಿಯಲ್ಲಿ ಬೆರೆಸಿ, ತಿರುಗುವ ಮರಕ್ಕೆ ಒತ್ತುತ್ತೇವೆ. |  |
-| `seed.story.2.4` | That heat from friction is what gives the toy its shine. | ಆ ಬಿಸಿ ಘರ್ಷಣೆಯೇ ಗೊಂಬೆಗೆ ಹೊಳಪು ಕೊಡುತ್ತದೆ. |  |
-| `seed.story.3.1` | The black of Bidri comes from the soil of Bidar's old fort. |  | बीदरी का काला रंग बीदर के पुराने किले की मिट्टी से आता है। |
-| `seed.story.3.2` | We set thin silver wire into a vessel of zinc and copper. |  | हम जस्ते और तांबे के बर्तन पर चाँदी का पतला तार बिठाते हैं। |
-| `seed.story.3.3` | Then a paste of that soil and water turns the vessel black, while the silver keeps shining. |  | फिर मिट्टी और पानी के लेप से बर्तन काला हो जाता है, पर चाँदी चमकती रहती है। |
-| `seed.story.3.4` | My father used to say this soil does not work in any other town. |  | मेरे पिता कहते थे, यह मिट्टी किसी और शहर में काम नहीं करती। |
-| `seed.story.4.1` | My mother drew the patterns with a needle before she had ever held a pencil. |  |  |
-| `seed.story.4.2` | I learnt the poppy and the vine from watching her, sitting on the floor of our one room. |  |  |
-| `seed.story.4.3` | Today I teach two girls from our lane on Sunday mornings. |  |  |
-| `seed.story.4.4` | They are quicker than I was, and they argue with me about the patterns, which is a good sign. |  |  |
-| `seed.story.5.1` | We weave the red pallu of an Ilkal saree separately and join it with the kondi interlock. | ಇಳಕಲ್ ಸೀರೆಯ ಕೆಂಪು ಸೆರಗನ್ನು ಬೇರೆಯಾಗಿ ನೇಯ್ದು, ಕೊಂಡಿ ಹಾಕಿ ಜೋಡಿಸುತ್ತೇವೆ. |  |
-| `seed.story.5.2` | One saree takes ten days, sometimes more. | ಒಂದು ಸೀರೆಗೆ ಹತ್ತು ದಿನ ಬೇಕು, ಕೆಲವೊಮ್ಮೆ ಹೆಚ್ಚು. |  |
-| `seed.story.5.3` | The tope teni mark on the pallu looks like the wall of a fort. | ಸೆರಗಿನ ಮೇಲಿನ ತೋಪು ತೆನಿ ಗುರುತು ಕೋಟೆಯ ಗೋಡೆಯಂತೆ ಕಾಣುತ್ತದೆ. |  |
-| `seed.story.5.4` | My daughter goes to college now, but in the holidays she sits by the loom. | ನನ್ನ ಮಗಳು ಈಗ ಕಾಲೇಜಿಗೆ ಹೋಗುತ್ತಾಳೆ, ಆದರೆ ರಜೆಯಲ್ಲಿ ಮಗ್ಗದ ಬಳಿ ಕುಳಿತುಕೊಳ್ಳುತ್ತಾಳೆ. |  |
-| `seed.story.6.1` | In our town the noise of power looms has grown louder. | ನಮ್ಮ ಊರಿನಲ್ಲಿ ಈಗ ವಿದ್ಯುತ್ ಮಗ್ಗಗಳ ಸದ್ದು ಹೆಚ್ಚಾಗಿದೆ. |  |
-| `seed.story.6.2` | They weave fast, but they cannot do the kondi join. | ಅವು ಬೇಗ ನೇಯುತ್ತವೆ, ಆದರೆ ಕೊಂಡಿ ಜೋಡಣೆ ಅವಕ್ಕೆ ಬರುವುದಿಲ್ಲ. |  |
-| `seed.story.6.3` | There are still people who can tell a handloom saree apart, and that is our hope. | ಕೈಮಗ್ಗದ ಸೀರೆಯನ್ನು ಗುರುತಿಸುವವರು ಇನ್ನೂ ಇದ್ದಾರೆ, ಅದೇ ನಮ್ಮ ಭರವಸೆ. |  |
-| `seed.story.7.1` | They say our ancestors made the horses for Hampi's chariots. | ನಮ್ಮ ಪೂರ್ವಜರು ಹಂಪಿಯ ರಥಗಳಿಗೆ ಕುದುರೆಗಳನ್ನು ಮಾಡುತ್ತಿದ್ದರು ಎಂದು ಹೇಳುತ್ತಾರೆ. |  |
-| `seed.story.7.2` | We shape them from light wood, tamarind-seed paste and cotton cloth. | ಹಗುರವಾದ ಮರ, ಹುಣಸೆ ಬೀಜದ ಅಂಟು ಮತ್ತು ಹತ್ತಿ ಬಟ್ಟೆಯಿಂದ ಆಕಾರ ಕೊಡುತ್ತೇವೆ. |  |
-| `seed.story.7.3` | Last, we add paint and a shining leaf of tin. | ಕೊನೆಯಲ್ಲಿ ಬಣ್ಣ ಮತ್ತು ಹೊಳೆಯುವ ತಗಡಿನ ಎಲೆ ಹಚ್ಚುತ್ತೇವೆ. |  |
-| `seed.story.7.4` | Only a few families in Kinhal still keep this work alive. | ಈಗ ಕಿನ್ನಾಳದಲ್ಲಿ ಕೆಲವೇ ಕುಟುಂಬಗಳು ಈ ಕೆಲಸ ಉಳಿಸಿಕೊಂಡಿವೆ. |  |
-| `seed.story.8.1` | In Kinhal, carving the figures used to be men's work only. |  | किन्हाल में मूर्ति गढ़ने का काम पहले सिर्फ़ आदमी करते थे। |
-| `seed.story.8.2` | We women did the painting, but nobody said our names. |  | हम औरतें रंग भरती थीं, पर हमारा नाम कोई नहीं लेता था। |
-| `seed.story.8.3` | Now I make the whole figure myself, from the wood to the last coat of colour. |  | अब मैं पूरी मूर्ति खुद बनाती हूँ, लकड़ी से लेकर आख़िरी रंग तक। |
-| `seed.story.9.1` | Rosewood is hard on the tools and harder on the eyes. |  |  |
-| `seed.story.9.2` | We cut the pattern into the dark wood and fit tiny pieces of lighter wood into it, one by one. |  |  |
-| `seed.story.9.3` | An elephant panel the size of a book takes me three weeks. |  |  |
-| `seed.story.9.4` | The old masters used ivory; we use other woods and bone now, and I think the elephants prefer it. |  |  |
-| `seed.story.10.1` | I have two fretsaws that belonged to my teacher. |  |  |
-| `seed.story.10.2` | Nobody in my street wants to learn anymore, because the work is slow and the pay comes late. |  |  |
-| `seed.story.10.3` | If two young people sit with me for a year, they will know enough to earn. |  |  |
-| `seed.story.11.1` | In summer, when the lake dries, we bring clay from its bed. | ಬೇಸಿಗೆಯಲ್ಲಿ ಕೆರೆ ಒಣಗಿದಾಗ ನಾವು ಅದರ ತಳದ ಮಣ್ಣನ್ನು ತರುತ್ತೇವೆ. |  |
-| `seed.story.11.2` | We knead the clay with our feet and raise the pot on the wheel. | ಮಣ್ಣನ್ನು ಕಾಲಿನಿಂದ ತುಳಿದು, ಚಕ್ರದ ಮೇಲೆ ಮಡಕೆ ಎಬ್ಬಿಸುತ್ತೇವೆ. |  |
-| `seed.story.11.3` | On the night of the firing, nobody sleeps. | ಒಲೆಯಲ್ಲಿ ಸುಡುವ ರಾತ್ರಿ ಯಾರೂ ನಿದ್ದೆ ಮಾಡುವುದಿಲ್ಲ. |  |
-| `seed.story.11.4` | Water from a clay pot is still the coolest of all. | ಮಣ್ಣಿನ ಮಡಕೆಯ ನೀರು ಇನ್ನೂ ಎಲ್ಲಕ್ಕಿಂತ ತಣ್ಣಗಿರುತ್ತದೆ. |  |
-| `seed.story.12.1` | Even if our toys end up in a child's mouth, there is nothing to fear. |  | हमारे खिलौने बच्चों के मुँह में भी जाएँ तो डर नहीं। |
-| `seed.story.12.2` | The colours are made from plants. |  | रंग पेड़-पौधों से बनते हैं। |
-| `seed.story.12.3` | After that I... |  | इसके बाद मैं... |
-| `seed.story.13.1` | My husband built our first lathe from an old cycle wheel. |  |  |
-| `seed.story.13.2` | It still runs, though it complains. |  |  |
+| Key                                    | English                                                                                                   | Kannada                                                                                                  | Hindi                                                                       |
+| -------------------------------------- | --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `seed.artisan.Kempamma.bio`            | Turns toys on a lathe her husband built from a cycle wheel. Colours everything with lac and kitchen dyes. | ಸೈಕಲ್ ಚಕ್ರದಿಂದ ಗಂಡ ಮಾಡಿದ ಯಂತ್ರದಲ್ಲಿ ಗೊಂಬೆಗಳನ್ನು ಕಡೆಯುತ್ತಾರೆ. ಅರಗು ಮತ್ತು ಅಡುಗೆಮನೆಯ ಬಣ್ಣಗಳನ್ನೇ ಬಳಸುತ್ತಾರೆ. |                                                                             |
+| `seed.artisan.Shivalingaiah.bio`       | Third generation toy-maker. Known in the lane for spinning tops that hum.                                 | ಮೂರನೇ ತಲೆಮಾರಿನ ಗೊಂಬೆ ಕಲಾವಿದರು. ಗುನುಗುವ ಬುಗುರಿಗಳಿಗೆ ಬೀದಿಯಲ್ಲಿ ಹೆಸರುವಾಸಿ.                                  |                                                                             |
+| `seed.artisan.Mohammed Rafiq.bio`      | Inlays silver wire into blackened zinc. Insists the soil of the old fort is the real artist.              | ಕಪ್ಪಾದ ಸತುವಿನ ಮೇಲೆ ಬೆಳ್ಳಿ ತಂತಿ ಕೂರಿಸುತ್ತಾರೆ. ಹಳೆಯ ಕೋಟೆಯ ಮಣ್ಣೇ ನಿಜವಾದ ಕಲಾವಿದ ಎನ್ನುತ್ತಾರೆ.                 |                                                                             |
+| `seed.artisan.Shabana Begum.bio`       | Learnt the poppy and vine patterns from her mother. Teaches two girls from her lane on Sundays.           | ಅಮ್ಮನಿಂದ ಗಸಗಸೆ ಹೂ ಮತ್ತು ಬಳ್ಳಿ ವಿನ್ಯಾಸ ಕಲಿತರು. ಭಾನುವಾರ ಬೀದಿಯ ಇಬ್ಬರು ಹುಡುಗಿಯರಿಗೆ ಕಲಿಸುತ್ತಾರೆ.              |                                                                             |
+| `seed.artisan.Gangamma Hiremath.bio`   | Weaves Ilkal sarees with the kondi join, ten days a saree. Her daughter sits at the loom in the holidays. | ಕೊಂಡಿ ಜೋಡಣೆಯ ಇಳಕಲ್ ಸೀರೆ ನೇಯುತ್ತಾರೆ, ಒಂದು ಸೀರೆಗೆ ಹತ್ತು ದಿನ. ರಜೆಯಲ್ಲಿ ಮಗಳು ಮಗ್ಗದ ಬಳಿ ಕೂರುತ್ತಾಳೆ.           |                                                                             |
+| `seed.artisan.Basavaraj Kalaburgi.bio` | Handloom weaver holding out against the power looms down the road.                                        | ರಸ್ತೆಯ ಆಚೆಯ ವಿದ್ಯುತ್ ಮಗ್ಗಗಳ ನಡುವೆಯೂ ಕೈಮಗ್ಗ ಬಿಡದ ನೇಕಾರರು.                                                 |                                                                             |
+| `seed.artisan.Murthy Chitragar.bio`    | One of the few Chitragar craftsmen still shaping festival figures from light wood and tamarind paste.     | ಹಗುರ ಮರ ಮತ್ತು ಹುಣಸೆ ಅಂಟಿನಿಂದ ಹಬ್ಬದ ಮೂರ್ತಿಗಳನ್ನು ಮಾಡುವ ಕೆಲವೇ ಚಿತ್ರಗಾರರಲ್ಲಿ ಒಬ್ಬರು.                        |                                                                             |
+| `seed.artisan.Lakshmi Chitragar.bio`   | Painted figures for years before anyone let her carve one. Now does the whole piece, wood to varnish.     | ಹಲವು ವರ್ಷ ಬಣ್ಣ ಮಾತ್ರ ಹಚ್ಚುತ್ತಿದ್ದರು. ಈಗ ಮರದಿಂದ ಕೊನೆಯ ಹೊಳಪಿನವರೆಗೆ ಪೂರ್ತಿ ಮೂರ್ತಿ ಮಾಡುತ್ತಾರೆ.               |                                                                             |
+| `seed.artisan.Abdul Sattar.bio`        | Fits slivers of light wood into rosewood, one piece at a time. An elephant panel takes him three weeks.   | ರೋಸ್‌ವುಡ್‌ನಲ್ಲಿ ತಿಳಿ ಮರದ ಚೂರುಗಳನ್ನು ಒಂದೊಂದಾಗಿ ಕೂರಿಸುತ್ತಾರೆ. ಒಂದು ಆನೆ ಫಲಕಕ್ಕೆ ಮೂರು ವಾರ.                   |                                                                             |
+| `seed.artisan.Nagaraj Achar.bio`       | Keeps two fretsaws that belonged to his teacher and is looking for someone to hand them to.               | ಗುರುಗಳ ಎರಡು ಗರಗಸಗಳನ್ನು ಜೋಪಾನ ಮಾಡಿದ್ದಾರೆ. ಅವನ್ನು ಕೊಡಲು ಶಿಷ್ಯರನ್ನು ಹುಡುಕುತ್ತಿದ್ದಾರೆ.                       |                                                                             |
+| `seed.artisan.Puttamma Kumbar.bio`     | Digs clay from the lake bed every summer. Nobody in her house sleeps on the night of a firing.            | ಪ್ರತಿ ಬೇಸಿಗೆಯಲ್ಲಿ ಕೆರೆಯ ತಳದ ಮಣ್ಣು ತರುತ್ತಾರೆ. ಸುಡುವ ರಾತ್ರಿ ಮನೆಯಲ್ಲಿ ಯಾರೂ ನಿದ್ದೆ ಮಾಡುವುದಿಲ್ಲ.              |                                                                             |
+| `seed.artisan.Venkappa Moolya.bio`     | Makes curd pots and festival lamps on a stone wheel his grandfather set in the yard.                      | ಅಜ್ಜ ಅಂಗಳದಲ್ಲಿ ಇಟ್ಟ ಕಲ್ಲಿನ ಚಕ್ರದಲ್ಲಿ ಮೊಸರು ಗಡಿಗೆ ಮತ್ತು ಹಬ್ಬದ ದೀಪಗಳನ್ನು ಮಾಡುತ್ತಾರೆ.                       |                                                                             |
+| `seed.work.1.title`                    | Small rocking horse                                                                                       | ಸಣ್ಣ ತೂಗುಕುದುರೆ                                                                                          |                                                                             |
+| `seed.work.2.title`                    | Abacus with turned beads                                                                                  | ಮಣಿಗಳ ಲೆಕ್ಕದ ಚೌಕಟ್ಟು                                                                                     |                                                                             |
+| `seed.work.3.title`                    | Spinning tops, set of six                                                                                 | ಆರು ಬುಗುರಿಗಳ ಸೆಟ್                                                                                        |                                                                             |
+| `seed.work.4.title`                    | Bride and groom dolls                                                                                     | ವಧು-ವರ ಗೊಂಬೆಗಳು                                                                                          |                                                                             |
+| `seed.work.5.title`                    | Surahi with poppy inlay                                                                                   | ಗಸಗಸೆ ಹೂವಿನ ಸುರಾಹಿ                                                                                       |                                                                             |
+| `seed.work.6.title`                    | Paan box, vine pattern                                                                                    | ಬಳ್ಳಿ ವಿನ್ಯಾಸದ ಎಲೆ-ಅಡಿಕೆ ಡಬ್ಬಿ                                                                           |                                                                             |
+| `seed.work.7.title`                    | Bangle box with silver vine                                                                               | ಬೆಳ್ಳಿ ಬಳ್ಳಿಯ ಬಳೆ ಡಬ್ಬಿ                                                                                  |                                                                             |
+| `seed.work.8.title`                    | Hookah base, fish-scale pattern                                                                           | ಮೀನು-ಹುರುಪೆ ವಿನ್ಯಾಸದ ಹುಕ್ಕಾ ತಳ                                                                           |                                                                             |
+| `seed.work.9.title`                    | Ilkal saree, kumkum red pallu                                                                             | ಕುಂಕುಮ ಕೆಂಪು ಸೆರಗಿನ ಇಳಕಲ್ ಸೀರೆ                                                                           |                                                                             |
+| `seed.work.10.title`                   | Saree with chikki paras border                                                                            | ಚಿಕ್ಕಿ ಪರಸ್ ಅಂಚಿನ ಸೀರೆ                                                                                   |                                                                             |
+| `seed.work.11.title`                   | Saree with gomi border                                                                                    | ಗೋಮಿ ಅಂಚಿನ ಸೀರೆ                                                                                          |                                                                             |
+| `seed.work.12.title`                   | Cotton dupatta, kondi join                                                                                | ಕೊಂಡಿ ಜೋಡಣೆಯ ಹತ್ತಿ ದುಪಟ್ಟಾ                                                                               |                                                                             |
+| `seed.work.13.title`                   | Garuda figure for festivals                                                                               | ಹಬ್ಬದ ಗರುಡ ಮೂರ್ತಿ                                                                                        |                                                                             |
+| `seed.work.14.title`                   | Pair of painted parrots                                                                                   | ಬಣ್ಣದ ಗಿಳಿಗಳ ಜೋಡಿ                                                                                        |                                                                             |
+| `seed.work.15.title`                   | Hanuman mask                                                                                              | ಹನುಮಂತನ ಮುಖವಾಡ                                                                                           |                                                                             |
+| `seed.work.16.title`                   | Cradle toys, set of four                                                                                  | ತೊಟ್ಟಿಲ ಆಟಿಕೆಗಳು                                                                                         |                                                                             |
+| `seed.work.17.title`                   | Elephant panel in rosewood                                                                                | ಆನೆಯ ಫಲಕ                                                                                                 |                                                                             |
+| `seed.work.18.title`                   | Jewellery box with lotus                                                                                  | ಕಮಲದ ಆಭರಣ ಪೆಟ್ಟಿಗೆ                                                                                       |                                                                             |
+| `seed.work.19.title`                   | Tray with peacock inlay                                                                                   | ನವಿಲು ಕೆತ್ತನೆಯ ತಟ್ಟೆ                                                                                     |                                                                             |
+| `seed.work.20.title`                   | Wall plaque of Chamundi hill                                                                              | ಚಾಮುಂಡಿ ಬೆಟ್ಟದ ಗೋಡೆ ಫಲಕ                                                                                  |                                                                             |
+| `seed.work.21.title`                   | Water pot with lid                                                                                        | ಮುಚ್ಚಳದ ನೀರಿನ ಮಡಕೆ                                                                                       |                                                                             |
+| `seed.work.22.title`                   | Curd pots, set of three                                                                                   | ಮೊಸರು ಗಡಿಗೆಗಳು                                                                                           |                                                                             |
+| `seed.work.23.title`                   | Tulasi planter                                                                                            | ತುಳಸಿ ಕಟ್ಟೆ ಕುಂಡ                                                                                         |                                                                             |
+| `seed.work.24.title`                   | Festival lamp stand                                                                                       | ಹಬ್ಬದ ದೀಪದ ಕಂಬ                                                                                           |                                                                             |
+| `seed.story.1.1`                       | My grandfather taught me to make my first toy.                                                            | ನನ್ನ ಅಜ್ಜ ನನಗೆ ಮೊದಲ ಗೊಂಬೆ ಮಾಡಲು ಕಲಿಸಿದರು.                                                                |                                                                             |
+| `seed.story.1.2`                       | We turn aale wood on the lathe, press on lac, and polish it with a screwpine leaf.                        | ಆಲೆ ಮರವನ್ನು ಕಡೆತದ ಯಂತ್ರದ ಮೇಲೆ ಕಡೆದು, ಅರಗು ಹಚ್ಚಿ, ಕೇದಗೆ ಎಲೆಯಿಂದ ಹೊಳಪು ಕೊಡುತ್ತೇವೆ.                         |                                                                             |
+| `seed.story.1.3`                       | Now only three houses on our street still do this work.                                                   | ಈಗ ನಮ್ಮ ಬೀದಿಯಲ್ಲಿ ಮೂರೇ ಮನೆಗಳು ಈ ಕೆಲಸ ಮಾಡುತ್ತವೆ.                                                          |                                                                             |
+| `seed.story.1.4`                       | When children hold a toy and laugh, my hands forget they are tired.                                       | ಮಕ್ಕಳು ಗೊಂಬೆ ಹಿಡಿದು ನಗುವಾಗ ನನ್ನ ಕೈ ದಣಿವು ಮರೆಯುತ್ತದೆ.                                                     |                                                                             |
+| `seed.story.2.1`                       | Our colours don't come from a shop; they come from the kitchen.                                           | ನಮ್ಮ ಬಣ್ಣಗಳು ಅಂಗಡಿಯಿಂದ ಬರುವುದಿಲ್ಲ, ಅಡುಗೆಮನೆಯಿಂದ ಬರುತ್ತವೆ.                                                |                                                                             |
+| `seed.story.2.2`                       | Turmeric gives yellow, kumkum gives red, and indigo gives blue.                                           | ಅರಿಶಿನದಿಂದ ಹಳದಿ, ಕುಂಕುಮದಿಂದ ಕೆಂಪು, ನೀಲಿಯಿಂದ ನೀಲಿ ಬಣ್ಣ ಮಾಡುತ್ತೇವೆ.                                        |                                                                             |
+| `seed.story.2.3`                       | We melt the colour into a stick of lac and press it against the spinning wood.                            | ಬಣ್ಣವನ್ನು ಅರಗಿನ ಕಡ್ಡಿಯಲ್ಲಿ ಬೆರೆಸಿ, ತಿರುಗುವ ಮರಕ್ಕೆ ಒತ್ತುತ್ತೇವೆ.                                           |                                                                             |
+| `seed.story.2.4`                       | That heat from friction is what gives the toy its shine.                                                  | ಆ ಬಿಸಿ ಘರ್ಷಣೆಯೇ ಗೊಂಬೆಗೆ ಹೊಳಪು ಕೊಡುತ್ತದೆ.                                                                 |                                                                             |
+| `seed.story.3.1`                       | The black of Bidri comes from the soil of Bidar's old fort.                                               |                                                                                                          | बीदरी का काला रंग बीदर के पुराने किले की मिट्टी से आता है।                  |
+| `seed.story.3.2`                       | We set thin silver wire into a vessel of zinc and copper.                                                 |                                                                                                          | हम जस्ते और तांबे के बर्तन पर चाँदी का पतला तार बिठाते हैं।                 |
+| `seed.story.3.3`                       | Then a paste of that soil and water turns the vessel black, while the silver keeps shining.               |                                                                                                          | फिर मिट्टी और पानी के लेप से बर्तन काला हो जाता है, पर चाँदी चमकती रहती है। |
+| `seed.story.3.4`                       | My father used to say this soil does not work in any other town.                                          |                                                                                                          | मेरे पिता कहते थे, यह मिट्टी किसी और शहर में काम नहीं करती।                 |
+| `seed.story.4.1`                       | My mother drew the patterns with a needle before she had ever held a pencil.                              |                                                                                                          |                                                                             |
+| `seed.story.4.2`                       | I learnt the poppy and the vine from watching her, sitting on the floor of our one room.                  |                                                                                                          |                                                                             |
+| `seed.story.4.3`                       | Today I teach two girls from our lane on Sunday mornings.                                                 |                                                                                                          |                                                                             |
+| `seed.story.4.4`                       | They are quicker than I was, and they argue with me about the patterns, which is a good sign.             |                                                                                                          |                                                                             |
+| `seed.story.5.1`                       | We weave the red pallu of an Ilkal saree separately and join it with the kondi interlock.                 | ಇಳಕಲ್ ಸೀರೆಯ ಕೆಂಪು ಸೆರಗನ್ನು ಬೇರೆಯಾಗಿ ನೇಯ್ದು, ಕೊಂಡಿ ಹಾಕಿ ಜೋಡಿಸುತ್ತೇವೆ.                                     |                                                                             |
+| `seed.story.5.2`                       | One saree takes ten days, sometimes more.                                                                 | ಒಂದು ಸೀರೆಗೆ ಹತ್ತು ದಿನ ಬೇಕು, ಕೆಲವೊಮ್ಮೆ ಹೆಚ್ಚು.                                                            |                                                                             |
+| `seed.story.5.3`                       | The tope teni mark on the pallu looks like the wall of a fort.                                            | ಸೆರಗಿನ ಮೇಲಿನ ತೋಪು ತೆನಿ ಗುರುತು ಕೋಟೆಯ ಗೋಡೆಯಂತೆ ಕಾಣುತ್ತದೆ.                                                  |                                                                             |
+| `seed.story.5.4`                       | My daughter goes to college now, but in the holidays she sits by the loom.                                | ನನ್ನ ಮಗಳು ಈಗ ಕಾಲೇಜಿಗೆ ಹೋಗುತ್ತಾಳೆ, ಆದರೆ ರಜೆಯಲ್ಲಿ ಮಗ್ಗದ ಬಳಿ ಕುಳಿತುಕೊಳ್ಳುತ್ತಾಳೆ.                            |                                                                             |
+| `seed.story.6.1`                       | In our town the noise of power looms has grown louder.                                                    | ನಮ್ಮ ಊರಿನಲ್ಲಿ ಈಗ ವಿದ್ಯುತ್ ಮಗ್ಗಗಳ ಸದ್ದು ಹೆಚ್ಚಾಗಿದೆ.                                                       |                                                                             |
+| `seed.story.6.2`                       | They weave fast, but they cannot do the kondi join.                                                       | ಅವು ಬೇಗ ನೇಯುತ್ತವೆ, ಆದರೆ ಕೊಂಡಿ ಜೋಡಣೆ ಅವಕ್ಕೆ ಬರುವುದಿಲ್ಲ.                                                   |                                                                             |
+| `seed.story.6.3`                       | There are still people who can tell a handloom saree apart, and that is our hope.                         | ಕೈಮಗ್ಗದ ಸೀರೆಯನ್ನು ಗುರುತಿಸುವವರು ಇನ್ನೂ ಇದ್ದಾರೆ, ಅದೇ ನಮ್ಮ ಭರವಸೆ.                                            |                                                                             |
+| `seed.story.7.1`                       | They say our ancestors made the horses for Hampi's chariots.                                              | ನಮ್ಮ ಪೂರ್ವಜರು ಹಂಪಿಯ ರಥಗಳಿಗೆ ಕುದುರೆಗಳನ್ನು ಮಾಡುತ್ತಿದ್ದರು ಎಂದು ಹೇಳುತ್ತಾರೆ.                                  |                                                                             |
+| `seed.story.7.2`                       | We shape them from light wood, tamarind-seed paste and cotton cloth.                                      | ಹಗುರವಾದ ಮರ, ಹುಣಸೆ ಬೀಜದ ಅಂಟು ಮತ್ತು ಹತ್ತಿ ಬಟ್ಟೆಯಿಂದ ಆಕಾರ ಕೊಡುತ್ತೇವೆ.                                       |                                                                             |
+| `seed.story.7.3`                       | Last, we add paint and a shining leaf of tin.                                                             | ಕೊನೆಯಲ್ಲಿ ಬಣ್ಣ ಮತ್ತು ಹೊಳೆಯುವ ತಗಡಿನ ಎಲೆ ಹಚ್ಚುತ್ತೇವೆ.                                                      |                                                                             |
+| `seed.story.7.4`                       | Only a few families in Kinhal still keep this work alive.                                                 | ಈಗ ಕಿನ್ನಾಳದಲ್ಲಿ ಕೆಲವೇ ಕುಟುಂಬಗಳು ಈ ಕೆಲಸ ಉಳಿಸಿಕೊಂಡಿವೆ.                                                     |                                                                             |
+| `seed.story.8.1`                       | In Kinhal, carving the figures used to be men's work only.                                                |                                                                                                          | किन्हाल में मूर्ति गढ़ने का काम पहले सिर्फ़ आदमी करते थे।                   |
+| `seed.story.8.2`                       | We women did the painting, but nobody said our names.                                                     |                                                                                                          | हम औरतें रंग भरती थीं, पर हमारा नाम कोई नहीं लेता था।                       |
+| `seed.story.8.3`                       | Now I make the whole figure myself, from the wood to the last coat of colour.                             |                                                                                                          | अब मैं पूरी मूर्ति खुद बनाती हूँ, लकड़ी से लेकर आख़िरी रंग तक।              |
+| `seed.story.9.1`                       | Rosewood is hard on the tools and harder on the eyes.                                                     |                                                                                                          |                                                                             |
+| `seed.story.9.2`                       | We cut the pattern into the dark wood and fit tiny pieces of lighter wood into it, one by one.            |                                                                                                          |                                                                             |
+| `seed.story.9.3`                       | An elephant panel the size of a book takes me three weeks.                                                |                                                                                                          |                                                                             |
+| `seed.story.9.4`                       | The old masters used ivory; we use other woods and bone now, and I think the elephants prefer it.         |                                                                                                          |                                                                             |
+| `seed.story.10.1`                      | I have two fretsaws that belonged to my teacher.                                                          |                                                                                                          |                                                                             |
+| `seed.story.10.2`                      | Nobody in my street wants to learn anymore, because the work is slow and the pay comes late.              |                                                                                                          |                                                                             |
+| `seed.story.10.3`                      | If two young people sit with me for a year, they will know enough to earn.                                |                                                                                                          |                                                                             |
+| `seed.story.11.1`                      | In summer, when the lake dries, we bring clay from its bed.                                               | ಬೇಸಿಗೆಯಲ್ಲಿ ಕೆರೆ ಒಣಗಿದಾಗ ನಾವು ಅದರ ತಳದ ಮಣ್ಣನ್ನು ತರುತ್ತೇವೆ.                                                |                                                                             |
+| `seed.story.11.2`                      | We knead the clay with our feet and raise the pot on the wheel.                                           | ಮಣ್ಣನ್ನು ಕಾಲಿನಿಂದ ತುಳಿದು, ಚಕ್ರದ ಮೇಲೆ ಮಡಕೆ ಎಬ್ಬಿಸುತ್ತೇವೆ.                                                 |                                                                             |
+| `seed.story.11.3`                      | On the night of the firing, nobody sleeps.                                                                | ಒಲೆಯಲ್ಲಿ ಸುಡುವ ರಾತ್ರಿ ಯಾರೂ ನಿದ್ದೆ ಮಾಡುವುದಿಲ್ಲ.                                                           |                                                                             |
+| `seed.story.11.4`                      | Water from a clay pot is still the coolest of all.                                                        | ಮಣ್ಣಿನ ಮಡಕೆಯ ನೀರು ಇನ್ನೂ ಎಲ್ಲಕ್ಕಿಂತ ತಣ್ಣಗಿರುತ್ತದೆ.                                                        |                                                                             |
+| `seed.story.12.1`                      | Even if our toys end up in a child's mouth, there is nothing to fear.                                     |                                                                                                          | हमारे खिलौने बच्चों के मुँह में भी जाएँ तो डर नहीं।                         |
+| `seed.story.12.2`                      | The colours are made from plants.                                                                         |                                                                                                          | रंग पेड़-पौधों से बनते हैं।                                                 |
+| `seed.story.12.3`                      | After that I...                                                                                           |                                                                                                          | इसके बाद मैं...                                                             |
+| `seed.story.13.1`                      | My husband built our first lathe from an old cycle wheel.                                                 |                                                                                                          |                                                                             |
+| `seed.story.13.2`                      | It still runs, though it complains.                                                                       |                                                                                                          |                                                                             |

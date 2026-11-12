@@ -20,6 +20,10 @@ import {
   certCode,
   newId,
   normaliseSegments,
+  VERIFY_LISTS,
+  VERIFY_MSG,
+  verifyAuditAction,
+  verifyDecision,
 } from '../../../shared/rules.js';
 import { mockProcess } from '../../../shared/mockAi.js';
 import { impactDashboard, impactTotals, isSampleWorld } from '../../../shared/impact.js';
@@ -65,6 +69,7 @@ const counts = (db, a) => ({
   storiesCount: db.stories.filter((s) => s.artisanId === a.id && s.status === 'approved').length,
 });
 const artisanOut = (db, a) => V.artisanView(a, counts(db, a));
+const artisanOwnerOut = (db, a) => V.artisanOwnerView(a, counts(db, a));
 const craftOut = (db, c) => V.craftView(c, byId(db.artisans, c.artisanId));
 const storyOut = (db, s) => V.storyView(s, byId(db.artisans, s.artisanId));
 const archiveOut = (db, s) => V.archiveItem(s, byId(db.artisans, s.artisanId));
@@ -297,7 +302,7 @@ on('GET', '/artisans/featured', (db) => [
 on('GET', '/artisans/me', (db, ctx) => {
   const user = needUser(db, ctx, 'artisan');
   ensureArtisanProfile(db, user);
-  return [200, artisanOut(db, myArtisan(db, user))];
+  return [200, artisanOwnerOut(db, myArtisan(db, user))];
 });
 on('PUT', '/artisans/me', (db, ctx) => {
   const user = needUser(db, ctx, 'artisan');
@@ -305,7 +310,28 @@ on('PUT', '/artisans/me', (db, ctx) => {
   ensureArtisanProfile(db, user);
   const a = myArtisan(db, user);
   Object.assign(a, v, { updatedAt: now() });
-  return [200, artisanOut(db, a)];
+  return [200, artisanOwnerOut(db, a)];
+});
+on('POST', '/artisans/me/verification', (db, ctx) => {
+  const user = needUser(db, ctx, 'artisan');
+  const v = check(schemas.verificationRequest, ctx.body);
+  ensureArtisanProfile(db, user);
+  const a = myArtisan(db, user);
+  const status = a.verifyStatus || 'none';
+  if (status === 'pending') fail(409, VERIFY_MSG.pending);
+  if (status === 'verified') fail(409, VERIFY_MSG.verified);
+  Object.assign(a, {
+    verifyStatus: 'pending',
+    verifyIdType: v.idType,
+    verifyIdNumber: v.idNumber,
+    verifyNote: v.note ?? null,
+    verifyReason: null,
+    verifySubmittedAt: now(),
+    verifyDecidedAt: null,
+    verifyDecidedBy: null,
+    updatedAt: now(),
+  });
+  return [200, artisanOwnerOut(db, a)];
 });
 on('GET', '/artisans/:id', (db, { params }) => {
   const a = byId(db.artisans, params.id) || fail(404, MSG.notFound);
@@ -1003,6 +1029,38 @@ on('POST', '/admin/flags/:id/resolve', (db, ctx) => {
   });
   audit(db, admin, `flag.${v.action}`, f.targetType, f.targetId, { flagId: f.id, label });
   return [200, V.flagView(f, { reporter: byId(db.users, f.reporterId), targetLabel: label })];
+});
+on('GET', '/admin/verifications', (db, ctx) => {
+  needUser(db, ctx, 'admin');
+  const status = VERIFY_LISTS.includes(ctx.query.status) ? ctx.query.status : 'pending';
+  const list = sortWith(
+    db.artisans.filter((a) => {
+      const s = a.verifyStatus || 'none';
+      return status === 'all' ? s !== 'none' : s === status;
+    }),
+    asc((a) => a.verifySubmittedAt),
+  );
+  return [
+    200,
+    pageOf(list, ctx.query, (a) => V.verificationItem(a, byId(db.users, a.verifyDecidedBy))),
+  ];
+});
+on('POST', '/admin/verifications/:artisanId/decide', (db, ctx) => {
+  const admin = needUser(db, ctx, 'admin');
+  const v = check(schemas.verificationDecision, ctx.body);
+  const a = byId(db.artisans, ctx.params.artisanId) || fail(404, MSG.notFound);
+  const from = a.verifyStatus || 'none';
+  const to = verifyDecision(from, v.action);
+  if (!to) fail(409, VERIFY_MSG.nothingToDecide);
+  Object.assign(a, {
+    verifyStatus: to,
+    verifyReason: v.action === 'reject' ? v.reason : null,
+    verifyDecidedAt: now(),
+    verifyDecidedBy: admin.id,
+    updatedAt: now(),
+  });
+  audit(db, admin, verifyAuditAction(from, v.action), 'artisan', a.id, { name: a.name });
+  return [200, V.verificationItem(a, admin)];
 });
 on('GET', '/admin/audit', (db, ctx) => {
   needUser(db, ctx, 'admin');

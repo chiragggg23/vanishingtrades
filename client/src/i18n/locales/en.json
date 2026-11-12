@@ -24,7 +24,11 @@
   },
   "lang": {
     "label": "Language",
-    "name": { "en": "English", "kn": "Kannada", "hi": "Hindi" }
+    "name": {
+      "en": "English",
+      "kn": "Kannada",
+      "hi": "Hindi"
+    }
   },
   "craft": {
     "channapatna": "Channapatna toys",
@@ -36,9 +40,18 @@
   },
   "sdg": {
     "stampLabel": "UN Sustainable Development Goal {{goal}}: {{name}}",
-    "g4": { "name": "Quality education", "short": "Learning the trade" },
-    "g8": { "name": "Decent work and economic growth", "short": "A fair living from the craft" },
-    "g11": { "name": "Safeguarding cultural heritage", "short": "Keeping the heritage" }
+    "g4": {
+      "name": "Quality education",
+      "short": "Learning the trade"
+    },
+    "g8": {
+      "name": "Decent work and economic growth",
+      "short": "A fair living from the craft"
+    },
+    "g11": {
+      "name": "Safeguarding cultural heritage",
+      "short": "Keeping the heritage"
+    }
   },
   "status": {
     "draft": "draft",
@@ -123,7 +136,9 @@
     "sort": "Sort by",
     "withCount": "{{label}} ({{count}})"
   },
-  "intro": { "skip": "Skip the loom" },
+  "intro": {
+    "skip": "Skip the loom"
+  },
   "home": {
     "kicker": "six crafts, twelve workshops, one archive",
     "headline": "Hear the hands before they go quiet.",
@@ -239,7 +254,11 @@
     "toldBy": "Told by {{name}}",
     "plays_one": "Heard {{count}} time",
     "plays_other": "Heard {{count}} times",
-    "sort": { "newest": "Newest first", "oldest": "Oldest first", "most-played": "Most heard" }
+    "sort": {
+      "newest": "Newest first",
+      "oldest": "Oldest first",
+      "most-played": "Most heard"
+    }
   },
   "story": {
     "back": "Back to the archive",
@@ -279,8 +298,15 @@
     "count_one": "{{count}} opening",
     "count_other": "{{count}} openings",
     "statusLabel": "Show",
-    "show": { "open": "Open now", "closed": "Closed", "all": "All of them" },
-    "sort": { "deadline": "Closing soonest", "newest": "Newest" },
+    "show": {
+      "open": "Open now",
+      "closed": "Closed",
+      "all": "All of them"
+    },
+    "sort": {
+      "deadline": "Closing soonest",
+      "newest": "Newest"
+    },
     "with": "with {{name}}",
     "withLabel": "with",
     "duration": "Length",
@@ -398,7 +424,11 @@
     "registerTitle": "Make an account",
     "registerLede": "Reviewer and admin accounts are made by the team; everyone else starts here.",
     "iAm": "I am joining as",
-    "roleTitle": { "artisan": "An artisan", "learner": "A learner", "buyer": "A buyer" },
+    "roleTitle": {
+      "artisan": "An artisan",
+      "learner": "A learner",
+      "buyer": "A buyer"
+    },
     "roleHint": {
       "artisan": "List your work, record your story, take apprentices.",
       "learner": "Apply for apprenticeships and log your progress.",
@@ -611,6 +641,59 @@
     "save": "Save profile",
     "saved": "Profile saved."
   },
+  "trust": {
+    "badge": "Verified artisan",
+    "badgeShort": "verified",
+    "badgeTitle": "An admin has checked this artisan's proof of craft",
+    "checkedOn": "Checked on {{date}}",
+    "title": "Get verified",
+    "lede": "Show buyers and learners that you are a practising artisan. An admin checks your proof, then a verified mark appears on your page and on every piece.",
+    "private": "Only admins see this. It is never shown on your public page.",
+    "idType": "Proof you can show",
+    "idTypes": {
+      "pehchan": "Artisan ID card (Pehchan)",
+      "cooperative": "Cooperative or society membership",
+      "award": "State or national award",
+      "other": "Other proof"
+    },
+    "idNumber": "Card or reference number",
+    "note": "Anything the admin should know (optional)",
+    "send": "Ask to be verified",
+    "sendAgain": "Ask again",
+    "sent": "Sent. An admin will check it.",
+    "pendingTitle": "Waiting for an admin",
+    "pendingBody": "You asked on {{date}} with: {{type}}.",
+    "verifiedBody": "Your page and pieces have shown the verified mark since {{date}}.",
+    "rejectedTitle": "Not verified yet",
+    "rejectedBody": "The admin wrote: {{reason}}",
+    "status": {
+      "none": "not asked",
+      "pending": "waiting",
+      "verified": "verified",
+      "rejected": "turned down"
+    },
+    "adminTitle": "Artisan verification",
+    "adminLede": "Check each artisan's proof before approving. Approved artisans get a public verified mark.",
+    "filter": {
+      "pending": "Waiting",
+      "verified": "Verified",
+      "rejected": "Turned down",
+      "all": "All requests"
+    },
+    "empty": "No requests here.",
+    "proof": "{{type}}: {{number}}",
+    "askedOn": "Asked on {{date}}",
+    "decidedBy": "decided by {{name}} on {{date}}",
+    "approve": "Approve",
+    "reject": "Turn down",
+    "revoke": "Remove mark",
+    "reason": "Reason (the artisan will see this)",
+    "confirmReject": "Send",
+    "cancel": "Cancel",
+    "approved": "{{name}} is now verified.",
+    "rejected": "{{name}} was turned down and can ask again.",
+    "revoked": "The verified mark was removed from {{name}}."
+  },
   "learner": {
     "empty": "No applications yet.",
     "browse": "Browse apprenticeships",
@@ -664,7 +747,13 @@
     "notPending": "This story is not waiting for review, so it cannot be approved or sent back."
   },
   "admin": {
-    "tab": { "impact": "Impact", "users": "People", "moderation": "Reports", "audit": "Audit log" },
+    "tab": {
+      "impact": "Impact",
+      "users": "People",
+      "verify": "Verification",
+      "moderation": "Reports",
+      "audit": "Audit log"
+    },
     "usersTitle": "People",
     "searchUsers": "Search by name or email",
     "role": "Role",
@@ -685,15 +774,26 @@
     "noUsers": "Nobody matches that search.",
     "flagsTitle": "Reports from users",
     "show": "Show",
-    "flagStatus": { "open": "Open reports", "resolved": "Handled", "all": "All reports" },
-    "target": { "story": "Story", "craft": "Piece", "artisan": "Artisan" },
+    "flagStatus": {
+      "open": "Open reports",
+      "resolved": "Handled",
+      "all": "All reports"
+    },
+    "target": {
+      "story": "Story",
+      "craft": "Piece",
+      "artisan": "Artisan"
+    },
     "reportedBy": "Reported by {{name}} on {{date}}",
     "dismiss": "Dismiss",
     "remove": "Take down",
     "pauseArtisan": "Pause the artisan",
     "flagDismissed": "Report dismissed.",
     "flagRemoved": "Taken down.",
-    "resolution": { "dismissed": "Dismissed", "removed": "Taken down" },
+    "resolution": {
+      "dismissed": "Dismissed",
+      "removed": "Taken down"
+    },
     "noFlags": "No reports. Quiet on the loom.",
     "takeDownTitle": "Take down a story or piece",
     "takeDownLede": "For anything that needs to come down without waiting for a report.",
@@ -716,7 +816,10 @@
     "flagDismiss": "Dismissed a report about {{label}}",
     "flagRemove": "Acted on a report about {{label}}",
     "storyRemove": "Took down the story {{label}}",
-    "craftRemove": "Took down the piece {{label}}"
+    "craftRemove": "Took down the piece {{label}}",
+    "verify": "Verified the artisan {{name}}",
+    "unverify": "Removed the verified mark from {{name}}",
+    "verifyReject": "Turned down the verification request from {{name}}"
   },
   "recorder": {
     "tapeLabel": "my story",

@@ -65,6 +65,12 @@ export async function artisanOut(a) {
   return V.artisanView(a, counts(a.id));
 }
 
+/** The artisan's own profile, with their (private) verification request. */
+export async function artisanOwnerOut(a) {
+  const counts = await artisanCounts([a.id]);
+  return V.artisanOwnerView(a, counts(a.id));
+}
+
 /**
  * Paged aggregation with an optional artisan $lookup, "every word" search and id tie-break.
  * Returns { items (plain, with `artisanDoc`), pagination }.

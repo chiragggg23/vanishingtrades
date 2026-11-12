@@ -11,6 +11,8 @@ import {
   ROLES,
   STORY_LANGS,
   STORY_STATUSES,
+  VERIFY_ID_TYPES,
+  VERIFY_STATUSES,
 } from '../../../shared/constants.js';
 
 const { Schema, model, models } = mongoose;
@@ -65,10 +67,21 @@ const artisanSchema = new Schema(
     seed: String,
     featured: { type: Boolean, default: false },
     demo: { type: Boolean, default: false },
+    // Identity check. Only `verifyStatus === 'verified'` is ever shown publicly; the proof
+    // details below are returned to the artisan themself and to admins only.
+    verifyStatus: { type: String, enum: VERIFY_STATUSES, default: 'none' },
+    verifyIdType: { type: String, enum: [...VERIFY_ID_TYPES, null], default: null },
+    verifyIdNumber: { type: String, default: null },
+    verifyNote: { type: String, default: null },
+    verifyReason: { type: String, default: null },
+    verifySubmittedAt: { type: Date, default: null },
+    verifyDecidedAt: { type: Date, default: null },
+    verifyDecidedBy: { type: ObjectId, ref: 'User', default: null },
   },
   opts,
 );
 artisanSchema.index({ userId: 1 }, { unique: true });
+artisanSchema.index({ verifyStatus: 1, verifySubmittedAt: 1 });
 artisanSchema.index({ craftType: 1 });
 artisanSchema.index({ district: 1 });
 artisanSchema.index({ name: 'text', village: 'text', district: 'text', 'bio.en': 'text' }, TEXT);

@@ -15,6 +15,9 @@ export const STORY_STATUSES = ['draft', 'pending', 'approved', 'rejected'];
 export const APPLICATION_STATUSES = ['applied', 'shortlisted', 'accepted', 'rejected', 'completed'];
 export const ENQUIRY_STATUSES = ['open', 'answered', 'closed'];
 export const FLAG_TARGETS = ['story', 'craft', 'artisan'];
+// Artisan identity check: none -> pending (artisan asks) -> verified | rejected (admin decides).
+export const VERIFY_STATUSES = ['none', 'pending', 'verified', 'rejected'];
+export const VERIFY_ID_TYPES = ['pehchan', 'cooperative', 'award', 'other'];
 export const ROADMAP_STEPS = [
   { id: 's1', key: 'tools' },
   { id: 's2', key: 'materials' },

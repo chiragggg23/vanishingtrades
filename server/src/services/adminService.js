@@ -13,6 +13,12 @@ import {
 } from '../models/index.js';
 import { impactDashboard, impactTotals, isSampleWorld } from '../../../shared/impact.js';
 import { matchesAllWords, pageParams, paginate, mongoAllWords } from '../../../shared/search.js';
+import {
+  VERIFY_LISTS,
+  VERIFY_MSG,
+  verifyAuditAction,
+  verifyDecision,
+} from '../../../shared/rules.js';
 import { fail, MSG, plain, toId } from '../utils/http.js';
 import { V, audit, byIds, ensureArtisanProfile, findPlain, mustFind } from './common.js';
 
@@ -120,6 +126,51 @@ export async function resolveFlag(admin, id, { action }) {
   );
   await audit(admin, `flag.${action}`, f.targetType, f.targetId, { flagId: f.id, label });
   return flagOut(doc, label);
+}
+
+// ---- artisan verification ------------------------------------------------------------------------
+export async function verifications(query) {
+  const status = VERIFY_LISTS.includes(query.status) ? query.status : 'pending';
+  const filter = {
+    verifyStatus: status === 'all' ? { $in: ['pending', 'verified', 'rejected'] } : status,
+  };
+  const { page, limit, skip } = pageParams(query);
+  const [list, total] = await Promise.all([
+    Artisan.find(filter).sort({ verifySubmittedAt: 1, _id: 1 }).skip(skip).limit(limit).lean(),
+    Artisan.countDocuments(filter),
+  ]);
+  const items = plain(list);
+  const deciders = await byIds(
+    User,
+    items.map((a) => a.verifyDecidedBy),
+  );
+  return {
+    items: items.map((a) => V.verificationItem(a, deciders[a.verifyDecidedBy])),
+    pagination: paginate(page, limit, total),
+  };
+}
+
+export async function decideVerification(admin, artisanId, { action, reason }) {
+  const a = await mustFind(Artisan, artisanId);
+  const from = a.verifyStatus || 'none';
+  const to = verifyDecision(from, action);
+  if (!to) fail(409, VERIFY_MSG.nothingToDecide);
+  const doc = plain(
+    await Artisan.findByIdAndUpdate(
+      a.id,
+      {
+        $set: {
+          verifyStatus: to,
+          verifyReason: action === 'reject' ? reason : null,
+          verifyDecidedAt: new Date(),
+          verifyDecidedBy: toId(admin.id),
+        },
+      },
+      { new: true },
+    ).lean(),
+  );
+  await audit(admin, verifyAuditAction(from, action), 'artisan', a.id, { name: a.name });
+  return V.verificationItem(doc, admin);
 }
 
 // ---- users ---------------------------------------------------------------------------------------

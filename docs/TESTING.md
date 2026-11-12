@@ -5,7 +5,7 @@ All numbers below were produced on the build machine (Windows 11, Node 24, insta
 
 ## Unit, component and accessibility tests (client)
 
-`cd client && npm test`: **52 tests in 9 files, all passing.**
+`cd client && npm test`: **57 tests in 11 files, all passing.**
 
 | File                      | Covers                                                                                                                                                                                                                                                                    |
 | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -17,23 +17,27 @@ All numbers below were produced on the build machine (Windows 11, Node 24, insta
 | `a11y.test.jsx`           | jest-axe on 12 screens (Home, Gallery, Archive, StoryDetail, ArtisanProfile, Apprenticeships, Impact, Verify, Login, 404, artisan workbench, admin people table): **0 violations** (colour contrast is checked by `scripts/contrast.mjs` instead, as jsdom has no layout) |
 | `headline.test.jsx`       | the printed headline keeps one clean accessible name                                                                                                                                                                                                                      |
 | `units.test.js`           | recorder helpers (Safari mimeType, level meter, mic errors), shared validation, search, rules, seed counts, WAV synth, all i18n keys in 3 languages, contrast script                                                                                                      |
+| `verification.test.jsx`   | verified badge on cards only when verified; artisan asks → admin approves → public page shows the mark and never the proof number; a reason is required before turning a request down; jest-axe on the request form and the admin queue                                   |
+| `safeNext.test.js`        | the return path after sign-in only accepts same-site paths                                                                                                                                                                                                                |
 
 Test-only additions: `@testing-library/jest-dom`, `@testing-library/react`,
 `@testing-library/user-event`, `jest-axe`, `jsdom`.
 
 ## Server tests
 
-`cd server && npm test`: **26 tests in 2 files, all passing** (in-memory MongoDB, no setup).
+`cd server && npm test`: **29 tests in 2 files, all passing** (in-memory MongoDB, no setup).
 
-- `parity.test.js`, 9 scenarios, each run against the browser mock **and** the Express server; every
+- `parity.test.js`, 10 scenarios, each run against the browser mock **and** the Express server; every
   step's status code, full response shape (type of every field, array lengths) and selected values
   must match: login for all roles and failures; **401 and 403 on all 42 role-locked endpoints**
   with every wrong role (183 requests); gallery/artisans/archive/apprenticeships paging, filters,
   sorts and all-words search; craft CRUD with ownership 403; the whole story pipeline
   (create → audio → AI → edit → submit → reject → resubmit → approve with edits → archive → play);
   enquiries for participants only; apprenticeship apply → accept → roadmap → progress → complete →
-  public certificate; impact totals and dashboard; admin role/pause/flags/audit.
-- `server.test.js`, 17 tests: health and envelope, malformed/oversized bodies, helmet headers and
+  public certificate; impact totals and dashboard; admin role/pause/flags/audit; artisan
+  verification (ask → admin queue → approve → public badge → revoke → ask again, with 401/403/
+  404/409/422 and a check that no public response carries the proof number).
+- `server.test.js`, 19 tests: health and envelope, malformed/oversized bodies, helmet headers and
   CORS allow-list, bcrypt hashes never returned, expired/forged tokens and deleted users, refusal to
   start in production without `JWT_SECRET`, real rate limiting on sign-in (429 after 30), image
   re-encoding to JPEG ≤800 px, 413/422 upload limits, audio stored on disk, no learner emails on any

@@ -22,9 +22,19 @@ export const userView = (u) => ({
 export const publicUser = (u) =>
   u ? { id: u.id, name: u.name } : { id: null, name: 'Former member' };
 
+/** True once an admin has checked the artisan's proof. The only verification fact shown publicly. */
+export const isVerified = (a) => a?.verifyStatus === 'verified';
+
 export const artisanRef = (a) =>
   a
-    ? { id: a.id, name: a.name, village: a.village, district: a.district, craftType: a.craftType }
+    ? {
+        id: a.id,
+        name: a.name,
+        village: a.village,
+        district: a.district,
+        craftType: a.craftType,
+        verified: isVerified(a),
+      }
     : null;
 
 export const artisanView = (a, counts = {}) => ({
@@ -40,10 +50,43 @@ export const artisanView = (a, counts = {}) => ({
   avatarUrl: a.avatarUrl ?? null,
   seed: a.seed,
   featured: Boolean(a.featured),
+  verified: isVerified(a),
+  verifiedAt: isVerified(a) ? iso(a.verifyDecidedAt) : null,
   worksCount: counts.worksCount ?? 0,
   storiesCount: counts.storiesCount ?? 0,
   createdAt: iso(a.createdAt),
   updatedAt: iso(a.updatedAt),
+});
+
+/** The private side of verification: only the artisan themself and admins ever receive this. */
+export const verificationView = (a) => ({
+  status: a.verifyStatus || 'none',
+  idType: a.verifyIdType ?? null,
+  idNumber: a.verifyIdNumber ?? null,
+  note: a.verifyNote ?? null,
+  reason: a.verifyReason ?? null,
+  submittedAt: iso(a.verifySubmittedAt),
+  decidedAt: iso(a.verifyDecidedAt),
+});
+
+/** What an artisan sees of their own profile: the public view plus their verification request. */
+export const artisanOwnerView = (a, counts = {}) => ({
+  ...artisanView(a, counts),
+  verification: verificationView(a),
+});
+
+/** One row of the admin's verification queue. */
+export const verificationItem = (a, decidedBy) => ({
+  artisan: {
+    id: a.id,
+    name: a.name,
+    craftType: a.craftType,
+    village: a.village,
+    district: a.district,
+    yearsOfPractice: a.yearsOfPractice ?? 0,
+  },
+  ...verificationView(a),
+  decidedBy: a.verifyDecidedBy ? publicUser(decidedBy) : null,
 });
 
 export const craftView = (c, artisan) => ({

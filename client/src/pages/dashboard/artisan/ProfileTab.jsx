@@ -10,6 +10,7 @@ import ImageUpload from '../../../components/dash/ImageUpload.jsx';
 import { FormErrors, FormField } from '../../../components/ui/Form.jsx';
 import StampButton from '../../../components/ui/StampButton.jsx';
 import { AsyncView } from '../../../components/ui/Scenes.jsx';
+import VerificationPanel from './VerificationPanel.jsx';
 import s from '../../../components/dash/Dash.module.css';
 
 function ProfileForm({ profile }) {
@@ -158,8 +159,11 @@ export default function ProfileTab() {
   const { t } = useTranslation();
   const state = useAsync(() => artisans.mine(), []);
   return (
-    <Panel title={t('profile.title')} id="profile-title">
-      <AsyncView state={state}>{(p) => <ProfileForm profile={p} />}</AsyncView>
-    </Panel>
+    <>
+      <Panel title={t('profile.title')} id="profile-title">
+        <AsyncView state={state}>{(p) => <ProfileForm profile={p} />}</AsyncView>
+      </Panel>
+      {state.data && <VerificationPanel profile={state.data} onChange={state.setData} />}
+    </>
   );
 }

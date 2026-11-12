@@ -52,10 +52,16 @@ both and asserts identical status codes and response shapes. Field limits live i
 ```text
 User        { id, name, email, role, active, preferredLang, createdAt }
 PublicUser  { id, name }                       // never includes email
-ArtisanRef  { id, name, village, district, craftType }
+ArtisanRef  { id, name, village, district, craftType, verified }
 Artisan     { id, userId, name, craftType, village, district, bio: Localized, yearsOfPractice,
-              languages: string[], avatarUrl|null, seed, featured, worksCount, storiesCount,
-              createdAt, updatedAt }
+              languages: string[], avatarUrl|null, seed, featured, verified, verifiedAt|null,
+              worksCount, storiesCount, createdAt, updatedAt }
+Verification { status: "none"|"pending"|"verified"|"rejected", idType: "pehchan"|"cooperative"|
+              "award"|"other"|null, idNumber|null, note|null, reason|null, submittedAt|null,
+              decidedAt|null }             // private: the artisan themself and admins only
+MyArtisan   Artisan & { verification: Verification }
+VerificationItem Verification & { artisan: { id, name, craftType, village, district, yearsOfPractice },
+              decidedBy: PublicUser|null }
 Craft       { id, artisanId, artisan: ArtisanRef, title: Localized, craftType, description: Localized,
               materials: string[], priceMin|null, priceMax|null, imageUrl|null, seed, createdAt, updatedAt }
 CraftType   { key, name: Localized, region, practitioners, practitionersNote, isSample: true, since }
@@ -179,13 +185,22 @@ Query: `q` (name, village, district, bio.en), `craftType`, `district`, `sort` = 
 
 ### GET /artisans/me — artisan
 
-→ 200 `Artisan`. 401, 403 non-artisan.
+→ 200 `MyArtisan`. 401, 403 non-artisan.
 
 ### PUT /artisans/me — artisan
 
 Body `{ name, craftType, village, district, bio, yearsOfPractice, languages, avatarUrl }` (all optional,
 validated when present). Also renames the denormalised artisan fields on the artisan's crafts, stories and
-apprenticeships. → 200 `Artisan`. 422.
+apprenticeships. → 200 `MyArtisan`. 422.
+
+### POST /artisans/me/verification — artisan
+
+Ask an admin to verify the profile. Body `{ idType, idNumber (4–40), note? (≤500) }`. Sets the status
+to `pending` and clears any earlier rejection reason. → 200 `MyArtisan`. 422. 409 while a request is
+`pending` or once `verified`; a `rejected` artisan may ask again.
+
+Public responses only ever carry `verified` (and `verifiedAt` on `Artisan`). The proof type, number,
+note and rejection reason are never returned by a public endpoint.
 
 ### GET /artisans/:id — public
 
@@ -428,6 +443,18 @@ or craft, or pauses the artisan's account. Already resolved → 409. Audited `fl
 → 200 `Flag`.
 
 ### GET /admin/audit — admin. Query `page`, `limit`; newest first. → 200 paginated `AuditEntry`.
+
+### GET /admin/verifications — admin
+
+Query `status` (`pending` default, `verified`, `rejected`, `all`; anything else is read as `pending`),
+`page`, `limit`. Oldest request first. → 200 paginated `VerificationItem`.
+
+### POST /admin/verifications/:artisanId/decide — admin
+
+Body `{ action: "approve"|"reject", reason? (5–300, required for reject) }`. `approve` moves `pending`
+to `verified`. `reject` moves `pending` or `verified` to `rejected` (so an admin can also take a mark
+away) and stores the reason for the artisan. → 200 `VerificationItem`. 422, 404, 409 when the status
+does not allow the action. Audited as `artisan.verify`, `artisan.verify_reject` or `artisan.unverify`.
 
 ## Uploads
 

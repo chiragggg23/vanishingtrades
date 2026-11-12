@@ -31,6 +31,10 @@ One line each: the decision, then the reason.
 - Mock passwords are stored in plain text in the browser's localStorage. It is a demo store that never leaves the browser; the server always hashes with bcrypt.
 - Mock recordings under 1.5 MB are kept as data URLs so they survive a reload; larger ones use object URLs and show "only lived in this browser" after a reload.
 
+- Artisan verification is a manual admin check, not an automatic one: there is no public API to validate a Pehchan card number, so the artisan gives the proof type and number, an admin checks it outside the app and approves or turns it down with a reason. Only the boolean `verified` is public; the number is returned to the artisan and admins only, and the parity suite asserts that.
+- An admin can also take a verified mark away (`reject` on a verified artisan), because a mark that can never be removed is worth less; a rejected artisan may ask again.
+- The demo artisan is seeded unverified and one seeded request is waiting, so the whole flow can be shown live.
+
 ## Design
 
 - The palette, fonts and texture are fixed by the brief. Indigo carries the primary role so the page does not read as the common cream-and-terracotta look; see `docs/DESIGN_PLAN.md`.

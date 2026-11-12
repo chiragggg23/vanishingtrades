@@ -37,6 +37,12 @@ r.get('/artisans', artisansC.list);
 r.get('/artisans/featured', artisansC.featured);
 r.get('/artisans/me', auth('artisan'), artisansC.mine);
 r.put('/artisans/me', auth('artisan'), v(schemas.artisan, partial), artisansC.updateMine);
+r.post(
+  '/artisans/me/verification',
+  auth('artisan'),
+  v(schemas.verificationRequest),
+  artisansC.requestVerification,
+);
 r.get('/artisans/:id', artisansC.getOne);
 
 // Crafts
@@ -137,6 +143,13 @@ r.patch('/admin/users/:id/active', auth('admin'), v(schemas.active), adminC.setA
 r.get('/admin/flags', auth('admin'), adminC.flags);
 r.post('/admin/flags/:id/resolve', auth('admin'), v(schemas.resolveFlag), adminC.resolve);
 r.get('/admin/audit', auth('admin'), adminC.audit);
+r.get('/admin/verifications', auth('admin'), adminC.verifications);
+r.post(
+  '/admin/verifications/:artisanId/decide',
+  auth('admin'),
+  v(schemas.verificationDecision),
+  adminC.decideVerification,
+);
 
 // Uploads
 r.post('/uploads/image', auth(), limits.uploads, imageUpload, validateImage, uploadsC.image);

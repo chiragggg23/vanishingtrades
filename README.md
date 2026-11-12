@@ -55,8 +55,8 @@ Demo accounts (mock and seeded database): `demo-<role>@vanishingtrades.test` / `
 ## Tests
 
 ```bash
-cd client && npm test       # 52 tests: components, URL filters, player keys, API switch, jest-axe
-cd server && npm test       # 26 tests: contract parity (mock vs server), security, uploads, AI, seed
+cd client && npm test       # 57 tests: components, URL filters, player keys, API switch, verification, jest-axe
+cd server && npm test       # 29 tests: contract parity (mock vs server), security, uploads, AI, seed
 ```
 
 Results, the mutation check, the end-to-end run, Lighthouse and bundle sizes are in

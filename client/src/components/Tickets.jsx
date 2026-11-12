@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import TicketCard from './ui/TicketCard.jsx';
 import CraftArt from './art/CraftArt.jsx';
-import { CraftChip } from './ui/Badges.jsx';
+import { CraftChip, VerifiedBadge } from './ui/Badges.jsx';
 import { mediaUrl } from '../api/index.js';
 import { localize } from '../i18n/index.js';
 import { formatDate, formatPrice, formatDuration } from '../lib/format.js';
@@ -38,6 +38,12 @@ export function CraftTicket({ craft }) {
           <p className={s.meta}>
             {t('gallery.by', { name: craft.artisan?.name })}
             {craft.artisan?.district ? `, ${craft.artisan.district}` : ''}
+            {craft.artisan?.verified && (
+              <>
+                {' '}
+                <VerifiedBadge compact />
+              </>
+            )}
           </p>
         </div>
       </div>
@@ -77,6 +83,11 @@ export function ArtisanTicket({ artisan }) {
           <p className={s.meta}>
             {artisan.village}, {artisan.district}
           </p>
+          {artisan.verified && (
+            <p className={s.meta}>
+              <VerifiedBadge compact />
+            </p>
+          )}
         </div>
       </div>
       <p className={s.bio}>{localize(artisan.bio, i18n.language)}</p>

@@ -1,11 +1,13 @@
 // Artisans and crafts (the gallery). SDG 8.
 import { Application, Apprenticeship, Artisan, Craft, Story } from '../models/index.js';
 import { CRAFT_TYPES } from '../../../shared/constants.js';
+import { VERIFY_MSG } from '../../../shared/rules.js';
 import { fail, MSG, plain, toId } from '../utils/http.js';
 import {
   V,
   artisanCounts,
   artisanOut,
+  artisanOwnerOut,
   audit,
   ensureArtisanProfile,
   findPlain,
@@ -49,13 +51,40 @@ export async function featuredArtisans() {
 }
 
 export async function myProfile(user) {
-  return artisanOut(await ensureArtisanProfile(user));
+  return artisanOwnerOut(await ensureArtisanProfile(user));
 }
 
 export async function updateMyProfile(user, patch) {
   const a = await ensureArtisanProfile(user);
   const doc = plain(await Artisan.findByIdAndUpdate(a.id, { $set: patch }, { new: true }).lean());
-  return artisanOut(doc);
+  return artisanOwnerOut(doc);
+}
+
+/** An artisan asks to be verified. An admin decides (adminService.decideVerification). */
+export async function requestVerification(user, { idType, idNumber, note }) {
+  const a = await ensureArtisanProfile(user);
+  const status = a.verifyStatus || 'none';
+  if (status === 'pending') fail(409, VERIFY_MSG.pending);
+  if (status === 'verified') fail(409, VERIFY_MSG.verified);
+  const doc = plain(
+    await Artisan.findByIdAndUpdate(
+      a.id,
+      {
+        $set: {
+          verifyStatus: 'pending',
+          verifyIdType: idType,
+          verifyIdNumber: idNumber,
+          verifyNote: note ?? null,
+          verifyReason: null,
+          verifySubmittedAt: new Date(),
+          verifyDecidedAt: null,
+          verifyDecidedBy: null,
+        },
+      },
+      { new: true },
+    ).lean(),
+  );
+  return artisanOwnerOut(doc);
 }
 
 export async function getArtisan(id) {

@@ -7,8 +7,9 @@ import UsersTab from './admin/UsersTab.jsx';
 import ModerationTab from './admin/ModerationTab.jsx';
 import AuditTab from './admin/AuditTab.jsx';
 import ImpactTab from './admin/ImpactTab.jsx';
+import VerifyTab from './admin/VerifyTab.jsx';
 
-const TABS = ['impact', 'users', 'moderation', 'audit'];
+const TABS = ['impact', 'users', 'verify', 'moderation', 'audit'];
 
 export default function AdminArea() {
   const { tab = 'impact' } = useParams();
@@ -32,6 +33,7 @@ export default function AdminArea() {
     >
       {tab === 'impact' && <ImpactTab />}
       {tab === 'users' && <UsersTab />}
+      {tab === 'verify' && <VerifyTab />}
       {tab === 'moderation' && <ModerationTab />}
       {tab === 'audit' && <AuditTab />}
     </DashShell>

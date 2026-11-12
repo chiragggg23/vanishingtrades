@@ -24,6 +24,12 @@ const describe = (e, t) => {
       return t('audit.storyRemove', { label: d.title || e.targetId });
     case 'craft.remove':
       return t('audit.craftRemove', { label: d.title || e.targetId });
+    case 'artisan.verify':
+      return t('audit.verify', { name: d.name });
+    case 'artisan.unverify':
+      return t('audit.unverify', { name: d.name });
+    case 'artisan.verify_reject':
+      return t('audit.verifyReject', { name: d.name });
     default:
       return `${e.action} ${e.targetType} ${e.targetId}`;
   }

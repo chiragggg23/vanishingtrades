@@ -15,6 +15,8 @@ import { FormField, FormErrors } from '../components/ui/Form.jsx';
 import { AsyncView, EmptyScene } from '../components/ui/Scenes.jsx';
 import { ApprenticeshipTicket, CraftTicket, StoryTicket } from '../components/Tickets.jsx';
 import ReportButton from '../components/ReportButton.jsx';
+import { VerifiedBadge } from '../components/ui/Badges.jsx';
+import { formatDate } from '../lib/format.js';
 import s from './ArtisanProfile.module.css';
 import L from './Listing.module.css';
 
@@ -118,6 +120,14 @@ export default function ArtisanProfile() {
               <div className={s.intro}>
                 <p className="caption">{t(`craft.${a.craftType}`)}</p>
                 <h1 className={`${s.name} ink`}>{a.name}</h1>
+                {a.verified && (
+                  <p className={s.verified}>
+                    <VerifiedBadge />{' '}
+                    <span className="muted">
+                      {t('trust.checkedOn', { date: formatDate(a.verifiedAt, i18n.language) })}
+                    </span>
+                  </p>
+                )}
                 <p className={s.place}>
                   {a.village}, {a.district}
                 </p>

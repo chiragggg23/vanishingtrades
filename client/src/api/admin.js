@@ -7,3 +7,6 @@ export const flags = (params) => get('/admin/flags', params);
 export const resolveFlag = (id, action) => post(`/admin/flags/${id}/resolve`, { action });
 export const audit = (params) => get('/admin/audit', params);
 export const report = (body) => post('/flags', body);
+export const verifications = (params) => get('/admin/verifications', params);
+export const decideVerification = (artisanId, body) =>
+  post(`/admin/verifications/${artisanId}/decide`, body);

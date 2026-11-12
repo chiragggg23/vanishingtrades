@@ -1,7 +1,7 @@
 // In-memory mock database, persisted to localStorage when it is available.
 import { buildSeed } from '../../../shared/seed.js';
 
-const KEY = 'vt-mock-db-v1';
+const KEY = 'vt-mock-db-v2';
 let db = null;
 
 const storage = () => {
