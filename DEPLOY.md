@@ -101,20 +101,31 @@ visitor then gets the in-browser mock with the demo world saved in their own bro
 | Client | `VITE_USE_MOCK`                                                         | yes                          | `false` to use the API                                                 |
 | Client | `VITE_API_URL`                                                          | when not mock                | API base URL ending in `/api`                                          |
 
-## Demo site on Vercel (website only, no server)
+## What is live now
 
-Live at <https://vanishingtrades.vercel.app> since 13 Nov 2026. This is the client built in mock mode
-(`npm run build`), so the whole app runs in the visitor's browser with the demo world. Nothing is
-shared between visitors and nothing reaches a database. It is enough to show every role and flow.
+Since 23 Nov 2026 the whole stack is online, on free tiers:
 
-It was deployed as prebuilt static files with the Vercel CLI, not from Git. To publish a new version:
+| Piece    | Where                                                                                      |
+| -------- | ------------------------------------------------------------------------------------------ |
+| Website  | <https://vanishingtrades.vercel.app> (Vercel)                                              |
+| API      | <https://vanishingtrades-api.onrender.com/api> (Render, from `render.yaml`, branch `main`) |
+| Database | MongoDB Atlas project `VanishingTrades`, free M0 cluster in Mumbai (ap-south-1)            |
+| Code     | <https://github.com/chiragggg23/vanishingtrades>                                           |
+
+The API runs in demo mode: it seeded the empty database on its first start, so the five demo logins
+work. Render redeploys the API by itself on every push to `main`. The free plan sleeps after 15
+minutes without traffic, and the first request after that takes about a minute, so open the site
+shortly before a demo.
+
+The website is deployed as prebuilt files with the Vercel CLI, not from Git. To publish a new version:
 
 ```bash
-cd client && npm run build
-# copy dist/ to an empty folder named "vanishingtrades", add a vercel.json with the "rewrites" and
+cd client
+VITE_USE_MOCK=false VITE_API_URL=https://vanishingtrades-api.onrender.com/api npx vite build
+# copy dist/ into an empty folder named "vanishingtrades", add a vercel.json with the "rewrites" and
 # "headers" from client/vercel.json (without buildCommand and outputDirectory), then inside it:
 npx vercel deploy --prod --yes
 ```
 
-To serve real data instead, follow sections 1 to 3 above (Atlas, Render, then a Vercel build with
-`VITE_USE_MOCK=false` and `VITE_API_URL` set to the Render URL).
+The database password and the JWT secret live only in the Render dashboard and in the local,
+git-ignored `server/.env.production.local`.
