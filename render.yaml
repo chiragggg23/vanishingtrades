@@ -14,7 +14,7 @@ services:
       - key: NODE_ENV
         value: production
       - key: NODE_VERSION
-        value: '20'
+        value: '22'
       - key: MONGODB_URI
         sync: false # paste the Atlas connection string in the Render dashboard
       - key: JWT_SECRET

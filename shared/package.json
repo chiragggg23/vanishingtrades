@@ -1,0 +1,6 @@
+{
+  "name": "vanishingtrades-shared",
+  "private": true,
+  "type": "module",
+  "description": "Code shared by the client, the browser mock and the server. No dependencies."
+}
