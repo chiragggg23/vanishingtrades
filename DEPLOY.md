@@ -112,10 +112,23 @@ Since 23 Nov 2026 the whole stack is online, on free tiers:
 | Database | MongoDB Atlas project `VanishingTrades`, free M0 cluster in Mumbai (ap-south-1)            |
 | Code     | <https://github.com/chiragggg23/vanishingtrades>                                           |
 
-The API runs in demo mode: it seeded the empty database on its first start, so the five demo logins
-work. Render redeploys the API by itself on every push to `main`. The free plan sleeps after 15
-minutes without traffic, and the first request after that takes about a minute, so open the site
-shortly before a demo.
+Since 27 Nov 2026 the live site is a real installation, not a demo: `DEMO_MODE` and
+`SEED_DEMO_ACCOUNTS` are `false` in `render.yaml`, so there is no demo ribbon, no "Try as" logins, no
+reset endpoint and no automatic seeding. The database was emptied with `server/scripts/fresh-start.js`,
+which also created the one admin account; everything else is entered through the site. Demo mode
+still works locally (`npm run dev` in `client/`, or `npm run dev:memory` in `server/`).
+
+To empty the live database again and recreate the admin (this deletes everything):
+
+```bash
+cd server
+MONGODB_URI=<from server/.env.production.local> ADMIN_EMAIL=<email> ADMIN_PASSWORD=<password> \
+  node scripts/fresh-start.js --yes
+```
+
+Render redeploys the API by itself on every push to `main`. The free plan sleeps after 15 minutes
+without traffic, and the first request after that takes about a minute, so open the site shortly
+before presenting.
 
 The website is deployed as prebuilt files with the Vercel CLI, not from Git. To publish a new version:
 

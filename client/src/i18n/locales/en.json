@@ -140,7 +140,7 @@
     "skip": "Skip the loom"
   },
   "home": {
-    "kicker": "six crafts, twelve workshops, one archive",
+    "kicker": "six crafts, one archive",
     "headline": "Hear the hands before they go quiet.",
     "lede": "VanishingTrades keeps the stories of Karnataka's endangered crafts in the makers' own voices, puts buyers in touch with the makers directly, and finds them apprentices.",
     "ctaListen": "Hear a story",
@@ -175,7 +175,7 @@
       }
     },
     "peopleTitle": "The people at the benches",
-    "peopleNote": "fictional people, real crafts",
+    "peopleNote": "the people behind the pieces",
     "latestTitle": "Newly in the archive",
     "latestBody": "Stories go up once a reviewer has read every line.",
     "latestLink": "All stories"
@@ -465,7 +465,7 @@
     "goal11": "Goal 11.4: safeguarding cultural heritage",
     "goal4": "Goal 4: quality education through apprenticeship",
     "course": "A college project for Full Stack Development (26CS3AEFSD).",
-    "fictional": "The artisans and their stories are fictional. The crafts are real and need the help.",
+    "fictional": "The crafts are real and need the help.",
     "lampOn": "Light the lamp (dark mode)",
     "lampOff": "Back to daylight"
   },
