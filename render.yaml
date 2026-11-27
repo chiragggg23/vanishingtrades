@@ -24,9 +24,9 @@ services:
       - key: CORS_ORIGINS
         sync: false # e.g. https://vanishingtrades.vercel.app
       - key: DEMO_MODE
-        value: 'true' # set to false for a real launch
+        value: 'false' # demo ribbon, demo logins and reset are off on the live site
       - key: SEED_DEMO_ACCOUNTS
-        value: 'true' # set to false before seeding a real database
+        value: 'false' # no demo1234 logins on the live site
       - key: AI_PROVIDER
         value: mock # or groq, with GROQ_API_KEY
       - key: GROQ_API_KEY
